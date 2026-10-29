@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-10-29T15:46:46.641649+09:00",
+  "base_url": "https://studentnoname.github.io/website_proj/",
+  "passed": true,
+  "checks": [
+    {
+      "page": "index.html",
+      "language": "ko-KR",
+      "references": 28,
+      "sections": [
+        "about",
+        "current",
+        "future",
+        "intro"
+      ],
+      "errors": []
+    },
+    {
+      "page": "en/index.html",
+      "language": "en-US",
+      "references": 28,
+      "sections": [
+        "about",
+        "current",
+        "future",
+        "intro"
+      ],
+      "errors": []
+    }
+  ],
+  "failures": []
+}
