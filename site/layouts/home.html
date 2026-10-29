@@ -1,0 +1,13 @@
+{{- define "main" -}}
+{{/* Single-page portfolio. Content comes from data/portfolio/<lang>.yaml; the theme baseof.html supplies head, header and footer. */}}
+{{- $d := index site.Data.portfolio site.Language.Lang -}}
+{{- if not $d -}}
+  {{- errorf "Missing portfolio data: data/portfolio/%s.yaml" site.Language.Lang -}}
+{{- end -}}
+<main id="main" class="pf" tabindex="-1">
+  {{ partial "portfolio/intro.html" (dict "d" $d "page" .) }}
+  {{ partial "portfolio/about.html" (dict "d" $d "page" .) }}
+  {{ partial "portfolio/future.html" (dict "d" $d "page" .) }}
+  {{ partial "portfolio/current.html" (dict "d" $d "page" .) }}
+</main>
+{{- end -}}
