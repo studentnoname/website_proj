@@ -21,6 +21,27 @@
     desk.addEventListener('change', e => { if (e.matches) set(false); });
   }
 
+  // Mark the menu link of the section crossing the middle of the viewport.
+  const links = [...document.querySelectorAll('[data-pf-nav-link]')];
+  const targets = new Map();
+  links.forEach(a => {
+    const href = a.getAttribute('href') || '';
+    const i = href.indexOf('#');
+    const el = i >= 0 && document.getElementById(href.slice(i + 1));
+    if (el && el.hasAttribute('data-pf-section')) targets.set(el, a);
+  });
+
+  if ('IntersectionObserver' in window && targets.size) {
+    const visible = new Set();
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
+      const current = [...targets.keys()].find(el => visible.has(el));
+      links.forEach(a => a.removeAttribute('aria-current'));
+      if (current) targets.get(current).setAttribute('aria-current', 'location');
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    targets.forEach((_, el) => io.observe(el));
+  }
+
   const sectionHash = () => {
     let id = location.hash.slice(1);
     try { id = decodeURIComponent(id); } catch { return ''; }
