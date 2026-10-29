@@ -1,0 +1,82 @@
+{{- $s := .d.about -}}
+{{- $fig := $s.figure -}}
+<section id="{{ $s.id }}" class="pf-section pf-about" aria-labelledby="{{ $s.id }}-title" data-pf-section>
+  <div class="pf-wrap">
+    <header class="pf-sec-head">
+      <span class="pf-sec-num" aria-hidden="true">{{ $s.number }}</span>
+      <h2 id="{{ $s.id }}-title" class="pf-sec-title">{{ $s.title }}</h2>
+    </header>
+
+    <div class="pf-about__grid">
+      <div class="pf-about__interest">
+        <p class="pf-kicker">{{ $s.interest.kicker }}</p>
+        <h3 class="pf-h3">{{ $s.interest.title }}</h3>
+        <p class="pf-body">{{ $s.interest.body }}</p>
+      </div>
+
+      <figure class="pf-figure pf-about__figure">
+        <svg class="pf-svg" viewBox="0 0 640 440" role="img" focusable="false"
+             aria-labelledby="pf-fig-about-t pf-fig-about-d" xmlns="http://www.w3.org/2000/svg">
+          <title id="pf-fig-about-t">{{ $fig.title }}</title>
+          <desc id="pf-fig-about-d">{{ $fig.desc }}</desc>
+          <rect class="pf-svg__frame" x="16" y="20" width="608" height="400" />
+          <g class="pf-svg__grid">
+            <line x1="330" y1="20" x2="330" y2="420" />
+            <line x1="16" y1="220" x2="624" y2="220" />
+          </g>
+          <g class="pf-svg__ln">
+            <path d="M56 64 C180 64 236 220 300 220" />
+            <path d="M56 128 C170 128 230 220 300 220" />
+            <path d="M56 192 C160 192 226 220 300 220" />
+            <path d="M56 248 C160 248 226 220 300 220" />
+            <path d="M56 312 C170 312 230 220 300 220" />
+            <path d="M56 376 C180 376 236 220 300 220" />
+          </g>
+          <g class="pf-svg__ln pf-svg__ln--thin">
+            <path d="M360 220 C470 220 480 120 584 120" />
+            <path d="M360 220 H584" />
+            <path d="M360 220 C470 220 480 320 584 320" />
+          </g>
+          <path class="pf-flow" d="M56 64 C180 64 236 220 300 220" />
+          <path class="pf-flow pf-flow--late" d="M56 312 C170 312 230 220 300 220" />
+          <path class="pf-flow pf-flow--slow" d="M360 220 C470 220 480 320 584 320" />
+          <g class="pf-svg__queue">
+            <circle cx="304" cy="220" r="4" />
+            <circle cx="290" cy="212" r="4" />
+            <circle cx="290" cy="228" r="4" />
+            <circle cx="276" cy="204" r="4" />
+            <circle cx="276" cy="220" r="4" />
+            <circle cx="276" cy="236" r="4" />
+          </g>
+          <g class="pf-svg__gate">
+            <line x1="330" y1="132" x2="330" y2="204" />
+            <line x1="330" y1="236" x2="330" y2="308" />
+          </g>
+          <g class="pf-svg__node">
+            <circle cx="56" cy="64" r="6" />
+            <circle cx="56" cy="128" r="6" />
+            <circle cx="56" cy="192" r="6" />
+            <circle cx="56" cy="248" r="6" />
+            <circle cx="56" cy="312" r="6" />
+            <circle cx="56" cy="376" r="6" />
+            <circle cx="584" cy="120" r="6" />
+            <circle cx="584" cy="220" r="6" />
+            <circle cx="584" cy="320" r="6" />
+          </g>
+        </svg>
+      </figure>
+    </div>
+
+    <div class="pf-stack">
+      <div class="pf-stack__head">
+        <h3 class="pf-h3 pf-h3--sm">{{ $s.tools.title }}</h3>
+        <p class="pf-body pf-body--muted">{{ $s.tools.body }}</p>
+      </div>
+      <ul class="pf-stack__list" lang="en">
+        {{- range $s.tools.items }}
+        <li>{{ . }}</li>
+        {{- end }}
+      </ul>
+    </div>
+  </div>
+</section>
