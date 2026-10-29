@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29T15:55:03.425824+09:00",
+  "checked_at": "2026-10-29T16:51:15.579108+09:00",
   "browser": "firefox",
   "browser_version": "159.0",
   "base_url": "http://127.0.0.1:1313/website_proj/",
@@ -13,11 +13,11 @@
         "badImages": 0,
         "contentWidth": 1440,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 결국에는 해낼 것이다",
-        "lang": "ko-KR",
+        "h1": "결국에는해낼 것이다.",
+        "lang": "ko",
         "width": 1440
       },
-      "screenshot": "docs\\evidence\\T08\\firefox\\ko-1440.png"
+      "screenshot": ".local\\redesign-qa\\ko-1440.png"
     },
     {
       "name": "ko-768-layout",
@@ -27,11 +27,11 @@
         "badImages": 0,
         "contentWidth": 768,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 결국에는 해낼 것이다",
-        "lang": "ko-KR",
+        "h1": "결국에는해낼 것이다.",
+        "lang": "ko",
         "width": 768
       },
-      "screenshot": "docs\\evidence\\T08\\firefox\\ko-768.png"
+      "screenshot": ".local\\redesign-qa\\ko-768.png"
     },
     {
       "name": "ko-390-layout",
@@ -41,11 +41,11 @@
         "badImages": 0,
         "contentWidth": 390,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 결국에는 해낼 것이다",
-        "lang": "ko-KR",
+        "h1": "결국에는해낼 것이다.",
+        "lang": "ko",
         "width": 390
       },
-      "screenshot": "docs\\evidence\\T08\\firefox\\ko-390.png"
+      "screenshot": ".local\\redesign-qa\\ko-390.png"
     },
     {
       "name": "en-1440-layout",
@@ -55,11 +55,11 @@
         "badImages": 0,
         "contentWidth": 1440,
         "fontsReady": "loaded",
-        "h1": "Whatever I take on, I will see it through in the end.",
-        "lang": "en-US",
+        "h1": "In the end,I'll get it done.",
+        "lang": "en",
         "width": 1440
       },
-      "screenshot": "docs\\evidence\\T08\\firefox\\en-1440.png"
+      "screenshot": ".local\\redesign-qa\\en-1440.png"
     },
     {
       "name": "en-768-layout",
@@ -69,11 +69,11 @@
         "badImages": 0,
         "contentWidth": 768,
         "fontsReady": "loaded",
-        "h1": "Whatever I take on, I will see it through in the end.",
-        "lang": "en-US",
+        "h1": "In the end,I'll get it done.",
+        "lang": "en",
         "width": 768
       },
-      "screenshot": "docs\\evidence\\T08\\firefox\\en-768.png"
+      "screenshot": ".local\\redesign-qa\\en-768.png"
     },
     {
       "name": "en-390-layout",
@@ -83,11 +83,11 @@
         "badImages": 0,
         "contentWidth": 390,
         "fontsReady": "loaded",
-        "h1": "Whatever I take on, I will see it through in the end.",
-        "lang": "en-US",
+        "h1": "In the end,I'll get it done.",
+        "lang": "en",
         "width": 390
       },
-      "screenshot": "docs\\evidence\\T08\\firefox\\en-390.png"
+      "screenshot": ".local\\redesign-qa\\en-390.png"
     },
     {
       "name": "mobile-menu-opens",
@@ -100,7 +100,7 @@
     {
       "name": "mobile-menu-selects-section",
       "passed": true,
-      "screenshot": "docs\\evidence\\T08\\firefox\\ko-mobile-current.png"
+      "screenshot": ".local\\redesign-qa\\ko-mobile-current.png"
     },
     {
       "name": "language-keeps-anchor",
@@ -128,7 +128,7 @@
         "outlineWidth": "3px",
         "tag": "A"
       },
-      "screenshot": "docs\\evidence\\T08\\firefox\\keyboard-focus.png"
+      "screenshot": ".local\\redesign-qa\\keyboard-focus.png"
     },
     {
       "name": "keyboard-activates-skip-link",
@@ -147,28 +147,27 @@
         "width": 720
       },
       "ratio": 2.0,
-      "screenshot": "docs\\evidence\\T08\\firefox\\ko-200-percent.png"
+      "screenshot": ".local\\redesign-qa\\ko-200-percent.png"
     },
     {
       "name": "anchor-about-visible",
       "passed": true,
-      "screenshot": "docs\\evidence\\T08\\firefox\\ko-desktop-about.png"
+      "screenshot": ".local\\redesign-qa\\ko-desktop-about.png"
     },
     {
       "name": "anchor-future-visible",
       "passed": true,
-      "screenshot": "docs\\evidence\\T08\\firefox\\ko-desktop-future.png"
+      "screenshot": ".local\\redesign-qa\\ko-desktop-future.png"
     },
     {
       "name": "anchor-current-visible",
       "passed": true,
-      "screenshot": "docs\\evidence\\T08\\firefox\\ko-desktop-current.png"
+      "screenshot": ".local\\redesign-qa\\ko-desktop-current.png"
     },
     {
       "name": "motion-control",
       "passed": true,
-      "previous": "true",
-      "current": "false"
+      "note": "No visible automatic-motion control; inspect CSS reduced-motion rule separately."
     }
   ]
 }
