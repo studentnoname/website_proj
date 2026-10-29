@@ -34,8 +34,10 @@
     "paragraphs": [
       "변경 1 — 본문·앵커 출력: 원본은 landing type에서 sections 블록을 읽는다. 개인화 초안은 일반 home.html에만 main을 정의하여 빌드는 성공했지만 h1과 네 앵커가 없었다. landing/list.html로 정확히 override하여 HugoBlox baseof·head를 유지하면서 실제 소개·활동을 출력했다.",
       "수정 위치: site/layouts/landing/list.html, site/layouts/_partials/portfolio/*.html. 재검증은 두 언어 각각 h1 1개, intro·about·future·current 존재, 내부 참조 오류 0이다. 전후 근거: docs/evidence/T08/static-first.json, static-fixed.json. 수정 커밋: https://github.com/studentnoname/website_proj/commit/44d238c",
+      "실제 출력 발췌: 변경 전 <div class=page-body></div> — 본문이 비어 있었다. 변경 후 <main id=main class=pf tabindex=-1> 아래에 id=intro·about·future·current 섹션이 출력된다. 정적 검사 출력도 sections: []에서 네 앵커 목록과 errors: []로 바뀌었다.",
       "변경 2 — 배포 출력 정리: 소스에서 데모를 삭제해도 이전 public/publications와 데모 이력서가 남았다. .github/pages_build.py와 prepare_github_pages.py의 Hugo 명령에 --cleanDestinationDir를 추가하고 site/static/uploads/resume.pdf 및 데모 인물 사진을 제거했다.",
       "재검증: 빌드 종료 코드 0, 오래된 publications와 uploads/resume.pdf 부재, 두 언어 자산·앵커 검사 통과. 수정 커밋: https://github.com/studentnoname/website_proj/commit/b3327ce",
+      "실제 코드 발췌: 변경 전 args = ['hugo', '--gc', '--minify', '--config', ...]. 변경 후 args = ['hugo', '--gc', '--minify', '--cleanDestinationDir', '--config', ...]. 출력 정리는 현재 소스에서 사라진 데모 파일이 재배포 자료로 남는 것을 막는다.",
       "반응형·키보드 기능: site/assets/js/portfolio.js에서 모바일 aria-expanded·Escape·초점 복귀·폭 복구·언어 앵커·움직임 제어를 구현했다. 정적 링크를 유지하여 JavaScript 없이도 메뉴가 작동한다."
     ]
   },
