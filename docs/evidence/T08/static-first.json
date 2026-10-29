@@ -1,0 +1,57 @@
+{
+  "checked_at": "2026-10-29T15:44:18.026831+09:00",
+  "base_url": "https://studentnoname.github.io/website_proj/",
+  "passed": false,
+  "checks": [
+    {
+      "page": "index.html",
+      "language": "ko-KR",
+      "references": 25,
+      "sections": [],
+      "errors": [
+        "Expected one h1, got 0",
+        "Missing sections: about, current, future, intro",
+        "Missing personal introduction or KONNECT activity",
+        "Missing anchor: #main",
+        "Missing anchor: #intro",
+        "Missing anchor: #about",
+        "Missing anchor: #future",
+        "Missing anchor: #current"
+      ]
+    },
+    {
+      "page": "en/index.html",
+      "language": "en-US",
+      "references": 25,
+      "sections": [],
+      "errors": [
+        "Expected one h1, got 0",
+        "Missing sections: about, current, future, intro",
+        "Missing personal introduction or KONNECT activity",
+        "Missing anchor: #main",
+        "Missing anchor: #intro",
+        "Missing anchor: #about",
+        "Missing anchor: #future",
+        "Missing anchor: #current"
+      ]
+    }
+  ],
+  "failures": [
+    "index.html: Expected one h1, got 0",
+    "index.html: Missing sections: about, current, future, intro",
+    "index.html: Missing personal introduction or KONNECT activity",
+    "index.html: Missing anchor: #main",
+    "index.html: Missing anchor: #intro",
+    "index.html: Missing anchor: #about",
+    "index.html: Missing anchor: #future",
+    "index.html: Missing anchor: #current",
+    "en/index.html: Expected one h1, got 0",
+    "en/index.html: Missing sections: about, current, future, intro",
+    "en/index.html: Missing personal introduction or KONNECT activity",
+    "en/index.html: Missing anchor: #main",
+    "en/index.html: Missing anchor: #intro",
+    "en/index.html: Missing anchor: #about",
+    "en/index.html: Missing anchor: #future",
+    "en/index.html: Missing anchor: #current"
+  ]
+}
