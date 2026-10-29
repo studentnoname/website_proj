@@ -6,7 +6,7 @@
 # Website name (set in params.yaml under hugoblox.branding.name)
 title: 'Jung Jiwoong'
 # Website URL (the GitHub Pages workflow passes the real base URL via --baseURL)
-baseURL: 'https://example.com/'
+baseURL: 'https://studentnoname.github.io/website_proj/'
 
 ############################
 ## LANGUAGE
@@ -49,9 +49,12 @@ outputs:
   section: [HTML]
 imaging:
   resampleFilter: lanczos
-  quality: 90
+  jpeg:
+    quality: 90
+  webp:
+    quality: 90
+    hint: picture
   anchor: smart
-  hint: picture
 timeout: 600000
 taxonomies:
   author: authors
