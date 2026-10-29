@@ -1,5 +1,7 @@
 param([switch]$InstallDependencies)
 $ErrorActionPreference = 'Stop'
+[Console]::OutputEncoding = New-Object System.Text.UTF8Encoding
+$OutputEncoding = [Console]::OutputEncoding
 . (Join-Path $PSScriptRoot 'windows-env.ps1')
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Push-Location -LiteralPath $projectRoot
