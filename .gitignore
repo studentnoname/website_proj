@@ -132,3 +132,6 @@ backups/
 # Assignment evidence is source material, not generated upstream documentation
 !/docs/
 !/docs/**
+
+# Generated Hugo editor metadata
+**/assets/jsconfig.json
