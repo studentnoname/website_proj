@@ -1,0 +1,174 @@
+{
+  "checked_at": "2026-10-29T15:51:13.968279+09:00",
+  "browser": "firefox",
+  "browser_version": "159.0",
+  "base_url": "http://127.0.0.1:1313/website_proj/",
+  "passed": true,
+  "results": [
+    {
+      "name": "ko-1440-layout",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/",
+      "metrics": {
+        "badImages": 0,
+        "contentWidth": 1440,
+        "fontsReady": "loaded",
+        "h1": "무엇을 하든 결국에는 해낼 것이다",
+        "lang": "ko-KR",
+        "width": 1440
+      },
+      "screenshot": "docs\\evidence\\T08\\firefox\\ko-1440.png"
+    },
+    {
+      "name": "ko-768-layout",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/",
+      "metrics": {
+        "badImages": 0,
+        "contentWidth": 768,
+        "fontsReady": "loaded",
+        "h1": "무엇을 하든 결국에는 해낼 것이다",
+        "lang": "ko-KR",
+        "width": 768
+      },
+      "screenshot": "docs\\evidence\\T08\\firefox\\ko-768.png"
+    },
+    {
+      "name": "ko-390-layout",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/",
+      "metrics": {
+        "badImages": 0,
+        "contentWidth": 390,
+        "fontsReady": "loaded",
+        "h1": "무엇을 하든 결국에는 해낼 것이다",
+        "lang": "ko-KR",
+        "width": 390
+      },
+      "screenshot": "docs\\evidence\\T08\\firefox\\ko-390.png"
+    },
+    {
+      "name": "en-1440-layout",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/",
+      "metrics": {
+        "badImages": 0,
+        "contentWidth": 1440,
+        "fontsReady": "loaded",
+        "h1": "Whatever I take on, I will see it through in the end.",
+        "lang": "en-US",
+        "width": 1440
+      },
+      "screenshot": "docs\\evidence\\T08\\firefox\\en-1440.png"
+    },
+    {
+      "name": "en-768-layout",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/",
+      "metrics": {
+        "badImages": 0,
+        "contentWidth": 768,
+        "fontsReady": "loaded",
+        "h1": "Whatever I take on, I will see it through in the end.",
+        "lang": "en-US",
+        "width": 768
+      },
+      "screenshot": "docs\\evidence\\T08\\firefox\\en-768.png"
+    },
+    {
+      "name": "en-390-layout",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/",
+      "metrics": {
+        "badImages": 0,
+        "contentWidth": 390,
+        "fontsReady": "loaded",
+        "h1": "Whatever I take on, I will see it through in the end.",
+        "lang": "en-US",
+        "width": 390
+      },
+      "screenshot": "docs\\evidence\\T08\\firefox\\en-390.png"
+    },
+    {
+      "name": "mobile-menu-opens",
+      "passed": true
+    },
+    {
+      "name": "mobile-escape-restores-focus",
+      "passed": true
+    },
+    {
+      "name": "mobile-menu-selects-section",
+      "passed": true,
+      "screenshot": "docs\\evidence\\T08\\firefox\\ko-mobile-current.png"
+    },
+    {
+      "name": "language-keeps-anchor",
+      "passed": true
+    },
+    {
+      "name": "resize-restores-desktop-navigation",
+      "passed": true
+    },
+    {
+      "name": "deep-anchor-refresh",
+      "passed": true
+    },
+    {
+      "name": "anchor-back-navigation",
+      "passed": true
+    },
+    {
+      "name": "keyboard-focus-visible",
+      "passed": true,
+      "evidence": {
+        "boxShadow": "none",
+        "href": "#main",
+        "outline": "solid",
+        "outlineWidth": "3px",
+        "tag": "A"
+      },
+      "screenshot": "docs\\evidence\\T08\\firefox\\keyboard-focus.png"
+    },
+    {
+      "name": "keyboard-activates-skip-link",
+      "passed": true
+    },
+    {
+      "name": "browser-200-percent-zoom",
+      "passed": true,
+      "before": {
+        "dpr": 1,
+        "width": 1440
+      },
+      "after": {
+        "dpr": 2,
+        "scroll": 720,
+        "width": 720
+      },
+      "ratio": 2.0,
+      "screenshot": "docs\\evidence\\T08\\firefox\\ko-200-percent.png"
+    },
+    {
+      "name": "anchor-about-visible",
+      "passed": true,
+      "screenshot": "docs\\evidence\\T08\\firefox\\ko-desktop-about.png"
+    },
+    {
+      "name": "anchor-future-visible",
+      "passed": true,
+      "screenshot": "docs\\evidence\\T08\\firefox\\ko-desktop-future.png"
+    },
+    {
+      "name": "anchor-current-visible",
+      "passed": true,
+      "screenshot": "docs\\evidence\\T08\\firefox\\ko-desktop-current.png"
+    },
+    {
+      "name": "motion-control",
+      "passed": true,
+      "previous": "false",
+      "current": "true"
+    }
+  ]
+}

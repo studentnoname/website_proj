@@ -34,6 +34,7 @@ def main():
     options.set_preference('layout.css.devPixelsPerPx', '1.0')
     driver = webdriver.Firefox(options=options, service=Service(
         str(ROOT / '.local/tools/geckodriver/geckodriver.exe'),
+        service_args=['--allow-system-access'],
         log_output=str(ROOT / '.local/geckodriver-qa.log')))
     results = []
     wait = WebDriverWait(driver, 15)
@@ -47,6 +48,20 @@ def main():
         wait.until(lambda browser: browser.execute_script('return document.readyState') == 'complete')
         wait.until(lambda browser: browser.find_elements(By.CSS_SELECTOR, 'main#main'))
 
+    def viewport(width):
+        # Windows Firefox's chrome window has a 500px minimum. Resize the dedicated
+        # test browser element, as a responsive viewport, and verify content width.
+        driver.set_window_size(max(width, 500), 1000)
+        driver.set_context('chrome')
+        driver.execute_script('''const b=gBrowser.selectedBrowser;
+          b.style.setProperty('width',arguments[0]+'px','important');
+          b.style.setProperty('max-width',arguments[0]+'px','important');
+          b.style.setProperty('min-width','0px','important');
+          b.style.setProperty('flex','0 0 '+arguments[0]+'px','important');
+          ZoomManager.setZoomForBrowser(b,1);''', width)
+        driver.set_context('content')
+        wait.until(lambda browser: browser.execute_script('return innerWidth') == width)
+
     def screen(name):
         file = args.output / (name + '.png')
         driver.save_screenshot(str(file))
@@ -55,7 +70,7 @@ def main():
     try:
         for language, suffix in [('ko', ''), ('en', 'en/')]:
             for width in (1440, 768, 390):
-                driver.set_window_size(width, 1000)
+                viewport(width)
                 load(base + suffix)
                 metrics = driver.execute_script('''return {
                   width: innerWidth, contentWidth: document.documentElement.scrollWidth,
@@ -69,7 +84,7 @@ def main():
                        metrics['lang'].lower().startswith(language),
                        url=driver.current_url, metrics=metrics, screenshot=screen(f'{language}-{width}'))
 
-        driver.set_window_size(390, 1000)
+        viewport(390)
         load(base)
         toggle = driver.find_element(By.CSS_SELECTOR, '[data-pf-nav-toggle]')
         toggle.click()
@@ -87,9 +102,9 @@ def main():
         record('language-keeps-anchor', driver.current_url.endswith('/en/#current') and
                driver.execute_script('return document.documentElement.lang').lower().startswith('en'))
 
-        driver.set_window_size(1440, 1000)
-        driver.set_window_size(390, 1000)
-        driver.set_window_size(1440, 1000)
+        viewport(1440)
+        viewport(390)
+        viewport(1440)
         nav = driver.find_element(By.CSS_SELECTOR, '[data-pf-nav-link][href="#about"]')
         record('resize-restores-desktop-navigation', nav.is_displayed())
 
@@ -117,13 +132,16 @@ def main():
 
         load(base)
         before = driver.execute_script('return {width:innerWidth,dpr:devicePixelRatio}')
-        for _ in range(6):
-            driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.CONTROL, '+', Keys.NULL)
+        driver.set_context('chrome')
+        driver.execute_script('ZoomManager.setZoomForBrowser(gBrowser.selectedBrowser,2);')
+        driver.set_context('content')
         after = driver.execute_script('return {width:innerWidth,dpr:devicePixelRatio,scroll:document.documentElement.scrollWidth}')
         zoom = round(after['dpr'] / before['dpr'], 2)
         record('browser-200-percent-zoom', zoom == 2 and after['scroll'] <= after['width'] + 1,
                before=before, after=after, ratio=zoom, screenshot=screen('ko-200-percent'))
-        driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.CONTROL, '0', Keys.NULL)
+        driver.set_context('chrome')
+        driver.execute_script('ZoomManager.setZoomForBrowser(gBrowser.selectedBrowser,1);')
+        driver.set_context('content')
 
         for section in ('about', 'future', 'current'):
             load(base + '#' + section)
@@ -132,8 +150,10 @@ def main():
 
         motion = driver.find_elements(By.CSS_SELECTOR, '[data-pf-motion-toggle]')
         if motion and motion[0].is_displayed():
+            previous = motion[0].get_attribute('aria-pressed')
             motion[0].click()
-            record('motion-control', motion[0].get_attribute('aria-pressed') == 'true')
+            record('motion-control', motion[0].get_attribute('aria-pressed') != previous,
+                   previous=previous, current=motion[0].get_attribute('aria-pressed'))
         else:
             record('motion-control', True, note='No visible automatic-motion control; inspect CSS reduced-motion rule separately.')
     except Exception as error:
