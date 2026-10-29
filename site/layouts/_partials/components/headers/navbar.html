@@ -1,0 +1,49 @@
+{{/* Portfolio header. Overrides the HugoBlox `navbar` header block; rendered by baseof.html inside .page-header.
+     Menu links are plain anchors, so navigation works without JavaScript. portfolio.js adds the collapsible mobile menu. */}}
+{{- $branding := partialCached "functions/get_branding" . "branding" -}}
+{{- $ui := (index site.Data.portfolio site.Language.Lang).ui | default dict -}}
+{{- $page := cond .IsTranslated . site.Home -}}
+<a class="pf-skip" href="#main">{{ $ui.skip }}</a>
+<header id="site-header" class="pf-header">
+  <div class="pf-header__inner">
+    <a class="pf-brand" href="{{ site.Home.RelPermalink }}" title="{{ $ui.home }}" lang="en">{{ $branding.name }}</a>
+
+    <nav class="pf-nav" aria-label="{{ $ui.nav_label }}" data-pf-nav>
+      <button type="button" class="pf-nav__toggle" aria-expanded="false" aria-controls="pf-nav-list" data-pf-nav-toggle>
+        <span class="pf-nav__bars" aria-hidden="true"><span></span><span></span></span>
+        <span>{{ $ui.menu }}</span>
+      </button>
+      <ul id="pf-nav-list" class="pf-nav__list">
+        {{- range $i, $item := site.Menus.main }}
+          {{- $url := $item.URL -}}
+          {{- if hasPrefix $url "#" -}}
+            {{- if not $.IsHome }}{{ $url = printf "%s%s" site.Home.RelPermalink $url }}{{ end -}}
+          {{- else -}}
+            {{- $url = $url | relLangURL -}}
+          {{- end }}
+        <li>
+          <a class="pf-nav__link" href="{{ $url }}" data-pf-nav-link>
+            <span class="pf-nav__num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+            <span>{{ $item.Name }}</span>
+          </a>
+        </li>
+        {{- end }}
+      </ul>
+    </nav>
+
+    <div class="pf-header__tools">
+      {{- if site.Params.hugoblox.header.language_switcher }}
+        {{- range $page.Translations }}
+          {{- $other := index site.Data.portfolio .Lang }}
+      <a class="pf-lang" href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}" lang="{{ .Lang }}"
+         title="{{ $ui.lang_label }}" data-pf-lang>{{ with $other }}{{ .lang_name }}{{ else }}{{ upper .Lang }}{{ end }}</a>
+        {{- end }}
+      {{- end }}
+      <button type="button" class="pf-motion" aria-pressed="false" title="{{ $ui.motion }}" data-pf-motion-toggle hidden>
+        <svg class="pf-motion__pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3v10M11 3v10" /></svg>
+        <svg class="pf-motion__play" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3l8 5-8 5z" /></svg>
+        <span class="pf-sr">{{ $ui.motion }}</span>
+      </button>
+    </div>
+  </div>
+</header>
