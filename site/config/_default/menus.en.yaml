@@ -1,0 +1,14 @@
+# English menu. Translations of the Korean menu labels; anchors match the Korean page.
+main:
+  - name: Introduction
+    url: '#intro'
+    weight: 1
+  - name: Who He Is
+    url: '#about'
+    weight: 2
+  - name: The Future in View
+    url: '#future'
+    weight: 3
+  - name: Where He Is Now
+    url: '#current'
+    weight: 4
