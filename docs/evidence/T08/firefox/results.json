@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29T16:51:15.579108+09:00",
+  "checked_at": "2026-10-29T19:44:40.211976+09:00",
   "browser": "firefox",
   "browser_version": "159.0",
   "base_url": "http://127.0.0.1:1313/website_proj/",
@@ -17,7 +17,164 @@
         "lang": "ko",
         "width": 1440
       },
-      "screenshot": ".local\\redesign-qa\\ko-1440.png"
+      "screenshot": ".local\\refined-qa\\ko-1440.png"
+    },
+    {
+      "name": "ko-1440-type-hierarchy",
+      "passed": true,
+      "expected_body": 18,
+      "expected_heading": 48,
+      "evidence": {
+        "contentEdges": [
+          657.3333129882812,
+          657.3333129882812,
+          657.3333129882812
+        ],
+        "copy": [
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          }
+        ],
+        "copyTops": [
+          988.2833251953124,
+          1503.0833740234375,
+          2231.9833984375
+        ],
+        "headingEdges": [
+          120,
+          120,
+          120
+        ],
+        "headings": [
+          48,
+          48,
+          48
+        ],
+        "titleBottoms": [
+          1098.6833190917969,
+          1613.483383178711,
+          2287.183395385742
+        ],
+        "titleTops": [
+          988.2833251953124,
+          1503.0833740234375,
+          2231.9833984375
+        ]
+      }
+    },
+    {
+      "name": "ko-1440-section-alignment",
+      "passed": true,
+      "headings": [
+        120,
+        120,
+        120
+      ],
+      "content": [
+        657.3333129882812,
+        657.3333129882812,
+        657.3333129882812
+      ],
+      "title_positions": [
+        988.2833251953124,
+        1503.0833740234375,
+        2231.9833984375
+      ],
+      "copy_tops": [
+        988.2833251953124,
+        1503.0833740234375,
+        2231.9833984375
+      ],
+      "expected_gap": 0
     },
     {
       "name": "ko-768-layout",
@@ -31,7 +188,164 @@
         "lang": "ko",
         "width": 768
       },
-      "screenshot": ".local\\redesign-qa\\ko-768.png"
+      "screenshot": ".local\\refined-qa\\ko-768.png"
+    },
+    {
+      "name": "ko-768-type-hierarchy",
+      "passed": true,
+      "expected_body": 16,
+      "expected_heading": 36,
+      "evidence": {
+        "contentEdges": [
+          24,
+          24,
+          24
+        ],
+        "copy": [
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          }
+        ],
+        "copyTops": [
+          1316.2833251953125,
+          1891.5833740234375,
+          2584.4833984375
+        ],
+        "headingEdges": [
+          24,
+          24,
+          24
+        ],
+        "headings": [
+          36,
+          36,
+          36
+        ],
+        "titleBottoms": [
+          1284.2834014892578,
+          1859.5833129882812,
+          2552.4832611083984
+        ],
+        "titleTops": [
+          1201.4833984375,
+          1776.7833251953125,
+          2511.083251953125
+        ]
+      }
+    },
+    {
+      "name": "ko-768-section-alignment",
+      "passed": true,
+      "headings": [
+        24,
+        24,
+        24
+      ],
+      "content": [
+        24,
+        24,
+        24
+      ],
+      "title_positions": [
+        1284.2834014892578,
+        1859.5833129882812,
+        2552.4832611083984
+      ],
+      "copy_tops": [
+        1316.2833251953125,
+        1891.5833740234375,
+        2584.4833984375
+      ],
+      "expected_gap": 32
     },
     {
       "name": "ko-390-layout",
@@ -45,7 +359,164 @@
         "lang": "ko",
         "width": 390
       },
-      "screenshot": ".local\\redesign-qa\\ko-390.png"
+      "screenshot": ".local\\refined-qa\\ko-390.png"
+    },
+    {
+      "name": "ko-390-type-hierarchy",
+      "passed": true,
+      "expected_body": 16,
+      "expected_heading": 36,
+      "evidence": {
+        "contentEdges": [
+          20,
+          20,
+          20
+        ],
+        "copy": [
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          }
+        ],
+        "copyTops": [
+          1219.4833984375,
+          1822.7833251953125,
+          2627.683349609375
+        ],
+        "headingEdges": [
+          20,
+          20,
+          20
+        ],
+        "headings": [
+          36,
+          36,
+          36
+        ],
+        "titleBottoms": [
+          1187.4833526611328,
+          1790.7834014892578,
+          2595.6834411621094
+        ],
+        "titleTops": [
+          1104.683349609375,
+          1707.9833984375,
+          2554.283447265625
+        ]
+      }
+    },
+    {
+      "name": "ko-390-section-alignment",
+      "passed": true,
+      "headings": [
+        20,
+        20,
+        20
+      ],
+      "content": [
+        20,
+        20,
+        20
+      ],
+      "title_positions": [
+        1187.4833526611328,
+        1790.7834014892578,
+        2595.6834411621094
+      ],
+      "copy_tops": [
+        1219.4833984375,
+        1822.7833251953125,
+        2627.683349609375
+      ],
+      "expected_gap": 32
     },
     {
       "name": "en-1440-layout",
@@ -59,7 +530,168 @@
         "lang": "en",
         "width": 1440
       },
-      "screenshot": ".local\\redesign-qa\\en-1440.png"
+      "screenshot": ".local\\refined-qa\\en-1440.png"
+    },
+    {
+      "name": "en-1440-type-hierarchy",
+      "passed": true,
+      "expected_body": 18,
+      "expected_heading": 48,
+      "evidence": {
+        "contentEdges": [
+          657.3333129882812,
+          657.3333129882812,
+          657.3333129882812
+        ],
+        "copy": [
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          }
+        ],
+        "copyTops": [
+          988.2833251953124,
+          1503.0833740234375,
+          2200.4833984375
+        ],
+        "headingEdges": [
+          120,
+          120,
+          120
+        ],
+        "headings": [
+          48,
+          48,
+          48
+        ],
+        "titleBottoms": [
+          1098.6833190917969,
+          1613.483383178711,
+          2255.683395385742
+        ],
+        "titleTops": [
+          988.2833251953124,
+          1503.0833740234375,
+          2200.4833984375
+        ]
+      }
+    },
+    {
+      "name": "en-1440-section-alignment",
+      "passed": true,
+      "headings": [
+        120,
+        120,
+        120
+      ],
+      "content": [
+        657.3333129882812,
+        657.3333129882812,
+        657.3333129882812
+      ],
+      "title_positions": [
+        988.2833251953124,
+        1503.0833740234375,
+        2200.4833984375
+      ],
+      "copy_tops": [
+        988.2833251953124,
+        1503.0833740234375,
+        2200.4833984375
+      ],
+      "expected_gap": 0
     },
     {
       "name": "en-768-layout",
@@ -73,7 +705,168 @@
         "lang": "en",
         "width": 768
       },
-      "screenshot": ".local\\redesign-qa\\en-768.png"
+      "screenshot": ".local\\refined-qa\\en-768.png"
+    },
+    {
+      "name": "en-768-type-hierarchy",
+      "passed": true,
+      "expected_body": 16,
+      "expected_heading": 36,
+      "evidence": {
+        "contentEdges": [
+          24,
+          24,
+          24
+        ],
+        "copy": [
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          }
+        ],
+        "copyTops": [
+          1323.550048828125,
+          1898.8499755859375,
+          2563.75
+        ],
+        "headingEdges": [
+          24,
+          24,
+          24
+        ],
+        "headings": [
+          36,
+          36,
+          36
+        ],
+        "titleBottoms": [
+          1291.5500030517578,
+          1866.8500518798828,
+          2531.7500915527344
+        ],
+        "titleTops": [
+          1208.75,
+          1784.050048828125,
+          2490.35009765625
+        ]
+      }
+    },
+    {
+      "name": "en-768-section-alignment",
+      "passed": true,
+      "headings": [
+        24,
+        24,
+        24
+      ],
+      "content": [
+        24,
+        24,
+        24
+      ],
+      "title_positions": [
+        1291.5500030517578,
+        1866.8500518798828,
+        2531.7500915527344
+      ],
+      "copy_tops": [
+        1323.550048828125,
+        1898.8499755859375,
+        2563.75
+      ],
+      "expected_gap": 32
     },
     {
       "name": "en-390-layout",
@@ -87,7 +880,168 @@
         "lang": "en",
         "width": 390
       },
-      "screenshot": ".local\\redesign-qa\\en-390.png"
+      "screenshot": ".local\\refined-qa\\en-390.png"
+    },
+    {
+      "name": "en-390-type-hierarchy",
+      "passed": true,
+      "expected_body": 16,
+      "expected_heading": 36,
+      "evidence": {
+        "contentEdges": [
+          20,
+          20,
+          20
+        ],
+        "copy": [
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          }
+        ],
+        "copyTops": [
+          1319.4833984375,
+          1922.7833251953125,
+          2727.683349609375
+        ],
+        "headingEdges": [
+          20,
+          20,
+          20
+        ],
+        "headings": [
+          36,
+          36,
+          36
+        ],
+        "titleBottoms": [
+          1287.4833526611328,
+          1890.7834014892576,
+          2695.6834411621094
+        ],
+        "titleTops": [
+          1204.683349609375,
+          1807.9833984375,
+          2654.283447265625
+        ]
+      }
+    },
+    {
+      "name": "en-390-section-alignment",
+      "passed": true,
+      "headings": [
+        20,
+        20,
+        20
+      ],
+      "content": [
+        20,
+        20,
+        20
+      ],
+      "title_positions": [
+        1287.4833526611328,
+        1890.7834014892576,
+        2695.6834411621094
+      ],
+      "copy_tops": [
+        1319.4833984375,
+        1922.7833251953125,
+        2727.683349609375
+      ],
+      "expected_gap": 32
     },
     {
       "name": "mobile-menu-opens",
@@ -100,7 +1054,7 @@
     {
       "name": "mobile-menu-selects-section",
       "passed": true,
-      "screenshot": ".local\\redesign-qa\\ko-mobile-current.png"
+      "screenshot": ".local\\refined-qa\\ko-mobile-current.png"
     },
     {
       "name": "language-keeps-anchor",
@@ -128,7 +1082,7 @@
         "outlineWidth": "3px",
         "tag": "A"
       },
-      "screenshot": ".local\\redesign-qa\\keyboard-focus.png"
+      "screenshot": ".local\\refined-qa\\keyboard-focus.png"
     },
     {
       "name": "keyboard-activates-skip-link",
@@ -147,22 +1101,22 @@
         "width": 720
       },
       "ratio": 2.0,
-      "screenshot": ".local\\redesign-qa\\ko-200-percent.png"
+      "screenshot": ".local\\refined-qa\\ko-200-percent.png"
     },
     {
       "name": "anchor-about-visible",
       "passed": true,
-      "screenshot": ".local\\redesign-qa\\ko-desktop-about.png"
+      "screenshot": ".local\\refined-qa\\ko-desktop-about.png"
     },
     {
       "name": "anchor-future-visible",
       "passed": true,
-      "screenshot": ".local\\redesign-qa\\ko-desktop-future.png"
+      "screenshot": ".local\\refined-qa\\ko-desktop-future.png"
     },
     {
       "name": "anchor-current-visible",
       "passed": true,
-      "screenshot": ".local\\redesign-qa\\ko-desktop-current.png"
+      "screenshot": ".local\\refined-qa\\ko-desktop-current.png"
     },
     {
       "name": "motion-control",

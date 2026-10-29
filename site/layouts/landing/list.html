@@ -1,9 +1,11 @@
 <!doctype html>
-{{- /* Standalone single-file portfolio. Overrides the HugoBlox landing layout entirely; Hugo still builds it. */ -}}
+{{- /* Standalone portfolio landing. Overrides the HugoBlox landing layout; styles and script live in assets/css/portfolio.css and assets/js/portfolio.js. */ -}}
 {{- $ko := eq site.Language.Lang "ko" -}}
 {{- $repo := "https://github.com/studentnoname/website_proj" -}}
 {{- $alt := cond $ko ("en/" | relURL) ("" | relURL) -}}
 {{- range first 1 .Translations }}{{ $alt = .RelPermalink }}{{ end -}}
+{{- $css := resources.Get "css/portfolio.css" | minify | fingerprint -}}
+{{- $js := resources.Get "js/portfolio.js" | minify | fingerprint -}}
 <html lang="{{ site.Language.Lang }}">
 <head>
 <meta charset="utf-8">
@@ -17,201 +19,21 @@
 <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
 {{- end }}
 <link rel="preload" as="image" href="{{ "media/resolve-hero.png" | relURL }}">
-<script>document.documentElement.classList.add('js')</script>
-<style>
-:root{--ink:#101311;--ink2:#1a1e1b;--lime:#dcff75;--paper:#f4f5f1;--text:#111411;--mute:#4f554c;--dim:#9ba295;--line:#2a2f2b;--pad:clamp(1.25rem,4.4vw,4.5rem);--hh:4rem;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;--mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-padding-top:calc(var(--hh) + 1rem);-webkit-text-size-adjust:100%;overflow-x:clip}
-@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{margin:0;background:var(--ink);color:var(--paper);font:400 1rem/1.65 var(--sans);word-break:keep-all;overflow-wrap:break-word;overflow-x:clip}
-:lang(en) body{word-break:normal}
-a{color:inherit}
-img,svg{display:block;max-width:100%}
-h1,h2,h3,p,ol,ul,dl,dd{margin:0}
-ul,ol{padding:0;list-style:none}
-:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:2px}
-.light :focus-visible,.foot :focus-visible{outline-color:var(--ink)}
-.wrap{max-width:1440px;margin:0 auto;padding-inline:var(--pad)}
-.mono{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
-.skip{position:absolute;left:1rem;top:-4rem;z-index:100;background:var(--lime);color:var(--ink);padding:.75rem 1rem;font-weight:700;text-decoration:none}
-.skip:focus{top:1rem}
-
-/* header */
-.hd{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;gap:1rem;min-height:var(--hh);flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;font-weight:600;letter-spacing:-.01em;margin-right:auto;min-height:44px}
-.mark{display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:50%;background:var(--lime);color:var(--ink);font:800 .8rem/1 var(--sans);letter-spacing:-.04em}
-.nav{order:3}
-.nav ul{display:flex;gap:.25rem}
-.nav a{display:flex;align-items:center;min-height:44px;padding:0 .85rem;text-decoration:none;color:#c9cec4;font-size:.9rem;border-radius:999px;transition:color .2s,background .2s}
-.nav a:hover{color:var(--paper);background:var(--ink2)}
-.toggle{display:none}
-.lang{order:4;display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:36px;padding:0 .8rem;border:1px solid #3a403b;border-radius:999px;font:600 .75rem/1 var(--mono);letter-spacing:.1em;text-decoration:none;color:var(--lime)}
-.lang:hover{border-color:var(--lime)}
-@media (max-width:860px){
-  html:not(.js){scroll-padding-top:9.5rem}
-  .brand{min-width:0}
-  .nav{flex-basis:100%;order:5;padding-bottom:.5rem}
-  .nav ul{flex-wrap:wrap}
-  .js .nav{flex-basis:auto;order:5;padding:0}
-  .js .toggle{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 1rem;background:var(--paper);color:var(--ink);border:0;border-radius:999px;font:600 .85rem/1 var(--sans);cursor:pointer}
-  .toggle i{width:14px;height:2px;background:currentColor;box-shadow:0 -4px 0 currentColor,0 4px 0 currentColor;transition:box-shadow .2s}
-  .toggle[aria-expanded="true"] i{box-shadow:none}
-  .js .nav ul{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid var(--line);padding:.5rem var(--pad) 1.25rem}
-  .js .nav[data-open] ul{display:flex}
-  .js .nav ul a{min-height:52px;font-size:1.15rem;color:var(--paper);border-radius:0;border-bottom:1px solid var(--line);padding:0}
-  .js .lang{order:4}
-}
-
-/* hero */
-.hero{position:relative;overflow:hidden;background:var(--ink)}
-.hero .wrap{position:relative;display:grid;grid-template-rows:1fr auto;min-height:clamp(620px,calc(100svh - var(--hh)),940px)}
-.hero-copy{position:relative;z-index:2;align-self:center;padding-block:clamp(3rem,7vw,6rem) 2.5rem;max-width:60rem}
-.kicker{display:flex;align-items:center;gap:.9rem;color:var(--dim);margin-bottom:clamp(1.5rem,3vw,2.5rem)}
-.kicker b{color:var(--paper);font:600 .95rem/1 var(--sans);letter-spacing:0;text-transform:none}
-.kicker::before{content:"";width:2.5rem;height:1px;background:var(--lime)}
-h1{font-weight:800;font-size:clamp(2.75rem,8.6vw,8.4rem);line-height:1.02;letter-spacing:-.055em}
-:lang(en) h1{font-size:clamp(2.2rem,6.6vw,6.6rem);letter-spacing:-.045em}
-h1 span{display:block}
-h1 .accent{color:var(--lime)}
-.quote{display:flex;gap:1rem;align-items:baseline;margin-top:clamp(1.75rem,3vw,2.75rem);max-width:30rem;color:#c9cec4}
-.quote small{flex:none;color:var(--lime)}
-.quote q{quotes:"“" "”";font-size:1.05rem}
-.quote em{display:block;font-style:normal;color:var(--dim);font-size:.9rem}
-.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:clamp(2rem,3.5vw,3rem)}
-.btn{display:inline-flex;align-items:center;gap:.6rem;min-height:52px;padding:0 1.5rem;border-radius:999px;text-decoration:none;font-weight:700;transition:transform .2s,background .2s}
-.btn-p{background:var(--lime);color:var(--ink)}
-.btn-p:hover{transform:translateY(-2px)}
-.btn-g{border:1px solid #3a403b;color:var(--paper);font-weight:500;padding:0 1.15rem}
-.btn-g:hover{border-color:var(--paper)}
-.art{position:absolute;z-index:1;right:calc(var(--pad) * -1 - 2vw);top:47%;transform:translateY(-50%);width:min(60vw,920px);aspect-ratio:1;pointer-events:none}
-.art img{width:100%;height:100%;object-fit:contain;mix-blend-mode:lighten;-webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent 100%);mask-image:radial-gradient(closest-side,#000 70%,transparent 100%)}
-.ring{position:absolute;inset:14% 6% 22% 26%;border:1.5px solid var(--lime);border-radius:50%;opacity:.85}
-.ring::after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:var(--lime);left:12%;top:12%}
-.strip{position:relative;z-index:2;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-block:1.25rem;border-top:1px solid var(--line);color:var(--dim)}
-.strip span:last-child b{color:var(--lime);font-weight:600}
-@media (max-width:860px){
-  .hero .wrap{min-height:0;grid-template-rows:auto}
-  .hero-copy{padding-block:2.5rem 0}
-  .art{position:relative;right:auto;top:auto;transform:none;width:calc(100% + 2 * var(--pad));margin:-1.5rem calc(var(--pad) * -1) -1rem;max-height:none}
-  .ring{inset:12% 10% 14% 18%}
-}
-@media (prefers-reduced-motion:no-preference){
-  .rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
-  .art img{animation:fade 1.4s ease-out both .15s}
-  @keyframes rise{from{opacity:0;transform:translateY(18px)}}
-  @keyframes fade{from{opacity:0;transform:scale(.97)}}
-}
-
-/* light sections */
-.light{background:var(--paper);color:var(--text)}
-.sec{padding-block:clamp(5rem,10vw,9rem)}
-.label{display:flex;gap:.8rem;align-items:center;color:var(--mute);margin-bottom:1.5rem}
-.label b{display:inline-grid;place-items:center;min-width:2.1rem;height:1.5rem;padding:0 .4rem;background:var(--ink);color:var(--lime);font-weight:600;border-radius:4px;letter-spacing:.06em}
-h2{font-weight:800;letter-spacing:-.05em;line-height:1.04}
-.about-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem var(--pad);align-items:end}
-.about-grid h2{grid-column:1 / span 7;font-size:clamp(2.6rem,6.8vw,6.4rem)}
-.about-grid h2 mark{background:linear-gradient(transparent 58%,var(--lime) 58% 92%,transparent 92%);color:inherit;padding:0 .05em}
-.about-side{grid-column:9 / span 4;display:grid;gap:1.75rem}
-.about-side p{font-size:1.08rem;color:#272b26}
-.gate{width:132px;color:var(--ink)}
-.tools{margin-top:clamp(4rem,8vw,7rem);padding-top:2rem;border-top:2px solid var(--ink)}
-.tools-head{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--mute);margin-bottom:1.5rem}
-.tools ul{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:clamp(.75rem,2vw,1.75rem);font-weight:800;font-size:clamp(2.4rem,7.4vw,7.6rem);line-height:1.08;letter-spacing:-.05em}
-.tools li{display:flex;align-items:baseline;gap:clamp(.75rem,2vw,1.75rem)}
-.tools li:not(.br):not(:last-child)::after{content:"∕";color:#b7bcb1;font-weight:300}
-.tools .hl{background:var(--lime);padding:0 .12em;border-radius:.08em}
-.tools .br{flex-basis:100%;height:0}
-.tools .br + li{margin-left:clamp(0rem,16vw,16rem)}
-.brk{color:#b7bcb1;font-weight:200}
-@media (max-width:860px){
-  .about-grid h2,.about-side{grid-column:1 / -1}
-  .tools .br + li{margin-left:0}
-}
-
-/* future */
-.future{border-top:1px solid #d8dbd2}
-.fut-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2rem var(--pad);align-items:end;margin-bottom:clamp(3rem,6vw,5rem)}
-.fut-head h2{font-size:clamp(2.4rem,5.6vw,5.2rem)}
-.fut-head p{color:#272b26;max-width:30rem;font-size:1.05rem}
-.rows li{display:grid;grid-template-columns:5rem minmax(0,1.25fr) minmax(0,1fr) 4.5rem;gap:1.5rem var(--pad);align-items:center;padding-block:clamp(1.75rem,3vw,2.5rem);border-top:2px solid var(--ink)}
-.rows li:last-child{border-bottom:2px solid var(--ink)}
-.rows .ix{font:600 .85rem/1 var(--mono);color:var(--mute);transition:color .25s}
-.rows h3{font-size:clamp(2rem,4.6vw,4.4rem);font-weight:800;letter-spacing:-.05em;line-height:1.05}
-.rows h3 small{display:block;margin-bottom:.6rem;font:500 .72rem/1 var(--mono);letter-spacing:.16em;color:var(--mute)}
-.rows p{color:#272b26}
-.rows svg{width:56px;height:56px;justify-self:end;color:var(--ink);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.rows .fill{fill:var(--paper);transition:fill .25s}
-.rows li:hover .fill{fill:var(--lime)}
-.rows li:hover svg{transform:translateY(-4px)}
-@media (max-width:860px){
-  .fut-head{grid-template-columns:1fr}
-  .rows li{grid-template-columns:minmax(0,1fr) 3.5rem;gap:.75rem 1rem}
-  .rows .ix{grid-column:1 / -1}
-  .rows p{grid-column:1 / -1;order:4}
-  .rows svg{width:44px;height:44px;grid-row:2}
-}
-
-/* current */
-.cur{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
-.cur .label{color:var(--dim)}
-.cur .label b{background:var(--lime);color:var(--ink)}
-.cur-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem}
-.cur h2{font-size:clamp(3.4rem,15.5vw,15rem);line-height:.86;letter-spacing:-.045em;color:var(--lime);margin-top:1rem}
-.cur h2 span{display:block;font:500 clamp(1.1rem,2vw,1.6rem)/1.4 var(--sans);letter-spacing:-.02em;color:var(--paper);margin-top:1.25rem}
-.globe{width:clamp(120px,17vw,240px);flex:none;color:var(--lime)}
-.cur-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem var(--pad);margin-top:clamp(3rem,6vw,5rem)}
-.facts{display:grid;gap:0}
-.facts div{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:1rem;padding-block:1rem;border-top:1px solid var(--line)}
-.facts dt{color:var(--dim)}
-.facts dd b{color:var(--lime);font-weight:600}
-.lesson{align-self:start;padding:clamp(1.5rem,3vw,2.5rem);background:var(--lime);color:var(--ink);border-radius:4px}
-.lesson p:first-child{margin-bottom:1rem}
-.lesson strong{display:block;font-size:clamp(1.5rem,2.6vw,2.3rem);line-height:1.2;letter-spacing:-.04em;font-weight:800}
-.lesson strong + strong{margin-top:.4rem}
-.proc{margin-top:clamp(4rem,7vw,6rem)}
-.proc h3{color:var(--dim);margin-bottom:1.5rem;font-weight:400}
-.proc ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));counter-reset:s;position:relative}
-.proc ol::before{content:"";position:absolute;left:0;right:0;top:1.25rem;height:1px;background:#3a403b}
-.proc li{position:relative;padding-right:1.5rem;counter-increment:s;font-size:1.05rem}
-.proc li::before{content:"0" counter(s);display:grid;place-items:center;width:2.5rem;height:2.5rem;margin-bottom:1.1rem;border-radius:50%;background:var(--ink);border:1px solid var(--lime);color:var(--lime);font:600 .78rem/1 var(--mono);position:relative}
-.proc li:last-child::before{background:var(--lime);color:var(--ink)}
-.note{margin-top:2.5rem;color:var(--dim);max-width:44rem}
-@media (max-width:860px){
-  .cur-grid{grid-template-columns:1fr}
-  .globe{width:96px}
-  .proc ol{grid-template-columns:1fr;gap:1.5rem}
-  .proc ol::before{left:1.25rem;right:auto;top:0;bottom:0;width:1px;height:auto}
-  .proc li{display:flex;align-items:center;gap:1rem;padding:0}
-  .proc li::before{margin:0;flex:none}
-  .facts div{grid-template-columns:5.5rem minmax(0,1fr)}
-}
-
-/* footer */
-.foot{background:var(--lime);color:var(--ink);padding-block:clamp(4.5rem,9vw,8rem) 2rem}
-.foot p.close{font-weight:800;font-size:clamp(2.6rem,7.5vw,7.2rem);line-height:1;letter-spacing:-.055em}
-.foot-row{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between;margin-top:clamp(3rem,6vw,5rem);padding-top:1.5rem;border-top:2px solid var(--ink)}
-.foot-links{display:flex;flex-wrap:wrap;gap:.5rem}
-.foot-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 1.1rem;border:1.5px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:600}
-.foot-links a:first-child{background:var(--ink);color:var(--lime)}
-.credit{font-size:.85rem;color:#2d3320}
-.credit a{text-underline-offset:3px}
-</style>
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<script defer src="{{ $js.RelPermalink }}"></script>
 </head>
 <body>
 <a class="skip" href="#main">{{ cond $ko "본문으로 건너뛰기" "Skip to content" }}</a>
 
-<header class="hd">
+<header class="site-header">
   <div class="wrap bar">
     <a class="brand" href="#intro" aria-label="{{ cond $ko "Jung Jiwoong, 맨 위로" "Jung Jiwoong, back to top" }}"><span class="mark" aria-hidden="true">JW</span><span>Jung Jiwoong</span></a>
     <nav class="nav" data-pf-nav aria-label="{{ cond $ko "주요 메뉴" "Primary" }}">
-      <button class="toggle" type="button" data-pf-nav-toggle aria-expanded="false" aria-controls="pf-menu"><i aria-hidden="true"></i>{{ cond $ko "메뉴" "Menu" }}</button>
+      <button class="nav-toggle" type="button" data-pf-nav-toggle aria-expanded="false" aria-controls="pf-menu"><i aria-hidden="true"></i>{{ cond $ko "메뉴" "Menu" }}</button>
       <ul id="pf-menu">
-        <li><a data-pf-nav-link href="#intro">{{ cond $ko "들어가며" "Introduction" }}</a></li>
-        <li><a data-pf-nav-link href="#about">{{ cond $ko "그는 누구인가" "Who he is" }}</a></li>
-        <li><a data-pf-nav-link href="#future">{{ cond $ko "바라보고 있는 미래" "The future he sees" }}</a></li>
-        <li><a data-pf-nav-link href="#current">{{ cond $ko "현재의 모습" "Where he is now" }}</a></li>
+        {{- range site.Menus.main }}
+        <li><a data-pf-nav-link href="{{ .URL }}">{{ .Name }}</a></li>
+        {{- end }}
       </ul>
     </nav>
     <a class="lang" data-pf-lang data-base="{{ $alt }}" href="{{ $alt }}" hreflang="{{ cond $ko "en" "ko" }}" lang="{{ cond $ko "en" "ko" }}" aria-label="{{ cond $ko "Read in English" "한국어로 보기" }}">{{ cond $ko "EN" "KO" }}</a>
@@ -221,148 +43,129 @@ h2{font-weight:800;letter-spacing:-.05em;line-height:1.04}
 <main id="main" tabindex="-1">
 
 <section id="intro" class="hero" data-pf-section aria-labelledby="intro-title">
-  <div class="wrap">
-    <div class="hero-copy">
-      <p class="kicker mono rise"><b>Jung Jiwoong</b>{{ cond $ko "개인 포트폴리오" "Personal portfolio" }}</p>
-      <h1 id="intro-title" class="rise" style="--d:.08s"><span>{{ cond $ko "결국에는" "In the end," }}</span><span class="accent">{{ cond $ko "해낼 것이다." "I'll get it done." }}</span></h1>
-      <p class="quote rise" style="--d:.2s"><small class="mono">{{ cond $ko "좌우명" "Motto" }}</small><span><q lang="ko">무엇을 하든 결국에는 해낼 것이다</q>{{ if not $ko }}<em>Whatever it is, in the end I will get it done.</em>{{ end }}</span></p>
-      <div class="cta rise" style="--d:.3s">
-        <a class="btn btn-p" href="#about">{{ cond $ko "그는 누구인가" "Who he is" }} <span aria-hidden="true">→</span></a>
-        <a class="btn btn-g" href="{{ $repo }}" rel="noopener">GitHub <span aria-hidden="true">↗</span><span class="mono" style="color:var(--dim);letter-spacing:.08em">{{ cond $ko "소스" "Source" }}</span></a>
-      </div>
+  <div class="wrap hero-grid">
+    <p class="eyebrow hero-eyebrow"><span class="eyebrow-strong">Jung Jiwoong</span><span aria-hidden="true">·</span><span>{{ cond $ko "개인 포트폴리오" "Personal portfolio" }}</span></p>
+    <h1 id="intro-title"><span>{{ cond $ko "결국에는" "In the end," }}</span><span class="accent">{{ cond $ko "해낼 것이다." "I'll get it done." }}</span></h1>
+    <div class="motto">
+      <p class="eyebrow">{{ cond $ko "좌우명" "Motto" }}</p>
+      <p data-copy><q lang="ko">무엇을 하든 결국에는 해낼 것이다</q></p>
+      {{- if not $ko }}
+      <p data-copy>Whatever it is, in the end I will get it done.</p>
+      {{- end }}
     </div>
-    <div class="art">
-      <span class="ring" aria-hidden="true"></span>
+    <div class="cta">
+      <a class="btn btn-primary" href="#about">{{ cond $ko "그는 누구인가" "Who he is" }} <span aria-hidden="true">→</span></a>
+      <a class="btn btn-secondary" href="{{ $repo }}" rel="noopener">{{ cond $ko "GitHub 소스" "Source on GitHub" }} <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="hero-art">
       <img src="{{ "media/resolve-hero.png" | relURL }}" width="1122" height="1402" fetchpriority="high" decoding="async" alt="{{ cond $ko "어두운 배경에서 고리처럼 끝없이 이어지는 크롬과 유리 질감의 추상 리본 조형" "Abstract sculpture: a chrome and glass ribbon looping endlessly against a dark background" }}">
     </div>
-    <p class="strip mono"><span>Scroll to explore <span aria-hidden="true">↓</span></span><span>{{ cond $ko "현재 참여" "Now" }} — <b>KONNECT · BACKEND</b></span></p>
   </div>
 </section>
 
-<section id="about" class="light sec" data-pf-section aria-labelledby="about-title">
-  <div class="wrap">
-    <p class="label mono"><b>02</b>{{ cond $ko "그는 누구인가" "Who he is" }}</p>
-    <div class="about-grid">
-      <h2 id="about-title">{{ if $ko }}느린 AI에<br><mark>왜?</mark>라고 묻다{{ else }}He asked <mark>why</mark><br>AI felt slow{{ end }}</h2>
-      <div class="about-side">
-        <svg class="gate" viewBox="0 0 132 64" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M0 20h40M0 44h40M40 8h24a24 24 0 0 1 0 48H40Z"/><path d="M88 32h44"/><circle cx="120" cy="32" r="5" fill="#dcff75"/></svg>
-        <p>{{ cond $ko "AI를 쓰다가 답이 늦게 오고, 어딘가에서 병목이 걸리는 순간을 여러 번 겪었습니다. 그 답답함이 ‘AI를 어떻게 더 효율적으로 만들 수 있을까’라는 관심으로 이어졌습니다." "Using AI, he kept running into slow answers and bottlenecks somewhere along the way. That frustration turned into a real interest: how could AI be made more efficient?" }}</p>
+<section id="about" class="section section-light" data-pf-section aria-labelledby="about-title">
+  <div class="wrap section-layout">
+    <header class="section-heading">
+      <p class="eyebrow"><span class="index">02</span><span>{{ cond $ko "그는 누구인가" "Who he is" }}</span></p>
+      <h2 id="about-title">{{ if $ko }}느린 AI에서<br>시작된 관심{{ else }}An interest born<br>from slow AI{{ end }}</h2>
+    </header>
+    <div class="section-content">
+      <p data-copy>{{ cond $ko "AI를 쓰다가 답이 늦게 오고, 어딘가에서 병목이 걸리는 순간을 여러 번 겪었습니다. 그 답답함이 ‘AI를 어떻게 더 효율적으로 만들 수 있을까’라는 관심으로 이어졌습니다." "Using AI, he kept running into slow answers and bottlenecks somewhere along the way. That frustration turned into a real interest: how could AI be made more efficient?" }}</p>
+      <div class="block">
+        <h3>{{ cond $ko "사용해 본 도구" "Tools he has used" }}</h3>
+        <p data-copy>{{ cond $ko "웹사이트와 수업 과제에서 써 왔습니다." "Used for websites and coursework." }}</p>
+        <ul class="tools" aria-label="{{ cond $ko "사용해 본 도구" "Tools he has used" }}">
+          <li data-copy>React</li>
+          <li data-copy>Firebase</li>
+          <li data-copy>GitHub</li>
+          <li data-copy>C++</li>
+          <li data-copy>C</li>
+        </ul>
       </div>
     </div>
-    <div class="tools">
-      <p class="tools-head mono"><span>{{ cond $ko "웹사이트와 수업 과제에서 써 온 도구" "Tools used for websites and coursework" }}</span><span>05</span></p>
-      <ul aria-label="{{ cond $ko "사용해 본 도구" "Tools" }}">
-        <li><span class="brk" aria-hidden="true">{</span>React</li>
-        <li><span class="hl">Firebase</span></li>
-        <li>GitHub</li>
-        <li class="br" role="presentation" aria-hidden="true"></li>
-        <li><span class="hl">C++</span></li>
-        <li>C<span class="brk" aria-hidden="true">}</span></li>
-      </ul>
-    </div>
   </div>
 </section>
 
-<section id="future" class="light sec future" data-pf-section aria-labelledby="future-title">
-  <div class="wrap">
-    <p class="label mono"><b>03</b>{{ cond $ko "바라보고 있는 미래" "The future he sees" }}</p>
-    <div class="fut-head">
-      <h2 id="future-title">{{ if $ko }}소프트웨어 아래,<br>세 개의 층{{ else }}Three layers<br>beneath the software{{ end }}</h2>
-      <p>{{ cond $ko "AI를 더 효율적으로 만드는 일에 관심이 있습니다. 앞으로는 데이터베이스, 전력, 반도체를 공부하며 데이터와 에너지, 칩으로 시야를 넓혀 가려 합니다." "He is interested in making AI more efficient. He plans to study databases, power and semiconductors, widening his view to data, energy and chips." }}</p>
-    </div>
-    <ol class="rows">
-      <li>
-        <span class="ix">01</span>
-        <h3><small>{{ cond $ko "DATABASES" "데이터베이스" }}</small>{{ cond $ko "데이터베이스" "Databases" }}</h3>
-        <p>{{ cond $ko "데이터가 저장되고, 찾아지고, 다시 읽히는 방식." "How data is stored, found and read back." }}</p>
-        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse class="fill" cx="28" cy="12" rx="18" ry="6"/><path d="M10 12v32c0 3.3 8 6 18 6s18-2.7 18-6V12M10 23c0 3.3 8 6 18 6s18-2.7 18-6M10 34c0 3.3 8 6 18 6s18-2.7 18-6"/></svg>
-      </li>
-      <li>
-        <span class="ix">02</span>
-        <h3><small>{{ cond $ko "POWER" "전력" }}</small>{{ cond $ko "전력" "Power" }}</h3>
-        <p>{{ cond $ko "연산을 움직이는 에너지가 어디서 오고 어디로 쓰이는지." "Where the energy behind computation comes from, and where it goes." }}</p>
-        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path class="fill" d="M32 4 12 32h14l-4 20 22-30H30Z"/></svg>
-      </li>
-      <li>
-        <span class="ix">03</span>
-        <h3><small>{{ cond $ko "SEMICONDUCTORS" "반도체" }}</small>{{ cond $ko "반도체" "Semiconductors" }}</h3>
-        <p>{{ cond $ko "계산이 실제로 일어나는 물리적인 자리, 칩." "The chip — the physical place where computing actually happens." }}</p>
-        <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect class="fill" x="14" y="14" width="28" height="28" rx="2"/><rect x="22" y="22" width="12" height="12"/><path d="M21 14V6M28 14V6M35 14V6M21 50v-8M28 50v-8M35 50v-8M14 21H6M14 28H6M14 35H6M50 21h-8M50 28h-8M50 35h-8"/></svg>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section id="current" class="cur sec" data-pf-section aria-labelledby="current-title">
-  <div class="wrap">
-    <div class="cur-top">
-      <p class="label mono"><b>04</b>{{ cond $ko "현재의 모습" "Where he is now" }} · {{ cond $ko "진행 중" "Ongoing" }}</p>
-      <svg class="globe" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-        <circle cx="120" cy="120" r="84"/><ellipse cx="120" cy="120" rx="36" ry="84"/><path d="M36 120h168M48 78h144M48 162h144"/>
-        <path d="M38 46q82-30 150 28M30 178q96 40 176-22" stroke-dasharray="3 6"/>
-        <circle cx="38" cy="46" r="7" fill="#101311"/><circle cx="188" cy="74" r="7" fill="currentColor"/><circle cx="30" cy="178" r="7" fill="#101311"/><circle cx="206" cy="156" r="7" fill="currentColor"/>
-      </svg>
-    </div>
-    <h2 id="current-title">KONNECT<span>{{ cond $ko "유학생을 돕기 위한 팀 플랫폼" "A team platform built to help international students" }}</span></h2>
-    <div class="cur-grid">
-      <dl class="facts">
-        <div><dt>{{ cond $ko "역할" "Role" }}</dt><dd><b>{{ cond $ko "백엔드" "Backend" }}</b></dd></div>
-        <div><dt>{{ cond $ko "시기" "Timeline" }}</dt><dd>{{ cond $ko "2026년 초 시작 · 2학기 인수인계 이후 본격적으로 참여" "Started early 2026 · far more involved since the second-semester handover" }}</dd></div>
-        <div><dt>{{ cond $ko "도구" "Workflow" }}</dt><dd>{{ cond $ko "Codex로 만들고, Claude로 검토" "Builds with Codex, reviews with Claude" }}</dd></div>
-        <div><dt>{{ cond $ko "상태" "Status" }}</dt><dd>{{ cond $ko "지금도 진행 중이며, 공개된 중간 결과물은 아직 없습니다." "Still in progress; no intermediate results are public yet." }}</dd></div>
-      </dl>
-      <div class="lesson">
-        <p class="mono">{{ cond $ko "여기서 배운 것" "What it taught him" }}</p>
-        <strong>{{ cond $ko "AI의 제안은 직접 확인한다." "Check every AI suggestion yourself." }}</strong>
-        <strong>{{ cond $ko "완벽주의는 조절한다." "Keep perfectionism in proportion." }}</strong>
-      </div>
-    </div>
-    <div class="proc">
-      <h3 class="mono">{{ cond $ko "작업 흐름" "Process" }}</h3>
-      <ol>
-        <li>{{ cond $ko "프론트에서 기능의 틀 구성" "Build the frontend outline" }}</li>
-        <li>{{ cond $ko "백엔드 연결" "Backend connection" }}</li>
-        <li>{{ cond $ko "로그와 실제 동작 비교" "Compare logs with actual behavior" }}</li>
-        <li>{{ cond $ko "AI 제안 검토" "Review AI suggestions" }}</li>
+<section id="future" class="section section-light section-divided" data-pf-section aria-labelledby="future-title">
+  <div class="wrap section-layout">
+    <header class="section-heading">
+      <p class="eyebrow"><span class="index">03</span><span>{{ cond $ko "바라보고 있는 미래" "The future he sees" }}</span></p>
+      <h2 id="future-title">{{ if $ko }}앞으로<br>공부할 분야{{ else }}What he plans<br>to study{{ end }}</h2>
+    </header>
+    <div class="section-content">
+      <p data-copy>{{ cond $ko "AI를 더 효율적으로 만드는 일에 관심이 있습니다. 앞으로는 데이터베이스, 전력, 반도체를 공부하며 데이터와 에너지, 칩으로 시야를 넓혀 가려 합니다." "He is interested in making AI more efficient. He plans to study databases, power and semiconductors, widening his view to data, energy and chips." }}</p>
+      <ol class="rows">
+        <li>
+          <span class="index">01</span>
+          <div>
+            <h3>{{ cond $ko "데이터베이스" "Databases" }}</h3>
+            <p data-copy>{{ cond $ko "데이터가 저장되고, 찾아지고, 다시 읽히는 방식." "How data is stored, found and read back." }}</p>
+          </div>
+        </li>
+        <li>
+          <span class="index">02</span>
+          <div>
+            <h3>{{ cond $ko "전력" "Power" }}</h3>
+            <p data-copy>{{ cond $ko "연산을 움직이는 에너지가 어디서 오고 어디로 쓰이는지." "Where the energy behind computation comes from, and where it goes." }}</p>
+          </div>
+        </li>
+        <li>
+          <span class="index">03</span>
+          <div>
+            <h3>{{ cond $ko "반도체" "Semiconductors" }}</h3>
+            <p data-copy>{{ cond $ko "계산이 실제로 일어나는 물리적인 자리, 칩." "The chip — the physical place where computing actually happens." }}</p>
+          </div>
+        </li>
       </ol>
+    </div>
+  </div>
+</section>
+
+<section id="current" class="section section-dark" data-pf-section aria-labelledby="current-title">
+  <div class="wrap section-layout">
+    <header class="section-heading">
+      <p class="eyebrow"><span class="index">04</span><span>{{ cond $ko "현재의 모습 · 진행 중" "Where he is now · Ongoing" }}</span></p>
+      <h2 id="current-title">KONNECT</h2>
+    </header>
+    <div class="section-content">
+      <p class="lead" data-copy>{{ cond $ko "유학생을 돕기 위한 팀 플랫폼" "A team platform built to help international students" }}</p>
+      <dl class="facts">
+        <div><dt>{{ cond $ko "역할" "Role" }}</dt><dd data-copy><span class="badge">{{ cond $ko "백엔드" "Backend" }}</span></dd></div>
+        <div><dt>{{ cond $ko "시기" "Timeline" }}</dt><dd data-copy>{{ cond $ko "2026년 초 시작 · 2학기 인수인계 이후 본격적으로 참여" "Started early 2026 · far more involved since the second-semester handover" }}</dd></div>
+        <div><dt>{{ cond $ko "도구" "Workflow" }}</dt><dd data-copy>{{ cond $ko "Codex로 만들고, Claude로 검토" "Builds with Codex, reviews with Claude" }}</dd></div>
+        <div><dt>{{ cond $ko "상태" "Status" }}</dt><dd data-copy>{{ cond $ko "지금도 진행 중이며, 공개된 결과물은 아직 없습니다." "Still in progress; no results are public yet." }}</dd></div>
+      </dl>
+      <div class="block lesson">
+        <h3>{{ cond $ko "여기서 배운 것" "What it taught him" }}</h3>
+        <p data-copy>{{ if $ko }}AI의 제안은 그대로 받아들이지 않고 <strong>직접 확인합니다.</strong>{{ else }}He does not take AI suggestions as given; <strong>he checks them himself.</strong>{{ end }}</p>
+        <p data-copy>{{ cond $ko "완벽주의를 조절하는 것도 앞으로의 과제입니다." "Keeping perfectionism in proportion is an ongoing goal." }}</p>
+      </div>
+      <div class="block">
+        <h3>{{ cond $ko "작업 흐름" "Process" }}</h3>
+        <ol class="rows">
+          <li><span class="index">01</span><p data-copy>{{ cond $ko "프론트에서 기능의 틀 구성" "Build the frontend functional outline" }}</p></li>
+          <li><span class="index">02</span><p data-copy>{{ cond $ko "백엔드 연결" "Connect the backend" }}</p></li>
+          <li><span class="index">03</span><p data-copy>{{ cond $ko "로그와 실제 동작 비교" "Compare logs with actual behavior" }}</p></li>
+          <li><span class="index">04</span><p data-copy>{{ cond $ko "AI 제안 검토" "Review AI suggestions" }}</p></li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer class="foot">
-  <div class="wrap">
-    <p class="close">{{ if $ko }}무엇을 하든,<br>결국에는.{{ else }}Whatever it is,<br>in the end.{{ end }}</p>
-    <div class="foot-row">
-      <div class="foot-links">
-        <a href="#intro">{{ cond $ko "맨 위로" "Back to top" }} <span aria-hidden="true">&nbsp;↑</span></a>
-        <a href="{{ $repo }}" rel="noopener">{{ cond $ko "저장소" "Repository" }} <span aria-hidden="true">&nbsp;↗</span></a>
+<footer class="site-footer">
+  <div class="wrap section-layout">
+    <p class="footer-title">{{ if $ko }}무엇을 하든,<br>결국에는.{{ else }}Whatever it is,<br>in the end.{{ end }}</p>
+    <div class="section-content footer-content">
+      <div class="footer-links">
+        <a href="#intro">{{ cond $ko "맨 위로" "Back to top" }} <span aria-hidden="true">↑</span></a>
+        <a href="{{ $repo }}" rel="noopener">{{ cond $ko "저장소" "Repository" }} <span aria-hidden="true">↗</span></a>
       </div>
       <p class="credit">Built with Hugo · <a href="https://github.com/HugoBlox/kit" rel="noopener">HugoBlox Kit</a></p>
     </div>
   </div>
 </footer>
-
-<script>
-(() => {
-  const nav = document.querySelector('[data-pf-nav]');
-  const btn = document.querySelector('[data-pf-nav-toggle]');
-  const desk = matchMedia('(min-width: 861px)');
-  const set = open => { btn.setAttribute('aria-expanded', String(open)); nav.toggleAttribute('data-open', open); };
-  btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); }
-  });
-  nav.querySelectorAll('[data-pf-nav-link]').forEach(a => a.addEventListener('click', () => set(false)));
-  desk.addEventListener('change', e => { if (e.matches) set(false); });
-  document.querySelectorAll('[data-pf-lang]').forEach(a => {
-    const sync = () => { a.href = a.dataset.base + location.hash; };
-    sync();
-    addEventListener('hashchange', sync);
-    a.addEventListener('click', sync);
-  });
-})();
-</script>
 </body>
 </html>
