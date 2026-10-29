@@ -569,7 +569,10 @@ def dependencies(root):
     tool_dir = root / '.pages-tools'
     if not all(shutil.which(name) for name in ('postcss', 'tailwindcss', 'pagefind')):
         tool_dir.mkdir(exist_ok=True)
-        run(['npm', 'install', '--ignore-scripts', '--no-audit', '--no-fund',
+        manifest = tool_dir / 'package.json'
+        if not manifest.exists():
+            manifest.write_text(json.dumps({'name': 'portfolio-pages-tools', 'private': True}) + '\n', encoding='utf-8')
+        run(['npm', '--prefix', str(tool_dir), 'install', '--ignore-scripts', '--no-audit', '--no-fund',
              'postcss-cli@11', 'postcss@8', 'autoprefixer@10', '@tailwindcss/cli@4', 'pagefind@1.5.2'], tool_dir)
     for action in state.get('asset_build', []):
         run(action[1:], site / action[0])
