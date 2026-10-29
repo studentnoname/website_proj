@@ -16,7 +16,7 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import Flowable, Image, KeepTogether, Paragraph, SimpleDocTemplate, Spacer
+from reportlab.platypus import Flowable, Image, KeepTogether, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 INK = colors.HexColor('#172b2b')
 TEAL = colors.HexColor('#086b67')
@@ -118,6 +118,23 @@ def submission(release_path, identity_path):
     tokens['SCREEN_TIME'] = json.loads(capture.read_text(encoding='utf-8'))['checked_at'] if capture.is_file() else '미캡처'
     for section in sections:
         blocks.append(Paragraph(section['title'], sheet['heading']))
+        if section.get('table'):
+            cell_style = ParagraphStyle('table-cell', parent=sheet['body'], fontSize=9, leading=14, spaceAfter=0)
+            cells = [section['table']['headers'], *section['table']['rows']]
+            rows = [[Paragraph(markup(str(cell)), cell_style) for cell in row] for row in cells]
+            table = Table(rows, colWidths=[20*mm, 38*mm, 48*mm, 64*mm], repeatRows=1, hAlign='LEFT')
+            table.setStyle(TableStyle([
+                ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e2efeb')),
+                ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#f7faf9')]),
+                ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                ('LINEBELOW', (0, 0), (-1, 0), 0.7, TEAL),
+                ('LINEBELOW', (0, 1), (-1, -1), 0.25, colors.HexColor('#d5e1de')),
+                ('LEFTPADDING', (0, 0), (-1, -1), 6),
+                ('RIGHTPADDING', (0, 0), (-1, -1), 6),
+                ('TOPPADDING', (0, 0), (-1, -1), 7),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 7),
+            ]))
+            blocks.extend([table, Spacer(1, 4*mm)])
         for paragraph in section['paragraphs']:
             for key, value in tokens.items():
                 paragraph = paragraph.replace('{' + key + '}', value)
