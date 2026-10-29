@@ -4,16 +4,16 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 # Website name (set in params.yaml under hugoblox.branding.name)
-title: ''
-# Website URL
+title: 'Jung Jiwoong'
+# Website URL (the GitHub Pages workflow passes the real base URL via --baseURL)
 baseURL: 'https://example.com/'
 
 ############################
 ## LANGUAGE
 ############################
 
-defaultContentLanguage: en
-hasCJKLanguage: false
+defaultContentLanguage: ko
+hasCJKLanguage: true
 defaultContentLanguageInSubdir: false
 removePathAccents: true
 
@@ -42,9 +42,11 @@ enableRobotsTXT: true
 footnotereturnlinkcontents: <sup>^</sup>
 ignoreFiles: [".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
 disableAliases: true
+# Single-page portfolio: no feeds or empty taxonomy listings.
+disableKinds: [rss, taxonomy, term]
 outputs:
-  home: [HTML, RSS, headers, redirects, backlinks]
-  section: [HTML, RSS]
+  home: [HTML, headers, redirects, backlinks]
+  section: [HTML]
 imaging:
   resampleFilter: lanczos
   quality: 90
