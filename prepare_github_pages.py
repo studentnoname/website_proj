@@ -704,7 +704,7 @@ def build(root):
              root / '.pages-tools/node_modules/.bin']
     # Keep the native Dart Sass executable ahead of npm's non-embedded sass CLI.
     os.environ['PATH'] = os.environ.get('PATH', '') + os.pathsep + os.pathsep.join(map(str, paths))
-    args = ['hugo', '--gc', '--minify', '--config', state['config'],
+    args = ['hugo', '--gc', '--minify', '--cleanDestinationDir', '--config', state['config'],
             '--destination', '../public', '--baseURL', base, '--enableGitInfo=false']
     if state['theme']:
         args += ['--theme', state['theme'], '--themesDir', str(site / 'themes')]
