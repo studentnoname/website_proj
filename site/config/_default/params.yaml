@@ -13,19 +13,18 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   identity:
     # Site name - shown in navbar, footer, copyright, and browser title by default
-    name: "Your Name"
+    name: "Jung Jiwoong"
     # Legal entity for copyright notices (defaults to name if not set)
     organization: ""
     # Schema.org type for structured data
     type: person # person | organization | local_business
     # Short tagline displayed on your site
     tagline: ""
-    # Site meta description for search engines and social sharing
-    description: "The highly-customizable Hugo Academic theme powered by HugoBlox
-      Kit. Easily create your personal academic website."
-    # Social accounts (used for meta tags like Twitter Cards)
+    # Site meta description (each home page also sets its own `summary` per language)
+    description: "Jung Jiwoong 개인 포트폴리오 · Personal portfolio of Jung Jiwoong"
+    # Social accounts (used for meta tags like Twitter Cards) - none provided yet
     social:
-      twitter: "GoOwnable" # Twitter/X handle for Twitter Cards (without @)
+      twitter: ""
 
   # ────────────────────────────────────────────────────────────────────────────
   # THEME
@@ -33,35 +32,35 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   theme:
     # Mode: 'light', 'dark', or 'system' (follows OS preference)
-    mode: system
+    mode: light
     # Theme pack: name from data/themes/ or { light: "x", dark: "y" } for mix-and-match
     pack: "default"
     # Optional: Override theme pack colors
     colors:
-      primary: "" # Tailwind palette name or hex (e.g., "indigo" or "#6366f1")
+      primary: "#0d5c58" # Deep teal accent
       secondary: ""
       neutral: "" # Affects gray utilities (text-gray-*, bg-gray-*)
     # Optional: Mode-specific color overrides
     colors_light: {}
     colors_dark: {}
-    # Optional: Semantic surface color overrides
+    # Optional: Semantic surface color overrides (warm ivory and dark ink)
     surfaces:
-      background: ""
-      foreground: ""
+      background: "#f6f1e6"
+      foreground: "#1b1d1c"
       header:
-        background: ""
-        foreground: ""
+        background: "#f6f1e6"
+        foreground: "#1b1d1c"
       footer:
-        background: ""
-        foreground: ""
+        background: "#f6f1e6"
+        foreground: "#1b1d1c"
 
   # ────────────────────────────────────────────────────────────────────────────
   # TYPOGRAPHY
   # Font and text sizing
   # ────────────────────────────────────────────────────────────────────────────
   typography:
-    # Theme pack: name from data/fonts/
-    pack: "academic"
+    # Theme pack: name from data/fonts/ ("system" makes no font network requests)
+    pack: "system"
 
   # ────────────────────────────────────────────────────────────────────────────
   # LAYOUT
@@ -87,10 +86,10 @@ hugoblox:
     sticky: true
     # Menu alignment
     align: center # left | center | right
-    # Feature toggles
-    search: true
-    theme_toggle: true
-    theme_picker: true
+    # Feature toggles (the portfolio header renders its own language links)
+    search: false
+    theme_toggle: false
+    theme_picker: false
     language_switcher: true
     # Call-to-action button
     cta:
@@ -105,7 +104,7 @@ hugoblox:
   footer:
     # Footer style variant
     style: minimal # minimal | columns | centered
-    language_switcher: true
+    language_switcher: false
     # Custom footer text (HTML supported)
     text: ""
 
@@ -159,10 +158,10 @@ hugoblox:
       enable: false
     # Table of contents
     toc:
-      enable: true
+      enable: false
     # Reading time estimates
     reading_time:
-      enable: true
+      enable: false
     # Academic citations
     citations:
       style: apa # apa | mla | chicago | ieee
@@ -172,7 +171,7 @@ hugoblox:
   # Site search
   # ────────────────────────────────────────────────────────────────────────────
   search:
-    enable: true
+    enable: false
     # Trending/suggested search terms
     suggestions: []
     # Quick action shortcuts in search modal
