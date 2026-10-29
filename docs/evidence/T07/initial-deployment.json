@@ -1,0 +1,24 @@
+{
+  "id": 40829533996,
+  "name": "Deploy Hugo to GitHub Pages",
+  "head_sha": "f8f4bc3433a3ddc4a80bf0f11c1bbe999bc1905c",
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "html_url": "https://github.com/studentnoname/website_proj/actions/runs/40829533996",
+  "created_at": "2026-10-29T06:29:40Z",
+  "updated_at": "2026-10-29T06:30:41Z",
+  "jobs": [
+    {
+      "name": "build",
+      "conclusion": "success",
+      "html_url": "https://github.com/studentnoname/website_proj/actions/runs/40829533996/job/123300304689"
+    },
+    {
+      "name": "deploy",
+      "conclusion": "success",
+      "html_url": "https://github.com/studentnoname/website_proj/actions/runs/40829533996/job/123300566586"
+    }
+  ],
+  "public_http_status": 200
+}

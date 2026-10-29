@@ -1,5 +1,5 @@
 현재 폴더: C:\Users\UserK\Desktop\basicproj\website_product\.local\source\kit-main
-GitHub 저장소 주소: 
+GitHub 저장소 주소:
 배포 파일 준비 완료: C:\Users\UserK\Desktop\basicproj\website_product\.local\source\kit-main\site
 주소: https://studentnoname.github.io/website_proj/ | 브랜치: main | Hugo: 0.167.0
 Git 연결·커밋·push는 직접 진행하세요.
