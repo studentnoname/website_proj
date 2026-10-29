@@ -114,6 +114,8 @@ def submission(release_path, identity_path):
               'ACTIONS_URL': release['actions_url'], 'ACTIONS_STATUS': release['actions_status'],
               'CANDIDATES': str(release['candidate_count']), 'EXCLUDED': str(release['excluded_count']),
               'VALID_COUNT': str(release['valid_count']), 'WRITTEN_AT': release['collected_at']}
+    capture = ROOT / 'submission/screens/results.json'
+    tokens['SCREEN_TIME'] = json.loads(capture.read_text(encoding='utf-8'))['checked_at'] if capture.is_file() else '미캡처'
     for section in sections:
         blocks.append(Paragraph(section['title'], sheet['heading']))
         for paragraph in section['paragraphs']:
@@ -121,6 +123,8 @@ def submission(release_path, identity_path):
                 paragraph = paragraph.replace('{' + key + '}', value)
             blocks.append(Paragraph(markup(paragraph), sheet['body']))
         for relative, caption in section.get('image', []):
+            for key, value in tokens.items():
+                caption = caption.replace('{' + key + '}', value)
             path = ROOT / relative
             if not path.is_file():
                 raise FileNotFoundError(path)
