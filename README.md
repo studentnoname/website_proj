@@ -1,266 +1,79 @@
-[**中文**](./README.zh.md)
+# Jung Jiwoong — 개인 포트폴리오
 
-<p align="center">
-  <a href="https://hugoblox.com/templates/?utm_source=github&utm_medium=readme&utm_content=hero">
-    <img src="./.github/media/hero.png" alt="HugoBlox — AI-generated sites you own as Markdown" width="100%">
-  </a>
-</p>
+HugoBlox Academic CV를 바탕으로 만든 한국어·영어 단일 페이지 포트폴리오다.
 
-<h1 align="center">Describe your site. AI builds it. You own it as Markdown.</h1>
+- 사이트: https://studentnoname.github.io/website_proj/
+- English: https://studentnoname.github.io/website_proj/en/
+- 소스: https://github.com/studentnoname/website_proj
+- 배포: https://github.com/studentnoname/website_proj/actions/workflows/hugo-pages.yml
 
-<p align="center">
-  <strong>HugoBlox is the open-source framework for building professional sites from structured Markdown — landing pages, portfolios, blogs, publications, docs, and more.</strong><br/>
-  Pick a template, let <a href="https://hugo.chat/?utm_source=github&utm_medium=readme&utm_content=tagline">Hugo Chat AI</a> generate your pages, and deploy anywhere. Every file is plain Markdown you can read, edit, and own forever.
-</p>
+## 설치와 실행
 
-<p align="center">
-  <a href="https://hugo.chat/?utm_source=github&utm_medium=readme&utm_content=cta_top"><b>Generate Pages with AI</b></a>
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="https://hugoblox.com/templates/?utm_source=github&utm_medium=readme&utm_content=cta_top"><b>Browse Templates</b></a>
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="https://marketplace.visualstudio.com/items?itemName=ownable.ownable"><b>Ownable CMS for VS Code</b></a>
-</p>
+빌드 기준: Python 3.12, Node 24, Hugo 0.167.0 **Extended**, Go 1.27.1, Dart Sass 1.105.0. 원본 Download ZIP을 제공 준비 스크립트 3.1로 준비했다.
 
-<div align="center">
+Windows 프로젝트 루트:
 
-  <a href="https://github.com/HugoBlox/kit">
-    <img src="https://img.shields.io/github/stars/HugoBlox/kit?label=Star%20on%20GitHub&logo=github&logoColor=white&style=flat-square&color=181717" alt="GitHub Stars">
-  </a>
-  <a href="https://discord.gg/z8wNYzb">
-    <img src="https://img.shields.io/discord/722225264733716590?label=Discord&logo=discord&logoColor=white&style=flat-square&color=5865F2" alt="Discord">
-  </a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=ownable.ownable">
-    <img src="https://img.shields.io/open-vsx/dt/ownable/ownable?label=VS%20Code%20Installs&logo=visualstudiocode&logoColor=white&style=flat-square&color=007ACC" alt="VS Code Installs">
-  </a>
-  <a href="https://open-vsx.org/extension/Ownable/ownable">
-    <img src="https://img.shields.io/open-vsx/stars/ownable/ownable?label=VS%20Code%20Rating&logo=visualstudiocode&logoColor=white&style=flat-square&color=007ACC" alt="VS Code Rating">
-  </a>
-  <a href="https://x.com/GoOwnable">
-    <img src="https://img.shields.io/twitter/follow/GoOwnable?label=Follow&logo=x&logoColor=white&style=flat-square&color=000000" alt="Follow on X">
-  </a>
-
-</div>
-
-<p align="center">
-  <sub>
-    Trusted since <strong>2016</strong> · <strong>150,000+</strong> sites (Meta, Stanford, NVIDIA) · Rated <strong>4.9/5</strong> by users (official survey) · Used by teams at <a href="https://research.nvidia.com/research-labs">NVIDIA Research</a>, <a href="https://www.metaconscious.org/">MIT</a>, and <a href="https://cai4cai.ml/">King's College London</a> · Featured by <a href="https://github.blog/open-source/release-radar-february-2019/#hugo-academic-4-0">GitHub Release Radar</a>
-  </sub>
-</p>
-
-<!-- TODO: Replace with demo video -->
-<!-- https://github.com/user-attachments/assets/REPLACE_ME -->
-
----
-
-## ⚡ How it works
-
-<table>
-<tr>
-<td width="33%" align="center">
-
-**1. 🎨 Pick a template**
-
-Choose a [template](https://hugoblox.com/templates/?utm_source=github&utm_medium=readme&utm_content=how_it_works) or scaffold with the CLI.
-
-Landing pages, portfolios, blogs, research sites, docs — ready in seconds.
-
-</td>
-<td width="33%" align="center">
-
-**2. ✨ Generate pages with AI**
-
-Open [Hugo Chat](https://hugo.chat/?utm_source=github&utm_medium=readme&utm_content=how_it_works) and describe what you need.
-
-*"Create a landing page with hero, pricing, and testimonials"* — done.
-
-</td>
-<td width="33%" align="center">
-
-**3. 🚀 Deploy anywhere**
-
-Push to GitHub. Deploy on Netlify, Vercel, Cloudflare — or any static host.
-
-No database. No runtime. Free hosting.
-
-</td>
-</tr>
-</table>
-
----
-
-## 🏆 Why HugoBlox
-
-Every other tool makes you choose. HugoBlox doesn't.
-
-| | **AI site builders** (Lovable, v0, Bolt) | **CMS platforms** (WordPress, Webflow) | **HugoBlox** |
-| :--- | :---: | :---: | :---: |
-| AI generates your pages | Yes | No | **Yes** |
-| You own the output as readable files | No — React code | No — locked in a database | **Yes — plain Markdown** |
-| Works without a runtime server | Sometimes | No | **Yes — static HTML** |
-| Structured content types (publications, projects, team pages) | No | Partial | **Yes — 20+ built-in types** |
-| Human-editable after AI generates it | Barely | Through the CMS only | **Yes — it's Markdown** |
-| Free to host forever | No | No | **Yes** |
-| Open source | No | No | **Yes — MIT licensed** |
-
-> [!IMPORTANT]
-> **The pitch:** other tools generate code you can't maintain or lock your content in a database you can't leave. HugoBlox gives you AI-generated pages as plain Markdown on a Tailwind + Hugo stack — readable, portable, and yours.
-
----
-
-## 🧱 What you can build
-
-<p align="center">
-  <img src="./.github/media/templates.webp" alt="Sites built with HugoBlox" width="900">
-</p>
-
-HugoBlox includes **20+ structured content types** with proper front matter, metadata, and layouts. Tell Hugo Chat what you need and it generates the right one:
-
-- 🚀 **Landing pages** — hero, features, pricing, testimonials, CTA sections via the block system
-- 📝 **Blogs & articles** — posts with tags, categories, authors, and SEO metadata
-- 💼 **Portfolios & project pages** — showcase your work with descriptions, tech stacks, and images
-- 📚 **Publication pages** — academic papers with BibTeX/DOI citation workflows
-- 📖 **Documentation** — searchable docs with sidebar navigation and versioning
-- 👥 **Team & author profiles** — bio, avatar, social links, publication lists
-- 🎤 **Event & talk pages** — conferences, workshops, presentations with slides
-- 🎞️ **Slide decks** — Markdown-powered presentations using reveal.js
-- 📄 **Resumes & CVs** — structured career pages, exportable to PDF
-- 🔬 **Jupyter notebooks & LaTeX** — render `.ipynb` and math-heavy pages natively
-
-<p align="center">
-  <a href="https://hugoblox.com/templates/?utm_source=github&utm_medium=readme&utm_content=cta_templates"><b>Browse all templates</b></a>
-</p>
-
----
-
-## 🛠️ Get started
-
-### Step 1: Create your site
-
-**Option A: Start from a template** (fastest)
-
-> [!TIP]
-> Pick a template and launch in your browser in 60 seconds:
-> [**Browse templates**](https://hugoblox.com/templates/?utm_source=github&utm_medium=readme&utm_content=get_started)
-
-**Option B: Use the CLI** (full control)
-
-```bash
-# Requires Hugo Extended & Node.js
-npm install -g hugoblox
-hugoblox create site
+```powershell
+python scripts/bootstrap_windows.py
+.\scripts\build.ps1 -InstallDependencies
+python scripts/serve.py
 ```
 
-### Step 2: Customize with AI + visual editing
+미리보기: http://127.0.0.1:1313/website_proj/
 
-<table>
-<tr>
-<td width="50%">
+bootstrap은 공식 파일의 SHA-256을 확인하고 `.local/tools/`에만 설치한다. 전역 PATH와 상위 저장소 설정은 바꾸지 않는다. Python·Node는 먼저 설치한다. 의존성이 바뀌지 않았다면 이후 `-InstallDependencies`를 생략한다.
 
-**Hugo Chat** — AI page generation
+다른 환경은 기준 도구를 PATH에 준비한 뒤 CI와 같은 진입점을 사용한다.
 
-Describe what you need in plain English. Hugo Chat generates structured Hugo pages with correct front matter, shortcodes, and HugoBlox blocks.
+```text
+python .github/pages_build.py --dependencies
+python .github/pages_build.py --build
+python scripts/serve.py
+```
 
-> *"Generate a landing page for my consulting firm with services, testimonials, and a contact form"*
+산출물은 `public/`이다. 이전 출력을 정리하고 `/website_proj/` 경로를 보정한다. 일반 `hugo` 명령만 실행하면 운영 `pages.json`이 빠질 수 있다. 개인화 이후 준비 스크립트를 다시 실행해 사이트를 덮어쓰지 않는다.
 
-[**Try Hugo Chat — free**](https://hugo.chat/?utm_source=github&utm_medium=readme&utm_content=step2)
+## 수정할 위치
 
-</td>
-<td width="50%">
+| 내용 | 파일 |
+| --- | --- |
+| 한국어·영어 본문 | `site/data/portfolio/ko.yaml`, `en.yaml` |
+| 언어·메뉴 | `site/config/_default/languages.yaml`, `menus.ko.yaml`, `menus.en.yaml` |
+| 홈 메타 정보 | `site/content/ko/_index.md`, `site/content/en/_index.md` |
+| 페이지 조립 | `site/layouts/landing/list.html` |
+| 네 섹션·SVG | `site/layouts/_partials/portfolio/` |
+| 헤더·푸터 | `site/layouts/_partials/components/headers/navbar.html`, `site_footer.html` |
+| 배치·조작 | `site/assets/css/portfolio.css`, `site/assets/js/portfolio.js` |
+| 운영 설정 | `site/pages.json`, `site/config/_default/hugo.yaml`, `params.yaml` |
 
-**Ownable CMS** — visual editing in VS Code
+앵커는 `#intro`, `#about`, `#future`, `#current`다. 두 언어의 사실을 함께 수정한다. 사용자가 비워 두도록 한 다음 학습 행동, 미확인 도구별 기능, 없는 KONNECT 산출물을 임의로 채우지 않는다.
 
-Drag-and-drop blocks, live preview, and YAML validation without leaving your editor. The power of a visual website builder inside VS Code.
+## 검증
 
-1. Install [Ownable CMS](https://marketplace.visualstudio.com/items?itemName=ownable.ownable) from the Marketplace
-2. Open your HugoBlox project
-3. Click the Ownable icon to start editing
+```text
+python scripts/check_site.py
+python -m pip install --target .local/python -r scripts/requirements-qa.txt
+python scripts/browser_qa.py
+python scripts/progressive_qa.py
+```
 
-</td>
-</tr>
-</table>
+브라우저 검사는 미리보기 서버, Windows Firefox, `.local/tools/geckodriver/geckodriver.exe`가 필요하다. 드라이버 공식 배포: https://github.com/mozilla/geckodriver/releases/tag/v0.37.1
 
-<p align="center">
-  <img src="./.github/media/studio/slide-1.webp" alt="Ownable CMS — visual editing inside VS Code" width="600">
-</p>
+사용자 기본 프로필 대신 `.local/` 검사 프로필을 사용한다. 390px는 실제 콘텐츠 뷰포트, 200%는 브라우저 확대·DPR로 확인한다. JavaScript 없는 이동과 reduced-motion도 별도 검사한다. [검증 기록](docs/verification.md), [TASK 기록](docs/tasks/)에 실제 결과와 한계를 적었다.
 
-> [!NOTE]
-> **Need docs?** See [**docs.ownable.dev**](https://docs.ownable.dev/?utm_source=github&utm_medium=readme&utm_content=docs) for guides, configuration reference, and best practices.
+## 수정과 재배포
 
----
+1. 작업 브랜치에서 실제 변경·관련 검사·기록을 커밋한다.
+2. 빌드와 검사를 마치면 이력을 유지해 main에 통합하고 `git push origin main`한다.
+3. 해당 SHA의 Actions build·deploy 성공을 확인한다.
+4. 공개 한국어·영어 주소에서 실제 변경과 자산 URL을 확인한다.
 
-## 🔓 Open source. No lock-in. No catch.
+Settings → Pages의 Source는 **GitHub Actions**다. 수동 실행만으로 main push 자동 배포를 대신하지 않는다. 버전·워크플로는 `.github/workflows/hugo-pages.yml`을 참조한다.
 
-- ✅ **MIT licensed.** The framework is and will always be open source.
-- ✅ **Plain Markdown files.** Your content is never locked in a database or proprietary format. Take it anywhere.
-- ✅ **Static output.** No server to maintain, no database to patch, no vendor to depend on.
-- ✅ **Free hosting.** Deploy to Netlify, Vercel, GitHub Pages, Cloudflare Pages — all free tier.
-- ✅ **AI is free to start.** Hugo Chat includes free messages every day. No credit card needed.
-- ✅ **Future-proof.** Markdown has been readable since 2004. Your content will outlast any platform.
+## 출처·기록·제출
 
-> [!IMPORTANT]
-> *"Every AI website builder generates React code you'll throw away in six months. Every CMS locks your content in a database you'll never migrate. HugoBlox is the gap between them."*
+[출처](docs/sources.md), [AI 활용](docs/ai/usage.md), [이력 집계](docs/commit-log.md), [커밋 정책](docs/handbook/COMMIT_POLICY.md)을 관리한다. `LICENSE.md`와 모듈 라이선스·공개 HugoBlox 제작 고지는 보존한다. 원본 README는 `docs/handbook/HUGOBLOX_README.md`에 보존했다.
 
-**Want more?** Upgrade to [**Pro**](https://hugoblox.com/pricing?utm_source=github&utm_medium=readme&utm_content=plans) for visual editing, AI automations, BibTeX import, and priority support. [Compare plans →](https://hugoblox.com/pricing?utm_source=github&utm_medium=readme&utm_content=plans)
+원본: https://themes.gohugo.io/themes/blox-tailwind/ · https://github.com/HugoBlox/kit
 
----
-
-## 🌍 Who uses HugoBlox
-
-HugoBlox powers sites for **researchers, consultants, founders, developer advocates, and teams** at organizations including:
-
-- [NVIDIA Research Labs](https://research.nvidia.com/research-labs)
-- [MIT MetaConscious Group](https://www.metaconscious.org/)
-- [King's College London](https://cai4cai.ml/)
-- [Stanford](https://profiles.stanford.edu/), [Google](https://google.com), [Meta](https://meta.com), [OpenAI](https://openai.com)
-
-<sub>150,000+ sites created since 2016. Rated 4.9/5 by users.</sub>
-
-> *"We tried Lovable and v0 first. They generated a landing page in minutes — but it was 400 lines of React we couldn't touch. Hugo Chat generated the same page as Markdown files our whole team could edit. We shipped that afternoon. Hosting: $0/month."*
-> — **Priya Ramanathan**, Co-founder & CTO
-
-> *"I described our research areas to Hugo Chat and it generated 30 publication pages with correct BibTeX metadata, team profiles, and a news section. My postdocs were editing their own pages within an hour — it's just Markdown. No CMS training, no tickets to IT."*
-> — **Dr. James Park**, Principal Research Scientist, Applied AI Lab
-
-> *"I've rebuilt my site four times — Jekyll, Gatsby, Next.js, Notion. HugoBlox is the first time I know I won't have to again. My content is plain Markdown. If something better exists in five years, I take my files and leave. Nothing has come close."*
-> — **Marcus Oliveira**, Senior Developer Advocate
-
----
-
-<h2 align="center">🚀 Ready to build?</h2>
-
-<p align="center">
-  Pick a template, let AI generate your pages, and deploy for free.<br/>
-  Your content stays as Markdown you own forever.
-</p>
-
-<p align="center">
-  <a href="https://hugo.chat/?utm_source=github&utm_medium=readme&utm_content=cta_final"><b>Generate Pages with AI</b></a>
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="https://hugoblox.com/templates/?utm_source=github&utm_medium=readme&utm_content=cta_final"><b>Browse Templates</b></a>
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="https://docs.ownable.dev/?utm_source=github&utm_medium=readme&utm_content=cta_final"><b>Read the Docs</b></a>
-</p>
-
----
-
-## Community & support
-
-- **Questions?** Join the [Discord](https://discord.gg/z8wNYzb) or search the [Docs](https://docs.ownable.dev/)
-- **Bug?** Open an [Issue](https://github.com/HugoBlox/kit/issues)
-- **Want to contribute?** Read the [Contributing Guide](./CONTRIBUTING.md)
-- **Love it?** [Star this repo](https://github.com/HugoBlox/kit) — it helps others find it
-
-### Sponsors
-
-[**❤️ Sponsor on GitHub**](https://github.com/sponsors/gcushen) | [**🏢 Become a Partner**](https://github.com/sponsors/gcushen)
-
----
-
-## License
-
-Copyright 2016-present [**Lore Labs**](https://lore.tech/?utm_source=github&utm_medium=readme).
-Released under the [MIT License](./LICENSE.md).
-
-<p align="center">
-  <sub>HugoBlox is a trademark of Lore Labs.</sub>
-</p>
+최종 main push 성공 후 `python scripts/collect_release.py`로 SHA·Actions·커밋 포함·제외 근거를 로컬 `submission/release.json`에 내보낸다. TASK PDF는 `python scripts/render_records.py --tasks`로 생성한다. 제출 PDF는 `--release`와 로컬 `--identity` 파일을 지정해 생성한다. 제출 개인정보와 최종 파일은 공개 Git에 포함하지 않는다.
