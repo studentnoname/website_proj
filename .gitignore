@@ -119,3 +119,16 @@ backups/
 **/resources/_gen/
 **/.hugo_build.lock
 /.github-pages-setup-backups/
+
+# Workstation tools, original handoff inputs and private submission material
+/.local/
+/codex_handoff/
+/submission/
+/.claude/
+/AGENTS.local.md
+**/hugo_stats.json
+**/.DS_Store
+
+# Assignment evidence is source material, not generated upstream documentation
+!/docs/
+!/docs/**
