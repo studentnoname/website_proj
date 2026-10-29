@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-29T15:57:11.436850+09:00",
+  "browser": "Firefox",
+  "version": "159.0",
+  "passed": true,
+  "results": [
+    {
+      "mode": "no-javascript",
+      "passed": true,
+      "menu_links": 4,
+      "js_enhanced": false,
+      "url_after_native_click": "http://127.0.0.1:1313/website_proj/#current"
+    },
+    {
+      "mode": "reduced-motion",
+      "passed": true,
+      "state": {
+        "reduced": true,
+        "running": 0,
+        "setting": "off"
+      }
+    }
+  ]
+}
