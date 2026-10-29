@@ -1,0 +1,15 @@
+{
+  "config": "pages.json",
+  "theme": null,
+  "sample": "templates\\academic-cv",
+  "version": "0.167.0",
+  "slug": "blox-tailwind",
+  "npm": [
+    "."
+  ],
+  "asset_build": [],
+  "generator": "3.1",
+  "repo": "https://github.com/studentnoname/website_proj.git",
+  "baseURL": "https://studentnoname.github.io/website_proj/",
+  "audited": true
+}
