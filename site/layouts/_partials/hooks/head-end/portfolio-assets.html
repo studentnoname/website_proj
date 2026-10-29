@@ -1,0 +1,6 @@
+{{/* Portfolio styles and script, loaded through the HugoBlox head-end hook after the theme CSS. */}}
+{{- $css := resources.Get "css/portfolio.css" | resources.Minify | fingerprint "sha256" -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+{{/* Not deferred on purpose: it marks <html> as JS-enabled before first paint so the mobile menu never flashes open. */}}
+{{- $js := resources.Get "js/portfolio.js" | resources.Minify | fingerprint "sha256" -}}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
