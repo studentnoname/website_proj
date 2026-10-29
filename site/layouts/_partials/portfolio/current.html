@@ -1,0 +1,95 @@
+{{- $s := .d.current -}}
+{{- $fig := $s.figure -}}
+<section id="{{ $s.id }}" class="pf-section pf-current" aria-labelledby="{{ $s.id }}-title" data-pf-section>
+  <div class="pf-wrap">
+    <header class="pf-sec-head">
+      <span class="pf-sec-num" aria-hidden="true">{{ $s.number }}</span>
+      <h2 id="{{ $s.id }}-title" class="pf-sec-title">{{ $s.title }}</h2>
+    </header>
+
+    <div class="pf-current__grid">
+      <div class="pf-current__project">
+        <p class="pf-kicker">{{ $s.kicker }}</p>
+        <h3 class="pf-current__name" lang="en">{{ $s.project }}</h3>
+        <p class="pf-current__summary">{{ $s.summary }}</p>
+        <dl class="pf-facts">
+          {{- range $s.facts }}
+          <div class="pf-facts__row">
+            <dt>{{ .term }}</dt>
+            <dd>{{ if .status }}<span class="pf-status" aria-hidden="true"></span>{{ end }}{{ .desc }}</dd>
+          </div>
+          {{- end }}
+        </dl>
+      </div>
+
+      <figure class="pf-figure pf-current__figure">
+        <svg class="pf-svg" viewBox="0 0 560 440" role="img" focusable="false"
+             aria-labelledby="pf-fig-current-t pf-fig-current-d" xmlns="http://www.w3.org/2000/svg">
+          <title id="pf-fig-current-t">{{ $fig.title }}</title>
+          <desc id="pf-fig-current-d">{{ $fig.desc }}</desc>
+          <g class="pf-svg__grid">
+            <line x1="0" y1="232" x2="560" y2="232" />
+          </g>
+          <rect class="pf-svg__box" x="24" y="32" width="208" height="150" />
+          <g class="pf-svg__ln pf-svg__ln--thin">
+            <line x1="24" y1="56" x2="232" y2="56" />
+            <rect x="44" y="76" width="72" height="86" />
+            <line x1="132" y1="86" x2="212" y2="86" />
+            <line x1="132" y1="104" x2="200" y2="104" />
+            <line x1="132" y1="122" x2="188" y2="122" />
+            <rect x="132" y="140" width="48" height="18" />
+          </g>
+          <rect class="pf-svg__box" x="328" y="32" width="208" height="150" />
+          <g class="pf-svg__ln pf-svg__ln--thin">
+            <rect x="348" y="56" width="168" height="26" />
+            <rect x="348" y="92" width="168" height="26" />
+            <rect x="348" y="128" width="168" height="26" />
+          </g>
+          <g class="pf-svg__node">
+            <circle cx="364" cy="69" r="4" />
+            <circle cx="364" cy="105" r="4" />
+            <circle cx="364" cy="141" r="4" />
+          </g>
+          <path class="pf-svg__accent" d="M232 107 H328" />
+          <path class="pf-flow" d="M232 107 H328" />
+          <circle class="pf-svg__dot" cx="280" cy="107" r="7" />
+          <g class="pf-svg__dim">
+            <path d="M128 182 V256" />
+            <path d="M432 182 V256" />
+          </g>
+          <path class="pf-svg__ln-single" d="M24 300 H90 V284 H150 V300 H214 V276 H290 V300 H360 V288 H430 V300 H536" />
+          <path class="pf-svg__ln-single pf-svg__ln-single--soft" d="M24 372 C80 372 100 356 150 356 S220 372 260 372 S330 340 380 344 S470 372 536 372" />
+          <g class="pf-svg__grid">
+            <line x1="90" y1="306" x2="90" y2="350" />
+            <line x1="150" y1="306" x2="150" y2="350" />
+            <line x1="214" y1="306" x2="214" y2="350" />
+            <line x1="290" y1="306" x2="290" y2="350" />
+            <line x1="430" y1="306" x2="430" y2="350" />
+          </g>
+          <line class="pf-scan" x1="360" y1="262" x2="360" y2="400" />
+          <circle class="pf-svg__ring" cx="360" cy="322" r="22" />
+        </svg>
+      </figure>
+    </div>
+
+    <div class="pf-current__grid pf-current__grid--lower">
+      <div class="pf-process">
+        <h4 class="pf-h4">{{ $s.process.title }}</h4>
+        <ol class="pf-process__list">
+          {{- range $s.process.steps }}
+          <li>{{ . }}</li>
+          {{- end }}
+        </ol>
+        <p class="pf-body pf-body--muted pf-process__note">{{ $s.process.note }}</p>
+      </div>
+      <div class="pf-learning">
+        <h4 class="pf-h4">{{ $s.learning.title }}</h4>
+        <ul class="pf-learning__list">
+          {{- range $s.learning.items }}
+          <li>{{ . }}</li>
+          {{- end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
