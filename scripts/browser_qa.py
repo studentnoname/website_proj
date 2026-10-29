@@ -69,7 +69,7 @@ def main():
 
     try:
         for language, suffix in [('ko', ''), ('en', 'en/')]:
-            for width in (1440, 768, 390):
+            for width in (1440, 900, 768, 390):
                 viewport(width)
                 load(base + suffix)
                 metrics = driver.execute_script('''return {
@@ -77,12 +77,20 @@ def main():
                   lang: document.documentElement.lang,
                   h1: document.querySelector('h1')?.textContent.trim(),
                   badImages: [...document.images].filter(i => !i.complete || !i.naturalWidth).length,
-                  fontsReady: document.fonts.status
+                  fontsReady: document.fonts.status,
+                  clippedText: [...document.querySelectorAll('[data-copy],h1,h2,h3')].filter(e=>{
+                    const range=document.createRange();range.selectNodeContents(e);
+                    return [...range.getClientRects()].some(r=>r.left < -1 || r.right > innerWidth + 1);
+                  }).map(e=>e.textContent.trim().slice(0,80))
                 }''')
                 record(f'{language}-{width}-layout', metrics['width'] == width and
-                       metrics['contentWidth'] <= width + 1 and metrics['badImages'] == 0 and
+                       metrics['contentWidth'] <= width + 1 and metrics['badImages'] == 0 and not metrics['clippedText'] and
                        metrics['lang'].lower().startswith(language),
                        url=driver.current_url, metrics=metrics, screenshot=screen(f'{language}-{width}'))
+                if width in (1440, 390):
+                    # Inspect the complete composition as well as individual folds.
+                    driver.get_full_page_screenshot_as_file(str(
+                        ROOT / '.local' / f'composition-{language}-{width}.png'))
                 typography = driver.execute_script('''return {
                   copy: [...document.querySelectorAll('[data-copy]')].map(e=>{
                     const s=getComputedStyle(e); return {size:parseFloat(s.fontSize),leading:parseFloat(s.lineHeight)};
