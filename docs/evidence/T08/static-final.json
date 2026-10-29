@@ -1,12 +1,12 @@
 {
-  "checked_at": "2026-10-29T15:54:52.958466+09:00",
+  "checked_at": "2026-10-29T16:51:27.171155+09:00",
   "base_url": "https://studentnoname.github.io/website_proj/",
   "passed": true,
   "checks": [
     {
       "page": "index.html",
-      "language": "ko-KR",
-      "references": 25,
+      "language": "ko",
+      "references": 17,
       "sections": [
         "about",
         "current",
@@ -17,8 +17,8 @@
     },
     {
       "page": "en/index.html",
-      "language": "en-US",
-      "references": 25,
+      "language": "en",
+      "references": 17,
       "sections": [
         "about",
         "current",

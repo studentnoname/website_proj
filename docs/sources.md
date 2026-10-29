@@ -18,6 +18,12 @@
 - 원본 데모 인물·경력·논문·다운로드 자료: 개인 콘텐츠로 게시하지 않는다.
 - 신규 SVG 도형·스타일·번역: Claude를 이용한 구현 결과는 실제 반영 경로와 검증을 `ai/`에 기록한다. 외부 사진을 본인 활동 자료처럼 사용하지 않는다.
 
+## 재제작 메인 이미지
+
+- 파일: `site/static/media/resolve-hero.png` (1122 × 1402 PNG).
+- 2026-10-29, 내장 imagegen 도구의 신규 생성 모드로 제작한 장식용 추상 조형이다. 본인 활동이나 KONNECT 결과를 촬영한 이미지가 아니다.
+- 프롬프트: “Create a premium 3D abstract sculpture image for a personal developer portfolio hero, portrait 4:5 composition, high resolution. One large continuous sculptural looping ribbon that twists into an open knot, symbolizing persistence and finding a way through. Beautifully art-directed photorealistic CGI: polished liquid chrome edges, softly frosted translucent glass body, pale electric chartreuse light glowing through a few curved inner surfaces, detailed specular reflections. Asymmetric dynamic ascending loop, sophisticated gallery/product photography with a subtle tangible pedestal shadow. Center the sculpture with generous breathing room, occupying about 80% of canvas, and keep the complete silhouette inside frame. Background and ground are an almost-black charcoal green #101311, seamless dark studio with no obvious horizon, cinematic softbox lighting, bright silver highlights and restrained lime #dcff75 accents. The subject should feel physically rich, expensive and dimensional, not a generic AI brain, not wires, not a network diagram, not a flat thin-line illustration. No text, letters, numbers, logo, watermark, user interface, or border. This is a finished website raster artwork, not a website mockup.”
+
 ## 기술 참고
 
 - GitHub Pages API 설정: https://docs.github.com/en/rest/pages/pages

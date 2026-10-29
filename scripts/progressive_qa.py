@@ -47,7 +47,7 @@ def main():
             if mode == 'no-javascript':
                 links = driver.find_elements(By.CSS_SELECTOR, '[data-pf-nav-link]')
                 passed = len(links) == 4 and all(link.is_displayed() for link in links)
-                enhanced = driver.execute_script("return document.documentElement.classList.contains('pf-js')")
+                enhanced = driver.execute_script("return document.documentElement.classList.contains('js')")
                 links[-1].click()
                 passed = passed and not enhanced and driver.current_url.endswith('#current')
                 results.append({'mode': mode, 'passed': passed, 'menu_links': len(links),
@@ -56,7 +56,7 @@ def main():
                 state = driver.execute_script('''return {
                   reduced: matchMedia('(prefers-reduced-motion:reduce)').matches,
                   setting: document.documentElement.dataset.pfMotion,
-                  running: [...document.querySelectorAll('svg *')].filter(e=>{
+                  running: [...document.querySelectorAll('body *')].filter(e=>{
                     const s=getComputedStyle(e);return s.animationName!=='none' && s.animationPlayState==='running'
                   }).length};''')
                 results.append({'mode': mode, 'passed': state['reduced'] and state['running'] == 0,

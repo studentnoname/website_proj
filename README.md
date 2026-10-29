@@ -1,6 +1,6 @@
 # Jung Jiwoong — 개인 포트폴리오
 
-HugoBlox Academic CV를 바탕으로 만든 한국어·영어 단일 페이지 포트폴리오다.
+HugoBlox Academic CV의 빌드 환경에서 동작하는 한국어·영어 단일 페이지 포트폴리오다. 화면의 HTML·CSS·JavaScript·두 언어 본문은 `site/layouts/landing/list.html` 하나에 모았다.
 
 - 사이트: https://studentnoname.github.io/website_proj/
 - English: https://studentnoname.github.io/website_proj/en/
@@ -37,16 +37,15 @@ python scripts/serve.py
 
 | 내용 | 파일 |
 | --- | --- |
-| 한국어·영어 본문 | `site/data/portfolio/ko.yaml`, `en.yaml` |
-| 언어·메뉴 | `site/config/_default/languages.yaml`, `menus.ko.yaml`, `menus.en.yaml` |
+| 화면·본문·메뉴·스타일·동작 | `site/layouts/landing/list.html` |
+| 메인 이미지 | `site/static/media/resolve-hero.png` |
+| 언어 설정 | `site/config/_default/languages.yaml` |
 | 홈 메타 정보 | `site/content/ko/_index.md`, `site/content/en/_index.md` |
-| 페이지 조립 | `site/layouts/landing/list.html` |
-| 네 섹션·SVG | `site/layouts/_partials/portfolio/` |
-| 헤더·푸터 | `site/layouts/_partials/components/headers/navbar.html`, `site_footer.html` |
-| 배치·조작 | `site/assets/css/portfolio.css`, `site/assets/js/portfolio.js` |
 | 운영 설정 | `site/pages.json`, `site/config/_default/hugo.yaml`, `params.yaml` |
 
 앵커는 `#intro`, `#about`, `#future`, `#current`다. 두 언어의 사실을 함께 수정한다. 사용자가 비워 두도록 한 다음 학습 행동, 미확인 도구별 기능, 없는 KONNECT 산출물을 임의로 채우지 않는다.
+
+이전 디자인은 `archive/portfolio-v1` 브랜치에 보존했다. 사용하지 않는 원본 예제·모듈 소스와 이전 화면 조각을 제거했다. Hugo 모듈 의존성과 Pages 빌드 설정은 유지한다. `docs/`의 이전 작업 기록은 당시 결과를 기록한 자료이며, 현재 화면의 편집 파일이 아니다.
 
 ## 검증
 
