@@ -28,6 +28,7 @@ def main():
     profile.mkdir(parents=True, exist_ok=True)
     options = Options()
     options.binary_location = args.firefox
+    options.page_load_strategy = 'eager'
     options.add_argument('-headless')
     options.add_argument('-profile')
     options.add_argument(str(profile))
@@ -48,6 +49,8 @@ def main():
         driver.get(url)
         wait.until(lambda browser: browser.execute_script('return document.readyState') == 'complete')
         wait.until(lambda browser: browser.find_elements(By.CSS_SELECTOR, 'main#main'))
+        wait.until(lambda browser: browser.execute_script(
+            "return document.getAnimations().every(a=>a.playState!=='running')"))
 
     def viewport(width):
         # Windows Firefox's chrome window has a 500px minimum. Resize the dedicated
@@ -69,6 +72,21 @@ def main():
         return file.relative_to(ROOT).as_posix() if file.is_relative_to(ROOT) else str(file)
 
     try:
+        viewport(1440)
+        driver.get(base)
+        driver.execute_script("localStorage.removeItem('pf-panel-motion')")
+        driver.refresh()
+        wait.until(lambda browser: browser.execute_script('return document.getAnimations().length>=3'))
+        entrance = driver.execute_script('''return document.getAnimations().map(a=>({
+          start:a.startTime,delay:a.effect.getTiming().delay,duration:a.effect.getTiming().duration,
+          opacity:getComputedStyle(a.effect.target).opacity}));''')
+        starts = [row['start'] + row['delay'] for row in entrance if row['start'] is not None]
+        record('initial-staggered-entrance', len(starts) >= 3 and max(starts)-min(starts) >= 60,
+               animations=entrance, screenshot=screen('text-entrance'))
+        wait.until(lambda browser: browser.execute_script(
+            "return document.getAnimations().every(a=>a.playState!=='running')"))
+        readable = driver.execute_script("return [...document.querySelectorAll('#intro [data-pf-reveal]')].every(e=>parseFloat(getComputedStyle(e).opacity)>.99)")
+        record('entrance-finishes-readable', readable)
         for language, suffix in [('ko', ''), ('en', 'en/')]:
             for width in (1440, 900, 768, 390):
                 viewport(width)
@@ -200,12 +218,21 @@ def main():
         else:
             record('motion-control', True, note='No visible automatic-motion control; inspect CSS reduced-motion rule separately.')
 
-        # Water must respond to real scrolling, settle at rest and obey both controls.
-        def water_shapes():
-            return driver.execute_script("return [...document.querySelectorAll('[data-pf-water] path')].map(p=>p.getAttribute('d')).join('|')")
+        # Prove actual screen overlap: previous surface holds while next paints over it.
+        def settled():
+            wait.until(lambda browser: browser.execute_script(
+                "return document.getAnimations().every(a=>a.playState!=='running')"))
+            driver.execute_async_script('const done=arguments[0];requestAnimationFrame(()=>requestAnimationFrame(done))')
 
-        def water_idle():
-            return driver.execute_script("return [...document.querySelectorAll('[data-pf-water]')].every(e=>e.dataset.state!=='active')")
+        def panel_sample(previous, incoming):
+            return driver.execute_script('''const a=document.getElementById(arguments[0]).querySelector('[data-pf-panel]');
+              const b=document.getElementById(arguments[1]).querySelector('[data-pf-panel]');
+              const ar=a.getBoundingClientRect(),br=b.getBoundingClientRect();
+              const owner=y=>document.elementFromPoint(innerWidth*.6,y)?.closest('[data-pf-panel-track]')?.id;
+              return {oldTop:ar.top,oldBottom:ar.bottom,newTop:br.top,height:innerHeight,
+                oldOwner:owner(br.top-35),newOwner:owner(br.top+100),
+                clip:getComputedStyle(b).clipPath,
+                curves:[...document.querySelectorAll('clipPath path')].map(p=>p.getAttribute('d')).join('|')};''', previous, incoming)
 
         for width in (1440, 390):
             viewport(width)
@@ -213,55 +240,66 @@ def main():
             control = driver.find_element(By.CSS_SELECTOR, '[data-pf-motion-toggle]')
             if control.get_attribute('aria-pressed') != 'true':
                 control.click()
-            top = driver.execute_script("const e=document.querySelector('[data-pf-water]'); return e.getBoundingClientRect().top+scrollY-innerHeight*.6")
-            driver.execute_script('scrollTo(0,arguments[0])', top)
-            wait.until(lambda _: water_idle())
-            before = water_shapes()
-            driver.execute_script('scrollBy(0,140)')
-            wait.until(lambda _: water_shapes() != before)
-            wait.until(lambda _: water_idle())
-            after = water_shapes()
-            record(f'water-{width}-follows-scroll', bool(before) and before != after,
-                   viewport=width, scroll_delta=140, screenshot=screen(f'water-{width}'))
-            driver.execute_script('''if(!window.__waterOriginalRAF){window.__waterOriginalRAF=window.requestAnimationFrame;
-              window.requestAnimationFrame=callback=>{window.__waterRAFRequests++;return window.__waterOriginalRAF(callback)};}
-              window.__waterRAFRequests=0;''')
+            for previous, incoming in [('intro','about'),('about','future'),('future','current')]:
+                top = driver.execute_script("const e=document.getElementById(arguments[0]);return e.getBoundingClientRect().top+scrollY-innerHeight*.65", incoming)
+                driver.execute_script('scrollTo(0,arguments[0])', top)
+                settled()
+                a = panel_sample(previous, incoming)
+                driver.execute_script('scrollBy(0,150)')
+                settled()
+                b = panel_sample(previous, incoming)
+                record(f'panel-{width}-{incoming}-covers-previous',
+                       abs(a['oldTop']-b['oldTop']) < 2 and a['newTop']-b['newTop'] > 100 and
+                       abs(b['oldBottom']-b['height']) < 3 and b['oldOwner']==previous and
+                       b['newOwner']==incoming and b['clip']!='none' and a['curves']!=b['curves'],
+                       first=a,second=b,screenshot=screen(f'panel-{width}-{incoming}'))
+            driver.execute_script('''if(!window.__panelOriginalRAF){window.__panelOriginalRAF=window.requestAnimationFrame;
+              window.requestAnimationFrame=callback=>{window.__panelRAFRequests++;return window.__panelOriginalRAF(callback)};}
+              window.__panelRAFRequests=0;''')
             driver.execute_async_script('const done=arguments[0];setTimeout(done,400)')
-            requests = driver.execute_script('return window.__waterRAFRequests')
-            record(f'water-{width}-settles-at-rest', water_idle() and water_shapes() == after and requests == 0,
-                   animation_frame_requests_during_400ms_idle=requests)
+            requests = driver.execute_script('return window.__panelRAFRequests')
+            record(f'panel-{width}-idle-stops', requests==0, animation_frame_requests_during_400ms_idle=requests)
+
+        # A keyboard user must be able to reach controls in a previously covered panel.
+        load(base+'#current')
+        driver.execute_script("document.querySelector('#intro .btn').focus()")
+        settled()
+        focus_visibility = driver.execute_script('''const e=document.activeElement,r=e.getBoundingClientRect();
+          const hit=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
+          return {visible:r.top>=document.querySelector('.site-header').getBoundingClientRect().bottom &&
+            r.bottom<=innerHeight && (e===hit || e.contains(hit)),id:e.closest('[data-pf-panel-track]')?.id};''')
+        record('keyboard-reaches-covered-panel', focus_visibility['visible'] and focus_visibility['id']=='intro', evidence=focus_visibility)
 
         control = driver.find_element(By.CSS_SELECTOR, '[data-pf-motion-toggle]')
         control.send_keys(Keys.ENTER)
-        top = driver.execute_script("const e=document.querySelector('[data-pf-water]');return e.getBoundingClientRect().top+scrollY-innerHeight*.5")
-        driver.execute_script('scrollTo(0,arguments[0])', top)
-        frozen = water_shapes()
-        driver.execute_script('scrollBy(0,100)')
-        driver.execute_async_script('const done=arguments[0];setTimeout(done,400)')
-        record('water-keyboard-pause', control.get_attribute('aria-pressed') == 'false' and
-               water_idle() and water_shapes() == frozen)
+        normal = driver.execute_script("return [...document.querySelectorAll('[data-pf-panel]')].every(e=>getComputedStyle(e).position!=='sticky' && getComputedStyle(e).clipPath==='none')")
+        record('panel-keyboard-pause-restores-flow', control.get_attribute('aria-pressed')=='false' and normal)
         control.send_keys(Keys.ENTER)
-        record('water-keyboard-resume', control.get_attribute('aria-pressed') == 'true')
+        record('panel-keyboard-resume', control.get_attribute('aria-pressed')=='true')
         driver.set_context('chrome')
         driver.execute_script("Services.prefs.setIntPref('ui.prefersReducedMotion',1)")
         driver.set_context('content')
         wait.until(lambda browser: browser.execute_script("return document.documentElement.dataset.pfMotion==='off'"))
-        frozen = water_shapes()
-        driver.execute_script('scrollTo(0,arguments[0])', top)
-        driver.execute_async_script('const done=arguments[0];setTimeout(done,400)')
-        record('water-live-reduced-motion', water_idle() and water_shapes() == frozen,
-               motion=driver.execute_script('return document.documentElement.dataset.pfMotion'))
+        normal = driver.execute_script("return [...document.querySelectorAll('[data-pf-panel]')].every(e=>getComputedStyle(e).position!=='sticky' && getComputedStyle(e).clipPath==='none') && document.getAnimations().every(a=>a.playState!=='running')")
+        record('panel-live-reduced-motion', normal)
         driver.set_context('chrome')
         driver.execute_script("Services.prefs.setIntPref('ui.prefersReducedMotion',0)")
         driver.set_context('content')
         labels = []
         for language, suffix, on, off in [('ko', '', '켜짐', '꺼짐'), ('en', 'en/', 'On', 'Off')]:
-            load(base + suffix)
+            load(base+suffix)
             control = driver.find_element(By.CSS_SELECTOR, '[data-pf-motion-toggle]')
-            text = control.find_element(By.CSS_SELECTOR, '.motion-state').text
-            expected = on if control.get_attribute('aria-pressed') == 'true' else off
-            labels.append({'language': language, 'actual': text, 'expected': expected})
-        record('water-localized-status-labels', all(x['actual'] == x['expected'] for x in labels), evidence=labels)
+            expected = on if control.get_attribute('aria-pressed')=='true' else off
+            status_id = control.get_attribute('aria-describedby')
+            status = driver.find_element(By.ID,status_id).text if status_id else control.text
+            labels.append({'language':language,'actual':status,'expected':expected})
+            driver.get(base+suffix+'#current')
+            wait.until(lambda browser: browser.find_elements(By.CSS_SELECTOR, '#current h2'))
+            destination = driver.execute_script("const e=document.querySelector('#current h2'),r=e.getBoundingClientRect();return {top:r.top,bottom:r.bottom,opacity:getComputedStyle(e).opacity,header:document.querySelector('.site-header').getBoundingClientRect().bottom,height:innerHeight}")
+            record(f'{language}-deep-link-immediately-readable',float(destination['opacity'])>.99 and
+                   destination['top']>=destination['header'] and destination['bottom']<=destination['height'], evidence=destination)
+        record('panel-localized-status-labels',all(x['expected'] in x['actual'] and '"' not in x['actual'] for x in labels),evidence=labels)
+
     except Exception as error:
         record('unexpected-test-error', False, error=f'{type(error).__name__}: {error}',
                url=driver.current_url)

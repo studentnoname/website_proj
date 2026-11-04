@@ -58,12 +58,13 @@ def main():
                 state = driver.execute_script('''return {
                   reduced: matchMedia('(prefers-reduced-motion:reduce)').matches,
                   setting: document.documentElement.dataset.pfMotion,
-                  activeWater: [...document.querySelectorAll('[data-pf-water]')].filter(e=>e.dataset.state==='active').length,
+                  panelsNormal: [...document.querySelectorAll('[data-pf-panel]')].every(e=>getComputedStyle(e).position!=='sticky' && getComputedStyle(e).clipPath==='none'),
+                  revealsReadable: [...document.querySelectorAll('[data-pf-reveal]')].every(e=>parseFloat(getComputedStyle(e).opacity)>.99),
                   running: [...document.querySelectorAll('body *')].filter(e=>{
                     const s=getComputedStyle(e);return s.animationName!=='none' && s.animationPlayState==='running'
                   }).length};''')
                 results.append({'mode': mode, 'passed': state['reduced'] and state['running'] == 0 and
-                                state['activeWater'] == 0 and state['setting'] == 'off',
+                                state['panelsNormal'] and state['revealsReadable'] and state['setting'] == 'off',
                                 'state': state})
             driver.save_screenshot(str(output / (mode + '.png')))
         finally:

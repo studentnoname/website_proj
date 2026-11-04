@@ -27,6 +27,12 @@
   --h3-size: 22px;
   --meta-size: 13px;
   --ui-size: 14px;
+
+  --pf-vh: 100vh;
+}
+
+@supports (height: 100svh) {
+  :root { --pf-vh: 100svh; }
 }
 
 @media (max-width: 860px) {
@@ -277,7 +283,7 @@ h3 {
 }
 
 /* hero */
-.hero { padding-top: 64px; }
+.hero { padding-top: 64px; background: var(--ink); }
 
 .hero-grid {
   display: grid;
@@ -702,8 +708,81 @@ h1 .accent { color: var(--lime); }
 }
 .credit a { text-underline-offset: 3px; }
 
+/* page motion control — revealed by portfolio.js */
+.motion-control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px 16px;
+}
+.motion-control[hidden] { display: none; }
+
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: 600 var(--ui-size) var(--sans);
+  cursor: pointer;
+}
+.motion-toggle:hover { border-color: var(--paper); }
+.motion-toggle[aria-pressed="true"] { border-color: var(--lime); }
+.motion-toggle[aria-disabled="true"] { color: var(--dim); border-color: var(--line-strong); cursor: default; }
+
+.motion-status {
+  font-size: var(--meta-size);
+  line-height: 1.5;
+  color: var(--dim);
+}
+
 @media (max-width: 860px) {
   .footer-title { font-size: 24px; }
   .footer-grid { align-items: start; flex-direction: column; }
   .footer-content { justify-items: start; }
+  .motion-control { justify-content: flex-start; }
+}
+
+/* layered panels — portfolio.js marks tracks data-pf-ready only when motion is on and panel heights are measured.
+   Each track keeps its normal-flow position (anchors stay native); its panel holds via sticky while the next,
+   higher track slides over it. --pf-h: measured panel height, --pf-hh: measured header height. */
+.pf-defs { position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-pf-motion="on"] [data-pf-panel-track][data-pf-ready] {
+    position: relative;
+    z-index: var(--pf-z, 1);
+  }
+  [data-pf-motion="on"] [data-pf-panel-track][data-pf-ready]:not(:last-child) {
+    --pf-v: min(var(--pf-h), var(--pf-vh) - var(--pf-hh));
+    height: calc(var(--pf-h) + var(--pf-v));
+    margin-bottom: calc(-1 * var(--pf-v));
+  }
+  [data-pf-motion="on"] [data-pf-ready] > [data-pf-panel] {
+    position: relative;
+    isolation: isolate;
+  }
+  [data-pf-motion="on"] [data-pf-ready]:not(:last-child) > [data-pf-panel] {
+    position: sticky;
+    top: min(var(--pf-hh), var(--pf-vh) - var(--pf-h));
+  }
+  /* the older panel dims slightly as the next one covers it */
+  [data-pf-motion="on"] [data-pf-ready] > [data-pf-panel]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: var(--ink);
+    opacity: var(--pf-under, 0);
+    pointer-events: none;
+  }
+  [data-pf-motion="on"] .site-footer {
+    position: relative;
+    z-index: 10;
+    background: var(--ink);
+  }
 }
