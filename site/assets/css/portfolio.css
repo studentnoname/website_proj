@@ -433,6 +433,38 @@ h1 .accent { color: var(--lime); }
   [data-pf-section] .section-content { padding-top: 0; }
 }
 
+/* water waves — decorative contour bands at the dark/light transitions; paths are reshaped by portfolio.js while scrolling */
+.water-wave {
+  --ww-fill: var(--paper);
+  --ww-accent-o: 0.22;
+  --ww-mid-o: 0.38;
+  position: relative;
+  height: clamp(80px, 10vw, 144px);
+  pointer-events: none;
+}
+.water-wave svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: calc(100% + 1px);
+}
+.ww-back { fill: var(--lime); opacity: var(--ww-accent-o); }
+.ww-mid { fill: var(--ww-fill); opacity: var(--ww-mid-o); }
+.ww-front { fill: var(--ww-fill); }
+
+.water-wave--to-light { margin-top: 16px; }
+
+/* inside #future: keep the original bottom spacing above the band, end the section on the band */
+.water-wave--to-dark {
+  --ww-fill: var(--ink);
+  --ww-accent-o: 0.5;
+  --ww-mid-o: 0.22;
+  margin-top: var(--section-y);
+  margin-bottom: calc(-1 * var(--section-y));
+}
+
 /* about · tool rail */
 .tool-rail {
   display: grid;
@@ -681,7 +713,8 @@ h1 .accent { color: var(--lime); }
 .footer-content { display: grid; gap: 16px; justify-items: end; }
 
 .footer-links { display: flex; flex-wrap: wrap; gap: 8px; }
-.footer-links a {
+.footer-links a,
+.footer-links button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -693,7 +726,36 @@ h1 .accent { color: var(--lime); }
   font-weight: 600;
   text-decoration: none;
 }
-.footer-links a:hover { border-color: var(--paper); }
+.footer-links a:hover,
+.footer-links button:not([aria-disabled="true"]):hover { border-color: var(--paper); }
+
+/* wave motion toggle — revealed by portfolio.js */
+.footer-links button {
+  margin: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+.footer-links button[hidden] { display: none; }
+.footer-links button[aria-disabled="true"] { border-style: dashed; cursor: not-allowed; }
+.motion-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: var(--dim);
+}
+.motion-state::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+[aria-pressed="true"] .motion-state { color: var(--lime); }
+[aria-pressed="true"] .motion-state::before { background: currentColor; }
 
 .credit {
   font-size: var(--meta-size);
