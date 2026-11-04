@@ -32,6 +32,7 @@ def main():
     options.add_argument('-profile')
     options.add_argument(str(profile))
     options.set_preference('layout.css.devPixelsPerPx', '1.0')
+    options.set_preference('ui.prefersReducedMotion', 0)
     driver = webdriver.Firefox(options=options, service=Service(
         str(ROOT / '.local/tools/geckodriver/geckodriver.exe'),
         service_args=['--allow-system-access'],
@@ -198,6 +199,69 @@ def main():
                    previous=previous, current=motion[0].get_attribute('aria-pressed'))
         else:
             record('motion-control', True, note='No visible automatic-motion control; inspect CSS reduced-motion rule separately.')
+
+        # Water must respond to real scrolling, settle at rest and obey both controls.
+        def water_shapes():
+            return driver.execute_script("return [...document.querySelectorAll('[data-pf-water] path')].map(p=>p.getAttribute('d')).join('|')")
+
+        def water_idle():
+            return driver.execute_script("return [...document.querySelectorAll('[data-pf-water]')].every(e=>e.dataset.state!=='active')")
+
+        for width in (1440, 390):
+            viewport(width)
+            load(base)
+            control = driver.find_element(By.CSS_SELECTOR, '[data-pf-motion-toggle]')
+            if control.get_attribute('aria-pressed') != 'true':
+                control.click()
+            top = driver.execute_script("const e=document.querySelector('[data-pf-water]'); return e.getBoundingClientRect().top+scrollY-innerHeight*.6")
+            driver.execute_script('scrollTo(0,arguments[0])', top)
+            wait.until(lambda _: water_idle())
+            before = water_shapes()
+            driver.execute_script('scrollBy(0,140)')
+            wait.until(lambda _: water_shapes() != before)
+            wait.until(lambda _: water_idle())
+            after = water_shapes()
+            record(f'water-{width}-follows-scroll', bool(before) and before != after,
+                   viewport=width, scroll_delta=140, screenshot=screen(f'water-{width}'))
+            driver.execute_script('''if(!window.__waterOriginalRAF){window.__waterOriginalRAF=window.requestAnimationFrame;
+              window.requestAnimationFrame=callback=>{window.__waterRAFRequests++;return window.__waterOriginalRAF(callback)};}
+              window.__waterRAFRequests=0;''')
+            driver.execute_async_script('const done=arguments[0];setTimeout(done,400)')
+            requests = driver.execute_script('return window.__waterRAFRequests')
+            record(f'water-{width}-settles-at-rest', water_idle() and water_shapes() == after and requests == 0,
+                   animation_frame_requests_during_400ms_idle=requests)
+
+        control = driver.find_element(By.CSS_SELECTOR, '[data-pf-motion-toggle]')
+        control.send_keys(Keys.ENTER)
+        top = driver.execute_script("const e=document.querySelector('[data-pf-water]');return e.getBoundingClientRect().top+scrollY-innerHeight*.5")
+        driver.execute_script('scrollTo(0,arguments[0])', top)
+        frozen = water_shapes()
+        driver.execute_script('scrollBy(0,100)')
+        driver.execute_async_script('const done=arguments[0];setTimeout(done,400)')
+        record('water-keyboard-pause', control.get_attribute('aria-pressed') == 'false' and
+               water_idle() and water_shapes() == frozen)
+        control.send_keys(Keys.ENTER)
+        record('water-keyboard-resume', control.get_attribute('aria-pressed') == 'true')
+        driver.set_context('chrome')
+        driver.execute_script("Services.prefs.setIntPref('ui.prefersReducedMotion',1)")
+        driver.set_context('content')
+        wait.until(lambda browser: browser.execute_script("return document.documentElement.dataset.pfMotion==='off'"))
+        frozen = water_shapes()
+        driver.execute_script('scrollTo(0,arguments[0])', top)
+        driver.execute_async_script('const done=arguments[0];setTimeout(done,400)')
+        record('water-live-reduced-motion', water_idle() and water_shapes() == frozen,
+               motion=driver.execute_script('return document.documentElement.dataset.pfMotion'))
+        driver.set_context('chrome')
+        driver.execute_script("Services.prefs.setIntPref('ui.prefersReducedMotion',0)")
+        driver.set_context('content')
+        labels = []
+        for language, suffix, on, off in [('ko', '', '켜짐', '꺼짐'), ('en', 'en/', 'On', 'Off')]:
+            load(base + suffix)
+            control = driver.find_element(By.CSS_SELECTOR, '[data-pf-motion-toggle]')
+            text = control.find_element(By.CSS_SELECTOR, '.motion-state').text
+            expected = on if control.get_attribute('aria-pressed') == 'true' else off
+            labels.append({'language': language, 'actual': text, 'expected': expected})
+        record('water-localized-status-labels', all(x['actual'] == x['expected'] for x in labels), evidence=labels)
     except Exception as error:
         record('unexpected-test-error', False, error=f'{type(error).__name__}: {error}',
                url=driver.current_url)

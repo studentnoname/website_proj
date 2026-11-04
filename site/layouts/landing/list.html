@@ -226,7 +226,7 @@
       <div class="footer-links">
         <a href="#intro">{{ cond $ko "맨 위로" "Back to top" }} <span aria-hidden="true">↑</span></a>
         <a href="{{ $repo }}" rel="noopener">{{ cond $ko "GitHub 소스" "Source on GitHub" }} <span aria-hidden="true">↗</span></a>
-        <button type="button" data-pf-motion-toggle aria-pressed="true" aria-label="{{ cond $ko "물결 효과" "Wave effect" }}" aria-describedby="pf-motion-state" data-on="{{ cond $ko "켜짐" "On" }}" data-off="{{ cond $ko "꺼짐" "Off" }}" data-system="{{ cond $ko "시스템 설정으로 꺼짐" "Off by system setting" }}" hidden>{{ cond $ko "물결 효과" "Wave effect" }} <span class="motion-state" id="pf-motion-state">{{ cond $ko "켜짐" "On" }}</span></button>
+        <button type="button" data-pf-motion-toggle aria-pressed="true" aria-label="{{ cond $ko "물결 효과" "Wave effect" }}" aria-describedby="pf-motion-state" data-enabled-label="{{ cond $ko "켜짐" "On" }}" data-off="{{ cond $ko "꺼짐" "Off" }}" data-system="{{ cond $ko "시스템 설정으로 꺼짐" "Off by system setting" }}" hidden>{{ cond $ko "물결 효과" "Wave effect" }} <span class="motion-state" id="pf-motion-state">{{ cond $ko "켜짐" "On" }}</span></button>
       </div>
       <p class="credit">Built with Hugo · <a href="https://github.com/HugoBlox/kit" rel="noopener">HugoBlox Kit</a></p>
     </div>

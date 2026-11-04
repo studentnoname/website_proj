@@ -176,7 +176,7 @@
       const sys = reduce.matches;
       toggle.setAttribute('aria-pressed', String(on));
       toggle.setAttribute('aria-disabled', String(sys));
-      if (stateText) stateText.textContent = sys ? toggle.dataset.system : on ? toggle.dataset.on : toggle.dataset.off;
+      if (stateText) stateText.textContent = sys ? toggle.dataset.system : on ? toggle.dataset.enabledLabel : toggle.dataset.off;
     }
     refresh();
   };

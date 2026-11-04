@@ -1,5 +1,13 @@
 # 실제 AI 활용 기록
 
+## 사례 F — 사용자 요청에 따른 스크롤 물결
+
+- 날짜: 2026-11-04 KST. 도구: Claude Code 2.1.287, 실제 modelUsage는 claude-opus-5-5. 프론트 선호에 따라 Claude가 기존 HTML·CSS·JS 세 파일을 수정하고 Codex가 검토·빌드·검증했다.
+- 사용자 요청 원문: “웹사이트 스크롤 하면서 애니매이션을 추가 물이 흐르는 것처럼”. 실제 CLI 요청 발췌는 `prompts/frontend.md`에 보존했다. 이번 작업은 사용자가 철회한 자료를 참고하지 않았다.
+- 응답 요약: 기존 색상으로 세 층의 물결을 두 섹션 경계에 배치하고, SVG 경로를 스크롤 위치와 짧은 관성으로 변형했다. 하단 효과 버튼·localStorage 선택·시스템 모션 축소와 비활성 탭 처리를 추가했다. Claude는 빌드·브라우저 검사를 하지 않았다고 명시했다.
+- 채택·수정 판단: 본문을 숨기거나 흐리게 하지 않는 방식과 기본 스크롤 유지를 채택했다. Codex는 I010의 `data-on` 문자열 인용 문제를 발견하고 `data-enabled-label`로 고쳤다. 이는 사용자의 직접 코드 검토로 기록하지 않는다.
+- 실제 반영: `site/layouts/landing/list.html`, `site/assets/css/portfolio.css`, `site/assets/js/portfolio.js`. 검사 코드는 기존 `scripts/browser_qa.py`, `scripts/progressive_qa.py`에서 확장했다. 화면·실제 동작·한계는 `../verification.md`와 I010에 연결한다.
+
 ## 사례 A — 구조 점검과 개발 계획
 
 - 도구: Codex, 모델명 미표시.

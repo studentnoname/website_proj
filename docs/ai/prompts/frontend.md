@@ -1,5 +1,19 @@
 # Claude 프론트 구현 요청 원문
 
+## 2026-11-04 스크롤 물결 요청 발췌
+
+```text
+Add a polished, clearly visible water-like SCROLL-DRIVEN animation to the current portfolio.
+This is a bounded animation enhancement to the restored dark/lime design, NOT a redesign.
+Edit ONLY site/layouts/landing/list.html, site/assets/css/portfolio.css, site/assets/js/portfolio.js.
+Scroll-driven phase/amplitude/path changes should work forwards/backwards, deep links, resize and initial page position.
+requestAnimationFrame must STOP when settled, offscreen, paused, tab hidden or reduced motion.
+Add an accessible, localized motion toggle to existing footer-links (NOT header, which is already tight at 390px).
+Final output: concise actual changes and any limits; do not claim unrun build/browser checks.
+```
+
+아래는 최초 구현 당시 요청이다.
+
 Build the personal portfolio inside the existing HugoBlox academic-cv site. You are the frontend implementer; Codex owns environment, commits, builds, and deployment. Do not invoke other agents, change Git state, edit files outside site/, or run shell commands. Use Read, Glob, Grep, Write and Edit only.
 
 Read docs/handbook/CODEX_HANDOFF.md, docs/content-decisions.md, codex_handoff/records/CLAUDE_FRONTEND_BRIEF.md, site/config/_default/, modules/blox/layouts/baseof.html, modules/blox/layouts/_partials/site_head.html, modules/blox/layouts/_partials/functions/get_hook.html before editing. Follow the actual theme API and preserve HugoBlox attribution and licensing. The theme baseof.html and head must remain in use. You may override home.html using define main, the navbar header partial, site_footer partial, and documented head-end/body-end hooks in site/layouts/_partials/. Do not replace the entire theme with a standalone HTML document.
