@@ -19,7 +19,7 @@
     "paragraphs": [
       "네 메뉴: 들어가며 → #intro, 그는 누구인가 → #about, 바라보고 있는 미래 → #future, 현재의 모습 → #current. 한국어는 루트, 영어는 /en/이며 두 언어의 동일 앵커를 유지한다.",
       "이름과 짧은 소개는 #intro, AI 효율에 관심을 갖게 된 이유와 도구는 #about, 학습 방향은 #future, 대표 활동 KONNECT의 목적·시기·역할·과정·배운 점은 #current에 있다.",
-      "P71: AI 지연·병목 경험과 관심 이유. P72: 데이터베이스·전력·반도체 학습 방향을 표시했으나 다음 구체적 행동은 사용자 요청으로 비워 두었다. P73: GitHub를 이 포트폴리오의 소스·변경 이력 관리에, Actions·Pages를 배포에 사용하는 실제 사례를 #about에 설명했다. 다른 도구의 미확인 세부 기능은 만들지 않았다.",
+      "P71: AI 지연·병목 경험과 관심 이유. P72: 데이터베이스·전력·반도체 학습 방향을 표시했으나 다음 구체적 행동은 미기재이므로 실행 계획 기준은 미충족이다. 사용자는 2026-11-04에 ‘이전의 빈칸·KONNECT만 유지’를 선택했다. P73: GitHub를 이 포트폴리오의 소스·변경 이력 관리에, Actions·Pages를 배포에 사용하는 실제 사례를 #about에 설명했다. 다른 도구의 미확인 세부 기능은 만들지 않았다.",
       "P74~P77: 2026년 초 시작, 2학기 인수인계 후 진행 중, 유학생을 돕기 위한 팀 플랫폼, 본인 백엔드 역할, 프론트 틀→백엔드 연결→로그와 동작 대조→AI 제안 검토 과정을 표시했다. P78: 공개 가능한 실제 중간 산출물이 없어 해당 증빙은 미충족이다. P79: AI를 직접 확인하며 공부한다는 배운 점과 완벽주의를 조정하려는 개선 방향을 표시했다. P80: 원본 가상 인물·논문·경력·CV를 제거했다.",
       "설치·빌드·재배포: https://github.com/studentnoname/website_proj#설치와-실행 . Windows에서 python scripts/bootstrap_windows.py, .\\scripts\\build.ps1 -InstallDependencies, python scripts/serve.py 순서다. CI는 python .github/pages_build.py --dependencies 및 --build를 사용한다.",
       "아래 화면은 최종 공개 주소를 Firefox 159.0에서 캡처했다. 실제 모바일 기기 검사가 아니라 브라우저의 실제 390px 콘텐츠 뷰포트 검사다."
@@ -122,7 +122,7 @@
       "본인 판단: 사용자는 이후 ‘작업시작’으로 계획에 따른 진행을 지시했다. 반영 위치는 WORK_PLAN.md와 T01 환경·빌드 기록. 직접 검증: Git 루트·origin, 원격 상태, 도구 버전, 공식 ZIP 해시를 확인한 뒤 기본 빌드와 push 배포를 실제 실행했다. 계획 시점에는 구현·배포가 없었다는 범위를 별도로 명시했다.",
       "사례 2 / Claude Code 2.1.287 / claude-opus-5-5 / 2026-10-29 KST. 목적: HugoBlox 프론트 구현. 실제 전달 요청 원문 발췌: ‘Build the personal portfolio inside the existing HugoBlox academic-cv site.’ / ‘All displayed claims must be backed by provided facts.’ 요청 전문은 docs/ai/prompts/frontend.md에 보존했다.",
       "응답 요약: 최초 디자인에서 네 섹션과 두 언어 데이터·SVG·헤더·모바일 조작·움직임 제어를 실제 작성했다. 대표 구현 이력: https://github.com/studentnoname/website_proj/commit/7b2cc20 . 사용자가 복잡한 파일 구성과 화면 결과에 불만을 표현하고 ‘다시 제작해’라고 요청하여 Claude Code로 단일 HTML 화면을 다시 작성했다. Codex는 공개 이름·사실 범위·레이아웃을 검토하고 수정했다.",
-      "본인 판단: 사용자는 목적을 ‘유학생의 도움을 주기위한 플랫폼과 백엔드’로 확인하고 결과 링크는 ‘없음’, 다음 행동은 ‘빈칸으로 두기’로 결정했다. 따라서 임의 계획·성과·결과 링크를 보류했다. 기술 검토는 Codex가 수행했고 초기 템플릿 선택·데모 잔존·헤더 문제는 수정했다. 이를 사용자의 직접 코드 검토라고 기록하지 않는다.",
+      "본인 판단: 사용자는 목적을 ‘유학생의 도움을 주기위한 플랫폼과 백엔드’로 확인하고 결과 링크는 ‘없음’, 다음 행동은 ‘빈칸으로 두기’로 결정했다. 2026-11-04에도 ‘이전의 빈칸·KONNECT만 유지’로 재확인했다. 따라서 임의 계획·성과·결과 링크와 추가 대표 활동을 보류했다. 기술 검토는 Codex가 수행했고 초기 템플릿 선택·데모 잔존·헤더 문제는 수정했다. 이를 사용자의 직접 코드 검토라고 기록하지 않는다.",
       "직접 검증과 한계: 두 언어 정적 검사, Firefox 41개 배치·조작 검사와 2개 점진적 향상 검사, 실제 main 재배포·공개 화면 확인을 연결했다. 후속 사용자 피드백으로 기존 폴더의 화면·공통 CSS·JS를 재사용했다. 전체 화면도 직접 확인했으며 검사 통과를 사용자의 디자인 만족으로 대신 기록하지 않는다.",
       "사례 3 / Claude Code 2.1.287 / claude-opus-5-5 / 2026-11-04 KST. 목적: 사용자 참고 글과 공식 frontend-design 지침으로 재제작. 사용자 원문: ‘이거 참고해서 기존에 지켜야 할 양식들을 지키면서 다시 제작해’. 실제 CLI 요청 발췌: ‘Implement the approved design plan now, using the actual official frontend-design skill.’ / ‘Follow the skill's critique/revision process before coding.’",
       "응답 요약·판단: 좌우명을 지연 구간으로 표현하는 회색·남색 화면과 공통 기준선을 채택했다. 학습 분야를 순서로 연결하는 초기 계획과 임의 다음 단계는 보류하고, 본문 행간은 두 언어에서 통일했다. 반영 파일은 site/layouts/landing/list.html, site/assets/css/portfolio.css이며 기존 JS를 재사용했다. 참고 글은 구현 절차의 참고이며 화면 복제가 아니다. 플러그인 자동 설치가 아니라 공식 SKILL.md 원문을 읽도록 전달했다. 직접 검증은 5절과 docs/verification.md의 글꼴 로딩·본문 역할·잘림·키보드·감소 모션 검사다. Claude 자체는 빌드·브라우저 검사 미실행이라고 밝혔고 Codex가 후속 검사했다."
