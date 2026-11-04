@@ -1,23 +1,3 @@
-# 2026-11-04 재제작 요청 원문 발췌
-
-실제로 Claude Code에 전달한 요청 중 핵심 부분이다. 생략한 부분은 색상·글꼴 파일 경로·기존 사실 목록이다.
-
-```text
-Implement the approved design plan now, using the actual official frontend-design skill. Read .local/frontend-design-SKILL.md fully, then .local/design-plan.json's result and the existing three frontend files. Follow the skill's critique/revision process before coding.
-
-REVISIONS TO PLAN: databases, power and semiconductors are equal intended interests, NOT a sequence or prerequisites. Do not draw arrows suggesting a learning order. User left next concrete action blank: no dashed pending roadmap, empty placeholder, or synthetic next step.
-
-Keep body18px desktop and16px mobile with one consistent line-height around1.75 in BOTH languages; headline/heading roles may change intentionally.
-
-EDIT ONLY site/layouts/landing/list.html, site/assets/css/portfolio.css, site/assets/js/portfolio.js. No new folders, frameworks, partials, packages, docs, tests, reports, skills or images. Use Read/Write/Edit only, no shell, agents, Git or connectors.
-
-MANDATORY: HugoBlox/Hugo/Pages environment unchanged. Korean root and English/en/. EXACT menu labels via site.Menus.main: 들어가며#intro, 그는 누구인가#about, 바라보고 있는 미래#future, 현재의 모습#current. Public name Jung Jiwoong.
-
-Do not report checks you have not run.
-```
-
-기존 요청은 아래에 당시 기록으로 보존한다.
-
 # Claude 프론트 구현 요청 원문
 
 Build the personal portfolio inside the existing HugoBlox academic-cv site. You are the frontend implementer; Codex owns environment, commits, builds, and deployment. Do not invoke other agents, change Git state, edit files outside site/, or run shell commands. Use Read, Glob, Grep, Write and Edit only.

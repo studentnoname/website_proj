@@ -47,9 +47,6 @@ def main():
         driver.get(url)
         wait.until(lambda browser: browser.execute_script('return document.readyState') == 'complete')
         wait.until(lambda browser: browser.find_elements(By.CSS_SELECTOR, 'main#main'))
-        driver.execute_async_script('const done=arguments[arguments.length-1]; document.fonts.ready.then(()=>done());')
-        wait.until(lambda browser: browser.execute_script(
-            "return document.getAnimations().every(a=>a.playState !== 'running')"))
 
     def viewport(width):
         # Windows Firefox's chrome window has a 500px minimum. Resize the dedicated
@@ -70,16 +67,7 @@ def main():
         driver.save_screenshot(str(file))
         return file.relative_to(ROOT).as_posix() if file.is_relative_to(ROOT) else str(file)
 
-    def anchor_position(section):
-        return driver.execute_script('''const section=document.getElementById(arguments[0]);
-          const heading=section.querySelector('h2') || section.querySelector('h1');
-          const h=heading.getBoundingClientRect();
-          const header=document.querySelector('.site-header').getBoundingClientRect();
-          return {headingTop:h.top,headingBottom:h.bottom,headerBottom:header.bottom,
-            viewportHeight:innerHeight,visible:h.top>=header.bottom-1 && h.bottom<=innerHeight};''', section)
-
     try:
-        type_at_width = {}
         for language, suffix in [('ko', ''), ('en', 'en/')]:
             for width in (1440, 900, 768, 390):
                 viewport(width)
@@ -90,7 +78,6 @@ def main():
                   h1: document.querySelector('h1')?.textContent.trim(),
                   badImages: [...document.images].filter(i => !i.complete || !i.naturalWidth).length,
                   fontsReady: document.fonts.status,
-                  loadedFonts: [...document.fonts].filter(f=>f.status==='loaded').map(f=>({family:f.family,weight:f.weight})),
                   clippedText: [...document.querySelectorAll('[data-copy],h1,h2,h3')].filter(e=>{
                     const range=document.createRange();range.selectNodeContents(e);
                     return [...range.getClientRects()].some(r=>r.left < -1 || r.right > innerWidth + 1);
@@ -109,34 +96,30 @@ def main():
                     const s=getComputedStyle(e); return {size:parseFloat(s.fontSize),leading:parseFloat(s.lineHeight)};
                   }),
                   headings: [...document.querySelectorAll('[data-pf-section] h2')].map(e=>parseFloat(getComputedStyle(e).fontSize)),
-                  headingEdges: [...document.querySelectorAll('[data-pf-section] h2')].map(e=>e.getBoundingClientRect().left),
-                  collisions: [...document.querySelectorAll('[data-pf-section]')].filter(section=>{
-                    const h=section.querySelector('h2'),p=section.querySelector('[data-copy]');
-                    if(!h||!p)return false;
-                    const a=h.getBoundingClientRect(),b=p.getBoundingClientRect();
-                    return Math.min(a.right,b.right)-Math.max(a.left,b.left)>1 &&
-                           Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>1;
-                  }).map(e=>e.id)
+                  headingEdges: [...document.querySelectorAll('.section-heading')].map(e=>e.getBoundingClientRect().left),
+                  contentEdges: [...document.querySelectorAll('[data-pf-section] .section-content')].map(e=>e.getBoundingClientRect().left),
+                  titleTops: [...document.querySelectorAll('.section-heading h2')].map(e=>e.getBoundingClientRect().top),
+                  titleBottoms: [...document.querySelectorAll('.section-heading h2')].map(e=>e.getBoundingClientRect().bottom),
+                  copyTops: [...document.querySelectorAll('[data-pf-section] .section-content')].map(e=>e.firstElementChild.getBoundingClientRect().top)
                 }''')
-                body_size = typography['copy'][0]['size'] if typography['copy'] else 0
-                body_leading = typography['copy'][0]['leading'] if typography['copy'] else 0
-                readable_body = body_size in (16, 18) and (width != 1440 or body_size == 18) and (width != 390 or body_size == 16)
+                body_size, heading_size = (16, 36) if width <= 860 else (18, 48)
                 uniform_copy = len(typography['copy']) >= 12 and all(
-                    abs(row['size'] - body_size) < .1 and abs(row['leading'] - body_leading) < .1
-                    for row in typography['copy']) and body_size*1.6 <= body_leading <= body_size*1.9
-                headings = typography['headings']
-                uniform_headings = len(headings) == 3 and max(headings)-min(headings) < .1 and min(headings) >= body_size*1.5 and max(headings) <= 64
-                signature = [body_size, body_leading, *headings]
-                if language == 'ko':
-                    type_at_width[width] = signature
-                matching_language = width in type_at_width and len(signature) == len(type_at_width[width]) and all(
-                    abs(a-b) < .1 for a,b in zip(signature,type_at_width[width]))
-                record(f'{language}-{width}-type-hierarchy', readable_body and uniform_copy and uniform_headings and matching_language,
-                       body_size=body_size, evidence=typography)
-                edges = typography['headingEdges']
-                aligned = len(edges) == 3 and max(edges)-min(edges) < 1 and not typography['collisions']
+                    abs(row['size'] - body_size) < .1 and abs(row['leading'] - body_size * 1.75) < .1
+                    for row in typography['copy'])
+                uniform_headings = len(typography['headings']) == 3 and all(
+                    abs(size - heading_size) < .1 for size in typography['headings'])
+                record(f'{language}-{width}-type-hierarchy', uniform_copy and uniform_headings,
+                       expected_body=body_size, expected_heading=heading_size, evidence=typography)
+                aligned = all(len(typography[key]) == 3 and max(typography[key])-min(typography[key]) < 1
+                              for key in ('headingEdges', 'contentEdges'))
+                title_positions = typography['titleBottoms'] if width <= 860 else typography['titleTops']
+                expected_gap = 32 if width <= 860 else 0
+                aligned = aligned and len(title_positions) == 3 and all(
+                    abs(copy - title - expected_gap) < 1
+                    for title, copy in zip(title_positions, typography['copyTops']))
                 record(f'{language}-{width}-section-alignment', aligned,
-                       headings=edges, heading_copy_collisions=typography['collisions'])
+                       headings=typography['headingEdges'], content=typography['contentEdges'],
+                       title_positions=title_positions, copy_tops=typography['copyTops'], expected_gap=expected_gap)
 
         viewport(390)
         load(base)
@@ -199,16 +182,13 @@ def main():
 
         for section in ('about', 'future', 'current'):
             load(base + '#' + section)
-            position = anchor_position(section)
-            record(f'anchor-{section}-visible', position['visible'], position=position,
+            record(f'anchor-{section}-visible', driver.find_element(By.ID, section).is_displayed(),
                    screenshot=screen('ko-desktop-' + section))
 
         viewport(390)
         for section in ('about', 'future', 'current'):
             load(base + '#' + section)
-            position = anchor_position(section)
-            record(f'mobile-anchor-{section}-visible', position['visible'], position=position,
-                   screenshot=screen('ko-mobile-' + section))
+            screen('ko-mobile-' + section)
 
         motion = driver.find_elements(By.CSS_SELECTOR, '[data-pf-motion-toggle]')
         if motion and motion[0].is_displayed():

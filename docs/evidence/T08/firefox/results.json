@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T10:47:16.061312+09:00",
+  "checked_at": "2026-11-04T11:18:51.035370+09:00",
   "browser": "firefox",
   "browser_version": "159.0",
   "base_url": "http://127.0.0.1:1313/website_proj/",
@@ -14,22 +14,8 @@
         "clippedText": [],
         "contentWidth": 1440,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 \n결국에는 \n해낼 것이다",
+        "h1": "결국에는해낼 것이다.",
         "lang": "ko",
-        "loadedFonts": [
-          {
-            "family": "ibm plex sans kr",
-            "weight": "400"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "600"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "700"
-          }
-        ],
         "width": 1440
       },
       "screenshot": "docs/evidence/T08/firefox/ko-1440.png"
@@ -37,9 +23,14 @@
     {
       "name": "ko-1440-type-hierarchy",
       "passed": true,
-      "body_size": 18,
+      "expected_body": 18,
+      "expected_heading": 48,
       "evidence": {
-        "collisions": [],
+        "contentEdges": [
+          657.3333129882812,
+          657.3333129882812,
+          657.3333129882812
+        ],
         "copy": [
           {
             "leading": 31.5,
@@ -132,17 +123,36 @@
           {
             "leading": 31.5,
             "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
           }
         ],
+        "copyTops": [
+          921.816650390625,
+          1428.0166015625,
+          2096.216552734375
+        ],
         "headingEdges": [
-          200,
-          200,
-          200
+          120,
+          120,
+          120
         ],
         "headings": [
-          36,
-          36,
-          36
+          48,
+          48,
+          48
+        ],
+        "titleBottoms": [
+          1032.2166442871094,
+          1538.4166107177734,
+          2151.4165649414062
+        ],
+        "titleTops": [
+          921.816650390625,
+          1428.0166015625,
+          2096.216552734375
         ]
       }
     },
@@ -150,11 +160,26 @@
       "name": "ko-1440-section-alignment",
       "passed": true,
       "headings": [
-        200,
-        200,
-        200
+        120,
+        120,
+        120
       ],
-      "heading_copy_collisions": []
+      "content": [
+        657.3333129882812,
+        657.3333129882812,
+        657.3333129882812
+      ],
+      "title_positions": [
+        921.816650390625,
+        1428.0166015625,
+        2096.216552734375
+      ],
+      "copy_tops": [
+        921.816650390625,
+        1428.0166015625,
+        2096.216552734375
+      ],
+      "expected_gap": 0
     },
     {
       "name": "ko-900-layout",
@@ -165,22 +190,8 @@
         "clippedText": [],
         "contentWidth": 900,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 \n결국에는 \n해낼 것이다",
+        "h1": "결국에는해낼 것이다.",
         "lang": "ko",
-        "loadedFonts": [
-          {
-            "family": "ibm plex sans kr",
-            "weight": "400"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "600"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "700"
-          }
-        ],
         "width": 900
       },
       "screenshot": "docs/evidence/T08/firefox/ko-900.png"
@@ -188,9 +199,14 @@
     {
       "name": "ko-900-type-hierarchy",
       "passed": true,
-      "body_size": 18,
+      "expected_body": 18,
+      "expected_heading": 48,
       "evidence": {
-        "collisions": [],
+        "contentEdges": [
+          420.3333129882813,
+          420.3333129882813,
+          420.3333129882813
+        ],
         "copy": [
           {
             "leading": 31.5,
@@ -283,17 +299,36 @@
           {
             "leading": 31.5,
             "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
           }
         ],
+        "copyTops": [
+          790.61669921875,
+          1401.9166259765625,
+          2101.61669921875
+        ],
         "headingEdges": [
-          88,
-          88,
-          88
+          48,
+          48,
+          48
         ],
         "headings": [
-          36,
-          36,
-          36
+          48,
+          48,
+          48
+        ],
+        "titleBottoms": [
+          901.0166931152344,
+          1512.3166198730469,
+          2156.816696166992
+        ],
+        "titleTops": [
+          790.61669921875,
+          1401.9166259765625,
+          2101.61669921875
         ]
       }
     },
@@ -301,11 +336,26 @@
       "name": "ko-900-section-alignment",
       "passed": true,
       "headings": [
-        88,
-        88,
-        88
+        48,
+        48,
+        48
       ],
-      "heading_copy_collisions": []
+      "content": [
+        420.3333129882813,
+        420.3333129882813,
+        420.3333129882813
+      ],
+      "title_positions": [
+        790.61669921875,
+        1401.9166259765625,
+        2101.61669921875
+      ],
+      "copy_tops": [
+        790.61669921875,
+        1401.9166259765625,
+        2101.61669921875
+      ],
+      "expected_gap": 0
     },
     {
       "name": "ko-768-layout",
@@ -316,22 +366,8 @@
         "clippedText": [],
         "contentWidth": 768,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 \n결국에는 \n해낼 것이다",
+        "h1": "결국에는해낼 것이다.",
         "lang": "ko",
-        "loadedFonts": [
-          {
-            "family": "ibm plex sans kr",
-            "weight": "400"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "600"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "700"
-          }
-        ],
         "width": 768
       },
       "screenshot": "docs/evidence/T08/firefox/ko-768.png"
@@ -339,9 +375,14 @@
     {
       "name": "ko-768-type-hierarchy",
       "passed": true,
-      "body_size": 16,
+      "expected_body": 16,
+      "expected_heading": 36,
       "evidence": {
-        "collisions": [],
+        "contentEdges": [
+          24,
+          24,
+          24
+        ],
         "copy": [
           {
             "leading": 28,
@@ -434,17 +475,36 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
+        "copyTops": [
+          821.683349609375,
+          1453.9833984375,
+          2107.38330078125
+        ],
         "headingEdges": [
-          48,
-          48,
-          48
+          24,
+          24,
+          24
         ],
         "headings": [
-          28,
-          28,
-          28
+          36,
+          36,
+          36
+        ],
+        "titleBottoms": [
+          789.6833038330078,
+          1421.9833526611328,
+          2075.3833923339844
+        ],
+        "titleTops": [
+          706.88330078125,
+          1339.183349609375,
+          2033.9833984375
         ]
       }
     },
@@ -452,11 +512,26 @@
       "name": "ko-768-section-alignment",
       "passed": true,
       "headings": [
-        48,
-        48,
-        48
+        24,
+        24,
+        24
       ],
-      "heading_copy_collisions": []
+      "content": [
+        24,
+        24,
+        24
+      ],
+      "title_positions": [
+        789.6833038330078,
+        1421.9833526611328,
+        2075.3833923339844
+      ],
+      "copy_tops": [
+        821.683349609375,
+        1453.9833984375,
+        2107.38330078125
+      ],
+      "expected_gap": 32
     },
     {
       "name": "ko-390-layout",
@@ -467,22 +542,8 @@
         "clippedText": [],
         "contentWidth": 390,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 \n결국에는 \n해낼 것이다",
+        "h1": "결국에는해낼 것이다.",
         "lang": "ko",
-        "loadedFonts": [
-          {
-            "family": "ibm plex sans kr",
-            "weight": "400"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "600"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "700"
-          }
-        ],
         "width": 390
       },
       "screenshot": "docs/evidence/T08/firefox/ko-390.png"
@@ -490,9 +551,14 @@
     {
       "name": "ko-390-type-hierarchy",
       "passed": true,
-      "body_size": 16,
+      "expected_body": 16,
+      "expected_heading": 36,
       "evidence": {
-        "collisions": [],
+        "contentEdges": [
+          20,
+          20,
+          20
+        ],
         "copy": [
           {
             "leading": 28,
@@ -585,17 +651,36 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
+        "copyTops": [
+          1158,
+          1818.300048828125,
+          2664.699951171875
+        ],
         "headingEdges": [
+          20,
+          20,
+          20
+        ],
+        "headings": [
           36,
           36,
           36
         ],
-        "headings": [
-          28,
-          28,
-          28
+        "titleBottoms": [
+          1125.9999542236328,
+          1786.3000030517578,
+          2632.7000427246094
+        ],
+        "titleTops": [
+          1043.199951171875,
+          1703.5,
+          2591.300048828125
         ]
       }
     },
@@ -603,11 +688,26 @@
       "name": "ko-390-section-alignment",
       "passed": true,
       "headings": [
-        36,
-        36,
-        36
+        20,
+        20,
+        20
       ],
-      "heading_copy_collisions": []
+      "content": [
+        20,
+        20,
+        20
+      ],
+      "title_positions": [
+        1125.9999542236328,
+        1786.3000030517578,
+        2632.7000427246094
+      ],
+      "copy_tops": [
+        1158,
+        1818.300048828125,
+        2664.699951171875
+      ],
+      "expected_gap": 32
     },
     {
       "name": "en-1440-layout",
@@ -618,22 +718,8 @@
         "clippedText": [],
         "contentWidth": 1440,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 \n결국에는 \n해낼 것이다",
+        "h1": "In the end,I'll get it done.",
         "lang": "en",
-        "loadedFonts": [
-          {
-            "family": "ibm plex sans kr",
-            "weight": "400"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "600"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "700"
-          }
-        ],
         "width": 1440
       },
       "screenshot": "docs/evidence/T08/firefox/en-1440.png"
@@ -641,9 +727,14 @@
     {
       "name": "en-1440-type-hierarchy",
       "passed": true,
-      "body_size": 18,
+      "expected_body": 18,
+      "expected_heading": 48,
       "evidence": {
-        "collisions": [],
+        "contentEdges": [
+          657.3333129882812,
+          657.3333129882812,
+          657.3333129882812
+        ],
         "copy": [
           {
             "leading": 31.5,
@@ -740,17 +831,36 @@
           {
             "leading": 31.5,
             "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
           }
         ],
+        "copyTops": [
+          953.316650390625,
+          1459.5166015625,
+          2127.716552734375
+        ],
         "headingEdges": [
-          200,
-          200,
-          200
+          120,
+          120,
+          120
         ],
         "headings": [
-          36,
-          36,
-          36
+          48,
+          48,
+          48
+        ],
+        "titleBottoms": [
+          1063.7166442871094,
+          1569.9166107177734,
+          2182.9165649414062
+        ],
+        "titleTops": [
+          953.316650390625,
+          1459.5166015625,
+          2127.716552734375
         ]
       }
     },
@@ -758,11 +868,26 @@
       "name": "en-1440-section-alignment",
       "passed": true,
       "headings": [
-        200,
-        200,
-        200
+        120,
+        120,
+        120
       ],
-      "heading_copy_collisions": []
+      "content": [
+        657.3333129882812,
+        657.3333129882812,
+        657.3333129882812
+      ],
+      "title_positions": [
+        953.316650390625,
+        1459.5166015625,
+        2127.716552734375
+      ],
+      "copy_tops": [
+        953.316650390625,
+        1459.5166015625,
+        2127.716552734375
+      ],
+      "expected_gap": 0
     },
     {
       "name": "en-900-layout",
@@ -773,22 +898,8 @@
         "clippedText": [],
         "contentWidth": 900,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 \n결국에는 \n해낼 것이다",
+        "h1": "In the end,I'll get it done.",
         "lang": "en",
-        "loadedFonts": [
-          {
-            "family": "ibm plex sans kr",
-            "weight": "400"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "600"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "700"
-          }
-        ],
         "width": 900
       },
       "screenshot": "docs/evidence/T08/firefox/en-900.png"
@@ -796,9 +907,14 @@
     {
       "name": "en-900-type-hierarchy",
       "passed": true,
-      "body_size": 18,
+      "expected_body": 18,
+      "expected_heading": 48,
       "evidence": {
-        "collisions": [],
+        "contentEdges": [
+          420.3333129882813,
+          420.3333129882813,
+          420.3333129882813
+        ],
         "copy": [
           {
             "leading": 31.5,
@@ -895,17 +1011,36 @@
           {
             "leading": 31.5,
             "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
           }
         ],
+        "copyTops": [
+          822.11669921875,
+          1473.0166015625,
+          2227.916748046875
+        ],
         "headingEdges": [
-          88,
-          88,
-          88
+          48,
+          48,
+          48
         ],
         "headings": [
-          36,
-          36,
-          36
+          48,
+          48,
+          48
+        ],
+        "titleBottoms": [
+          987.7166900634766,
+          1638.6166076660156,
+          2283.116744995117
+        ],
+        "titleTops": [
+          822.11669921875,
+          1473.0166015625,
+          2227.916748046875
         ]
       }
     },
@@ -913,11 +1048,26 @@
       "name": "en-900-section-alignment",
       "passed": true,
       "headings": [
-        88,
-        88,
-        88
+        48,
+        48,
+        48
       ],
-      "heading_copy_collisions": []
+      "content": [
+        420.3333129882813,
+        420.3333129882813,
+        420.3333129882813
+      ],
+      "title_positions": [
+        822.11669921875,
+        1473.0166015625,
+        2227.916748046875
+      ],
+      "copy_tops": [
+        822.11669921875,
+        1473.0166015625,
+        2227.916748046875
+      ],
+      "expected_gap": 0
     },
     {
       "name": "en-768-layout",
@@ -928,22 +1078,8 @@
         "clippedText": [],
         "contentWidth": 768,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 \n결국에는 \n해낼 것이다",
+        "h1": "In the end,I'll get it done.",
         "lang": "en",
-        "loadedFonts": [
-          {
-            "family": "ibm plex sans kr",
-            "weight": "400"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "600"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "700"
-          }
-        ],
         "width": 768
       },
       "screenshot": "docs/evidence/T08/firefox/en-768.png"
@@ -951,9 +1087,14 @@
     {
       "name": "en-768-type-hierarchy",
       "passed": true,
-      "body_size": 16,
+      "expected_body": 16,
+      "expected_heading": 36,
       "evidence": {
-        "collisions": [],
+        "contentEdges": [
+          24,
+          24,
+          24
+        ],
         "copy": [
           {
             "leading": 28,
@@ -1050,17 +1191,36 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
+        "copyTops": [
+          849.683349609375,
+          1481.9833984375,
+          2107.38330078125
+        ],
         "headingEdges": [
-          48,
-          48,
-          48
+          24,
+          24,
+          24
         ],
         "headings": [
-          28,
-          28,
-          28
+          36,
+          36,
+          36
+        ],
+        "titleBottoms": [
+          817.6833038330078,
+          1449.9833526611328,
+          2075.3833923339844
+        ],
+        "titleTops": [
+          734.88330078125,
+          1367.183349609375,
+          2033.9833984375
         ]
       }
     },
@@ -1068,11 +1228,26 @@
       "name": "en-768-section-alignment",
       "passed": true,
       "headings": [
-        48,
-        48,
-        48
+        24,
+        24,
+        24
       ],
-      "heading_copy_collisions": []
+      "content": [
+        24,
+        24,
+        24
+      ],
+      "title_positions": [
+        817.6833038330078,
+        1449.9833526611328,
+        2075.3833923339844
+      ],
+      "copy_tops": [
+        849.683349609375,
+        1481.9833984375,
+        2107.38330078125
+      ],
+      "expected_gap": 32
     },
     {
       "name": "en-390-layout",
@@ -1083,22 +1258,8 @@
         "clippedText": [],
         "contentWidth": 390,
         "fontsReady": "loaded",
-        "h1": "무엇을 하든 \n결국에는 \n해낼 것이다",
+        "h1": "In the end,I'll get it done.",
         "lang": "en",
-        "loadedFonts": [
-          {
-            "family": "ibm plex sans kr",
-            "weight": "400"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "600"
-          },
-          {
-            "family": "ibm plex sans kr",
-            "weight": "700"
-          }
-        ],
         "width": 390
       },
       "screenshot": "docs/evidence/T08/firefox/en-390.png"
@@ -1106,9 +1267,14 @@
     {
       "name": "en-390-type-hierarchy",
       "passed": true,
-      "body_size": 16,
+      "expected_body": 16,
+      "expected_heading": 36,
       "evidence": {
-        "collisions": [],
+        "contentEdges": [
+          20,
+          20,
+          20
+        ],
         "copy": [
           {
             "leading": 28,
@@ -1205,17 +1371,36 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
+        "copyTops": [
+          1177.699951171875,
+          1838,
+          2712.39990234375
+        ],
         "headingEdges": [
+          20,
+          20,
+          20
+        ],
+        "headings": [
           36,
           36,
           36
         ],
-        "headings": [
-          28,
-          28,
-          28
+        "titleBottoms": [
+          1145.7000274658203,
+          1805.9999542236328,
+          2680.3999938964844
+        ],
+        "titleTops": [
+          1062.9000244140625,
+          1723.199951171875,
+          2639
         ]
       }
     },
@@ -1223,11 +1408,26 @@
       "name": "en-390-section-alignment",
       "passed": true,
       "headings": [
-        36,
-        36,
-        36
+        20,
+        20,
+        20
       ],
-      "heading_copy_collisions": []
+      "content": [
+        20,
+        20,
+        20
+      ],
+      "title_positions": [
+        1145.7000274658203,
+        1805.9999542236328,
+        2680.3999938964844
+      ],
+      "copy_tops": [
+        1177.699951171875,
+        1838,
+        2712.39990234375
+      ],
+      "expected_gap": 32
     },
     {
       "name": "mobile-menu-opens",
@@ -1292,74 +1492,17 @@
     {
       "name": "anchor-about-visible",
       "passed": true,
-      "position": {
-        "headerBottom": 65,
-        "headingBottom": 246.8000030517578,
-        "headingTop": 200,
-        "viewportHeight": 914,
-        "visible": true
-      },
       "screenshot": "docs/evidence/T08/firefox/ko-desktop-about.png"
     },
     {
       "name": "anchor-future-visible",
       "passed": true,
-      "position": {
-        "headerBottom": 65,
-        "headingBottom": 246.8000030517578,
-        "headingTop": 200,
-        "viewportHeight": 914,
-        "visible": true
-      },
       "screenshot": "docs/evidence/T08/firefox/ko-desktop-future.png"
     },
     {
       "name": "anchor-current-visible",
       "passed": true,
-      "position": {
-        "headerBottom": 65,
-        "headingBottom": 246.8000030517578,
-        "headingTop": 200,
-        "viewportHeight": 914,
-        "visible": true
-      },
       "screenshot": "docs/evidence/T08/firefox/ko-desktop-current.png"
-    },
-    {
-      "name": "mobile-anchor-about-visible",
-      "passed": true,
-      "position": {
-        "headerBottom": 65,
-        "headingBottom": 204.3999938964844,
-        "headingTop": 168,
-        "viewportHeight": 914,
-        "visible": true
-      },
-      "screenshot": "docs/evidence/T08/firefox/ko-mobile-about.png"
-    },
-    {
-      "name": "mobile-anchor-future-visible",
-      "passed": true,
-      "position": {
-        "headerBottom": 65,
-        "headingBottom": 204.3999938964844,
-        "headingTop": 168,
-        "viewportHeight": 914,
-        "visible": true
-      },
-      "screenshot": "docs/evidence/T08/firefox/ko-mobile-future.png"
-    },
-    {
-      "name": "mobile-anchor-current-visible",
-      "passed": true,
-      "position": {
-        "headerBottom": 65,
-        "headingBottom": 204.3999938964844,
-        "headingTop": 168,
-        "viewportHeight": 914,
-        "visible": true
-      },
-      "screenshot": "docs/evidence/T08/firefox/ko-mobile-current.png"
     },
     {
       "name": "motion-control",

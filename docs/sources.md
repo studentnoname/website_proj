@@ -18,20 +18,11 @@
 - 원본 데모 인물·경력·논문·다운로드 자료: 개인 콘텐츠로 게시하지 않는다.
 - 신규 SVG 도형·스타일·번역: Claude를 이용한 구현 결과는 실제 반영 경로와 검증을 `ai/`에 기록한다. 외부 사진을 본인 활동 자료처럼 사용하지 않는다.
 
-## 이전 디자인의 메인 이미지
+## 재제작 메인 이미지
 
 - 파일: `site/static/media/resolve-hero.png` (1122 × 1402 PNG).
-- 2026-11-04 재제작에서는 사용하지 않는다. 이전 자산과 생성 기록은 Git 이력 `49e032524274d656c66aebce63e9230a8710adb0`에서 확인한다.
 - 2026-10-29, 내장 imagegen 도구의 신규 생성 모드로 제작한 장식용 추상 조형이다. 본인 활동이나 KONNECT 결과를 촬영한 이미지가 아니다.
 - 프롬프트: “Create a premium 3D abstract sculpture image for a personal developer portfolio hero, portrait 4:5 composition, high resolution. One large continuous sculptural looping ribbon that twists into an open knot, symbolizing persistence and finding a way through. Beautifully art-directed photorealistic CGI: polished liquid chrome edges, softly frosted translucent glass body, pale electric chartreuse light glowing through a few curved inner surfaces, detailed specular reflections. Asymmetric dynamic ascending loop, sophisticated gallery/product photography with a subtle tangible pedestal shadow. Center the sculpture with generous breathing room, occupying about 80% of canvas, and keep the complete silhouette inside frame. Background and ground are an almost-black charcoal green #101311, seamless dark studio with no obvious horizon, cinematic softbox lighting, bright silver highlights and restrained lime #dcff75 accents. The subject should feel physically rich, expensive and dimensional, not a generic AI brain, not wires, not a network diagram, not a flat thin-line illustration. No text, letters, numbers, logo, watermark, user interface, or border. This is a finished website raster artwork, not a website mockup.”
-
-## 2026-11-04 디자인 참고와 서체
-
-- 사용자 참고 글: https://sunny-njae.tistory.com/292 . 특정 화면을 복사하는 대신 공식 frontend-design 스킬을 읽고, 방향 수립·자체 비평·구현·실제 화면 검토 순서로 적용했다.
-- 공식 스킬: https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md . 읽은 문서의 SHA-256은 `d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3`이다. 설치된 플러그인이 자동 실행됐다고 주장하지 않으며, 공식 문서를 Claude Code에 직접 제공했다. 문서 원본은 Apache 2.0 이용 조건을 확인했다.
-- IBM Plex Sans KR: https://github.com/IBM/plex/tree/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans-kr . 공식 원본의 Regular·SemiBold·Bold WOFF2를 수정 없이 `site/assets/media/`에서 재사용한다. 세 파일의 합계는 1,251,624바이트다.
-- 서체 이용 조건은 SIL Open Font License 1.1이다. 원본 고지는 `site/assets/media/IBMPlexSansKR-OFL.txt`에 보존한다. 외부 폰트 CDN 없이 사이트와 함께 제공한다.
-- 새 시각 요소는 HTML·CSS·JavaScript로 구현한 좌우명의 흐름과 활동 과정이다. 실제 지연 시간 측정, 성능 수치, KONNECT 결과 화면을 나타내지 않는다. 다음 학습 행동이나 미제공 결과물을 새로 만들지 않는다.
 
 ## 기술 참고
 
