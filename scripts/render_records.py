@@ -36,7 +36,7 @@ def styles():
     return {
         'title': ParagraphStyle('title', fontName='KoreanBold', fontSize=23, leading=33, textColor=INK, spaceAfter=12),
         'heading': ParagraphStyle('heading', fontName='KoreanBold', fontSize=14, leading=21, textColor=TEAL, spaceBefore=14, spaceAfter=8, keepWithNext=True),
-        'body': ParagraphStyle('body', fontName='Korean', fontSize=10, leading=16, textColor=INK, spaceAfter=6, wordWrap='CJK'),
+        'body': ParagraphStyle('body', fontName='Korean', fontSize=10, leading=15.5, textColor=INK, spaceAfter=5, wordWrap='CJK'),
         'small': ParagraphStyle('small', fontName='Korean', fontSize=8, leading=13, textColor=INK, spaceAfter=5, wordWrap='CJK'),
     }
 
@@ -116,12 +116,20 @@ def submission(release_path, identity_path):
               'VALID_COUNT': str(release['valid_count']), 'WRITTEN_AT': release['collected_at']}
     capture = ROOT / 'submission/screens/results.json'
     tokens['SCREEN_TIME'] = json.loads(capture.read_text(encoding='utf-8'))['checked_at'] if capture.is_file() else '미캡처'
+
+    def fill(text):
+        for key, value in tokens.items():
+            text = text.replace('{' + key + '}', value)
+        return text
+
     for section in sections:
         blocks.append(Paragraph(section['title'], sheet['heading']))
+        for paragraph in section['paragraphs']:
+            blocks.append(Paragraph(markup(fill(paragraph)), sheet['body']))
         if section.get('table'):
-            cell_style = ParagraphStyle('table-cell', parent=sheet['body'], fontSize=9, leading=14, spaceAfter=0)
+            cell_style = ParagraphStyle('table-cell', parent=sheet['body'], spaceAfter=0)
             cells = [section['table']['headers'], *section['table']['rows']]
-            rows = [[Paragraph(markup(str(cell)), cell_style) for cell in row] for row in cells]
+            rows = [[Paragraph(markup(fill(str(cell))), cell_style) for cell in row] for row in cells]
             table = Table(rows, colWidths=[20*mm, 38*mm, 48*mm, 64*mm], repeatRows=1, hAlign='LEFT')
             table.setStyle(TableStyle([
                 ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e2efeb')),
@@ -135,10 +143,6 @@ def submission(release_path, identity_path):
                 ('BOTTOMPADDING', (0, 0), (-1, -1), 7),
             ]))
             blocks.extend([table, Spacer(1, 4*mm)])
-        for paragraph in section['paragraphs']:
-            for key, value in tokens.items():
-                paragraph = paragraph.replace('{' + key + '}', value)
-            blocks.append(Paragraph(markup(paragraph), sheet['body']))
         for relative, caption in section.get('image', []):
             for key, value in tokens.items():
                 caption = caption.replace('{' + key + '}', value)
