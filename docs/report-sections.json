@@ -52,6 +52,7 @@
     "paragraphs": [
       "시작 기준 SHA: 42f92735f3729f9aa0d63d637fa45f6d2dd25629. 공식 ZIP과 준비 결과의 단순 등록이므로 제외한다. 끝 기준은 1절의 최종 main 전체 SHA다.",
       "전체 후보 {CANDIDATES}개 − 제외 {EXCLUDED}개 = 유효 {VALID_COUNT}개. 후보마다 실제 변경 파일과 제외 사유를 scripts/collect_release.py로 수집하고 source·문서·검증 내용과 대조했다. 원본 등록, 빈 변경, 자체 변경 없는 병합, PDF만의 자동 생성은 제외한다.",
+      "실제 제외 목록(전체 SHA와 이유): {EXCLUDED_DETAILS}",
       "전체 이력: https://github.com/studentnoname/website_proj/commits/main/ . 상세 SHA·메시지·변경 파일·포함 여부·제외 이유는 로컬 제출 폴더의 release.json에도 함께 보존했다. 최종 본문에 적은 개수는 이 내보내기의 값이다.",
       "초기 설정 대표: https://github.com/studentnoname/website_proj/commit/65a2d54 — Windows 세션 도구 경로와 실제 빌드 진입점.",
       "콘텐츠 대표: https://github.com/studentnoname/website_proj/commit/8919f2b — 확인된 한국어 소개와 KONNECT 활동.",

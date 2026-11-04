@@ -114,6 +114,16 @@ def submission(release_path, identity_path):
               'ACTIONS_URL': release['actions_url'], 'ACTIONS_STATUS': release['actions_status'],
               'CANDIDATES': str(release['candidate_count']), 'EXCLUDED': str(release['excluded_count']),
               'VALID_COUNT': str(release['valid_count']), 'WRITTEN_AT': release['collected_at']}
+    excluded_commits = [entry for entry in release['commits'] if not entry['included']]
+    reasons = {
+        'Official ZIP and generated baseline registration; not original project work.': '공식 원본 ZIP과 준비 결과의 단순 등록',
+        'Generated PDF artifacts only; source document work is counted separately.': 'TASK PDF만 자동 생성한 커밋; 원문 작성 이력과 중복하여 세지 않음',
+        'Merge commit; source commits are counted separately.': '병합 커밋; 원래 작업 커밋을 별도로 집계',
+        'Empty change.': '실제 변경 없음',
+    }
+    tokens['EXCLUDED_DETAILS'] = '; '.join(
+        entry['sha'] + ': ' + reasons.get(entry['exclusion_reason'], entry['exclusion_reason'])
+        for entry in excluded_commits) if excluded_commits else '없음(0개)'
     capture = ROOT / 'submission/screens/results.json'
     tokens['SCREEN_TIME'] = json.loads(capture.read_text(encoding='utf-8'))['checked_at'] if capture.is_file() else '미캡처'
 
