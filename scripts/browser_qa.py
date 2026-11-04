@@ -76,11 +76,12 @@ def main():
         driver.get(base)
         driver.execute_script("localStorage.removeItem('pf-panel-motion')")
         driver.refresh()
-        wait.until(lambda browser: browser.execute_script('return document.getAnimations().length>=3'))
-        entrance = driver.execute_script('''return document.getAnimations().map(a=>({
+        wait.until(lambda browser: browser.execute_script("return document.getAnimations().filter(a=>a.startTime!==null && a.effect.target.closest('#intro')).length>=3"))
+        entrance = driver.execute_script('''return document.getAnimations().filter(a=>a.effect.target.closest('#intro')).map(a=>({
           start:a.startTime,delay:a.effect.getTiming().delay,duration:a.effect.getTiming().duration,
           opacity:getComputedStyle(a.effect.target).opacity}));''')
         starts = [row['start'] + row['delay'] for row in entrance if row['start'] is not None]
+        driver.execute_async_script('const done=arguments[0];setTimeout(done,200)')
         record('initial-staggered-entrance', len(starts) >= 3 and max(starts)-min(starts) >= 60,
                animations=entrance, screenshot=screen('text-entrance'))
         wait.until(lambda browser: browser.execute_script(
@@ -241,7 +242,11 @@ def main():
             if control.get_attribute('aria-pressed') != 'true':
                 control.click()
             for previous, incoming in [('intro','about'),('about','future'),('future','current')]:
-                top = driver.execute_script("const e=document.getElementById(arguments[0]);return e.getBoundingClientRect().top+scrollY-innerHeight*.65", incoming)
+                hold = driver.execute_script('''const old=document.getElementById(arguments[0]).querySelector('[data-pf-panel]');
+                  const h=old.getBoundingClientRect().height,hh=document.querySelector('.site-header').getBoundingClientRect().height;
+                  return {bottom:Math.min(innerHeight,hh+h),header:hh,panelHeight:h};''',previous)
+                target_top = hold['header'] + (hold['bottom']-hold['header'])*.68
+                top = driver.execute_script("const e=document.getElementById(arguments[0]);return e.getBoundingClientRect().top+scrollY-arguments[1]", incoming,target_top)
                 driver.execute_script('scrollTo(0,arguments[0])', top)
                 settled()
                 a = panel_sample(previous, incoming)
@@ -250,9 +255,9 @@ def main():
                 b = panel_sample(previous, incoming)
                 record(f'panel-{width}-{incoming}-covers-previous',
                        abs(a['oldTop']-b['oldTop']) < 2 and a['newTop']-b['newTop'] > 100 and
-                       abs(b['oldBottom']-b['height']) < 3 and b['oldOwner']==previous and
+                       abs(b['oldBottom']-hold['bottom']) < 3 and b['oldOwner']==previous and
                        b['newOwner']==incoming and b['clip']!='none' and a['curves']!=b['curves'],
-                       first=a,second=b,screenshot=screen(f'panel-{width}-{incoming}'))
+                       first=a,second=b,expected_hold=hold,screenshot=screen(f'panel-{width}-{incoming}'))
             driver.execute_script('''if(!window.__panelOriginalRAF){window.__panelOriginalRAF=window.requestAnimationFrame;
               window.requestAnimationFrame=callback=>{window.__panelRAFRequests++;return window.__panelOriginalRAF(callback)};}
               window.__panelRAFRequests=0;''')

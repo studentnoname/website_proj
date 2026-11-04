@@ -1,5 +1,15 @@
 # Claude 프론트 구현 요청 원문
 
+## 2026-11-04 사용자 설명을 반영한 최종 요청 발췌
+
+```text
+This must be a real SCREEN-OVER-SCREEN liquid transition and staggered TEXT ENTRANCE, not decorative wave separators or a redesign.
+While scrolling DOWN, the current panel eventually holds in place and the NEXT COMPLETE PANEL slides up on top of it, covering the previous panel.
+Sections are often TALLER than the viewport, especially mobile: all content must scroll/read before a panel holds and the next covers.
+No viewport-height clipping, forced scroll snapping, huge transform-based fake-scroll world or wheel/touch hijack.
+Keyboard focus must immediately reveal focused controls/content. Deep-link destinations must be immediately readable, without hidden targets waiting for an animation.
+```
+
 ## 2026-11-04 스크롤 물결 요청 발췌
 
 ```text
