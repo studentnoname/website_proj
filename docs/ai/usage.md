@@ -37,6 +37,12 @@
 - 2026-11-04 KST, Claude Code 2.1.287, claude-opus-5-5. 사용자 원문 “똑같아”. Codex가 효과 on 상태의 루트·#intro 첫 진입을 비교해 애니메이션 7개·0개를 확인했다(I014). 사용자 주소는 아직 미확인이다.
 - 실제 CLI 입력: “Treat initial #intro as first-screen entrance” / “Add explicit preview URL support ?motion=on”. 기존 JS만 수정하도록 제한했다. Claude는 수정 내용을 설명하고 미검사임을 밝혔다. Codex가 build와 정적 검사, 두 언어 진입·새로고침·선택 유지 검사를 수행했다. 실제 결과는 progressive/results.json에 보존한다. 새 framework·폴더·콘텐츠는 추가하지 않았다.
 
+## 사례 H — 투명도와 유동적인 추종 움직임
+
+- 사용자 실제 확인: “화면 효과 켜니까 잘 보이네 다만 불투명도와 애니메이션의 자연스러움을 추가해서 물처럼 흐르는 것으로 만들어줘”. 2026-11-04 KST, Claude Code 2.1.287, claude-opus-5-5.
+- 실제 CLI 입력 발췌: “Incoming COMPLETE panel briefly translucent” / “Add restrained, finite liquid FOLLOW-THROUGH on actual incoming panel position + curve after native scroll.” 기존 CSS·JS만 편집하도록 제한했다. Claude는 0.88→1의 전체 패널 불투명도, 넓은 한 곡선, 짧게 따라오다 가라앉는 이동, 최대 320ms 후 정지, 900ms 첫 글 등장을 구현하고 미검사라고 밝혔다.
+- Codex는 기존 겹침·메뉴·모션 제어 검사에 PC·모바일의 실제 불투명도와 아래/위 방향의 잔여 이동·정지를 추가했다. 사용자가 기본 효과의 작동을 확인한 것과 이번 부드러움에 대한 만족 여부는 구분한다. 본문·활동·다음 행동은 수정하지 않는다.
+
 ## 사례 B — HugoBlox 프론트 구현
 
 - 도구: Claude Code 2.1.287, 실제 응답의 modelUsage: claude-opus-5-5.

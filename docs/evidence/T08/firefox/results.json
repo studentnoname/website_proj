@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-11-04T18:20:12.941952+09:00",
+  "checked_at": "2026-11-04T18:28:59.300587+09:00",
   "browser": "firefox",
   "browser_version": "159.0",
   "base_url": "http://127.0.0.1:1313/website_proj/",
-  "passed": true,
+  "passed": false,
   "results": [
     {
       "name": "initial-staggered-entrance",
@@ -11,45 +11,45 @@
       "animations": [
         {
           "delay": 80,
-          "duration": 850,
-          "opacity": "0.92967",
-          "start": 176.8
+          "duration": 900,
+          "opacity": "0.903062",
+          "start": 521.7
         },
         {
           "delay": 200,
-          "duration": 850,
-          "opacity": "0.850117",
-          "start": 176.8
+          "duration": 900,
+          "opacity": "0.803141",
+          "start": 521.7
         },
         {
           "delay": 320,
-          "duration": 850,
-          "opacity": "0.694983",
-          "start": 176.8
+          "duration": 900,
+          "opacity": "0.582865",
+          "start": 521.7
         },
         {
           "delay": 440,
-          "duration": 850,
-          "opacity": "0.380936",
-          "start": 176.8
+          "duration": 900,
+          "opacity": "0.119685",
+          "start": 521.7
         },
         {
           "delay": 560,
-          "duration": 850,
+          "duration": 900,
           "opacity": "0",
-          "start": 176.8
+          "start": 521.7
         },
         {
           "delay": 680,
-          "duration": 850,
+          "duration": 900,
           "opacity": "0",
-          "start": 176.8
+          "start": 521.7
         },
         {
           "delay": 800,
-          "duration": 850,
+          "duration": 900,
           "opacity": "0",
-          "start": 176.8
+          "start": 521.7
         }
       ],
       "screenshot": "docs/evidence/T08/firefox/text-entrance.png"
@@ -1568,23 +1568,25 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-about\")",
-        "curves": "M0 0.08326C.18 0.07366 .34 0.02946 .5 0.01499S.82 0.04704 1 0.04704V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
+        "curves": "M0 0.10756C0.21204 0.10756 0.25916 0 0.47120 0S0.76204 0.08758 1 0.08758V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "about",
         "newTop": 558.2166748046875,
         "oldBottom": 790.316650390625,
         "oldOwner": "intro",
-        "oldTop": 65
+        "oldTop": 65,
+        "opacity": 0.927
       },
       "second": {
         "clip": "url(\"#pf-clip-about\")",
-        "curves": "M0 0.06683C.18 0.04265 .34 0.00894 .5 0.00790S.82 0.05187 1 0.05187V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "about",
         "newTop": 408.2166748046875,
         "oldBottom": 790.316650390625,
         "oldOwner": "intro",
-        "oldTop": 65
+        "oldTop": 65,
+        "opacity": 0.974
       },
       "expected_hold": {
         "bottom": 790.316650390625,
@@ -1598,23 +1600,25 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.06683C.18 0.04265 .34 0.00894 .5 0.00790S.82 0.05187 1 0.05187V1H0Z|M0 0.06285C.18 0.05561 .34 0.02224 .5 0.01132S.82 0.03551 1 0.03551V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.08120C0.21204 0.08120 0.25916 0 0.47120 0S0.76204 0.06612 1 0.06612V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 408.5333251953125,
         "oldBottom": 570.2000122070312,
         "oldOwner": "about",
-        "oldTop": 65
+        "oldTop": 65,
+        "opacity": 0.927
       },
       "second": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.06683C.18 0.04265 .34 0.00894 .5 0.00790S.82 0.05187 1 0.05187V1H0Z|M0 0.04129C.18 0.02244 .34 0.00292 .5 0.00520S.82 0.03628 1 0.03628V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.05342C0.23342 0.05342 0.28529 0 0.51871 0S0.78342 0.04151 1 0.04151V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 258.5333251953125,
         "oldBottom": 570.2000122070312,
         "oldOwner": "about",
-        "oldTop": 65
+        "oldTop": 65,
+        "opacity": 0.99
       },
       "expected_hold": {
         "bottom": 570.2000122070312,
@@ -1628,23 +1632,25 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.06683C.18 0.04265 .34 0.00894 .5 0.00790S.82 0.05187 1 0.05187V1H0Z|M0 0.04129C.18 0.02244 .34 0.00292 .5 0.00520S.82 0.03628 1 0.03628V1H0Z|M0 0.04211C.18 0.03726 .34 0.01490 .5 0.00758S.82 0.02379 1 0.02379V1H0Z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.05342C0.23342 0.05342 0.28529 0 0.51871 0S0.78342 0.04151 1 0.04151V1H0Z|M0 0.05440C0.21204 0.05440 0.25916 0 0.47120 0S0.76204 0.04430 1 0.04430V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 520.0499877929688,
         "oldBottom": 734.2000122070312,
         "oldOwner": "future",
-        "oldTop": 65
+        "oldTop": 65,
+        "opacity": 0.927
       },
       "second": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.06683C.18 0.04265 .34 0.00894 .5 0.00790S.82 0.05187 1 0.05187V1H0Z|M0 0.04129C.18 0.02244 .34 0.00292 .5 0.00520S.82 0.03628 1 0.03628V1H0Z|M0 0.03271C.18 0.02027 .34 0.00393 .5 0.00386S.82 0.02601 1 0.02601V1H0Z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.05342C0.23342 0.05342 0.28529 0 0.51871 0S0.78342 0.04151 1 0.04151V1H0Z|M0 0.04198C0.22818 0.04198 0.27889 0 0.50707 0S0.77818 0.03165 1 0.03165V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 370.0499877929687,
         "oldBottom": 734.2000122070312,
         "oldOwner": "future",
-        "oldTop": 65
+        "oldTop": 65,
+        "opacity": 0.978
       },
       "expected_hold": {
         "bottom": 734.2000122070312,
@@ -1652,6 +1658,79 @@
         "panelHeight": 669.2000122070312
       },
       "screenshot": "docs/evidence/T08/firefox/panel-1440-current.png"
+    },
+    {
+      "name": "liquid-1440-translucent-cover",
+      "passed": true,
+      "opacity": 0.946
+    },
+    {
+      "name": "liquid-1440-down-settles",
+      "passed": false,
+      "samples": [
+        {
+          "drift": 0,
+          "flow": "idle",
+          "ms": 0,
+          "opacity": 0.946,
+          "top": 440.183349609375
+        },
+        {
+          "drift": 11.329999923706056,
+          "flow": "settling",
+          "ms": 80,
+          "opacity": 0.965,
+          "top": 451.51666259765625
+        },
+        {
+          "drift": 2.109999895095825,
+          "flow": "settling",
+          "ms": 180,
+          "opacity": 0.965,
+          "top": 442.2999877929687
+        },
+        {
+          "drift": 0,
+          "flow": "idle",
+          "ms": 400,
+          "opacity": 0.965,
+          "top": 440.183349609375
+        }
+      ]
+    },
+    {
+      "name": "liquid-1440-up-settles",
+      "passed": false,
+      "samples": [
+        {
+          "drift": 0,
+          "flow": "idle",
+          "ms": 0,
+          "opacity": 0.965,
+          "top": 500.183349609375
+        },
+        {
+          "drift": -9.59000015258789,
+          "flow": "settling",
+          "ms": 80,
+          "opacity": 0.946,
+          "top": 490.6000061035156
+        },
+        {
+          "drift": -1.7799999713897705,
+          "flow": "settling",
+          "ms": 180,
+          "opacity": 0.946,
+          "top": 498.3999938964844
+        },
+        {
+          "drift": 0,
+          "flow": "idle",
+          "ms": 400,
+          "opacity": 0.946,
+          "top": 500.183349609375
+        }
+      ]
     },
     {
       "name": "panel-1440-idle-stops",
@@ -1663,23 +1742,25 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-about\")",
-        "curves": "M0 0.03573C.18 0.03161 .34 0.01264 .5 0.00643S.82 0.02018 1 0.02018V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
+        "curves": "M0 0.04636C0.21204 0.04636 0.25916 0 0.47120 0S0.76204 0.03775 1 0.03775V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "about",
         "newTop": 642.316650390625,
         "oldBottom": 914.0000152587892,
         "oldOwner": "intro",
-        "oldTop": -24.699996948242188
+        "oldTop": -24.699996948242188,
+        "opacity": 0.927
       },
       "second": {
         "clip": "url(\"#pf-clip-about\")",
-        "curves": "M0 0.03018C.18 0.02026 .34 0.00480 .5 0.00363S.82 0.02245 1 0.02245V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "about",
         "newTop": 492.316650390625,
         "oldBottom": 914.0000152587892,
         "oldOwner": "intro",
-        "oldTop": -24.699996948242188
+        "oldTop": -24.699996948242188,
+        "opacity": 0.968
       },
       "expected_hold": {
         "bottom": 914,
@@ -1693,23 +1774,25 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.03018C.18 0.02026 .34 0.00480 .5 0.00363S.82 0.02245 1 0.02245V1H0Z|M0 0.02650C.18 0.02345 .34 0.00938 .5 0.00477S.82 0.01497 1 0.01497V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.03439C0.21204 0.03439 0.25916 0 0.47120 0S0.76204 0.02800 1 0.02800V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 513.316650390625,
         "oldBottom": 724.2999877929688,
         "oldOwner": "about",
-        "oldTop": 65
+        "oldTop": 65,
+        "opacity": 0.927
       },
       "second": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.03018C.18 0.02026 .34 0.00480 .5 0.00363S.82 0.02245 1 0.02245V1H0Z|M0 0.02045C.18 0.01259 .34 0.00241 .5 0.00242S.82 0.01634 1 0.01634V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02637C0.22842 0.02637 0.27918 0 0.50760 0S0.77842 0.01989 1 0.01989V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 363.316650390625,
         "oldBottom": 724.2999877929688,
         "oldOwner": "about",
-        "oldTop": 65
+        "oldTop": 65,
+        "opacity": 0.978
       },
       "expected_hold": {
         "bottom": 724.2999877929688,
@@ -1723,23 +1806,25 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.03018C.18 0.02026 .34 0.00480 .5 0.00363S.82 0.02245 1 0.02245V1H0Z|M0 0.02045C.18 0.01259 .34 0.00241 .5 0.00242S.82 0.01634 1 0.01634V1H0Z|M0 0.01552C.18 0.01373 .34 0.00549 .5 0.00280S.82 0.00877 1 0.00877V1H0Z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02637C0.22842 0.02637 0.27918 0 0.50760 0S0.77842 0.01989 1 0.01989V1H0Z|M0 0.02014C0.21204 0.02014 0.25916 0 0.47120 0S0.76204 0.01640 1 0.01640V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 642.316650390625,
         "oldBottom": 913.9999847412108,
         "oldOwner": "future",
-        "oldTop": 25.199996948242188
+        "oldTop": 25.199996948242188,
+        "opacity": 0.927
       },
       "second": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.03018C.18 0.02026 .34 0.00480 .5 0.00363S.82 0.02245 1 0.02245V1H0Z|M0 0.02045C.18 0.01259 .34 0.00241 .5 0.00242S.82 0.01634 1 0.01634V1H0Z|M0 0.01311C.18 0.00880 .34 0.00209 .5 0.00158S.82 0.00975 1 0.00975V1H0Z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02637C0.22842 0.02637 0.27918 0 0.50760 0S0.77842 0.01989 1 0.01989V1H0Z|M0 0.01824C0.22060 0.01824 0.26962 0 0.49021 0S0.77060 0.01382 1 0.01382V1H0Z",
         "height": 914,
         "newOwner": "current",
-        "newTop": 492.316650390625,
+        "newTop": 506.316650390625,
         "oldBottom": 913.9999847412108,
         "oldOwner": "future",
-        "oldTop": 25.199996948242188
+        "oldTop": 25.199996948242188,
+        "opacity": 0.968
       },
       "expected_hold": {
         "bottom": 914,
@@ -1747,6 +1832,79 @@
         "panelHeight": 888.7999877929688
       },
       "screenshot": "docs/evidence/T08/firefox/panel-390-current.png"
+    },
+    {
+      "name": "liquid-390-translucent-cover",
+      "passed": true,
+      "opacity": 0.946
+    },
+    {
+      "name": "liquid-390-down-settles",
+      "passed": false,
+      "samples": [
+        {
+          "drift": 0,
+          "flow": "idle",
+          "ms": 0,
+          "opacity": 0.946,
+          "top": 514.4000244140625
+        },
+        {
+          "drift": 11.329999923706056,
+          "flow": "settling",
+          "ms": 80,
+          "opacity": 0.962,
+          "top": 525.7333374023438
+        },
+        {
+          "drift": 2.140000104904175,
+          "flow": "settling",
+          "ms": 180,
+          "opacity": 0.962,
+          "top": 516.5333251953125
+        },
+        {
+          "drift": 0,
+          "flow": "idle",
+          "ms": 400,
+          "opacity": 0.962,
+          "top": 514.4000244140625
+        }
+      ]
+    },
+    {
+      "name": "liquid-390-up-settles",
+      "passed": false,
+      "samples": [
+        {
+          "drift": 0,
+          "flow": "idle",
+          "ms": 0,
+          "opacity": 0.962,
+          "top": 574.4000244140625
+        },
+        {
+          "drift": -9.59000015258789,
+          "flow": "settling",
+          "ms": 80,
+          "opacity": 0.946,
+          "top": 564.816650390625
+        },
+        {
+          "drift": -1.809999942779541,
+          "flow": "settling",
+          "ms": 180,
+          "opacity": 0.946,
+          "top": 572.5833129882812
+        },
+        {
+          "drift": 0,
+          "flow": "idle",
+          "ms": 400,
+          "opacity": 0.946,
+          "top": 574.4000244140625
+        }
+      ]
     },
     {
       "name": "panel-390-idle-stops",

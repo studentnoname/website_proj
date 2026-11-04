@@ -778,6 +778,12 @@ h1 .accent { color: var(--lime); }
   position: sticky;
   top: min(var(--pf-hh), var(--pf-vh) - var(--pf-h));
 }
+/* only the incoming panel mid-cover: brief translucency and a small liquid follow-through, both reset at rest */
+[data-pf-motion="on"] [data-pf-ready] > [data-pf-panel][data-state="active"] {
+  opacity: var(--pf-opacity, 1);
+  transform: translate3d(0, var(--pf-drift, 0px), 0);
+  will-change: transform, opacity;
+}
 /* the older panel dims slightly as the next one covers it */
 [data-pf-motion="on"] [data-pf-ready] > [data-pf-panel]::after {
   content: "";

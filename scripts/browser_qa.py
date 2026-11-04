@@ -223,6 +223,8 @@ def main():
         def settled():
             wait.until(lambda browser: browser.execute_script(
                 "return document.getAnimations().every(a=>a.playState!=='running')"))
+            wait.until(lambda browser: browser.execute_script(
+                "return document.documentElement.dataset.pfFlow!=='settling'"))
             driver.execute_async_script('const done=arguments[0];requestAnimationFrame(()=>requestAnimationFrame(done))')
 
         def panel_sample(previous, incoming):
@@ -232,7 +234,7 @@ def main():
               const owner=y=>document.elementFromPoint(innerWidth*.6,y)?.closest('[data-pf-panel-track]')?.id;
               return {oldTop:ar.top,oldBottom:ar.bottom,newTop:br.top,height:innerHeight,
                 oldOwner:owner(br.top-35),newOwner:owner(br.top+100),
-                clip:getComputedStyle(b).clipPath,
+                clip:getComputedStyle(b).clipPath,opacity:parseFloat(getComputedStyle(b).opacity),
                 curves:[...document.querySelectorAll('clipPath path')].map(p=>p.getAttribute('d')).join('|')};''', previous, incoming)
 
         for width in (1440, 390):
@@ -258,6 +260,25 @@ def main():
                        abs(b['oldBottom']-hold['bottom']) < 3 and b['oldOwner']==previous and
                        b['newOwner']==incoming and b['clip']!='none' and a['curves']!=b['curves'],
                        first=a,second=b,expected_hold=hold,screenshot=screen(f'panel-{width}-{incoming}'))
+            # Observe a finite trailing movement after one native scroll step, in both directions.
+            driver.execute_script('''const t=document.getElementById('about'),
+              h=document.querySelector('.site-header').getBoundingClientRect().height,
+              old=document.querySelector('#intro [data-pf-panel]').getBoundingClientRect().height;
+              scrollTo(0,t.getBoundingClientRect().top+scrollY-h-Math.min(old,innerHeight-h)*.6);''')
+            settled()
+            opacity = driver.execute_script("return parseFloat(getComputedStyle(document.querySelector('#about [data-pf-panel]')).opacity)")
+            record(f'liquid-{width}-translucent-cover', .84 < opacity < .999, opacity=opacity)
+            for direction, delta in [('down',60),('up',-60)]:
+                samples = driver.execute_async_script('''const delta=arguments[0],done=arguments[1],rows=[];
+                  const panel=document.querySelector('#about [data-pf-panel]');
+                  const read=t=>{const s=getComputedStyle(panel),m=s.transform==='none'?null:new DOMMatrixReadOnly(s.transform);
+                    rows.push({ms:t,top:panel.getBoundingClientRect().top,drift:m?m.m42:0,opacity:parseFloat(s.opacity),flow:document.documentElement.dataset.pfFlow});};
+                  scrollBy(0,delta);
+                  requestAnimationFrame(()=>{read(0);setTimeout(()=>read(80),80);setTimeout(()=>read(180),180);setTimeout(()=>{read(400);done(rows)},400)});''',delta)
+                first, last = samples[0], samples[-1]
+                trail = any(abs(x['drift']) > 1 for x in samples[:-1])
+                approached = first['top']-last['top'] > 1 if delta>0 else last['top']-first['top'] > 1
+                record(f'liquid-{width}-{direction}-settles', trail and approached and abs(last['drift'])<.3 and last['flow']=='idle',samples=samples)
             driver.execute_script('''if(!window.__panelOriginalRAF){window.__panelOriginalRAF=window.requestAnimationFrame;
               window.requestAnimationFrame=callback=>{window.__panelRAFRequests++;return window.__panelOriginalRAF(callback)};}
               window.__panelRAFRequests=0;''')

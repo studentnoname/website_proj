@@ -88,7 +88,7 @@
     if (prev) prev.cancel();
     const a = el.animate(
       [{ opacity: 0, transform: `translateY(${dist}px)` }, { opacity: 1, transform: 'none' }],
-      { duration, delay, easing: 'cubic-bezier(.2, .65, .25, 1)', fill: 'backwards' }
+      { duration, delay, easing: 'cubic-bezier(.18, .72, .2, 1)', fill: 'backwards' }
     );
     const done = () => { if (anims.get(el) === a) anims.delete(el); };
     a.addEventListener('finish', done);
@@ -100,8 +100,17 @@
     if (scope.contains(el) || el.contains(scope)) a.finish();
   });
 
+  // Liquid follow-through state: `sy` trails scrollY briefly after native scrolling. A snap makes the next
+  // renders use the actual scroll so jumps (anchors, focus, resize, restore) never replay a fake scroll.
+  let sy = null;
+  let snapUntil = 0;
+  let moved = 0;
+  let tPrev = 0;
+  function snap() { sy = null; snapUntil = performance.now() + 150; }
+
   // Deep-link and in-page jump destinations are shown at once, never left waiting on an entrance.
   const reach = el => {
+    snap();
     const scope = el.closest('[data-pf-section]') || el;
     if (scope.matches('[data-pf-reveal]')) seen.add(scope);
     scope.querySelectorAll('[data-pf-reveal]').forEach(b => seen.add(b));
@@ -149,29 +158,46 @@
   const clamp = v => Math.min(1, Math.max(0, v));
   const headerHeight = () => (header ? header.getBoundingClientRect().height : 0);
 
-  // Broad leading edge in objectBoundingBox units; every point stays within `a` of the panel top.
+  // Single broad liquid swell in objectBoundingBox units: the crest leads at the top, the sides trail by up to `a`.
   const edge = (a, p) => {
-    const ph = p * 2.4;
-    const w = k => a * (0.5 + 0.5 * Math.sin(ph + k));
-    const y0 = w(0.4), y1 = w(1.6), y2 = w(2.7), y3 = w(4.1), y4 = w(5.6);
+    const s = Math.sin(p * Math.PI);
+    const cx = 0.42 + 0.16 * p;
+    const yl = a * (0.8 + 0.2 * s), yr = a * (1 - 0.25 * s);
     const f = v => v.toFixed(5);
-    return `M0 ${f(y0)}C.18 ${f(y1)} .34 ${f(y2)} .5 ${f((y2 + y3) / 2)}S.82 ${f(y4)} 1 ${f(y4)}V1H0Z`;
+    return `M0 ${f(yl)}C${f(cx * 0.45)} ${f(yl)} ${f(cx * 0.55)} 0 ${f(cx)} 0` +
+      `S${f(1 - (1 - cx) * 0.45)} ${f(yr)} 1 ${f(yr)}V1H0Z`;
   };
 
-  const resetShown = () => { shown = panels.map(() => ({ p: -1, clip: false, under: -1 })); };
+  const resetShown = () => {
+    shown = panels.map(() => ({ p: -1, clip: false, under: -1, drift: 0, op: 1 }));
+  };
+  const setFlow = v => { if (root.dataset.pfFlow !== v) root.dataset.pfFlow = v; };
+
+  // Cover progress of each incoming panel at scroll `y`: 0 when the previous one starts holding, 1 when it is fully covered.
+  const progressAt = y => layout.tops.map((top, j) => {
+    if (!j) return 1;
+    const v = layout.overs[j - 1];
+    return v > 0 ? clamp((layout.hh + v - (top - y)) / v) : 1;
+  });
 
   function render() {
     sraf = 0;
     if (!layout) return;
-    const { hh, hs, tops, overs, amp } = layout;
+    const { hh, hs, tops, overs, amp, lag } = layout;
     const y = scrollY;
+    const now = performance.now();
+    const dt = Math.min(34, Math.max(0, now - tPrev));
+    tPrev = now;
 
-    // Cover progress of each incoming panel: 0 when the previous one starts holding, 1 when it is fully covered.
-    const prog = tops.map((top, j) => {
-      if (!j) return 1;
-      const v = overs[j - 1];
-      return v > 0 ? clamp((hh + v - (top - y)) / v) : 1;
-    });
+    // Actual progress drives state, opacity and the held panel; only drift and curve read the trailing value.
+    const prog = progressAt(y);
+    const live = prog.some(p => p > 0 && p < 1);
+    if (sy === null || now < snapUntil || document.hidden || !motion) sy = y;
+    else sy += (y - sy) * (1 - Math.exp(-dt / 60));
+    if (!live || now - moved > 320 || Math.abs(y - sy) < 0.25) sy = y;
+    const settling = sy !== y;
+    const lagPx = Math.max(-lag, Math.min(lag, y - sy));
+    const trail = settling ? progressAt(sy) : prog;
 
     if (!resized) {
       let i = 0;
@@ -188,11 +214,27 @@
         panel.dataset.state = active ? 'active' : 'idle';
         s.p = p;
       }
+      // Follow-through lag, tapered to exactly 0 at both ends so a held or idle panel never moves.
+      const drift = active ? Math.round(lagPx * clamp(p / 0.08) * clamp((1 - p) / 0.2) * 100) / 100 : 0;
+      if (drift !== s.drift) {
+        if (drift) panel.style.setProperty('--pf-drift', drift + 'px');
+        else panel.style.removeProperty('--pf-drift');
+        s.drift = drift;
+      }
+      // Briefly translucent while covering, fully opaque by 75% cover.
+      const e = clamp(p / 0.75);
+      const op = active ? Math.round((0.88 + 0.12 * e * e * (3 - 2 * e)) * 1000) / 1000 : 1;
+      if (op !== s.op) {
+        if (op < 1) panel.style.setProperty('--pf-opacity', String(op));
+        else panel.style.removeProperty('--pf-opacity');
+        s.op = op;
+      }
       const clip = active && !!paths[j];
       if (clip) {
-        // Never deeper than the overlap so far, so the dip always shows the older panel beneath.
-        const a = Math.min(amp * Math.sin((1 - p) * Math.PI / 2), p * overs[j - 1]);
-        paths[j].setAttribute('d', edge(a / hs[j], p));
+        // Never deeper than the visible overlap, so the dip always shows the older panel beneath.
+        const t = trail[j];
+        const a = Math.min(amp * Math.sin((1 - t) * Math.PI / 2), Math.max(0, p * overs[j - 1] - drift));
+        paths[j].setAttribute('d', edge(a / hs[j], t));
       }
       if (clip !== s.clip) {
         panel.style.clipPath = clip ? `url(#${clips[j].id})` : '';
@@ -204,10 +246,17 @@
         s.under = under;
       }
     });
+
+    // Keep settling only while a real overlap is visible and the trailing value still differs.
+    setFlow(settling ? 'settling' : 'idle');
+    if (settling && motion && !document.hidden) sraf = requestAnimationFrame(render);
   }
 
   function unlayer() {
     layout = null;
+    if (sraf) { cancelAnimationFrame(sraf); sraf = 0; }
+    snap();
+    setFlow('idle');
     root.style.removeProperty('--pf-hh');
     tracks.forEach(t => {
       t.removeAttribute('data-pf-ready');
@@ -217,6 +266,8 @@
     panels.forEach(panel => {
       panel.style.clipPath = '';
       panel.style.removeProperty('--pf-under');
+      panel.style.removeProperty('--pf-drift');
+      panel.style.removeProperty('--pf-opacity');
       panel.dataset.progress = '1';
       panel.dataset.state = 'idle';
     });
@@ -240,14 +291,17 @@
     const y = scrollY;
     const tops = tracks.map(t => t.getBoundingClientRect().top + y);
     const overs = tracks.map(t => Math.max(0, -parseFloat(getComputedStyle(t).marginBottom) || 0));
-    layout = { hh, hs, tops, overs, amp: narrow.matches ? 28 : 50 };
+    layout = { hh, hs, tops, overs, amp: narrow.matches ? 36 : 64, lag: narrow.matches ? 14 : 24 };
 
     // After a width change, keep the section being read at the same relative point.
     if (resized && anchor && anchor.i < n) {
+      snap();
       const target = tops[anchor.i] + anchor.ratio * hs[anchor.i] - hh;
       if (Math.abs(target - y) > 2) scrollTo(0, target);
     }
     resized = false;
+    // Height-only re-measures keep an ongoing settle (sy is a scroll value, unaffected by the new layout).
+    if (sraf) { cancelAnimationFrame(sraf); sraf = 0; }
     render();
   }
 
@@ -288,6 +342,7 @@
     const y = r.top - panels[i].getBoundingClientRect().top;
     const stick = parseFloat(getComputedStyle(panels[i]).top);
     const trackTop = Math.max(Number.isNaN(stick) ? layout.hh : stick, layout.hh + 24 - y);
+    snap();
     scrollTo(0, layout.tops[i] - trackTop);
   };
 
@@ -305,7 +360,7 @@
   const heroEntrance = blocks => {
     const focus = document.activeElement;
     blocks.filter(el => !(focus && el.contains(focus)))
-      .forEach((el, i) => rise(el, 80 + i * 120, 850, 32));
+      .forEach((el, i) => rise(el, 80 + i * 120, 900, 32));
   };
   const nearTop = () => !!n && scrollY <= innerHeight * 0.25 &&
     tracks[0].getBoundingClientRect().bottom > headerHeight();
@@ -336,6 +391,7 @@
       const keep = !initial && canLayer ? capture() : null;
       motion = on;
       root.dataset.pfMotion = on ? 'on' : 'off';
+      snap();
       if (on) {
         resized = false;
         if (ro) {
@@ -369,12 +425,21 @@
   if (reduce.addEventListener) reduce.addEventListener('change', onSystem);
   else if (reduce.addListener) reduce.addListener(onSystem);
 
-  addEventListener('scroll', queueRender, { passive: true });
+  addEventListener('scroll', () => { moved = performance.now(); queueRender(); }, { passive: true });
   addEventListener('resize', () => {
-    if (innerWidth !== width) { width = innerWidth; resized = true; }
+    if (innerWidth !== width) { width = innerWidth; resized = true; snap(); }
     if (motion) queueMeasure();
   }, { passive: true });
 
+  // Hidden tabs and restored pages land on the actual position; the next render clears any drift.
+  document.addEventListener('visibilitychange', () => {
+    if (sraf) { cancelAnimationFrame(sraf); sraf = 0; }
+    snap();
+    if (!document.hidden) queueRender();
+  });
+  addEventListener('pageshow', () => { snap(); queueRender(); });
+
+  setFlow('idle');
   apply(true);
 
   // First entry plays the hero entrance, except on deep links.
