@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T18:03:35.063874+09:00",
+  "checked_at": "2026-11-04T18:20:12.941952+09:00",
   "browser": "firefox",
   "browser_version": "159.0",
   "base_url": "http://127.0.0.1:1313/website_proj/",
@@ -12,44 +12,44 @@
         {
           "delay": 80,
           "duration": 850,
-          "opacity": "0.869353",
-          "start": 517.74
+          "opacity": "0.92967",
+          "start": 176.8
         },
         {
           "delay": 200,
           "duration": 850,
-          "opacity": "0.733412",
-          "start": 517.74
+          "opacity": "0.850117",
+          "start": 176.8
         },
         {
           "delay": 320,
           "duration": 850,
-          "opacity": "0.456601",
-          "start": 517.74
+          "opacity": "0.694983",
+          "start": 176.8
         },
         {
           "delay": 440,
           "duration": 850,
-          "opacity": "0.0114509",
-          "start": 517.74
+          "opacity": "0.380936",
+          "start": 176.8
         },
         {
           "delay": 560,
           "duration": 850,
           "opacity": "0",
-          "start": 517.74
+          "start": 176.8
         },
         {
           "delay": 680,
           "duration": 850,
           "opacity": "0",
-          "start": 517.74
+          "start": 176.8
         },
         {
           "delay": 800,
           "duration": 850,
           "opacity": "0",
-          "start": 517.74
+          "start": 176.8
         }
       ],
       "screenshot": "docs/evidence/T08/firefox/text-entrance.png"

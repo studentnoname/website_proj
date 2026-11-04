@@ -32,6 +32,11 @@
 - 실제 CLI 입력 발췌: “Respect system reduced motion by default, but allow EXPLICIT site-level opt-in” / “Factor hero entrance into reusable function”. 기존 세 프론트 파일만 수정하도록 제한했다. 응답은 첫 화면·하단 제어 동기화, 사이트 내 명시적 켜기, 850ms·120ms 등장 재생을 구현하고 미검사임을 밝혔다.
 - Codex가 diff·한국어 문구를 검토하고 Hugo 빌드·정적 검사·기존 Firefox 55개 검사·점진적 향상 11개 검사를 수행했다. 기본 모션 설정을 강제로 바꾸지 않는 검사와 두 언어의 실제 겹침을 추가했다. 기기 설정은 변경하지 않았다. 사용자의 디자인 만족이나 실제 iPhone 검증으로 기록하지 않는다.
 
+## 사례 G — #intro 진입과 명시적 재생 링크
+
+- 2026-11-04 KST, Claude Code 2.1.287, claude-opus-5-5. 사용자 원문 “똑같아”. Codex가 효과 on 상태의 루트·#intro 첫 진입을 비교해 애니메이션 7개·0개를 확인했다(I014). 사용자 주소는 아직 미확인이다.
+- 실제 CLI 입력: “Treat initial #intro as first-screen entrance” / “Add explicit preview URL support ?motion=on”. 기존 JS만 수정하도록 제한했다. Claude는 수정 내용을 설명하고 미검사임을 밝혔다. Codex가 build와 정적 검사, 두 언어 진입·새로고침·선택 유지 검사를 수행했다. 실제 결과는 progressive/results.json에 보존한다. 새 framework·폴더·콘텐츠는 추가하지 않았다.
+
 ## 사례 B — HugoBlox 프론트 구현
 
 - 도구: Claude Code 2.1.287, 실제 응답의 modelUsage: claude-opus-5-5.

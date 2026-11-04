@@ -64,6 +64,16 @@
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   let pref = null;
   try { pref = localStorage.getItem(KEY); } catch {}
+  // Explicit preview link (?motion=on): opts in once, then the parameter is consumed.
+  try {
+    const url = new URL(location.href);
+    if (url.searchParams.get('motion') === 'on') {
+      pref = 'on';
+      try { localStorage.setItem(KEY, pref); } catch {}
+      url.searchParams.delete('motion');
+      history.replaceState(history.state, '', url);
+    }
+  } catch {}
   const wanted = () => pref === 'on' || (!reduce.matches && pref !== 'off');
   let motion = false;
 
@@ -105,7 +115,8 @@
   };
 
   const deep = byId(location.hash);
-  if (deep) reach(deep);
+  const introDeep = !!deep && deep.id === 'intro';
+  if (deep && !introDeep) reach(deep);
 
   document.addEventListener('click', e => {
     const a = e.target instanceof Element && e.target.closest('a[href*="#"]');
@@ -369,7 +380,7 @@
   // First entry plays the hero entrance, except on deep links.
   const heroPending = heroBlocks.filter(el => !seen.has(el));
   heroBlocks.forEach(el => seen.add(el));
-  if (motion && !deep) heroEntrance(heroPending);
+  if (motion && (!deep || introDeep)) heroEntrance(heroPending);
 
   // Later headings and paragraph groups enter once, as they are first reached.
   if ('IntersectionObserver' in window) {

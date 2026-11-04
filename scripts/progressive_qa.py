@@ -29,6 +29,7 @@ def main():
     for mode in ['no-javascript', 'reduced-motion', 'system-default']:
         options = Options()
         options.binary_location = 'C:/Program Files/Mozilla Firefox/firefox.exe'
+        options.page_load_strategy = 'eager'
         profile = ROOT / '.local' / ('firefox-' + mode + '-profile')
         profile.mkdir(exist_ok=True)
         for argument in ['-headless', '-profile', str(profile)]:
@@ -85,6 +86,7 @@ def main():
                   setting:document.documentElement.dataset.pfMotion,
                   stored:localStorage.getItem('pf-panel-motion')};''')
                 results.append({'mode': mode, 'passed': state['setting'] == ('off' if state['reduced'] else 'on'), 'state':state})
+            wait.until(lambda b:b.execute_script("return [...document.images].every(i=>i.complete && i.naturalWidth>0)"))
             driver.save_screenshot(str(output / (mode + '.png')))
             if mode == 'reduced-motion':
                 for language, suffix in [('ko',''),('en','en/')]:
@@ -123,6 +125,25 @@ def main():
                     footer.send_keys(Keys.ENTER)
                     off = driver.execute_script("return document.documentElement.dataset.pfMotion==='off' && [...document.querySelectorAll('[data-pf-panel]')].every(e=>getComputedStyle(e).position!=='sticky' && getComputedStyle(e).clipPath==='none') && document.getAnimations().every(a=>a.playState!=='running')")
                     results.append({'mode':language+'-keyboard-disable','passed':off})
+                    driver.get(base + suffix + '?v=entry&motion=on#intro')
+                    preview = driver.execute_script('''return {
+                      enabled:document.documentElement.dataset.pfMotion==='on',
+                      stored:localStorage.getItem('pf-panel-motion'),
+                      consumed:!new URL(location.href).searchParams.has('motion'),
+                      otherParam:new URL(location.href).searchParams.get('v'),hash:location.hash,
+                      entrances:document.getAnimations().filter(a=>a.effect.target.closest('#intro')).length};''')
+                    results.append({'mode':language+'-explicit-preview-at-intro',
+                                    'passed':preview['enabled'] and preview['stored']=='on' and preview['consumed'] and preview['otherParam']=='entry' and preview['hash']=='#intro' and preview['entrances']>=3,'state':preview})
+                    driver.refresh()
+                    refresh = driver.execute_script('''return {
+                      enabled:document.documentElement.dataset.pfMotion==='on',
+                      entrances:document.getAnimations().filter(a=>a.effect.target.closest('#intro')).length};''')
+                    results.append({'mode':language+'-intro-refresh-entrance',
+                                    'passed':refresh['enabled'] and refresh['entrances']>=3,'state':refresh})
+                    driver.find_element(By.CSS_SELECTOR, '#intro [data-pf-motion-toggle]').click()
+                    driver.refresh()
+                    stopped = driver.execute_script("return document.documentElement.dataset.pfMotion==='off' && localStorage.getItem('pf-panel-motion')==='off' && document.getAnimations().every(a=>a.playState!=='running')")
+                    results.append({'mode':language+'-preview-stop-survives-refresh','passed':stopped})
                 driver.execute_script("localStorage.removeItem('pf-panel-motion')")
         finally:
             driver.quit()

@@ -1,0 +1,20 @@
+[
+  {
+    "hash": "",
+    "heroAnimations": 7,
+    "motion": "on",
+    "ready": "interactive"
+  },
+  {
+    "hash": "#intro",
+    "heroAnimations": 0,
+    "motion": "on",
+    "ready": "interactive"
+  },
+  {
+    "hash": "#current",
+    "heroAnimations": 0,
+    "motion": "on",
+    "ready": "interactive"
+  }
+]

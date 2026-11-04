@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T18:05:40.936585+09:00",
+  "checked_at": "2026-11-04T18:21:54.402660+09:00",
   "browser": "Firefox",
   "version": "159.0",
   "passed": true,
@@ -53,6 +53,30 @@
       "passed": true
     },
     {
+      "mode": "ko-explicit-preview-at-intro",
+      "passed": true,
+      "state": {
+        "consumed": true,
+        "enabled": true,
+        "entrances": 7,
+        "hash": "#intro",
+        "otherParam": "entry",
+        "stored": "on"
+      }
+    },
+    {
+      "mode": "ko-intro-refresh-entrance",
+      "passed": true,
+      "state": {
+        "enabled": true,
+        "entrances": 7
+      }
+    },
+    {
+      "mode": "ko-preview-stop-survives-refresh",
+      "passed": true
+    },
+    {
       "mode": "en-reduced-explicit-enable",
       "passed": true,
       "state": {
@@ -80,6 +104,30 @@
     },
     {
       "mode": "en-keyboard-disable",
+      "passed": true
+    },
+    {
+      "mode": "en-explicit-preview-at-intro",
+      "passed": true,
+      "state": {
+        "consumed": true,
+        "enabled": true,
+        "entrances": 7,
+        "hash": "#intro",
+        "otherParam": "entry",
+        "stored": "on"
+      }
+    },
+    {
+      "mode": "en-intro-refresh-entrance",
+      "passed": true,
+      "state": {
+        "enabled": true,
+        "entrances": 7
+      }
+    },
+    {
+      "mode": "en-preview-stop-survives-refresh",
       "passed": true
     },
     {

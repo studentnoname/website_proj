@@ -67,7 +67,7 @@
   {
     "title": "5 기능 검증표",
     "paragraphs": [
-      "추가 검사: 초기 글의 실제 등장 시각·120ms 지연과 종료 후 가독성을 확인했다. PC·모바일의 세 전환에서 이전 패널 고정·다음 패널 150px 이동·화면 hit-test·곡선 변화가 확인됐다. 정지 후 400ms 프레임 예약은 0이었다. 메뉴·폭·키보드·효과 끄기·실행 중 모션 축소·깊은 링크를 포함한 55개 검사와 JS 비활성·초기 모션 축소·기본 설정·명시적 켜기와 재접속 유지 등 11개 검사가 통과했다.",
+      "추가 검사: 초기 글의 실제 등장 시각·120ms 지연과 종료 후 가독성을 확인했다. PC·모바일의 세 전환에서 이전 패널 고정·다음 패널 150px 이동·화면 hit-test·곡선 변화가 확인됐다. 정지 후 400ms 프레임 예약은 0이었다. 메뉴·폭·키보드·효과 끄기·실행 중 모션 축소·깊은 링크를 포함한 55개 검사와 JS 비활성·초기 모션 축소·기본 설정·명시적 켜기와 재접속 유지 등 17개 검사가 통과했다. I014에서 #intro 접속의 등장 생략을 수정했고 ?motion=on의 직접 재생·매개변수 소비·끄기 후 새로고침 유지도 확인했다.",
       "검증표 V01~V05 공통 환경: Windows 11, Firefox 159.0, 공개 검사 시각 KST {SCREEN_TIME}. 한국어 URL은 https://studentnoname.github.io/website_proj/ , 영어 URL은 https://studentnoname.github.io/website_proj/en/ 이다. 대상 주소와 실제 폭·관찰 결과·화면은 submission/screens/results.json에 보존했다. 로컬 세부 검사는 docs/verification.md와 해당 evidence 파일에 기록했다."
     ],
     "table": {
@@ -129,7 +129,7 @@
       "사례 2 / Claude Code 2.1.287 / claude-opus-5-5 / 2026-10-29 KST. 목적: HugoBlox 프론트 구현. 실제 전달 요청 원문 발췌: ‘Build the personal portfolio inside the existing HugoBlox academic-cv site.’ / ‘All displayed claims must be backed by provided facts.’ 요청 전문은 docs/ai/prompts/frontend.md에 보존했다.",
       "응답 요약: 최초 디자인에서 네 섹션과 두 언어 데이터·SVG·헤더·모바일 조작·움직임 제어를 실제 작성했다. 대표 구현 이력: https://github.com/studentnoname/website_proj/commit/7b2cc20 . 사용자가 복잡한 파일 구성과 화면 결과에 불만을 표현하고 ‘다시 제작해’라고 요청하여 Claude Code로 단일 HTML 화면을 다시 작성했다. Codex는 공개 이름·사실 범위·레이아웃을 검토하고 수정했다.",
       "본인 판단: 사용자는 목적을 ‘유학생의 도움을 주기위한 플랫폼과 백엔드’로 확인하고 결과 링크는 ‘없음’, 다음 행동은 ‘빈칸으로 두기’로 결정했다. 따라서 임의 계획·성과·결과 링크를 보류했다. 기술 검토는 Codex가 수행했고 초기 템플릿 선택·데모 잔존·헤더 문제는 수정했다. 이를 사용자의 직접 코드 검토라고 기록하지 않는다.",
-      "직접 검증과 한계: 두 언어 정적 검사, Firefox 55개 배치·조작·전환 검사와 11개 점진적 향상 검사, 실제 main 재배포·공개 화면 확인을 연결했다. 기존 폴더의 화면·공통 CSS·JS를 재사용했다. 전체 화면을 확인했으며 검사 통과를 사용자의 디자인 만족으로 대신 기록하지 않는다.",
+      "직접 검증과 한계: 두 언어 정적 검사, Firefox 55개 배치·조작·전환 검사와 17개 점진적 향상 검사, 실제 main 재배포·공개 화면 확인을 연결했다. 기존 폴더의 화면·공통 CSS·JS를 재사용했다. 전체 화면을 확인했으며 검사 통과를 사용자의 디자인 만족으로 대신 기록하지 않는다.",
       "사례 3 / Claude Code 2.1.287 / claude-opus-5-5 / 2026-11-04 KST. 목적: 글 순차 등장과 실제 화면 덮기. 사용자 원문 발췌: ‘웹사이트 접속했을 때 글들이 애니메이션으로 하나씯 들어오고 스크롤 할 때 다음화면이 이전화면을 가리면서 물처럼 흘러 들어는 방식’. 실제 CLI 원문: ‘This must be a real SCREEN-OVER-SCREEN liquid transition and staggered TEXT ENTRANCE, not decorative wave separators or a redesign.’",
       "응답·판단: 기존 세 프론트 파일에 앵커용 section과 고정 패널, 전체 패널의 곡선 clip, 순차 등장과 효과 제어를 작성했다. 짧은 섹션의 높이는 유지하고 긴 글은 다 읽은 뒤 고정하는 방식을 채택했다. Claude는 검사를 하지 않았다고 밝혔고 Codex가 실제 빌드·화면·키보드를 확인했다. I011에서 첫 프레임 이전 startTime과 짧은 패널의 고정 위치를 잘못 판단한 검사 전제를 수정했다. 반영 위치는 site/layouts/landing/list.html, site/assets/css/portfolio.css, site/assets/js/portfolio.js다. 5절의 실제 화면 hit-test·고정 좌표·곡선·등장 시각·키보드·모션 축소로 검증했다. 실제 Safari/iPhone은 미검사이며 사용자의 직접 코드 검토로 기록하지 않는다."
     ]
