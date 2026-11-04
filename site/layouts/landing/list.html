@@ -66,13 +66,6 @@
       </div>
     </div>
   </div>
-  <div class="water-wave water-wave--to-light" data-pf-water="to-light" data-state="idle" aria-hidden="true">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-      <path class="ww-back" d="M0 120L0 56C240 22 480 92 720 58C960 24 1200 88 1440 50L1440 120Z"/>
-      <path class="ww-mid" d="M0 120L0 74C200 46 440 102 720 78C1000 54 1220 98 1440 70L1440 120Z"/>
-      <path class="ww-front" d="M0 120L0 92C260 72 520 110 760 94C1000 78 1240 106 1440 88L1440 120Z"/>
-    </svg>
-  </div>
 </section>
 
 <section id="about" class="section section-light" data-pf-section aria-labelledby="about-title">
@@ -145,13 +138,6 @@
         <p data-copy>{{ cond $ko "계산이 실제로 일어나는 물리적인 자리, 칩." "The chip — the physical place where computing actually happens." }}</p>
       </li>
     </ol>
-  </div>
-  <div class="water-wave water-wave--to-dark" data-pf-water="to-dark" data-state="idle" aria-hidden="true">
-    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-      <path class="ww-back" d="M0 120L0 50C240 88 480 24 720 58C960 92 1200 22 1440 56L1440 120Z"/>
-      <path class="ww-mid" d="M0 120L0 70C220 98 440 54 720 78C1000 102 1240 46 1440 74L1440 120Z"/>
-      <path class="ww-front" d="M0 120L0 88C200 106 440 78 680 94C920 110 1180 72 1440 92L1440 120Z"/>
-    </svg>
   </div>
 </section>
 
@@ -226,7 +212,6 @@
       <div class="footer-links">
         <a href="#intro">{{ cond $ko "맨 위로" "Back to top" }} <span aria-hidden="true">↑</span></a>
         <a href="{{ $repo }}" rel="noopener">{{ cond $ko "GitHub 소스" "Source on GitHub" }} <span aria-hidden="true">↗</span></a>
-        <button type="button" data-pf-motion-toggle aria-pressed="true" aria-label="{{ cond $ko "물결 효과" "Wave effect" }}" aria-describedby="pf-motion-state" data-enabled-label="{{ cond $ko "켜짐" "On" }}" data-off="{{ cond $ko "꺼짐" "Off" }}" data-system="{{ cond $ko "시스템 설정으로 꺼짐" "Off by system setting" }}" hidden>{{ cond $ko "물결 효과" "Wave effect" }} <span class="motion-state" id="pf-motion-state">{{ cond $ko "켜짐" "On" }}</span></button>
       </div>
       <p class="credit">Built with Hugo · <a href="https://github.com/HugoBlox/kit" rel="noopener">HugoBlox Kit</a></p>
     </div>
