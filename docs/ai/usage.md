@@ -26,6 +26,12 @@
 - 직접 실행 근거: `docs/evidence/T01/`, T01의 실제 기본 빌드와 T07의 최초 main push 배포.
 - 한계: 계획 수립 시점에는 사이트 구현·빌드·배포를 수행하지 않았다. 계획 파일만으로 완료를 주장하지 않는다.
 
+## 사례 F — 기본 모션 설정에서 보이지 않는 효과 수정
+
+- 2026-11-04 KST, Claude Code 2.1.287, 실제 모델 claude-opus-5-5. 사용자 원문: “동일한데 변한게 없어”. Codex는 강제 모션 설정이 없는 Firefox에서 reduced=true·사이트 효과 off를 확인했다(I013). Windows 브라우저의 직접 UI 확인은 URL 정책 미지원으로 중단됐고 별도 자동화 프로필로 확인했다.
+- 실제 CLI 입력 발췌: “Respect system reduced motion by default, but allow EXPLICIT site-level opt-in” / “Factor hero entrance into reusable function”. 기존 세 프론트 파일만 수정하도록 제한했다. 응답은 첫 화면·하단 제어 동기화, 사이트 내 명시적 켜기, 850ms·120ms 등장 재생을 구현하고 미검사임을 밝혔다.
+- Codex가 diff·한국어 문구를 검토하고 Hugo 빌드·정적 검사·기존 Firefox 55개 검사·점진적 향상 11개 검사를 수행했다. 기본 모션 설정을 강제로 바꾸지 않는 검사와 두 언어의 실제 겹침을 추가했다. 기기 설정은 변경하지 않았다. 사용자의 디자인 만족이나 실제 iPhone 검증으로 기록하지 않는다.
+
 ## 사례 B — HugoBlox 프론트 구현
 
 - 도구: Claude Code 2.1.287, 실제 응답의 modelUsage: claude-opus-5-5.

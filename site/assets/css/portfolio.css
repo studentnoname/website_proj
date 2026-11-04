@@ -288,7 +288,7 @@ h3 {
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto;
   column-gap: 48px;
   align-content: center;
 }
@@ -361,7 +361,7 @@ h1 .accent { color: var(--lime); }
   position: relative;
   z-index: 1;
   grid-column: 2;
-  grid-row: 1 / 5;
+  grid-row: 1 / 6;
   align-self: center;
 }
 .hero-art img {
@@ -397,7 +397,7 @@ h1 .accent { color: var(--lime); }
 @media (max-width: 600px) {
   .hero { padding-top: 32px; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
-  .hero-eyebrow, h1, .hero-identity, .cta, .hero-art { grid-column: 1; grid-row: auto; }
+  .hero-eyebrow, h1, .hero-identity, .cta, .hero-motion, .hero-art { grid-column: 1; grid-row: auto; }
   .hero-identity { margin-top: 24px; }
   .cta { margin-top: 24px; }
   .hero-art { justify-self: center; width: 100%; max-width: 300px; margin-top: 32px; }
@@ -732,7 +732,15 @@ h1 .accent { color: var(--lime); }
 }
 .motion-toggle:hover { border-color: var(--paper); }
 .motion-toggle[aria-pressed="true"] { border-color: var(--lime); }
-.motion-toggle[aria-disabled="true"] { color: var(--dim); border-color: var(--line-strong); cursor: default; }
+
+/* hero copy of the control sits just below the CTA, left column */
+.hero-motion {
+  grid-column: 1;
+  grid-row: 5;
+  justify-content: flex-start;
+  align-self: start;
+  margin-top: 16px;
+}
 
 .motion-status {
   font-size: var(--meta-size);
@@ -752,37 +760,36 @@ h1 .accent { color: var(--lime); }
    higher track slides over it. --pf-h: measured panel height, --pf-hh: measured header height. */
 .pf-defs { position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none; }
 
-@media (prefers-reduced-motion: no-preference) {
-  [data-pf-motion="on"] [data-pf-panel-track][data-pf-ready] {
-    position: relative;
-    z-index: var(--pf-z, 1);
-  }
-  [data-pf-motion="on"] [data-pf-panel-track][data-pf-ready]:not(:last-child) {
-    --pf-v: min(var(--pf-h), var(--pf-vh) - var(--pf-hh));
-    height: calc(var(--pf-h) + var(--pf-v));
-    margin-bottom: calc(-1 * var(--pf-v));
-  }
-  [data-pf-motion="on"] [data-pf-ready] > [data-pf-panel] {
-    position: relative;
-    isolation: isolate;
-  }
-  [data-pf-motion="on"] [data-pf-ready]:not(:last-child) > [data-pf-panel] {
-    position: sticky;
-    top: min(var(--pf-hh), var(--pf-vh) - var(--pf-h));
-  }
-  /* the older panel dims slightly as the next one covers it */
-  [data-pf-motion="on"] [data-pf-ready] > [data-pf-panel]::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    background: var(--ink);
-    opacity: var(--pf-under, 0);
-    pointer-events: none;
-  }
-  [data-pf-motion="on"] .site-footer {
-    position: relative;
-    z-index: 10;
-    background: var(--ink);
-  }
+/* data-pf-motion="on" is the sole gate; portfolio.js sets it from the system setting or an explicit site choice. */
+[data-pf-motion="on"] [data-pf-panel-track][data-pf-ready] {
+  position: relative;
+  z-index: var(--pf-z, 1);
+}
+[data-pf-motion="on"] [data-pf-panel-track][data-pf-ready]:not(:last-child) {
+  --pf-v: min(var(--pf-h), var(--pf-vh) - var(--pf-hh));
+  height: calc(var(--pf-h) + var(--pf-v));
+  margin-bottom: calc(-1 * var(--pf-v));
+}
+[data-pf-motion="on"] [data-pf-ready] > [data-pf-panel] {
+  position: relative;
+  isolation: isolate;
+}
+[data-pf-motion="on"] [data-pf-ready]:not(:last-child) > [data-pf-panel] {
+  position: sticky;
+  top: min(var(--pf-hh), var(--pf-vh) - var(--pf-h));
+}
+/* the older panel dims slightly as the next one covers it */
+[data-pf-motion="on"] [data-pf-ready] > [data-pf-panel]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: var(--ink);
+  opacity: var(--pf-under, 0);
+  pointer-events: none;
+}
+[data-pf-motion="on"] .site-footer {
+  position: relative;
+  z-index: 10;
+  background: var(--ink);
 }

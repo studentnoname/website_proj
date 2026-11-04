@@ -1,0 +1,31 @@
+{
+  "motion": "off",
+  "panels": [
+    {
+      "height": 725,
+      "id": "intro",
+      "position": "static"
+    },
+    {
+      "height": 505,
+      "id": "about",
+      "position": "static"
+    },
+    {
+      "height": 669,
+      "id": "future",
+      "position": "static"
+    },
+    {
+      "height": 999,
+      "id": "current",
+      "position": "static"
+    }
+  ],
+  "ready": 0,
+  "reduced": true,
+  "scripts": [
+    "https://studentnoname.github.io/website_proj/js/portfolio.min.2b50fc377428a9f488aa917b915b24d335af31ca46de221169f6342c78cd8471.js"
+  ],
+  "setting": null
+}

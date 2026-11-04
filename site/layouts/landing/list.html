@@ -52,6 +52,10 @@
         <a class="btn btn-primary" href="#current">{{ cond $ko "지금 하는 일" "What he is working on" }} <span aria-hidden="true">→</span></a>
         <a class="btn-quiet" href="#about">{{ cond $ko "그는 누구인가" "Who he is" }} <span aria-hidden="true">↓</span></a>
       </div>
+      <div class="motion-control hero-motion" data-pf-motion-control hidden>
+        <button class="motion-toggle" type="button" data-pf-motion-toggle aria-pressed="false" aria-describedby="pf-motion-status-hero" data-enabled-action="{{ cond $ko "화면 효과 끄기" "Turn motion off" }}" data-disabled-action="{{ cond $ko "화면 효과 켜기" "Turn motion on" }}">{{ cond $ko "화면 효과" "Page motion" }}</button>
+        <span class="motion-status" id="pf-motion-status-hero" data-pf-motion-status data-enabled-label="{{ cond $ko "켜짐" "On" }}" data-disabled-label="{{ cond $ko "꺼짐" "Off" }}" data-reduced-label="{{ cond $ko "기기 설정에 따라 꺼짐 · 원하면 켤 수 있습니다" "Off by device setting · you can turn it on" }}" data-chosen-label="{{ cond $ko "켜짐 · 직접 선택" "On · your choice" }}"></span>
+      </div>
       <div class="hero-art" data-pf-reveal>
         <img src="{{ "media/resolve-hero.png" | relURL }}" width="1122" height="1402" fetchpriority="high" decoding="async" alt="{{ cond $ko "어두운 배경에서 고리처럼 끝없이 이어지는 크롬과 유리 질감의 추상 리본 조형" "Abstract sculpture: a chrome and glass ribbon looping endlessly against a dark background" }}">
       </div>
@@ -222,8 +226,8 @@
         <a href="{{ $repo }}" rel="noopener">{{ cond $ko "GitHub 소스" "Source on GitHub" }} <span aria-hidden="true">↗</span></a>
       </div>
       <div class="motion-control" data-pf-motion-control hidden>
-        <button class="motion-toggle" type="button" data-pf-motion-toggle aria-pressed="false" aria-describedby="pf-motion-status">{{ cond $ko "화면 효과" "Page motion" }}</button>
-        <span class="motion-status" id="pf-motion-status" data-pf-motion-status data-enabled-label="{{ cond $ko "켜짐" "On" }}" data-disabled-label="{{ cond $ko "꺼짐" "Off" }}" data-reduced-label="{{ cond $ko "꺼짐 · 기기의 동작 줄이기 설정을 따릅니다" "Off · following your device’s reduced-motion setting" }}"></span>
+        <button class="motion-toggle" type="button" data-pf-motion-toggle aria-pressed="false" aria-describedby="pf-motion-status" data-enabled-action="{{ cond $ko "화면 효과 끄기" "Turn motion off" }}" data-disabled-action="{{ cond $ko "화면 효과 켜기" "Turn motion on" }}">{{ cond $ko "화면 효과" "Page motion" }}</button>
+        <span class="motion-status" id="pf-motion-status" data-pf-motion-status data-enabled-label="{{ cond $ko "켜짐" "On" }}" data-disabled-label="{{ cond $ko "꺼짐" "Off" }}" data-reduced-label="{{ cond $ko "기기 설정에 따라 꺼짐 · 원하면 켤 수 있습니다" "Off by device setting · you can turn it on" }}" data-chosen-label="{{ cond $ko "켜짐 · 직접 선택" "On · your choice" }}"></span>
       </div>
       <p class="credit">Built with Hugo · <a href="https://github.com/HugoBlox/kit" rel="noopener">HugoBlox Kit</a></p>
     </div>

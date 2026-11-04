@@ -59,12 +59,12 @@
     a.addEventListener('click', sync);
   });
 
-  // Motion preference: the system reduced-motion setting always wins.
+  // Motion preference: follows the system reduced-motion setting unless the visitor explicitly opts in on this site.
   const KEY = 'pf-panel-motion';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   let pref = null;
   try { pref = localStorage.getItem(KEY); } catch {}
-  const wanted = () => !reduce.matches && pref !== 'off';
+  const wanted = () => pref === 'on' || (!reduce.matches && pref !== 'off');
   let motion = false;
 
   // Text entrance: finite WAAPI rises; content stays visible when scripts or WAAPI are unavailable.
@@ -72,11 +72,13 @@
   const anims = new Map();
   const seen = new WeakSet();
 
-  const rise = (el, delay) => {
+  const rise = (el, delay, duration = 640, dist = 20) => {
     if (!canAnimate) return;
+    const prev = anims.get(el);
+    if (prev) prev.cancel();
     const a = el.animate(
-      [{ opacity: 0, transform: 'translateY(20px)' }, { opacity: 1, transform: 'none' }],
-      { duration: 640, delay, easing: 'cubic-bezier(.2, .65, .25, 1)', fill: 'backwards' }
+      [{ opacity: 0, transform: `translateY(${dist}px)` }, { opacity: 1, transform: 'none' }],
+      { duration, delay, easing: 'cubic-bezier(.2, .65, .25, 1)', fill: 'backwards' }
     );
     const done = () => { if (anims.get(el) === a) anims.delete(el); };
     a.addEventListener('finish', done);
@@ -287,21 +289,34 @@
     if (layout) requestAnimationFrame(() => uncover(t));
   });
 
-  // Footer control.
-  const toggle = document.querySelector('[data-pf-motion-toggle]');
-  const status = document.querySelector('[data-pf-motion-status]');
-  const control = toggle && toggle.closest('[data-pf-motion-control]');
+  // Hero entrance: heading lines and intro arrive one by one. The focused element is never replayed.
+  const heroBlocks = n ? [...tracks[0].querySelectorAll('[data-pf-reveal]')] : [];
+  const heroEntrance = blocks => {
+    const focus = document.activeElement;
+    blocks.filter(el => !(focus && el.contains(focus)))
+      .forEach((el, i) => rise(el, 80 + i * 120, 850, 32));
+  };
+  const nearTop = () => !!n && scrollY <= innerHeight * 0.25 &&
+    tracks[0].getBoundingClientRect().bottom > headerHeight();
+
+  // Motion controls (hero and footer), kept in sync.
+  const toggles = [...document.querySelectorAll('[data-pf-motion-toggle]')];
+  const statuses = [...document.querySelectorAll('[data-pf-motion-status]')];
 
   const sync = () => {
-    if (!toggle) return;
-    if (control) control.hidden = false;
-    toggle.setAttribute('aria-pressed', String(motion));
-    if (reduce.matches) toggle.setAttribute('aria-disabled', 'true');
-    else toggle.removeAttribute('aria-disabled');
-    if (status) {
-      const d = status.dataset;
-      status.textContent = reduce.matches ? d.reducedLabel : motion ? d.enabledLabel : d.disabledLabel;
-    }
+    toggles.forEach(t => {
+      const control = t.closest('[data-pf-motion-control]');
+      if (control) control.hidden = false;
+      t.setAttribute('aria-pressed', String(motion));
+      const label = motion ? t.dataset.enabledAction : t.dataset.disabledAction;
+      if (label) t.textContent = label;
+    });
+    statuses.forEach(s => {
+      const d = s.dataset;
+      s.textContent = reduce.matches && pref === null ? d.reducedLabel
+        : reduce.matches && motion ? d.chosenLabel
+        : motion ? d.enabledLabel : d.disabledLabel;
+    });
   };
 
   const apply = initial => {
@@ -327,17 +342,21 @@
     sync();
   };
 
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      if (reduce.matches) return;
-      pref = motion ? 'off' : 'on';
-      try { localStorage.setItem(KEY, pref); } catch {}
-      apply(false);
-    });
-  }
+  toggles.forEach(t => t.addEventListener('click', () => {
+    pref = motion ? 'off' : 'on';
+    try { localStorage.setItem(KEY, pref); } catch {}
+    apply(false);
+    if (motion && nearTop()) heroEntrance(heroBlocks);
+  }));
 
-  if (reduce.addEventListener) reduce.addEventListener('change', () => apply(false));
-  else if (reduce.addListener) reduce.addListener(() => apply(false));
+  // A live system change drops any site-level override and follows the system again.
+  const onSystem = () => {
+    pref = null;
+    try { localStorage.removeItem(KEY); } catch {}
+    apply(false);
+  };
+  if (reduce.addEventListener) reduce.addEventListener('change', onSystem);
+  else if (reduce.addListener) reduce.addListener(onSystem);
 
   addEventListener('scroll', queueRender, { passive: true });
   addEventListener('resize', () => {
@@ -347,11 +366,10 @@
 
   apply(true);
 
-  // First entry: hero heading lines and intro arrive one by one.
-  const heroBlocks = n ? [...tracks[0].querySelectorAll('[data-pf-reveal]')] : [];
+  // First entry plays the hero entrance, except on deep links.
   const heroPending = heroBlocks.filter(el => !seen.has(el));
   heroBlocks.forEach(el => seen.add(el));
-  if (motion && !deep) heroPending.forEach((el, i) => rise(el, 80 + i * 80));
+  if (motion && !deep) heroEntrance(heroPending);
 
   // Later headings and paragraph groups enter once, as they are first reached.
   if ('IntersectionObserver' in window) {

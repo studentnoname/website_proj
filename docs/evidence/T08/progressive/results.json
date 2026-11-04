@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T17:17:57.901045+09:00",
+  "checked_at": "2026-11-04T18:05:40.936585+09:00",
   "browser": "Firefox",
   "version": "159.0",
   "passed": true,
@@ -20,6 +20,75 @@
         "revealsReadable": true,
         "running": 0,
         "setting": "off"
+      }
+    },
+    {
+      "mode": "ko-reduced-explicit-enable",
+      "passed": true,
+      "state": {
+        "entrance": true,
+        "ready": 4,
+        "sticky": "sticky",
+        "synced": true,
+        "system": true
+      }
+    },
+    {
+      "mode": "ko-reduced-real-cover",
+      "passed": true,
+      "state": {
+        "clipped": true,
+        "newOwner": "about",
+        "newTop": 456.7000122070313,
+        "oldBottom": 914.0000152587892,
+        "oldOwner": "intro"
+      }
+    },
+    {
+      "mode": "ko-explicit-choice-persists",
+      "passed": true
+    },
+    {
+      "mode": "ko-keyboard-disable",
+      "passed": true
+    },
+    {
+      "mode": "en-reduced-explicit-enable",
+      "passed": true,
+      "state": {
+        "entrance": true,
+        "ready": 4,
+        "sticky": "sticky",
+        "synced": true,
+        "system": true
+      }
+    },
+    {
+      "mode": "en-reduced-real-cover",
+      "passed": true,
+      "state": {
+        "clipped": true,
+        "newOwner": "about",
+        "newTop": 457.3999938964844,
+        "oldBottom": 914.000030517578,
+        "oldOwner": "intro"
+      }
+    },
+    {
+      "mode": "en-explicit-choice-persists",
+      "passed": true
+    },
+    {
+      "mode": "en-keyboard-disable",
+      "passed": true
+    },
+    {
+      "mode": "system-default",
+      "passed": true,
+      "state": {
+        "reduced": true,
+        "setting": "off",
+        "stored": null
       }
     }
   ]
