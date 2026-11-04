@@ -41,14 +41,16 @@ python scripts/serve.py
 | 공통 글자 크기·정렬·강조 규칙 | `site/assets/css/portfolio.css` |
 | 메뉴·언어 전환 동작 | `site/assets/js/portfolio.js` |
 | 한국어·영어 메뉴 | `site/config/_default/menus.ko.yaml`, `menus.en.yaml` |
-| 메인 이미지 | `site/static/media/resolve-hero.png` |
+| 자체 호스팅 글꼴·라이선스 | `site/assets/media/IBMPlexSansKR-*` |
 | 언어 설정 | `site/config/_default/languages.yaml` |
 | 홈 메타 정보 | `site/content/ko/_index.md`, `site/content/en/_index.md` |
 | 운영 설정 | `site/pages.json`, `site/config/_default/hugo.yaml`, `params.yaml` |
 
 앵커는 `#intro`, `#about`, `#future`, `#current`다. 두 언어의 사실을 함께 수정한다. 사용자가 비워 두도록 한 다음 학습 행동, 미확인 도구별 기능, 없는 KONNECT 산출물을 임의로 채우지 않는다.
 
-본문은 PC 18px·모바일 16px, 줄간격 1.75를 공통으로 사용한다. 제목·설명의 시작선은 공유하고, 아래 내용은 소개의 도구 목록, 학습 분야의 세 열, KONNECT의 전폭 작업 흐름으로 구성한다. 큰 타이포는 첫 화면에 사용하며, 도구 목록은 동등하게 표시한다.
+본문은 PC 18px·모바일 16px, 줄간격 1.75를 두 언어에서 공통으로 사용한다. 섹션 제목은 36px/28px, 하위 제목은 22px/19px다. 왼쪽 기준선에 제목과 본문을 맞추고 도구 목록, 동등한 학습 분야, 실제 작업 순서를 구분한다. 좌우명의 선은 AI 지연에 대한 관심을 표현한 장식이며 측정값이나 프로젝트 완료 상태가 아니다. 한 번만 실행하는 약 2.2초 효과는 시스템의 모션 축소 설정에서 실행하지 않는다.
+
+현재 화면은 사진 없이 텍스트와 CSS 도형으로 구성했다(P13·P14·P37·P45). 불필요한 이미지 자리나 KONNECT의 가상 화면을 만들지 않는다. IBM Plex Sans KR 세 굵기는 공식 IBM 소스에서 그대로 가져오고 SIL OFL 고지를 함께 배포한다. 상세 출처는 `docs/sources.md`에 있다.
 
 이전 디자인은 `archive/portfolio-v1` 브랜치에 보존했다. 사용하지 않는 원본 예제·모듈 소스와 이전 화면 조각을 제거했다. Hugo 모듈 의존성과 Pages 빌드 설정은 유지한다. `docs/`의 이전 작업 기록은 당시 결과를 기록한 자료이며, 현재 화면의 편집 파일이 아니다.
 

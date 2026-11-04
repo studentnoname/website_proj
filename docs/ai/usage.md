@@ -1,5 +1,15 @@
 # 실제 AI 활용 기록
 
+## 사례 F — 참고 글과 공식 frontend-design 지침을 적용한 재제작
+
+- 날짜: 2026-11-04 KST. 실제 도구: Claude Code 2.1.287, 응답의 modelUsage는 claude-opus-5-5. Codex가 자료 확인·제약 정리·후속 검토·검증을 담당했다.
+- 사용자 요청 원문: “이거 참고해서 기존에 지켜야 할 양식들을 지키면서 다시 제작해”. 참고 글: https://sunny-njae.tistory.com/292 . 후속 요청: “과제에서 요구한 기준들은 절대 어기면 안돼”.
+- 적용 방법: 공식 `anthropics/skills`의 `skills/frontend-design/SKILL.md` 원문을 로컬로 받아 Claude CLI에 읽도록 전달했다. 설치형 플러그인의 자동 활성화로 기록하지 않는다. 먼저 방향을 계획하고 비판한 다음 기존 화면·공통 스타일을 수정했다. 별도 프레임워크나 기능별 폴더는 만들지 않았다.
+- 실제 구현 요청 발췌: “Implement the approved design plan now, using the actual official frontend-design skill.” / “Follow the skill's critique/revision process before coding.” 전문의 핵심 제약은 `prompts/frontend.md`에 보존한다.
+- 응답 요약: 회색·남색 바탕에 좌우명을 지연 구간처럼 표현하고, 같은 왼쪽 기준선과 자체 호스팅 IBM Plex Sans KR을 사용했다. `site/layouts/landing/list.html`, `site/assets/css/portfolio.css`를 작성했다. `site/assets/js/portfolio.js`는 기존 기능을 재사용했다. Claude는 빌드와 브라우저 확인을 수행하지 않았다고 명시했다.
+- 채택·수정·보류: 글의 절차를 참고하고 특정 완성 화면을 복제하지 않았다. Codex는 학습 분야를 임의 순서로 잇는 계획, 임의 다음 단계, 언어마다 다른 줄간격을 거부했다. 공통 18px/16px·1.75를 적용하고 실제 KONNECT 결과가 없는 사실을 유지했다. 내부 설계 설명처럼 보이던 문장을 자연스러운 소개문으로 수정했다. 사용자가 처음 요청한 빈칸과 P72가 충돌하여 실제 학습 행동은 다시 질문했다.
+- 검증: Hugo 실제 빌드, 두 언어 각 18개 참조, Firefox 159.0의 38개 배치·조작 검사, JS 비활성·모션 축소 2개 검사를 수행했다. PC/모바일 KO·EN 전체 화면을 확인했다. 폰트 세 굵기 로딩과 글자 크기·행간을 측정했다. 확인 범위와 공개 배포 기록은 `../verification.md`에 연결한다. 이 검토를 사용자의 직접 코드 검토나 디자인 승인으로 표현하지 않는다.
+
 ## 사례 A — 구조 점검과 개발 계획
 
 - 도구: Codex, 모델명 미표시.

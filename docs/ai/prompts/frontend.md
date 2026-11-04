@@ -15,3 +15,22 @@ Required Korean menu labels, preserved exactly: 들어가며 #intro; 그는 누�
 Use the existing actual content system: set Korean default and language contentDirs; site/content/ko/_index.md and site/content/en/_index.md with translationKey home and type landing, no demo blocks. Codex will remove original demo content from site/content before you begin writing. Configure title, identity, descriptions, social placeholders and light-only theme coherently; disable unwanted search/theme toggles, RSS/demo functionality where unnecessary. If editing author data, remove demo institution/education/contact claims. Do not change package manifests, Go modules, or build workflows.
 
 Deliver actual files now and finish with a concise list of changed paths and any unmet factual criteria. No git commits. All displayed claims must be backed by provided facts. Only write within site/.
+# 2026-11-04 재제작 요청 원문 발췌
+
+실제로 Claude Code에 전달한 요청 중 핵심 부분이다. 생략한 부분은 색상·글꼴 파일 경로·기존 사실 목록이다.
+
+```text
+Implement the approved design plan now, using the actual official frontend-design skill. Read .local/frontend-design-SKILL.md fully, then .local/design-plan.json's result and the existing three frontend files. Follow the skill's critique/revision process before coding.
+
+REVISIONS TO PLAN: databases, power and semiconductors are equal intended interests, NOT a sequence or prerequisites. Do not draw arrows suggesting a learning order. User left next concrete action blank: no dashed pending roadmap, empty placeholder, or synthetic next step.
+
+Keep body18px desktop and16px mobile with one consistent line-height around1.75 in BOTH languages; headline/heading roles may change intentionally.
+
+EDIT ONLY site/layouts/landing/list.html, site/assets/css/portfolio.css, site/assets/js/portfolio.js. No new folders, frameworks, partials, packages, docs, tests, reports, skills or images. Use Read/Write/Edit only, no shell, agents, Git or connectors.
+
+MANDATORY: HugoBlox/Hugo/Pages environment unchanged. Korean root and English/en/. EXACT menu labels via site.Menus.main: 들어가며#intro, 그는 누구인가#about, 바라보고 있는 미래#future, 현재의 모습#current. Public name Jung Jiwoong.
+
+Do not report checks you have not run.
+```
+
+기존 요청은 아래에 당시 기록으로 보존한다.

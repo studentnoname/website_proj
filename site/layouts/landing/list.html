@@ -6,19 +6,31 @@
 {{- range first 1 .Translations }}{{ $alt = .RelPermalink }}{{ end -}}
 {{- $css := resources.Get "css/portfolio.css" | minify | fingerprint -}}
 {{- $js := resources.Get "js/portfolio.js" | minify | fingerprint -}}
+{{- /* Publish the font license beside the self-hosted font files. */ -}}
+{{- $fontLicense := (resources.Get "media/IBMPlexSansKR-OFL.txt").RelPermalink -}}
+{{- /* Section headings reuse the menu labels, keyed by the anchor after "#". */ -}}
+{{- $labels := dict -}}
+{{- range site.Menus.main -}}
+  {{- $parts := split .URL "#" -}}
+  {{- if eq (len $parts) 2 }}{{ $labels = merge $labels (dict (index $parts 1) .Name) }}{{ end -}}
+{{- end -}}
 <html lang="{{ site.Language.Lang }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ cond $ko "Jung Jiwoong — 결국에는 해낼 것이다" "Jung Jiwoong — In the end, I'll get it done" }}</title>
+<title>{{ cond $ko "Jung Jiwoong — 무엇을 하든 결국에는 해낼 것이다" "Jung Jiwoong — Whatever it is, in the end I will get it done" }}</title>
 <meta name="description" content="{{ cond $ko "Jung Jiwoong의 개인 포트폴리오. AI의 효율에 대한 관심, 공부하려는 분야, 그리고 진행 중인 KONNECT 백엔드 작업." "Personal portfolio of Jung Jiwoong: an interest in AI efficiency, the fields he plans to study, and ongoing backend work on KONNECT." }}">
-<meta name="theme-color" content="#101311">
+<meta name="theme-color" content="#eef1f4">
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="alternate" hreflang="{{ site.Language.Lang }}" href="{{ .Permalink }}">
 {{- range .Translations }}
 <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
 {{- end }}
-<link rel="preload" as="image" href="{{ "media/resolve-hero.png" | relURL }}">
+{{- range slice "Regular" "SemiBold" "Bold" }}
+{{- with resources.Get (printf "media/IBMPlexSansKR-%s.woff2" .) }}
+<link rel="preload" as="font" type="font/woff2" href="{{ .RelPermalink }}" crossorigin>
+{{- end }}
+{{- end }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 <script defer src="{{ $js.RelPermalink }}"></script>
 </head>
@@ -26,64 +38,49 @@
 <a class="skip" href="#main">{{ cond $ko "본문으로 건너뛰기" "Skip to content" }}</a>
 
 <header class="site-header">
-  <div class="wrap bar">
-    <a class="brand" href="#intro" aria-label="{{ cond $ko "Jung Jiwoong, 맨 위로" "Jung Jiwoong, back to top" }}"><span class="mark" aria-hidden="true">JW</span><span>Jung Jiwoong</span></a>
-    <nav class="nav" data-pf-nav aria-label="{{ cond $ko "주요 메뉴" "Primary" }}">
-      <button class="nav-toggle" type="button" data-pf-nav-toggle aria-expanded="false" aria-controls="pf-menu"><i aria-hidden="true"></i>{{ cond $ko "메뉴" "Menu" }}</button>
-      <ul id="pf-menu">
-        {{- range site.Menus.main }}
-        <li><a data-pf-nav-link href="{{ .URL }}">{{ .Name }}</a></li>
-        {{- end }}
-      </ul>
-    </nav>
-    <a class="lang" data-pf-lang data-base="{{ $alt }}" href="{{ $alt }}" hreflang="{{ cond $ko "en" "ko" }}" lang="{{ cond $ko "en" "ko" }}" aria-label="{{ cond $ko "Read in English" "한국어로 보기" }}">{{ cond $ko "EN" "KO" }}</a>
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="#intro" aria-label="{{ cond $ko "Jung Jiwoong, 맨 위로" "Jung Jiwoong, back to top" }}">Jung Jiwoong</a>
+      <nav class="nav" data-pf-nav aria-label="{{ cond $ko "주요 메뉴" "Primary" }}">
+        <button class="nav-toggle" type="button" data-pf-nav-toggle aria-expanded="false" aria-controls="pf-menu"><i aria-hidden="true"></i>{{ cond $ko "메뉴" "Menu" }}</button>
+        <ul id="pf-menu">
+          {{- range site.Menus.main }}
+          <li><a data-pf-nav-link href="{{ .URL }}">{{ .Name }}</a></li>
+          {{- end }}
+        </ul>
+      </nav>
+      <a class="lang" data-pf-lang data-base="{{ $alt }}" href="{{ $alt }}" hreflang="{{ cond $ko "en" "ko" }}" lang="{{ cond $ko "en" "ko" }}">{{ cond $ko "English" "한국어" }}</a>
+    </div>
   </div>
 </header>
 
 <main id="main" tabindex="-1">
 
 <section id="intro" class="hero" data-pf-section aria-labelledby="intro-title">
-  <div class="wrap hero-grid">
-    <p class="eyebrow hero-eyebrow"><span class="eyebrow-strong">Jung Jiwoong</span><span aria-hidden="true">·</span><span>{{ cond $ko "개인 포트폴리오" "Personal portfolio" }}</span></p>
-    <h1 id="intro-title"><span>{{ cond $ko "결국에는" "In the end," }}</span><span class="accent">{{ cond $ko "해낼 것이다." "I'll get it done." }}</span></h1>
-    <p class="hero-identity" data-copy>{{ cond $ko "AI의 효율을 고민하고, KONNECT의 백엔드를 만듭니다." "Curious about AI efficiency. Building the backend for KONNECT." }}</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="#current">{{ cond $ko "지금 하는 일" "What he is working on" }} <span aria-hidden="true">→</span></a>
-      <a class="btn-quiet" href="#about">{{ cond $ko "그는 누구인가" "Who he is" }} <span aria-hidden="true">↓</span></a>
-    </div>
-    <div class="hero-art">
-      <img src="{{ "media/resolve-hero.png" | relURL }}" width="1122" height="1402" fetchpriority="high" decoding="async" alt="{{ cond $ko "어두운 배경에서 고리처럼 끝없이 이어지는 크롬과 유리 질감의 추상 리본 조형" "Abstract sculpture: a chrome and glass ribbon looping endlessly against a dark background" }}">
-    </div>
-  </div>
   <div class="wrap">
-    <div class="motto">
-      <p class="eyebrow">{{ cond $ko "좌우명" "Motto" }}</p>
-      <div class="motto-text">
-        <p data-copy><q lang="ko">무엇을 하든 결국에는 해낼 것이다</q></p>
-        {{- if not $ko }}
-        <p class="motto-translation" data-copy>Whatever it is, in the end I will get it done.</p>
-        {{- end }}
-      </div>
+    <div class="spine">
+      <p class="hero-name">Jung Jiwoong</p>
+      {{- /* The motto as a latency trace: each phrase is a span, "결국에는" is the long wait. Bars are decorative. */}}
+      <h1 id="intro-title" class="trace" lang="ko">
+        <span class="trace-label">무엇을 하든</span> <span class="trace-span is-first" aria-hidden="true"></span>
+        <span class="trace-label">결국에는</span> <span class="trace-span is-wait" aria-hidden="true"></span>
+        <span class="trace-label">해낼 것이다</span><span class="trace-span is-end" aria-hidden="true"></span>
+      </h1>
+      {{- if not $ko }}
+      <p class="motto-translation" data-copy>Whatever it is, in the end I will get it done.</p>
+      {{- end }}
+      <p class="hero-intro" data-copy>{{ cond $ko "느린 AI와 병목을 겪으며 AI의 효율을 고민하게 되었고, 지금은 팀 프로젝트 KONNECT에서 백엔드를 맡고 있습니다." "Slow AI and its bottlenecks made me curious about AI efficiency. I now work on the backend of KONNECT, an ongoing team project." }}</p>
     </div>
   </div>
 </section>
 
-<section id="about" class="section section-light" data-pf-section aria-labelledby="about-title">
-  <div class="wrap section-layout">
-    <header class="section-heading">
-      <p class="eyebrow"><span class="index">02</span><span>{{ cond $ko "그는 누구인가" "Who he is" }}</span></p>
-      <h2 id="about-title">{{ if $ko }}느린 AI에서<br>시작된 관심{{ else }}An interest born<br>from slow AI{{ end }}</h2>
-    </header>
-    <div class="section-content">
-      <p data-copy>{{ cond $ko "AI를 쓰다가 답이 늦게 오고, 어딘가에서 병목이 걸리는 순간을 여러 번 겪었습니다. 그 답답함이 ‘AI를 어떻게 더 효율적으로 만들 수 있을까’라는 관심으로 이어졌습니다." "Using AI, he kept running into slow answers and bottlenecks somewhere along the way. That frustration turned into a real interest: how could AI be made more efficient?" }}</p>
-    </div>
-  </div>
-  <div class="wrap section-body">
-    <div class="tool-rail">
-      <div class="tool-rail-head">
-        <h3 id="tools-title">{{ cond $ko "사용해 본 도구" "Tools he has used" }}</h3>
-        <p data-copy>{{ cond $ko "웹사이트와 수업 과제에서 써 왔습니다." "Used for websites and coursework." }}</p>
-      </div>
+<section id="about" class="section" data-pf-section aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="spine">
+      <h2 id="about-title">{{ index $labels "about" | default (cond $ko "그는 누구인가" "Who he is") }}</h2>
+      <p data-copy>{{ cond $ko "AI를 쓰다가 답이 늦게 오고, 어딘가에서 병목이 걸리는 순간을 여러 번 겪었습니다. 그 답답함이 ‘AI를 어떻게 더 효율적으로 만들 수 있을까’라는 관심으로 이어졌습니다." "Using AI, I kept running into slow answers and bottlenecks. That frustration turned into an interest in how AI could be made more efficient." }}</p>
+      <h3 id="tools-title">{{ cond $ko "써 본 도구" "Tools I have used" }}</h3>
+      <p data-copy>{{ cond $ko "웹사이트와 수업 과제에서 써 왔습니다." "Used for websites and coursework." }}</p>
       <ul class="tools" aria-labelledby="tools-title">
         <li data-copy>React</li>
         <li data-copy>Firebase</li>
@@ -91,114 +88,78 @@
         <li data-copy>C++</li>
         <li data-copy>C</li>
       </ul>
+      <p data-copy>{{ cond $ko "이 포트폴리오의 소스와 변경 이력은 GitHub에 관리하고, main에 반영한 변경은 GitHub Actions를 거쳐 Pages로 배포합니다." "This portfolio's source and change history are managed on GitHub. Changes pushed to main are built through GitHub Actions and published to Pages." }}</p>
     </div>
   </div>
 </section>
 
-<section id="future" class="section section-light section-divided" data-pf-section aria-labelledby="future-title">
-  <div class="wrap section-layout">
-    <header class="section-heading">
-      <p class="eyebrow"><span class="index">03</span><span>{{ cond $ko "바라보고 있는 미래" "The future he sees" }}</span></p>
-      <h2 id="future-title">{{ if $ko }}앞으로<br>공부할 분야{{ else }}What he plans<br>to study{{ end }}</h2>
-    </header>
-    <div class="section-content">
-      <p data-copy>{{ cond $ko "AI를 더 효율적으로 만드는 일에 관심이 있습니다. 앞으로는 데이터베이스, 전력, 반도체를 공부하며 데이터와 에너지, 칩으로 시야를 넓혀 가려 합니다." "He is interested in making AI more efficient. He plans to study databases, power and semiconductors, widening his view to data, energy and chips." }}</p>
+<section id="future" class="section" data-pf-section aria-labelledby="future-title">
+  <div class="wrap">
+    <div class="spine">
+      <h2 id="future-title">{{ index $labels "future" | default (cond $ko "바라보고 있는 미래" "The future he sees") }}</h2>
+      <p data-copy>{{ cond $ko "AI의 효율에 대한 관심을 바탕으로, 앞으로 데이터베이스와 전력, 반도체를 공부하려 합니다." "I plan to study databases, power and semiconductors to explore my interest in AI efficiency." }}</p>
+      <ul class="fields">
+        <li>
+          <h3>{{ cond $ko "데이터베이스" "Databases" }}</h3>
+          <p data-copy>{{ cond $ko "데이터가 저장되고, 찾아지고, 다시 읽히는 방식." "How data is stored, found and read back." }}</p>
+        </li>
+        <li>
+          <h3>{{ cond $ko "전력" "Power" }}</h3>
+          <p data-copy>{{ cond $ko "연산을 움직이는 에너지가 어디서 오고 어디로 쓰이는지." "Where the energy behind computation comes from, and where it goes." }}</p>
+        </li>
+        <li>
+          <h3>{{ cond $ko "반도체" "Semiconductors" }}</h3>
+          <p data-copy>{{ cond $ko "계산이 실제로 일어나는 물리적인 자리, 칩." "The chip, the physical place where computing actually happens." }}</p>
+        </li>
+      </ul>
     </div>
-  </div>
-  <div class="wrap section-body">
-    <ol class="fields">
-      <li>
-        <span class="index">01</span>
-        <svg class="field-icon" viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" focusable="false">
-          <ellipse cx="32" cy="14" rx="18" ry="6"/>
-          <path d="M14 14v36c0 3.3 8 6 18 6s18-2.7 18-6V14"/>
-          <path d="M14 26c0 3.3 8 6 18 6s18-2.7 18-6"/>
-          <path d="M14 38c0 3.3 8 6 18 6s18-2.7 18-6"/>
-        </svg>
-        <h3>{{ cond $ko "데이터베이스" "Databases" }}</h3>
-        <p data-copy>{{ cond $ko "데이터가 저장되고, 찾아지고, 다시 읽히는 방식." "How data is stored, found and read back." }}</p>
-      </li>
-      <li>
-        <span class="index">02</span>
-        <svg class="field-icon" viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" focusable="false">
-          <circle cx="32" cy="32" r="24"/>
-          <path d="M35 14 22 35h10l-3 15 13-21H32l3-15z"/>
-        </svg>
-        <h3>{{ cond $ko "전력" "Power" }}</h3>
-        <p data-copy>{{ cond $ko "연산을 움직이는 에너지가 어디서 오고 어디로 쓰이는지." "Where the energy behind computation comes from, and where it goes." }}</p>
-      </li>
-      <li>
-        <span class="index">03</span>
-        <svg class="field-icon" viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" focusable="false">
-          <rect x="18" y="18" width="28" height="28" rx="3"/>
-          <rect x="26" y="26" width="12" height="12" rx="1"/>
-          <path d="M26 8v10M32 8v10M38 8v10M26 46v10M32 46v10M38 46v10M8 26h10M8 32h10M8 38h10M46 26h10M46 32h10M46 38h10"/>
-        </svg>
-        <h3>{{ cond $ko "반도체" "Semiconductors" }}</h3>
-        <p data-copy>{{ cond $ko "계산이 실제로 일어나는 물리적인 자리, 칩." "The chip — the physical place where computing actually happens." }}</p>
-      </li>
-    </ol>
   </div>
 </section>
 
-<section id="current" class="section section-dark" data-pf-section aria-labelledby="current-title">
-  <div class="wrap section-layout">
-    <header class="section-heading">
-      <p class="eyebrow"><span class="index">04</span><span>{{ cond $ko "현재의 모습 · 진행 중" "Where he is now · Ongoing" }}</span></p>
-      <h2 id="current-title">KONNECT</h2>
-    </header>
-    <div class="section-content">
-      <p data-copy>{{ cond $ko "유학생을 돕기 위한 팀 플랫폼입니다. 그는 이 팀에서 백엔드를 맡고 있습니다." "A team platform built to help international students. On the team, he works on the backend." }}</p>
-    </div>
-  </div>
-  <div class="wrap section-body case">
-    <dl class="facts">
-      <div>
-        <dt>{{ cond $ko "역할" "Role" }}</dt>
-        <dd class="role-value" data-copy>{{ cond $ko "백엔드" "Backend" }}</dd>
-      </div>
-      <div>
-        <dt>{{ cond $ko "시기" "Timeline" }}</dt>
-        <dd data-copy>{{ cond $ko "2026년 초 시작 · 2학기 인수인계 이후 본격적으로 참여" "Started early 2026 · far more involved since the second-semester handover" }}</dd>
-      </div>
-      <div>
-        <dt>{{ cond $ko "상태" "Status" }}</dt>
-        <dd data-copy>{{ cond $ko "진행 중 · 공개된 중간 결과물은 아직 없습니다." "Ongoing · no intermediate results are public yet." }}</dd>
-      </div>
-    </dl>
+<section id="current" class="section" data-pf-section aria-labelledby="current-title">
+  <div class="wrap">
+    <div class="spine">
+      <h2 id="current-title">{{ index $labels "current" | default (cond $ko "현재의 모습" "Where he is now") }}</h2>
+      <h3 class="project-name">KONNECT</h3>
+      <p data-copy>{{ cond $ko "유학생을 돕기 위한 팀 플랫폼입니다. 저는 백엔드를 맡고 있으며, 공개된 중간 결과물은 아직 없습니다." "KONNECT is a team platform for international students. I work on its backend; no intermediate results are public yet." }}</p>
 
-    <div class="flow-block">
-      <h3 id="flow-title">{{ cond $ko "작업 흐름" "Process" }}</h3>
+      {{- /* Involvement span: thin before the handover, thicker after, open-ended because the project is ongoing. */}}
+      <ol class="timeline" aria-label="{{ cond $ko "참여 시기" "Involvement" }}">
+        <li>
+          <p class="meta">{{ cond $ko "2026년 초" "Early 2026" }}</p>
+          <p data-copy>{{ cond $ko "시작" "Started" }}</p>
+        </li>
+        <li>
+          <p class="meta">{{ cond $ko "2학기 인수인계 이후" "After the second-semester handover" }}</p>
+          <p data-copy>{{ cond $ko "본격적으로 참여하고 있으며, 지금도 진행 중입니다." "Far more involved, and still ongoing." }}</p>
+        </li>
+      </ol>
+
+      <h3 id="flow-title">{{ cond $ko "작업 흐름" "How I work" }}</h3>
+      <p data-copy>{{ cond $ko "Codex로 만들고, Claude로 검토합니다. AI의 제안이 실제로 동작하는지 확인하기 위해 로그와 동작을 비교합니다." "I build with Codex and review with Claude. I compare logs with actual behavior to check whether AI suggestions work in practice." }}</p>
       <ol class="flow" aria-labelledby="flow-title">
         <li>
-          <span class="index">01</span>
+          <span class="step" aria-hidden="true">1</span>
           <p data-copy>{{ cond $ko "프론트에서 기능의 틀 구성" "Build the frontend functional outline" }}</p>
         </li>
         <li class="is-role">
-          <span class="index">02 <span class="stage-tag">{{ cond $ko "백엔드 역할" "Backend role" }}</span></span>
+          <span class="step" aria-hidden="true">2</span>
           <p data-copy>{{ cond $ko "백엔드 연결" "Connect the backend" }}</p>
+          <p class="meta role-tag">{{ cond $ko "담당 역할" "My role" }}</p>
         </li>
         <li>
-          <span class="index">03</span>
+          <span class="step" aria-hidden="true">3</span>
           <p data-copy>{{ cond $ko "로그와 실제 동작 비교" "Compare logs with actual behavior" }}</p>
         </li>
         <li>
-          <span class="index">04</span>
+          <span class="step" aria-hidden="true">4</span>
           <p data-copy>{{ cond $ko "AI 제안 검토" "Review AI suggestions" }}</p>
         </li>
       </ol>
-    </div>
 
-    <div class="lesson">
-      <h3>{{ cond $ko "여기서 배운 것" "What it taught him" }}</h3>
-      <div class="lesson-body">
-        <p data-copy>{{ if $ko }}AI의 제안은 그대로 받아들이지 않고 <strong>직접 확인합니다.</strong>{{ else }}He does not take AI suggestions as given; <strong>he checks them himself.</strong>{{ end }}</p>
-        <p data-copy>{{ cond $ko "완벽주의를 조절하는 것도 앞으로의 과제입니다." "Keeping perfectionism in proportion is an ongoing goal." }}</p>
-        <div class="lesson-note">
-          <p class="eyebrow">{{ cond $ko "작업 방식" "How he works" }}</p>
-          <p data-copy>{{ cond $ko "Codex로 만들고, Claude로 검토합니다." "He builds with Codex and reviews with Claude." }}</p>
-        </div>
-      </div>
+      <h3>{{ cond $ko "여기서 배운 것" "What I learned" }}</h3>
+      <p data-copy>{{ cond $ko "AI의 제안은 그대로 받아들이지 않고 직접 확인합니다." "I check AI suggestions myself before accepting them." }}</p>
+      <p data-copy>{{ cond $ko "완벽주의를 조절하는 것은 아직 진행 중인 과제입니다." "Keeping perfectionism in proportion is still a work in progress." }}</p>
     </div>
   </div>
 </section>
@@ -206,14 +167,14 @@
 </main>
 
 <footer class="site-footer">
-  <div class="wrap footer-grid">
-    <p class="footer-title">{{ if $ko }}무엇을 하든,<br>결국에는.{{ else }}Whatever it is,<br>in the end.{{ end }}</p>
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="#intro">{{ cond $ko "맨 위로" "Back to top" }} <span aria-hidden="true">↑</span></a>
-        <a href="{{ $repo }}" rel="noopener">{{ cond $ko "GitHub 소스" "Source on GitHub" }} <span aria-hidden="true">↗</span></a>
-      </div>
-      <p class="credit">Built with Hugo · <a href="https://github.com/HugoBlox/kit" rel="noopener">HugoBlox Kit</a></p>
+  <div class="wrap">
+    <div class="spine">
+      <p class="footer-name">Jung Jiwoong</p>
+      <ul class="footer-links">
+        <li><a href="#intro">{{ cond $ko "맨 위로" "Back to top" }}</a></li>
+        <li><a href="{{ $repo }}" rel="noopener">{{ cond $ko "소스 코드" "Source code" }}: github.com/studentnoname/website_proj</a></li>
+      </ul>
+      <p class="credit">{{ if $ko }}Hugo와 <a href="https://github.com/HugoBlox/kit" rel="noopener">HugoBlox Kit</a>으로 만들었습니다. 글꼴은 IBM Plex Sans KR(SIL Open Font License)입니다.{{ else }}Built with Hugo and <a href="https://github.com/HugoBlox/kit" rel="noopener">HugoBlox Kit</a>. Typeface: IBM Plex Sans KR (SIL Open Font License).{{ end }}</p>
     </div>
   </div>
 </footer>
