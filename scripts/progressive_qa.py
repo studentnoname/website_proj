@@ -72,7 +72,7 @@ def main():
                 state = driver.execute_script('''return {
                   reduced: matchMedia('(prefers-reduced-motion:reduce)').matches,
                   setting: document.documentElement.dataset.pfMotion,
-                  panelsNormal: [...document.querySelectorAll('[data-pf-panel]')].every(e=>getComputedStyle(e).position!=='sticky' && getComputedStyle(e).clipPath==='none'),
+                  panelsNormal: [...document.querySelectorAll('[data-pf-panel]')].every(e=>{const s=getComputedStyle(e);return s.position!=='sticky' && s.clipPath==='none' && s.transform==='none' && parseFloat(s.opacity)>.999}),
                   revealsReadable: [...document.querySelectorAll('[data-pf-reveal]')].every(e=>parseFloat(getComputedStyle(e).opacity)>.99),
                   running: [...document.querySelectorAll('body *')].filter(e=>{
                     const s=getComputedStyle(e);return s.animationName!=='none' && s.animationPlayState==='running'
@@ -123,7 +123,7 @@ def main():
                     results.append({'mode':language+'-explicit-choice-persists','passed':persisted})
                     footer = driver.find_element(By.CSS_SELECTOR, '.site-footer [data-pf-motion-toggle]')
                     footer.send_keys(Keys.ENTER)
-                    off = driver.execute_script("return document.documentElement.dataset.pfMotion==='off' && [...document.querySelectorAll('[data-pf-panel]')].every(e=>getComputedStyle(e).position!=='sticky' && getComputedStyle(e).clipPath==='none') && document.getAnimations().every(a=>a.playState!=='running')")
+                    off = driver.execute_script("return document.documentElement.dataset.pfMotion==='off' && [...document.querySelectorAll('[data-pf-panel]')].every(e=>{const s=getComputedStyle(e);return s.position!=='sticky' && s.clipPath==='none' && s.transform==='none' && parseFloat(s.opacity)>.999}) && document.getAnimations().every(a=>a.playState!=='running')")
                     results.append({'mode':language+'-keyboard-disable','passed':off})
                     driver.get(base + suffix + '?v=entry&motion=on#intro')
                     preview = driver.execute_script('''return {

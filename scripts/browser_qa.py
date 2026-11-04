@@ -274,7 +274,7 @@ def main():
                   const read=t=>{const s=getComputedStyle(panel),m=s.transform==='none'?null:new DOMMatrixReadOnly(s.transform);
                     rows.push({ms:t,top:panel.getBoundingClientRect().top,drift:m?m.m42:0,opacity:parseFloat(s.opacity),flow:document.documentElement.dataset.pfFlow});};
                   scrollBy(0,delta);
-                  requestAnimationFrame(()=>{read(0);setTimeout(()=>read(80),80);setTimeout(()=>read(180),180);setTimeout(()=>{read(400);done(rows)},400)});''',delta)
+                  requestAnimationFrame(()=>requestAnimationFrame(()=>{read(0);setTimeout(()=>read(80),80);setTimeout(()=>read(180),180);setTimeout(()=>{read(400);done(rows)},400)}));''',delta)
                 first, last = samples[0], samples[-1]
                 trail = any(abs(x['drift']) > 1 for x in samples[:-1])
                 approached = first['top']-last['top'] > 1 if delta>0 else last['top']-first['top'] > 1
