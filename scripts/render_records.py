@@ -160,6 +160,8 @@ def submission(release_path, identity_path):
             ]))
             blocks.extend([table, Spacer(1, 4*mm)])
         for relative, caption in section.get('image', []):
+            captured_at = capture.get('screenshots', {}).get(relative, {}).get('captured_at', tokens['SCREEN_TIME'])
+            caption = caption.replace('{SCREEN_TIME}', captured_at)
             for key, value in tokens.items():
                 caption = caption.replace('{' + key + '}', value)
             path = ROOT / relative
