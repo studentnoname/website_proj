@@ -147,6 +147,13 @@
           <p data-copy>{{ cond $ko "계산이 실제로 일어나는 물리적인 자리, 칩." "The chip — the physical place where computing actually happens." }}</p>
         </li>
       </ol>
+      <div class="tool-rail" data-pf-reveal>
+        <h3>{{ cond $ko "다음 학습" "Next learning step" }}</h3>
+        <div class="tool-rail-head">
+          <p data-copy>{{ cond $ko "목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다." "Goal: understand how a backend handles input and access permissions, and learn to verify that handling directly." }}</p>
+          <p data-copy>{{ cond $ko "다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다." "Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table." }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -159,7 +166,7 @@
         <h2 id="current-title">KONNECT</h2>
       </header>
       <div class="section-content" data-pf-reveal>
-        <p data-copy>{{ cond $ko "유학생에게 필요한 도움을 관련 경험이 있는 다른 사용자가 나누어 문제를 해소하도록 돕는 팀 플랫폼입니다. 그는 백엔드를 맡고 있습니다." "A team platform where users share relevant experience to help international students with the problems they face. He works on the backend." }}</p>
+        <p data-copy>{{ cond $ko "유학생이 필요한 도움을 글로 요청하면, 관련 경험이 있는 다른 사용자가 답변으로 경험을 나누는 팀 플랫폼입니다. 그는 팀에서 백엔드를 맡고 있습니다." "A team platform where international students post the help they need, and other users share relevant experience through answers. On the team, he works on the backend." }}</p>
       </div>
     </div>
     <div class="wrap section-body case">
@@ -174,7 +181,7 @@
         </div>
         <div>
           <dt>{{ cond $ko "상태" "Status" }}</dt>
-          <dd data-copy>{{ cond $ko "진행 중 · 공개된 중간 결과물은 아직 없습니다." "Ongoing · no intermediate results are public yet." }}</dd>
+          <dd data-copy>{{ cond $ko "진행 중 · 도움 요청·답변 처리를 다듬고 있으며, 공개된 중간 작업 기록이 있습니다." "Ongoing · refining how help requests and answers are handled; a public intermediate work record is available." }}</dd>
         </div>
       </dl>
 
@@ -183,19 +190,19 @@
         <ol class="flow" aria-labelledby="flow-title">
           <li>
             <span class="index">01</span>
-            <p data-copy>{{ cond $ko "프론트에서 기능의 틀 구성" "Build the frontend functional outline" }}</p>
+            <p data-copy>{{ if $ko }}<strong>입력 항목 정리</strong><br>도움 요청의 제목·본문·분야와 답변 본문을 정리하고 요청·응답 형식을 맞춥니다.{{ else }}<strong>Define inputs</strong><br>He sets out a help request’s title, body and category plus the answer body, and aligns the request and response formats.{{ end }}</p>
           </li>
           <li class="is-role">
             <span class="index">02 <span class="stage-tag">{{ cond $ko "백엔드 역할" "Backend role" }}</span></span>
-            <p data-copy>{{ cond $ko "백엔드 연결" "Connect the backend" }}</p>
+            <p data-copy>{{ if $ko }}<strong>입력·권한 검증</strong><br>NestJS DTO로 빈 값·길이·분야를 검사하고 로그인·학교 인증·작성 권한을 확인합니다.{{ else }}<strong>Validate requests</strong><br>NestJS DTOs validate empty values, length and category. Authentication, school verification and write permissions are also checked.{{ end }}</p>
           </li>
           <li>
             <span class="index">03</span>
-            <p data-copy>{{ cond $ko "로그와 실제 동작 비교" "Compare logs with actual behavior" }}</p>
+            <p data-copy>{{ if $ko }}<strong>DB 저장·상태 처리</strong><br>TypeORM으로 PostgreSQL에 요청·답변을 저장합니다. 저장과 상태 변경을 트랜잭션으로 묶어 동시 요청을 다룹니다.{{ else }}<strong>Store and update</strong><br>TypeORM saves requests and answers to PostgreSQL. Saving and status changes share one transaction to handle concurrent requests.{{ end }}</p>
           </li>
           <li>
             <span class="index">04</span>
-            <p data-copy>{{ cond $ko "배포 전 로컬에서 연동 확인" "Check the integration locally before deploying" }}</p>
+            <p data-copy>{{ if $ko }}<strong>로컬 API 검증</strong><br>가상 계정과 격리 DB로 등록→답변→해결 흐름을 검사합니다. 입력 오류 400·미인증 401·권한 없음 403도 대조합니다.{{ else }}<strong>Test the API</strong><br>Test accounts and an isolated DB check the post → answer → resolve flow. Bad input (400), unauthenticated (401) and forbidden (403) responses are compared too.{{ end }}</p>
           </li>
         </ol>
       </div>
@@ -207,7 +214,14 @@
           <p data-copy>{{ cond $ko "완벽주의를 조절하는 것도 앞으로의 과제입니다." "Keeping perfectionism in proportion is an ongoing goal." }}</p>
           <div class="lesson-note">
             <p class="eyebrow">{{ cond $ko "작업 방식" "How he works" }}</p>
-            <p data-copy>{{ cond $ko "Codex로 만들고, Claude로 검토합니다. NestJS 기반 도움 요청·답변 API의 입력과 접근 권한을 점검합니다. 서버와 연동되는 웹앱이므로 로컬 DB·HTTP 테스트로 먼저 확인한 뒤 배포합니다." "He builds with Codex and reviews with Claude. He is checking input handling and access permissions in NestJS APIs for help requests and answers. Because the web app connects to a server, he verifies changes with local DB and HTTP tests before deploying." }}</p>
+            <p data-copy>{{ cond $ko "Codex로 만들고, Claude로 검토합니다. 서버와 연동되는 웹앱이라, 배포하기 전에 로컬 환경에서 HTTP 응답과 데이터베이스 상태를 먼저 대조합니다." "He builds with Codex and reviews with Claude. Because the web app is connected to a server, he first compares HTTP responses with the database state in a local environment before deploying." }}</p>
+          </div>
+          <div class="lesson-note">
+            <p class="eyebrow">{{ cond $ko "중간 작업 기록" "Intermediate work record" }}</p>
+            <div>
+              <p data-copy>{{ cond $ko "도움 요청→답변→해결 처리 흐름과 입력·권한 확인 방식을 정리했습니다. 실제 구현을 대조하고 기존 로컬 DB·HTTP 검증 결과를 요약한 중간 기록입니다." "The record explains the request → answer → resolution flow, input validation and permission checks. It was cross-checked against the implementation and summarizes existing local DB and HTTP verification results." }}</p>
+              <a class="btn-quiet" href="{{ $repo }}/blob/main/docs/tasks/T03.md" hreflang="ko">{{ cond $ko "중간 작업 기록 보기" "Read the intermediate work record (Korean)" }} <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </div>
       </div>

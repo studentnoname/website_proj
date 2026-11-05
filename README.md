@@ -6,6 +6,7 @@ HugoBlox Academic CV의 빌드 환경에서 동작하는 한국어·영어 단�
 - English: https://studentnoname.github.io/website_proj/en/
 - 소스: https://github.com/studentnoname/website_proj
 - 배포: https://github.com/studentnoname/website_proj/actions/workflows/hugo-pages.yml
+- KONNECT 중간 작업 기록: [입력·권한·DB 처리 흐름과 기존 로컬 검증 요약](docs/tasks/T03.md). 원본 코드 대신 실제 구현을 대조한 공개 문서다.
 
 ## 설치와 실행
 

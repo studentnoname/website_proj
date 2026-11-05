@@ -504,6 +504,7 @@ h1 .accent { color: var(--lime); }
   stroke-linejoin: round;
 }
 .fields [data-copy] { color: var(--mute); }
+.fields + .tool-rail { margin-top: var(--body-gap); }
 
 @media (max-width: 600px) {
   .fields { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
@@ -554,7 +555,8 @@ h1 .accent { color: var(--lime); }
 .flow li {
   position: relative;
   display: grid;
-  align-content: space-between;
+  grid-template-rows: 24px auto;
+  align-content: start;
   gap: 24px;
   min-height: 144px;
   padding: 24px;

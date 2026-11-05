@@ -1,5 +1,13 @@
 # 실제 AI 활용 기록
 
+## 2026-11-05 실제 처리 방식과 중간 기록 설명
+
+사용자는 다음 학습 행동으로 ‘도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고 결과 정리’를 선택했다. Claude Code(claude-opus-5-5)에 “This is a FUTURE learning action, not tests he has already completed”라고 구분하고 #future의 목표·다음 행동만 추가하도록 요청했다. 기존 tool-rail 배치를 재사용하고 기존 CSS에 학습 분야와의 간격 한 줄만 추가했다. Codex는 선택하지 않은 SQL 안·미제공 날짜·완료 실적이 들어가지 않았는지 검토한다.
+
+사용자 원문: “지금 어떻게 한다고 추상적으로 나와있지 어떤 방식으로 어떤것을 어떻게 한다고 안나와있어서 이것을 조금더 자세하게 설명할 수 있도록 하고 빈칸을 채우려고해”. Codex는 비공개 도움 서비스·DTO·통합 테스트와 기존 검증 문서를 읽어 정상 등록→답변→해결, 400/401/403 조건, PostgreSQL 트랜잭션을 대조했다. 새 KONNECT 테스트는 실행하지 않았다.
+
+실제 Claude Code CLI(claude-opus-5-5) 요청은 “Replace vague labels with a short bold title then br and a concise explanation in each existing p”와 “Do not edit #future yet: a real next learning action is awaiting his answer”이다. Claude는 기존 HTML에서 네 단계 설명·상태·중간 기록 링크를 작성하고 미검사임을 밝혔다. Codex는 영어의 처리 순서 오해를 줄이고 중간 기록 소개를 간결하게 정리했으며 링크를 설명과 같은 열에 묶었다. 원본 코드·민감값을 전달하거나 공개하지 않았다. 반영 파일은 기존 site/layouts/landing/list.html과 docs/tasks/T03.md다.
+
 ## 2026-11-05 채점 위험 보완
 
 후속 실제 관찰: 사용자가 Desktop konnect를 지정한 뒤 Codex가 백엔드의 도움 요청·답변 Controller/Service/DTO, 통합 테스트, 기존 로컬 검증 문서를 읽었다. Claude Code(claude-opus-5-5)에 “Change ONLY the single existing paragraph under .lesson-note”와 “Those sources confirm work on help request/answer APIs, input and access-permission checks, and existing local DB/HTTP test records”로 한 문단의 두 언어 요약을 요청했다. 비공개 코드·운영 로그·개인정보·상세 보안 조사 내용은 전달하거나 공개하지 않았다. 이번 KONNECT 실행 검증·배포가 아니라 읽기 검토이며, 사이트에서는 작업 범주와 로컬 검증 방식을 설명한다.
