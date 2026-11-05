@@ -49,10 +49,11 @@ def inspect():
     failures = []
     checks = []
     parsed = {}
-    for rel, expected in [('index.html', 'ko'), ('en/index.html', 'en')]:
+    for rel, expected in [('index.html', 'ko'), ('en/index.html', 'en'),
+                          ('404.html', 'ko'), ('en/404.html', 'en')]:
         file = PUBLIC / rel
         if not file.is_file():
-            failures.append(f'Missing homepage: {rel}')
+            failures.append(f'Missing page: {rel}')
             continue
         text = file.read_text(encoding='utf-8')
         document = Document(text)
@@ -62,17 +63,18 @@ def inspect():
             errors.append(f'Expected {expected} language, got {document.lang}')
         if document.h1_count != 1:
             errors.append(f'Expected one h1, got {document.h1_count}')
-        if SECTIONS - document.ids:
+        is_home = not rel.endswith('404.html')
+        if is_home and SECTIONS - document.ids:
             errors.append('Missing sections: ' + ', '.join(sorted(SECTIONS - document.ids)))
         for phrase in ('Your Name', 'Download CV', 'DeepMind', 'Alice Smith', 'Lorem ipsum'):
             if phrase in text:
                 errors.append('Demo content: ' + phrase)
-        if 'Jung Jiwoong' not in text or 'KONNECT' not in text:
+        if 'Jung Jiwoong' not in text or (is_home and 'KONNECT' not in text):
             errors.append('Missing personal introduction or KONNECT activity')
         for value in ('localhost', '127.0.0.1', 'file://', 'C:\\Users\\'):
             if value in text:
                 errors.append('Development address leaked: ' + value)
-        base_url = ORIGIN + PREFIX + ('' if rel == 'index.html' else 'en/')
+        base_url = ORIGIN + PREFIX + rel
         for tag, attr, reference in document.references:
             if reference.startswith(('mailto:', 'tel:', 'data:')):
                 continue

@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T18:31:29.230754+09:00",
+  "checked_at": "2026-11-05T20:52:32.288283+09:00",
   "browser": "firefox",
   "browser_version": "159.0",
   "base_url": "http://127.0.0.1:1313/website_proj/",
@@ -12,44 +12,44 @@
         {
           "delay": 80,
           "duration": 900,
-          "opacity": "0.935492",
-          "start": 253.48
+          "opacity": "0.653176",
+          "start": 582.68
         },
         {
           "delay": 200,
           "duration": 900,
-          "opacity": "0.867212",
-          "start": 253.48
+          "opacity": "0.246527",
+          "start": 582.68
         },
         {
           "delay": 320,
           "duration": 900,
-          "opacity": "0.727973",
-          "start": 253.48
+          "opacity": "0",
+          "start": 582.68
         },
         {
           "delay": 440,
           "duration": 900,
-          "opacity": "0.406683",
-          "start": 253.48
+          "opacity": "0",
+          "start": 582.68
         },
         {
           "delay": 560,
           "duration": 900,
           "opacity": "0",
-          "start": 253.48
+          "start": 582.68
         },
         {
           "delay": 680,
           "duration": 900,
           "opacity": "0",
-          "start": 253.48
+          "start": 582.68
         },
         {
           "delay": 800,
           "duration": 900,
           "opacity": "0",
-          "start": 253.48
+          "start": 582.68
         }
       ],
       "screenshot": "docs/evidence/T08/firefox/text-entrance.png"
@@ -1579,10 +1579,10 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-about\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
+        "curves": "M0 0.09885C0.21966 0.09885 0.26847 0 0.48813 0S0.76966 0.07521 1 0.07521V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "about",
-        "newTop": 408.2166748046875,
+        "newTop": 432.2166748046875,
         "oldBottom": 790.316650390625,
         "oldOwner": "intro",
         "oldTop": 65,
@@ -1600,7 +1600,7 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.08120C0.21204 0.08120 0.25916 0 0.47120 0S0.76204 0.06612 1 0.06612V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.09202C0.22372 0.09202 0.27343 0 0.49715 0S0.77372 0.06907 1 0.06907V1H0Z|M0 0.08120C0.21204 0.08120 0.25916 0 0.47120 0S0.76204 0.06612 1 0.06612V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 408.5333251953125,
@@ -1611,10 +1611,10 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.06242C0.22832 0.06242 0.27906 0 0.50738 0S0.77832 0.04708 1 0.04708V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.09202C0.22372 0.09202 0.27343 0 0.49715 0S0.77372 0.06907 1 0.06907V1H0Z|M0 0.05342C0.23342 0.05342 0.28529 0 0.51871 0S0.78342 0.04151 1 0.04151V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
-        "newTop": 282.5333251953125,
+        "newTop": 258.5333251953125,
         "oldBottom": 570.2000122070312,
         "oldOwner": "about",
         "oldTop": 65,
@@ -1632,7 +1632,7 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.05653C0.23172 0.05653 0.28321 0 0.51494 0S0.78172 0.04337 1 0.04337V1H0Z|M0 0.05440C0.21204 0.05440 0.25916 0 0.47120 0S0.76204 0.04430 1 0.04430V1H0Z",
+        "curves": "M0 0.09202C0.22372 0.09202 0.27343 0 0.49715 0S0.77372 0.06907 1 0.06907V1H0Z|M0 0.05342C0.23342 0.05342 0.28529 0 0.51871 0S0.78342 0.04151 1 0.04151V1H0Z|M0 0.05440C0.21204 0.05440 0.25916 0 0.47120 0S0.76204 0.04430 1 0.04430V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 520.0499877929688,
@@ -1643,10 +1643,10 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.05653C0.23172 0.05653 0.28321 0 0.51494 0S0.78172 0.04337 1 0.04337V1H0Z|M0 0.04198C0.22818 0.04198 0.27889 0 0.50707 0S0.77818 0.03165 1 0.03165V1H0Z",
+        "curves": "M0 0.09202C0.22372 0.09202 0.27343 0 0.49715 0S0.77372 0.06907 1 0.06907V1H0Z|M0 0.05342C0.23342 0.05342 0.28529 0 0.51871 0S0.78342 0.04151 1 0.04151V1H0Z|M0 0.04870C0.22128 0.04870 0.27046 0 0.49174 0S0.77128 0.03678 1 0.03678V1H0Z",
         "height": 914,
         "newOwner": "current",
-        "newTop": 370.0499877929687,
+        "newTop": 394.0499877929687,
         "oldBottom": 734.2000122070312,
         "oldOwner": "future",
         "oldTop": 65,
@@ -1676,18 +1676,18 @@
           "top": 464.183349609375
         },
         {
-          "drift": 8.970000267028809,
+          "drift": 8.539999961853027,
           "flow": "settling",
           "ms": 80,
           "opacity": 0.965,
-          "top": 449.1499938964844
+          "top": 448.7166748046875
         },
         {
-          "drift": 1.940000057220459,
+          "drift": 1.6100000143051147,
           "flow": "settling",
           "ms": 180,
           "opacity": 0.965,
-          "top": 442.1166687011719
+          "top": 441.7999877929687
         },
         {
           "drift": 0,
@@ -1710,18 +1710,18 @@
           "top": 476.183349609375
         },
         {
-          "drift": -7.849999904632568,
+          "drift": -9.279999732971191,
           "flow": "settling",
           "ms": 80,
           "opacity": 0.946,
-          "top": 492.3333129882813
+          "top": 490.8999938964844
         },
         {
-          "drift": -2.5299999713897705,
+          "drift": -1.75,
           "flow": "settling",
           "ms": 180,
           "opacity": 0.946,
-          "top": 497.6499938964844
+          "top": 498.433349609375
         },
         {
           "drift": 0,
@@ -1753,10 +1753,10 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-about\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
+        "curves": "M0 0.04193C0.22067 0.04193 0.26970 0 0.49037 0S0.77067 0.03175 1 0.03175V1H0Z|M0 0H1V1H0z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "about",
-        "newTop": 492.316650390625,
+        "newTop": 506.316650390625,
         "oldBottom": 914.0000152587892,
         "oldOwner": "intro",
         "oldTop": -24.699996948242188,
@@ -1774,7 +1774,7 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.03439C0.21204 0.03439 0.25916 0 0.47120 0S0.76204 0.02800 1 0.02800V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.04126C0.22162 0.04126 0.27087 0 0.49250 0S0.77162 0.03112 1 0.03112V1H0Z|M0 0.03439C0.21204 0.03439 0.25916 0 0.47120 0S0.76204 0.02800 1 0.02800V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 513.316650390625,
@@ -1785,7 +1785,7 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02975C0.22315 0.02975 0.27274 0 0.49588 0S0.77315 0.02236 1 0.02236V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.04126C0.22162 0.04126 0.27087 0 0.49250 0S0.77162 0.03112 1 0.03112V1H0Z|M0 0.03071C0.22142 0.03071 0.27062 0 0.49205 0S0.77142 0.02318 1 0.02318V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 377.316650390625,
@@ -1806,7 +1806,7 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02802C0.22597 0.02802 0.27619 0 0.50216 0S0.77597 0.02103 1 0.02103V1H0Z|M0 0.02014C0.21204 0.02014 0.25916 0 0.47120 0S0.76204 0.01640 1 0.01640V1H0Z",
+        "curves": "M0 0.04126C0.22162 0.04126 0.27087 0 0.49250 0S0.77162 0.03112 1 0.03112V1H0Z|M0 0.02902C0.22438 0.02902 0.27425 0 0.49863 0S0.77438 0.02177 1 0.02177V1H0Z|M0 0.02014C0.21204 0.02014 0.25916 0 0.47120 0S0.76204 0.01640 1 0.01640V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 642.316650390625,
@@ -1817,7 +1817,7 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02802C0.22597 0.02802 0.27619 0 0.50216 0S0.77597 0.02103 1 0.02103V1H0Z|M0 0.01686C0.22476 0.01686 0.27471 0 0.49947 0S0.77476 0.01265 1 0.01265V1H0Z",
+        "curves": "M0 0.04126C0.22162 0.04126 0.27087 0 0.49250 0S0.77162 0.03112 1 0.03112V1H0Z|M0 0.02902C0.22438 0.02902 0.27425 0 0.49863 0S0.77438 0.02177 1 0.02177V1H0Z|M0 0.01686C0.22476 0.01686 0.27471 0 0.49947 0S0.77476 0.01265 1 0.01265V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 492.316650390625,
@@ -1850,18 +1850,18 @@
           "top": 528.4000244140625
         },
         {
-          "drift": 8.680000305175781,
+          "drift": 8.539999961853027,
           "flow": "settling",
           "ms": 80,
           "opacity": 0.962,
-          "top": 523.0833129882812
+          "top": 522.933349609375
         },
         {
-          "drift": 1.6399999856948853,
+          "drift": 1.6100000143051147,
           "flow": "settling",
           "ms": 180,
           "opacity": 0.962,
-          "top": 516.0333251953125
+          "top": 516.0166625976562
         },
         {
           "drift": 0,
@@ -1884,18 +1884,18 @@
           "top": 560.4000244140625
         },
         {
-          "drift": -9.43000030517578,
+          "drift": -9.119999885559082,
           "flow": "settling",
           "ms": 80,
           "opacity": 0.946,
-          "top": 564.9666748046875
+          "top": 565.2833251953125
         },
         {
-          "drift": -1.7799999713897705,
+          "drift": -1.7200000286102295,
           "flow": "settling",
           "ms": 180,
           "opacity": 0.946,
-          "top": 572.61669921875
+          "top": 572.683349609375
         },
         {
           "drift": 0,
@@ -1946,11 +1946,11 @@
       "name": "en-deep-link-immediately-readable",
       "passed": true,
       "evidence": {
-        "bottom": 220.8999938964844,
+        "bottom": 222.13333129882812,
         "header": 65,
         "height": 914,
         "opacity": "1",
-        "top": 179.5
+        "top": 180.73333740234375
       }
     },
     {
@@ -1968,6 +1968,202 @@
           "expected": "On"
         }
       ]
+    },
+    {
+      "name": "error-1440-ko-intro-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/#intro",
+      "evidence": {
+        "bottom": 423.4166717529297,
+        "header": 65,
+        "height": 914,
+        "top": 181.48333740234375
+      }
+    },
+    {
+      "name": "error-1440-ko-about-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/#about",
+      "evidence": {
+        "bottom": 321.8999938964844,
+        "header": 65,
+        "height": 914,
+        "top": 211.5
+      }
+    },
+    {
+      "name": "error-1440-ko-future-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/#future",
+      "evidence": {
+        "bottom": 322.8999938964844,
+        "header": 65,
+        "height": 914,
+        "top": 212.5
+      }
+    },
+    {
+      "name": "error-1440-ko-current-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/#current",
+      "evidence": {
+        "bottom": 266.6999969482422,
+        "header": 65,
+        "height": 914,
+        "top": 211.5
+      }
+    },
+    {
+      "name": "error-1440-ko-home-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/"
+    },
+    {
+      "name": "error-1440-en-intro-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/#intro",
+      "evidence": {
+        "bottom": 402.23333740234375,
+        "header": 65,
+        "height": 914,
+        "top": 188.53334045410156
+      }
+    },
+    {
+      "name": "error-1440-en-about-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/#about",
+      "evidence": {
+        "bottom": 321.8999938964844,
+        "header": 65,
+        "height": 914,
+        "top": 211.5
+      }
+    },
+    {
+      "name": "error-1440-en-future-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/#future",
+      "evidence": {
+        "bottom": 322.8999938964844,
+        "header": 65,
+        "height": 914,
+        "top": 212.5
+      }
+    },
+    {
+      "name": "error-1440-en-current-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/#current",
+      "evidence": {
+        "bottom": 266.6999969482422,
+        "header": 65,
+        "height": 914,
+        "top": 211.5
+      }
+    },
+    {
+      "name": "error-1440-en-home-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/"
+    },
+    {
+      "name": "error-390-ko-intro-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/#intro",
+      "evidence": {
+        "bottom": 240.3333282470703,
+        "header": 65,
+        "height": 914,
+        "top": 140.5
+      }
+    },
+    {
+      "name": "error-390-ko-about-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/#about",
+      "evidence": {
+        "bottom": 322.3000030517578,
+        "header": 65,
+        "height": 914,
+        "top": 239.5
+      }
+    },
+    {
+      "name": "error-390-ko-future-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/#future",
+      "evidence": {
+        "bottom": 323.3000030517578,
+        "header": 65,
+        "height": 914,
+        "top": 240.5
+      }
+    },
+    {
+      "name": "error-390-ko-current-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/#current",
+      "evidence": {
+        "bottom": 220.8999938964844,
+        "header": 65,
+        "height": 914,
+        "top": 179.5
+      }
+    },
+    {
+      "name": "error-390-ko-home-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/"
+    },
+    {
+      "name": "error-390-en-intro-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/#intro",
+      "evidence": {
+        "bottom": 232.03334045410156,
+        "header": 65,
+        "height": 914,
+        "top": 140.5
+      }
+    },
+    {
+      "name": "error-390-en-about-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/#about",
+      "evidence": {
+        "bottom": 322.3000030517578,
+        "header": 65,
+        "height": 914,
+        "top": 239.5
+      }
+    },
+    {
+      "name": "error-390-en-future-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/#future",
+      "evidence": {
+        "bottom": 323.3000030517578,
+        "header": 65,
+        "height": 914,
+        "top": 240.5
+      }
+    },
+    {
+      "name": "error-390-en-current-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/#current",
+      "evidence": {
+        "bottom": 220.8999938964844,
+        "header": 65,
+        "height": 914,
+        "top": 179.5
+      }
+    },
+    {
+      "name": "error-390-en-home-recovers",
+      "passed": true,
+      "url": "http://127.0.0.1:1313/website_proj/en/"
     }
   ]
 }

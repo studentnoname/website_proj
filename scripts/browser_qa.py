@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone
 import json
 from pathlib import Path
 import sys
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / '.local/python'))
@@ -325,6 +326,38 @@ def main():
             record(f'{language}-deep-link-immediately-readable',float(destination['opacity'])>.99 and
                    destination['top']>=destination['header'] and destination['bottom']<=destination['height'], evidence=destination)
         record('panel-localized-status-labels',all(x['expected'] in x['actual'] and '"' not in x['actual'] for x in labels),evidence=labels)
+
+        # Error documents must lead back to real sections on their language homepage.
+        for width in (1440,390):
+            viewport(width)
+            for language,suffix in [('ko',''),('en','en/')]:
+                error_url = base + suffix + '404.html'
+                for section in ('intro','about','future','current'):
+                    driver.get(error_url)
+                    wait.until(lambda b:b.find_elements(By.CSS_SELECTOR,'h1'))
+                    link = driver.find_element(By.CSS_SELECTOR, 'a[href$="#'+section+'"]')
+                    if not link.is_displayed():
+                        driver.find_element(By.CSS_SELECTOR,'label[for="nav-toggle"]').click()
+                    link.click()
+                    wait.until(lambda b:b.current_url==base+suffix+'#'+section)
+                    wait.until(lambda b:b.find_elements(By.CSS_SELECTOR,'main#main'))
+                    settled()
+                    state = driver.execute_script('''const e=document.querySelector('#'+arguments[0]+' '+(arguments[0]==='intro'?'h1':'h2')),r=e.getBoundingClientRect();
+                      return {top:r.top,bottom:r.bottom,header:document.querySelector('.site-header').getBoundingClientRect().bottom,height:innerHeight};''',section)
+                    record(f'error-{width}-{language}-{section}-recovers',state['top']>=state['header']-1 and state['bottom']<=state['height'],url=driver.current_url,evidence=state)
+                driver.get(error_url)
+                home_path = urlsplit(base).path + suffix
+                driver.find_element(By.CSS_SELECTOR,'a[href="'+home_path+'"]').click()
+                wait.until(lambda b:b.find_elements(By.ID,'intro'))
+                record(f'error-{width}-{language}-home-recovers',driver.current_url==base+suffix,url=driver.current_url)
+        if urlsplit(base).hostname not in ('127.0.0.1','localhost'):
+            driver.get(base+'__missing-grade-check__/')
+            link=driver.find_element(By.CSS_SELECTOR,'a[href$="#about"]')
+            if not link.is_displayed():
+                driver.find_element(By.CSS_SELECTOR,'label[for="nav-toggle"]').click()
+            link.click()
+            wait.until(lambda b:b.current_url==base+'#about' and b.find_elements(By.ID,'about'))
+            record('missing-route-menu-recovers',True,url=driver.current_url)
 
     except Exception as error:
         record('unexpected-test-error', False, error=f'{type(error).__name__}: {error}',

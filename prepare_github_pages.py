@@ -599,6 +599,11 @@ def fix_public_paths(public, base):
 
     @lru_cache(maxsize=None)
     def resolve(value, current):
+        if current.rsplit('/', 1)[-1] == '404.html' and value in ('#intro', '#about', '#future', '#current'):
+            # Error pages share the home menu, but its sections live on the language homepage.
+            language_dir = current.rpartition('/')[0]
+            home = language_dir + '/' if language_dir else ''
+            return prefix + '/' + home + value, home + 'index.html'
         if not value or value.startswith(('#', '//', 'data:', 'javascript:', 'mailto:', 'tel:')):
             return value, None
         absolute = urllib.parse.urljoin(base.rstrip('/') + '/' + current, html.unescape(value))

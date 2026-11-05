@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T18:27:49.657934+09:00",
+  "checked_at": "2026-11-05T20:49:19.885043+09:00",
   "base_url": "https://studentnoname.github.io/website_proj/",
   "passed": true,
   "checks": [
@@ -25,6 +25,20 @@
         "future",
         "intro"
       ],
+      "errors": []
+    },
+    {
+      "page": "404.html",
+      "language": "ko-KR",
+      "references": 16,
+      "sections": [],
+      "errors": []
+    },
+    {
+      "page": "en/404.html",
+      "language": "en-US",
+      "references": 16,
+      "sections": [],
       "errors": []
     }
   ],
