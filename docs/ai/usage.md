@@ -2,6 +2,8 @@
 
 ## 2026-11-05 채점 위험 보완
 
+후속 실제 관찰: 사용자가 Desktop konnect를 지정한 뒤 Codex가 백엔드의 도움 요청·답변 Controller/Service/DTO, 통합 테스트, 기존 로컬 검증 문서를 읽었다. Claude Code(claude-opus-5-5)에 “Change ONLY the single existing paragraph under .lesson-note”와 “Those sources confirm work on help request/answer APIs, input and access-permission checks, and existing local DB/HTTP test records”로 한 문단의 두 언어 요약을 요청했다. 비공개 코드·운영 로그·개인정보·상세 보안 조사 내용은 전달하거나 공개하지 않았다. 이번 KONNECT 실행 검증·배포가 아니라 읽기 검토이며, 사이트에서는 작업 범주와 로컬 검증 방식을 설명한다.
+
 사용자의 후속 답변으로 목적과 검증 이유가 확정되어 Claude Code에 기존 KONNECT 소개·마지막 작업 단계·작업 방식 문단만 보완하도록 요청했다. 실제 입력: “Confirmed purpose: international students need help; other users who have relevant experience share their experiences to help resolve those needs.” / “this is a web application connected to a live server, so he tests locally before deploying to check the integration.” 새 기능·성과·특정 도구 선택 이유를 만들지 않도록 제한했고 Codex가 원문과 대조한다. KONNECT 코드 직접 관찰은 경로 확인 전 미수행이다.
 
 사용자의 “우선순위대로 해결”에 따라 Codex가 404 경로 보정과 보고서 증거 연결을 맡았다. 프론트 P77 문구는 Claude Code 2.1.287(claude-opus-5-5)로 기존 lesson 문단만 작성하도록 요청했다. 실제 입력 발췌는 “Clarify the existing first paragraph of .lesson-body by explicitly connecting those known facts”와 “Do NOT change the vague platform purpose (P75): the user's specific problem/feature answer is still pending”이다. Claude는 직접 검증의 목적을 설명하는 두 언어 문장을 작성하고 미검사임을 밝혔다. Codex는 중복과 어색한 영어를 줄이고 확인된 사실 범위를 검토했다. 반영 파일은 site/layouts/landing/list.html이다. 새 활동·성과·기능·다음 학습 행동을 만들지 않았다. 실제 빌드·홈과 404 정적 검사 및 배포 후 브라우저 검사로 확인한다.
