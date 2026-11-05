@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-05T21:19:32.954219+09:00",
+  "checked_at": "2026-11-05T22:26:30.918219+09:00",
   "browser": "firefox",
   "browser_version": "159.0",
   "base_url": "https://studentnoname.github.io/website_proj/",
@@ -12,44 +12,44 @@
         {
           "delay": 80,
           "duration": 900,
-          "opacity": "0.92835",
-          "start": 553.82
+          "opacity": "0",
+          "start": 232.32
         },
         {
           "delay": 200,
           "duration": 900,
-          "opacity": "0.85339",
-          "start": 553.82
+          "opacity": "0",
+          "start": 232.32
         },
         {
           "delay": 320,
           "duration": 900,
-          "opacity": "0.697733",
-          "start": 553.82
+          "opacity": "0",
+          "start": 232.32
         },
         {
           "delay": 440,
           "duration": 900,
-          "opacity": "0.339093",
-          "start": 553.82
+          "opacity": "0",
+          "start": 232.32
         },
         {
           "delay": 560,
           "duration": 900,
           "opacity": "0",
-          "start": 553.82
+          "start": 232.32
         },
         {
           "delay": 680,
           "duration": 900,
           "opacity": "0",
-          "start": 553.82
+          "start": 232.32
         },
         {
           "delay": 800,
           "duration": 900,
           "opacity": "0",
-          "start": 553.82
+          "start": 232.32
         }
       ],
       "screenshot": "docs/evidence/T08/firefox/text-entrance.png"
@@ -180,12 +180,24 @@
           {
             "leading": 31.5,
             "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
           }
         ],
         "copyTops": [
           921.816650390625,
           1428.0166015625,
-          2096.216552734375
+          2327.216552734375
         ],
         "headingEdges": [
           120,
@@ -200,12 +212,12 @@
         "titleBottoms": [
           1032.2166442871094,
           1538.4166107177734,
-          2151.4165649414062
+          2382.4165649414062
         ],
         "titleTops": [
           921.816650390625,
           1428.0166015625,
-          2096.216552734375
+          2327.216552734375
         ]
       }
     },
@@ -225,12 +237,12 @@
       "title_positions": [
         921.816650390625,
         1428.0166015625,
-        2096.216552734375
+        2327.216552734375
       ],
       "copy_tops": [
         921.816650390625,
         1428.0166015625,
-        2096.216552734375
+        2327.216552734375
       ],
       "expected_gap": 0
     },
@@ -356,12 +368,24 @@
           {
             "leading": 31.5,
             "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
           }
         ],
         "copyTops": [
           801.2000122070312,
           1412.5,
-          2112.199951171875
+          2398
         ],
         "headingEdges": [
           48,
@@ -376,12 +400,12 @@
         "titleBottoms": [
           911.6000213623048,
           1522.8999938964844,
-          2167.399948120117
+          2453.199996948242
         ],
         "titleTops": [
           801.2000122070312,
           1412.5,
-          2112.199951171875
+          2398
         ]
       }
     },
@@ -401,12 +425,12 @@
       "title_positions": [
         801.2000122070312,
         1412.5,
-        2112.199951171875
+        2398
       ],
       "copy_tops": [
         801.2000122070312,
         1412.5,
-        2112.199951171875
+        2398
       ],
       "expected_gap": 0
     },
@@ -532,12 +556,24 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
         "copyTops": [
           849.4666748046875,
           1481.7666015625,
-          2135.166748046875
+          2388.166748046875
         ],
         "headingEdges": [
           24,
@@ -552,12 +588,12 @@
         "titleBottoms": [
           817.4666748046875,
           1449.7666778564453,
-          2103.1666107177734
+          2356.1666107177734
         ],
         "titleTops": [
           734.6666870117188,
           1366.9666748046875,
-          2061.7666015625
+          2314.7666015625
         ]
       }
     },
@@ -577,12 +613,12 @@
       "title_positions": [
         817.4666748046875,
         1449.7666778564453,
-        2103.1666107177734
+        2356.1666107177734
       ],
       "copy_tops": [
         849.4666748046875,
         1481.7666015625,
-        2135.166748046875
+        2388.166748046875
       ],
       "expected_gap": 32
     },
@@ -708,12 +744,24 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
         "copyTops": [
           1218,
           1878.300048828125,
-          2724.699951171875
+          3033.699951171875
         ],
         "headingEdges": [
           20,
@@ -728,12 +776,12 @@
         "titleBottoms": [
           1185.9999542236328,
           1846.3000030517576,
-          2692.7000427246094
+          3001.7000427246094
         ],
         "titleTops": [
           1103.199951171875,
           1763.5,
-          2651.300048828125
+          2960.300048828125
         ]
       }
     },
@@ -753,12 +801,12 @@
       "title_positions": [
         1185.9999542236328,
         1846.3000030517576,
-        2692.7000427246094
+        3001.7000427246094
       ],
       "copy_tops": [
         1218,
         1878.300048828125,
-        2724.699951171875
+        3033.699951171875
       ],
       "expected_gap": 32
     },
@@ -888,12 +936,24 @@
           {
             "leading": 31.5,
             "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
           }
         ],
         "copyTops": [
           953.316650390625,
           1459.5166015625,
-          2127.716552734375
+          2390.216552734375
         ],
         "headingEdges": [
           120,
@@ -908,12 +968,12 @@
         "titleBottoms": [
           1063.7166442871094,
           1569.9166107177734,
-          2182.9165649414062
+          2445.4165649414062
         ],
         "titleTops": [
           953.316650390625,
           1459.5166015625,
-          2127.716552734375
+          2390.216552734375
         ]
       }
     },
@@ -933,12 +993,12 @@
       "title_positions": [
         953.316650390625,
         1459.5166015625,
-        2127.716552734375
+        2390.216552734375
       ],
       "copy_tops": [
         953.316650390625,
         1459.5166015625,
-        2127.716552734375
+        2390.216552734375
       ],
       "expected_gap": 0
     },
@@ -1068,12 +1128,24 @@
           {
             "leading": 31.5,
             "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
           }
         ],
         "copyTops": [
           830.5333251953125,
           1481.433349609375,
-          2236.333251953125
+          2553.63330078125
         ],
         "headingEdges": [
           48,
@@ -1088,12 +1160,12 @@
         "titleBottoms": [
           996.1333160400392,
           1647.0333557128906,
-          2291.533264160156
+          2608.833297729492
         ],
         "titleTops": [
           830.5333251953125,
           1481.433349609375,
-          2236.333251953125
+          2553.63330078125
         ]
       }
     },
@@ -1113,12 +1185,12 @@
       "title_positions": [
         830.5333251953125,
         1481.433349609375,
-        2236.333251953125
+        2553.63330078125
       ],
       "copy_tops": [
         830.5333251953125,
         1481.433349609375,
-        2236.333251953125
+        2553.63330078125
       ],
       "expected_gap": 0
     },
@@ -1248,12 +1320,24 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
         "copyTops": [
           876.7333374023438,
           1509.0333251953125,
-          2134.433349609375
+          2415.433349609375
         ],
         "headingEdges": [
           24,
@@ -1268,12 +1352,12 @@
         "titleBottoms": [
           844.7333526611328,
           1477.0334014892578,
-          2102.4334411621094
+          2383.4334411621094
         ],
         "titleTops": [
           761.933349609375,
           1394.2333984375,
-          2061.033447265625
+          2342.033447265625
         ]
       }
     },
@@ -1293,12 +1377,12 @@
       "title_positions": [
         844.7333526611328,
         1477.0334014892578,
-        2102.4334411621094
+        2383.4334411621094
       ],
       "copy_tops": [
         876.7333374023438,
         1509.0333251953125,
-        2134.433349609375
+        2415.433349609375
       ],
       "expected_gap": 32
     },
@@ -1428,12 +1512,24 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
         "copyTops": [
           1237.699951171875,
           1898,
-          2772.39990234375
+          3109.39990234375
         ],
         "headingEdges": [
           20,
@@ -1448,12 +1544,12 @@
         "titleBottoms": [
           1205.7000274658203,
           1865.9999542236328,
-          2740.3999938964844
+          3077.3999938964844
         ],
         "titleTops": [
           1122.9000244140625,
           1783.199951171875,
-          2699
+          3036
         ]
       }
     },
@@ -1473,12 +1569,12 @@
       "title_positions": [
         1205.7000274658203,
         1865.9999542236328,
-        2740.3999938964844
+        3077.3999938964844
       ],
       "copy_tops": [
         1237.699951171875,
         1898,
-        2772.39990234375
+        3109.39990234375
       ],
       "expected_gap": 32
     },
@@ -1600,7 +1696,7 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.08120C0.21204 0.08120 0.25916 0 0.47120 0S0.76204 0.06612 1 0.06612V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.06036C0.21204 0.06036 0.25916 0 0.47120 0S0.76204 0.04915 1 0.04915V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 408.5333251953125,
@@ -1611,7 +1707,7 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.06867C0.22428 0.06867 0.27412 0 0.49840 0S0.77428 0.05152 1 0.05152V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.05105C0.22428 0.05105 0.27412 0 0.49840 0S0.77428 0.03830 1 0.03830V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 282.5333251953125,
@@ -1632,30 +1728,30 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.06271C0.22815 0.06271 0.27885 0 0.50699 0S0.77815 0.04727 1 0.04727V1H0Z|M0 0.04831C0.21204 0.04831 0.25916 0 0.47120 0S0.76204 0.03934 1 0.03934V1H0Z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.04374C0.23043 0.04374 0.28163 0 0.51206 0S0.78043 0.03329 1 0.03329V1H0Z|M0 0.03569C0.21204 0.03569 0.25916 0 0.47120 0S0.76204 0.02906 1 0.02906V1H0Z",
         "height": 914,
         "newOwner": "current",
-        "newTop": 520.0499877929688,
-        "oldBottom": 734.2000122070312,
+        "newTop": 642.316650390625,
+        "oldBottom": 914.0000152587892,
         "oldOwner": "future",
-        "oldTop": 65,
+        "oldTop": 13.800003051757812,
         "opacity": 0.927
       },
       "second": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.06271C0.22815 0.06271 0.27885 0 0.50699 0S0.77815 0.04727 1 0.04727V1H0Z|M0 0.04316C0.22140 0.04316 0.27059 0 0.49199 0S0.77140 0.03259 1 0.03259V1H0Z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.04374C0.23043 0.04374 0.28163 0 0.51206 0S0.78043 0.03329 1 0.03329V1H0Z|M0 0.03192C0.22135 0.03192 0.27054 0 0.49189 0S0.77135 0.02410 1 0.02410V1H0Z",
         "height": 914,
         "newOwner": "current",
-        "newTop": 394.0499877929687,
-        "oldBottom": 734.2000122070312,
+        "newTop": 516.316650390625,
+        "oldBottom": 914.0000152587892,
         "oldOwner": "future",
-        "oldTop": 65,
-        "opacity": 0.978
+        "oldTop": 13.800003051757812,
+        "opacity": 0.968
       },
       "expected_hold": {
-        "bottom": 734.2000122070312,
+        "bottom": 914,
         "header": 65,
-        "panelHeight": 669.2000122070312
+        "panelHeight": 900.2000122070312
       },
       "screenshot": "docs/evidence/T08/firefox/panel-1440-current.png"
     },
@@ -1710,18 +1806,18 @@
           "top": 476.183349609375
         },
         {
-          "drift": -8.970000267028809,
+          "drift": -9.43000030517578,
           "flow": "settling",
           "ms": 80,
           "opacity": 0.946,
-          "top": 491.2166748046875
+          "top": 490.75
         },
         {
-          "drift": -1.6699999570846558,
+          "drift": -1.75,
           "flow": "settling",
           "ms": 180,
           "opacity": 0.946,
-          "top": 498.51666259765625
+          "top": 498.433349609375
         },
         {
           "drift": 0,
@@ -1774,7 +1870,7 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.03439C0.21204 0.03439 0.25916 0 0.47120 0S0.76204 0.02800 1 0.02800V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02552C0.21204 0.02552 0.25916 0 0.47120 0S0.76204 0.02078 1 0.02078V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 513.316650390625,
@@ -1785,7 +1881,7 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.03071C0.22142 0.03071 0.27062 0 0.49205 0S0.77142 0.02318 1 0.02318V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02208C0.22315 0.02208 0.27274 0 0.49588 0S0.77315 0.01659 1 0.01659V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
         "newTop": 377.316650390625,
@@ -1806,30 +1902,30 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02975C0.22315 0.02975 0.27274 0 0.49588 0S0.77315 0.02236 1 0.02236V1H0Z|M0 0.01844C0.21204 0.01844 0.25916 0 0.47120 0S0.76204 0.01502 1 0.01502V1H0Z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02108C0.22538 0.02108 0.27546 0 0.50084 0S0.77538 0.01581 1 0.01581V1H0Z|M0 0.01344C0.21204 0.01344 0.25916 0 0.47120 0S0.76204 0.01094 1 0.01094V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 642.316650390625,
-        "oldBottom": 913.9999847412108,
+        "oldBottom": 914.0000610351562,
         "oldOwner": "future",
-        "oldTop": 25.199996948242188,
+        "oldTop": -283.79998779296875,
         "opacity": 0.927
       },
       "second": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02975C0.22315 0.02975 0.27274 0 0.49588 0S0.77315 0.02236 1 0.02236V1H0Z|M0 0.01544C0.22476 0.01544 0.27471 0 0.49947 0S0.77476 0.01158 1 0.01158V1H0Z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02108C0.22538 0.02108 0.27546 0 0.50084 0S0.77538 0.01581 1 0.01581V1H0Z|M0 0.01125C0.22476 0.01125 0.27471 0 0.49947 0S0.77476 0.00844 1 0.00844V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 492.316650390625,
-        "oldBottom": 913.9999847412108,
+        "oldBottom": 914.0000610351562,
         "oldOwner": "future",
-        "oldTop": 25.199996948242188,
+        "oldTop": -283.79998779296875,
         "opacity": 0.968
       },
       "expected_hold": {
         "bottom": 914,
         "header": 65,
-        "panelHeight": 888.7999877929688
+        "panelHeight": 1197.800048828125
       },
       "screenshot": "docs/evidence/T08/firefox/panel-390-current.png"
     },
@@ -1857,11 +1953,11 @@
           "top": 522.933349609375
         },
         {
-          "drift": 1.6399999856948853,
+          "drift": 1.6100000143051147,
           "flow": "settling",
           "ms": 180,
           "opacity": 0.962,
-          "top": 516.0333251953125
+          "top": 516.0166625976562
         },
         {
           "drift": 0,
@@ -1884,11 +1980,11 @@
           "top": 560.4000244140625
         },
         {
-          "drift": -9.279999732971191,
+          "drift": -9.43000030517578,
           "flow": "settling",
           "ms": 80,
           "opacity": 0.946,
-          "top": 565.11669921875
+          "top": 564.9666748046875
         },
         {
           "drift": -1.7799999713897705,
@@ -1946,11 +2042,11 @@
       "name": "en-deep-link-immediately-readable",
       "passed": true,
       "evidence": {
-        "bottom": 222.13333129882812,
+        "bottom": 220.8999938964844,
         "header": 65,
         "height": 914,
         "opacity": "1",
-        "top": 180.73333740234375
+        "top": 179.5
       }
     },
     {
@@ -2175,159 +2271,443 @@
       "url": "https://studentnoname.github.io/website_proj/#about"
     },
     {
-      "name": "confirmed-purpose-ko-1440",
+      "name": "detailed-content-ko-1440",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/?content-check=e4f99ab54c46f5cb36a8ffb20f28045ad424360e#current",
+      "url": "https://studentnoname.github.io/website_proj/?detail-check=9b49287dfde985e316054a4d7c406518a79094ce#current",
       "metrics": {
         "clipped": [],
-        "method": "Codex로 만들고, Claude로 검토합니다. NestJS 기반 도움 요청·답변 API의 입력과 접근 권한을 점검합니다. 서버와 연동되는 웹앱이므로 로컬 DB·HTTP 테스트로 먼저 확인한 뒤 배포합니다.",
-        "purpose": "유학생에게 필요한 도움을 관련 경험이 있는 다른 사용자가 나누어 문제를 해소하도록 돕는 팀 플랫폼입니다. 그는 백엔드를 맡고 있습니다.",
+        "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
+        "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 1440,
-        "step": "배포 전 로컬에서 연동 확인",
-        "width": 1440
+        "stages": [
+          "입력 항목 정리도움 요청의 제목·본문·분야와 답변 본문을 정리하고 요청·응답 형식을 맞춥니다.",
+          "입력·권한 검증NestJS DTO로 빈 값·길이·분야를 검사하고 로그인·학교 인증·작성 권한을 확인합니다.",
+          "DB 저장·상태 처리TypeORM으로 PostgreSQL에 요청·답변을 저장합니다. 저장과 상태 변경을 트랜잭션으로 묶어 동시 요청을 다룹니다.",
+          "로컬 API 검증가상 계정과 격리 DB로 등록→답변→해결 흐름을 검사합니다. 입력 오류 400·미인증 401·권한 없음 403도 대조합니다."
+        ],
+        "width": 1440,
+        "card_alignment": [
+          {
+            "body": 736.5499877929688,
+            "row": 629.2999877929688,
+            "title": 706.0499877929688
+          },
+          {
+            "body": 736.5499877929688,
+            "row": 629.2999877929688,
+            "title": 706.0499877929688
+          },
+          {
+            "body": 736.5499877929688,
+            "row": 629.2999877929688,
+            "title": 706.0499877929688
+          },
+          {
+            "body": 736.5499877929688,
+            "row": 629.2999877929688,
+            "title": 706.0499877929688
+          }
+        ]
       },
       "screenshot": "docs/evidence/T08/firefox/content-ko-1440.png"
     },
     {
-      "name": "confirmed-purpose-ko-390",
+      "name": "detailed-content-ko-900",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/?content-check=e4f99ab54c46f5cb36a8ffb20f28045ad424360e#current",
+      "url": "https://studentnoname.github.io/website_proj/?detail-check=9b49287dfde985e316054a4d7c406518a79094ce#current",
       "metrics": {
         "clipped": [],
-        "method": "Codex로 만들고, Claude로 검토합니다. NestJS 기반 도움 요청·답변 API의 입력과 접근 권한을 점검합니다. 서버와 연동되는 웹앱이므로 로컬 DB·HTTP 테스트로 먼저 확인한 뒤 배포합니다.",
-        "purpose": "유학생에게 필요한 도움을 관련 경험이 있는 다른 사용자가 나누어 문제를 해소하도록 돕는 팀 플랫폼입니다. 그는 백엔드를 맡고 있습니다.",
+        "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
+        "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
+        "scroll": 900,
+        "stages": [
+          "입력 항목 정리도움 요청의 제목·본문·분야와 답변 본문을 정리하고 요청·응답 형식을 맞춥니다.",
+          "입력·권한 검증NestJS DTO로 빈 값·길이·분야를 검사하고 로그인·학교 인증·작성 권한을 확인합니다.",
+          "DB 저장·상태 처리TypeORM으로 PostgreSQL에 요청·답변을 저장합니다. 저장과 상태 변경을 트랜잭션으로 묶어 동시 요청을 다룹니다.",
+          "로컬 API 검증가상 계정과 격리 DB로 등록→답변→해결 흐름을 검사합니다. 입력 오류 400·미인증 401·권한 없음 403도 대조합니다."
+        ],
+        "width": 900,
+        "card_alignment": [
+          {
+            "body": 768.0499877929688,
+            "row": 660.7999877929688,
+            "title": 737.5499877929688
+          },
+          {
+            "body": 768.0499877929688,
+            "row": 660.7999877929688,
+            "title": 737.5499877929688
+          },
+          {
+            "body": 992.5499877929688,
+            "row": 885.2999877929688,
+            "title": 962.0499877929688
+          },
+          {
+            "body": 992.5499877929688,
+            "row": 885.2999877929688,
+            "title": 962.0499877929688
+          }
+        ]
+      },
+      "screenshot": "docs/evidence/T08/firefox/content-ko-900.png"
+    },
+    {
+      "name": "detailed-content-ko-768",
+      "passed": true,
+      "url": "https://studentnoname.github.io/website_proj/?detail-check=9b49287dfde985e316054a4d7c406518a79094ce#current",
+      "metrics": {
+        "clipped": [],
+        "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
+        "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
+        "scroll": 768,
+        "stages": [
+          "입력 항목 정리도움 요청의 제목·본문·분야와 답변 본문을 정리하고 요청·응답 형식을 맞춥니다.",
+          "입력·권한 검증NestJS DTO로 빈 값·길이·분야를 검사하고 로그인·학교 인증·작성 권한을 확인합니다.",
+          "DB 저장·상태 처리TypeORM으로 PostgreSQL에 요청·답변을 저장합니다. 저장과 상태 변경을 트랜잭션으로 묶어 동시 요청을 다룹니다.",
+          "로컬 API 검증가상 계정과 격리 DB로 등록→답변→해결 흐름을 검사합니다. 입력 오류 400·미인증 401·권한 없음 403도 대조합니다."
+        ],
+        "width": 768,
+        "card_alignment": [
+          {
+            "body": 801.4000244140625,
+            "row": 696.9000244140625,
+            "title": 773.4000244140625
+          },
+          {
+            "body": 801.4000244140625,
+            "row": 696.9000244140625,
+            "title": 773.4000244140625
+          },
+          {
+            "body": 1043.4000244140625,
+            "row": 938.9000244140624,
+            "title": 1015.4000244140624
+          },
+          {
+            "body": 1043.4000244140625,
+            "row": 938.9000244140624,
+            "title": 1015.4000244140624
+          }
+        ]
+      },
+      "screenshot": "docs/evidence/T08/firefox/content-ko-768.png"
+    },
+    {
+      "name": "detailed-content-ko-390",
+      "passed": true,
+      "url": "https://studentnoname.github.io/website_proj/?detail-check=9b49287dfde985e316054a4d7c406518a79094ce#current",
+      "metrics": {
+        "clipped": [],
+        "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
+        "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 390,
-        "step": "배포 전 로컬에서 연동 확인",
-        "width": 390
+        "stages": [
+          "입력 항목 정리도움 요청의 제목·본문·분야와 답변 본문을 정리하고 요청·응답 형식을 맞춥니다.",
+          "입력·권한 검증NestJS DTO로 빈 값·길이·분야를 검사하고 로그인·학교 인증·작성 권한을 확인합니다.",
+          "DB 저장·상태 처리TypeORM으로 PostgreSQL에 요청·답변을 저장합니다. 저장과 상태 변경을 트랜잭션으로 묶어 동시 요청을 다룹니다.",
+          "로컬 API 검증가상 계정과 격리 DB로 등록→답변→해결 흐름을 검사합니다. 입력 오류 400·미인증 401·권한 없음 403도 대조합니다."
+        ],
+        "width": 390,
+        "card_alignment": [
+          {
+            "body": 861.4000244140625,
+            "row": 780.9000244140625,
+            "title": 833.4000244140625
+          },
+          {
+            "body": 1043.4000244140625,
+            "row": 962.9000244140624,
+            "title": 1015.4000244140624
+          },
+          {
+            "body": 1225.4000244140625,
+            "row": 1144.9000244140625,
+            "title": 1197.4000244140625
+          },
+          {
+            "body": 1435.4000244140625,
+            "row": 1354.9000244140625,
+            "title": 1407.4000244140625
+          }
+        ]
       },
       "screenshot": "docs/evidence/T08/firefox/content-ko-390.png"
     },
     {
-      "name": "confirmed-purpose-en-1440",
+      "name": "detailed-content-en-1440",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/en/?content-check=e4f99ab54c46f5cb36a8ffb20f28045ad424360e#current",
+      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=9b49287dfde985e316054a4d7c406518a79094ce#current",
       "metrics": {
         "clipped": [],
-        "method": "He builds with Codex and reviews with Claude. He is checking input handling and access permissions in NestJS APIs for help requests and answers. Because the web app connects to a server, he verifies changes with local DB and HTTP tests before deploying.",
-        "purpose": "A team platform where users share relevant experience to help international students with the problems they face. He works on the backend.",
+        "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
+        "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 1440,
-        "step": "Check the integration locally before deploying",
-        "width": 1440
+        "stages": [
+          "Define inputsHe sets out a help request’s title, body and category plus the answer body, and aligns the request and response formats.",
+          "Validate requestsNestJS DTOs validate empty values, length and category. Authentication, school verification and write permissions are also checked.",
+          "Store and updateTypeORM saves requests and answers to PostgreSQL. Saving and status changes share one transaction to handle concurrent requests.",
+          "Test the APITest accounts and an isolated DB check the post → answer → resolve flow. Bad input (400), unauthenticated (401) and forbidden (403) responses are compared too."
+        ],
+        "width": 1440,
+        "card_alignment": [
+          {
+            "body": 769.0499877929688,
+            "row": 660.7999877929688,
+            "title": 737.5499877929688
+          },
+          {
+            "body": 769.0499877929688,
+            "row": 660.7999877929688,
+            "title": 737.5499877929688
+          },
+          {
+            "body": 769.0499877929688,
+            "row": 660.7999877929688,
+            "title": 737.5499877929688
+          },
+          {
+            "body": 769.0499877929688,
+            "row": 660.7999877929688,
+            "title": 737.5499877929688
+          }
+        ]
       },
       "screenshot": "docs/evidence/T08/firefox/content-en-1440.png"
     },
     {
-      "name": "confirmed-purpose-en-390",
+      "name": "detailed-content-en-900",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/en/?content-check=e4f99ab54c46f5cb36a8ffb20f28045ad424360e#current",
+      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=9b49287dfde985e316054a4d7c406518a79094ce#current",
       "metrics": {
         "clipped": [],
-        "method": "He builds with Codex and reviews with Claude. He is checking input handling and access permissions in NestJS APIs for help requests and answers. Because the web app connects to a server, he verifies changes with local DB and HTTP tests before deploying.",
-        "purpose": "A team platform where users share relevant experience to help international students with the problems they face. He works on the backend.",
+        "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
+        "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
+        "scroll": 900,
+        "stages": [
+          "Define inputsHe sets out a help request’s title, body and category plus the answer body, and aligns the request and response formats.",
+          "Validate requestsNestJS DTOs validate empty values, length and category. Authentication, school verification and write permissions are also checked.",
+          "Store and updateTypeORM saves requests and answers to PostgreSQL. Saving and status changes share one transaction to handle concurrent requests.",
+          "Test the APITest accounts and an isolated DB check the post → answer → resolve flow. Bad input (400), unauthenticated (401) and forbidden (403) responses are compared too."
+        ],
+        "width": 900,
+        "card_alignment": [
+          {
+            "body": 995.4666748046876,
+            "row": 887.2166748046875,
+            "title": 963.9666748046876
+          },
+          {
+            "body": 995.4666748046876,
+            "row": 887.2166748046875,
+            "title": 963.9666748046876
+          },
+          {
+            "body": 1282.9666748046875,
+            "row": 1174.7166748046875,
+            "title": 1251.4666748046875
+          },
+          {
+            "body": 1282.9666748046875,
+            "row": 1174.7166748046875,
+            "title": 1251.4666748046875
+          }
+        ]
+      },
+      "screenshot": "docs/evidence/T08/firefox/content-en-900.png"
+    },
+    {
+      "name": "detailed-content-en-768",
+      "passed": true,
+      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=9b49287dfde985e316054a4d7c406518a79094ce#current",
+      "metrics": {
+        "clipped": [],
+        "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
+        "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
+        "scroll": 768,
+        "stages": [
+          "Define inputsHe sets out a help request’s title, body and category plus the answer body, and aligns the request and response formats.",
+          "Validate requestsNestJS DTOs validate empty values, length and category. Authentication, school verification and write permissions are also checked.",
+          "Store and updateTypeORM saves requests and answers to PostgreSQL. Saving and status changes share one transaction to handle concurrent requests.",
+          "Test the APITest accounts and an isolated DB check the post → answer → resolve flow. Bad input (400), unauthenticated (401) and forbidden (403) responses are compared too."
+        ],
+        "width": 768,
+        "card_alignment": [
+          {
+            "body": 829.4000244140625,
+            "row": 724.9000244140625,
+            "title": 801.4000244140625
+          },
+          {
+            "body": 829.4000244140625,
+            "row": 724.9000244140625,
+            "title": 801.4000244140625
+          },
+          {
+            "body": 1099.4000244140625,
+            "row": 994.9000244140624,
+            "title": 1071.4000244140625
+          },
+          {
+            "body": 1099.4000244140625,
+            "row": 994.9000244140624,
+            "title": 1071.4000244140625
+          }
+        ]
+      },
+      "screenshot": "docs/evidence/T08/firefox/content-en-768.png"
+    },
+    {
+      "name": "detailed-content-en-390",
+      "passed": true,
+      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=9b49287dfde985e316054a4d7c406518a79094ce#current",
+      "metrics": {
+        "clipped": [],
+        "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
+        "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 390,
-        "step": "Check the integration locally before deploying",
-        "width": 390
+        "stages": [
+          "Define inputsHe sets out a help request’s title, body and category plus the answer body, and aligns the request and response formats.",
+          "Validate requestsNestJS DTOs validate empty values, length and category. Authentication, school verification and write permissions are also checked.",
+          "Store and updateTypeORM saves requests and answers to PostgreSQL. Saving and status changes share one transaction to handle concurrent requests.",
+          "Test the APITest accounts and an isolated DB check the post → answer → resolve flow. Bad input (400), unauthenticated (401) and forbidden (403) responses are compared too."
+        ],
+        "width": 390,
+        "card_alignment": [
+          {
+            "body": 1638.86669921875,
+            "row": 1558.36669921875,
+            "title": 1610.86669921875
+          },
+          {
+            "body": 1848.86669921875,
+            "row": 1768.36669921875,
+            "title": 1820.86669921875
+          },
+          {
+            "body": 2086.86669921875,
+            "row": 2006.36669921875,
+            "title": 2058.86669921875
+          },
+          {
+            "body": 2324.86669921875,
+            "row": 2244.36669921875,
+            "title": 2296.86669921875
+          }
+        ]
       },
       "screenshot": "docs/evidence/T08/firefox/content-en-390.png"
     }
   ],
-  "browser_suite_checked_at": "2026-11-05T21:11:36.283353+09:00",
-  "browser_suite_tested_sha": "ae55ecc14028d01d722d8d8e036452a7a6a9e5d1",
-  "content_tested_sha": "e4f99ab54c46f5cb36a8ffb20f28045ad424360e",
-  "tested_sha": "e4f99ab54c46f5cb36a8ffb20f28045ad424360e",
+  "browser_suite_checked_at": "2026-11-05T22:26:36.579071+09:00",
+  "browser_suite_tested_sha": "9b49287dfde985e316054a4d7c406518a79094ce",
+  "content_tested_sha": "9b49287dfde985e316054a4d7c406518a79094ce",
+  "tested_sha": "9b49287dfde985e316054a4d7c406518a79094ce",
   "screenshots": {
     "docs/evidence/T08/firefox/content-en-1440.png": {
-      "captured_at": "2026-11-05T21:19:29.862833+09:00"
+      "captured_at": "2026-11-05T22:26:27.528632+09:00"
     },
     "docs/evidence/T08/firefox/content-en-390.png": {
-      "captured_at": "2026-11-05T21:19:30.013070+09:00"
+      "captured_at": "2026-11-05T22:26:28.013911+09:00"
+    },
+    "docs/evidence/T08/firefox/content-en-768.png": {
+      "captured_at": "2026-11-05T22:26:27.805852+09:00"
+    },
+    "docs/evidence/T08/firefox/content-en-900.png": {
+      "captured_at": "2026-11-05T22:26:27.677252+09:00"
     },
     "docs/evidence/T08/firefox/content-ko-1440.png": {
-      "captured_at": "2026-11-05T21:19:28.913470+09:00"
+      "captured_at": "2026-11-05T22:26:25.354744+09:00"
     },
     "docs/evidence/T08/firefox/content-ko-390.png": {
-      "captured_at": "2026-11-05T21:19:29.211839+09:00"
+      "captured_at": "2026-11-05T22:26:26.847843+09:00"
+    },
+    "docs/evidence/T08/firefox/content-ko-768.png": {
+      "captured_at": "2026-11-05T22:26:26.504705+09:00"
+    },
+    "docs/evidence/T08/firefox/content-ko-900.png": {
+      "captured_at": "2026-11-05T22:26:26.212711+09:00"
     },
     "docs/evidence/T08/firefox/en-1440.png": {
-      "captured_at": "2026-11-05T21:10:30.620504+09:00"
+      "captured_at": "2026-11-05T22:25:30.630018+09:00"
     },
     "docs/evidence/T08/firefox/en-390.png": {
-      "captured_at": "2026-11-05T21:10:38.267761+09:00"
+      "captured_at": "2026-11-05T22:25:37.455357+09:00"
     },
     "docs/evidence/T08/firefox/en-768.png": {
-      "captured_at": "2026-11-05T21:10:36.084589+09:00"
+      "captured_at": "2026-11-05T22:25:35.203232+09:00"
     },
     "docs/evidence/T08/firefox/en-900.png": {
-      "captured_at": "2026-11-05T21:10:33.379908+09:00"
+      "captured_at": "2026-11-05T22:25:32.987139+09:00"
     },
     "docs/evidence/T08/firefox/error-1440-en-about.png": {
-      "captured_at": "2026-11-05T21:11:20.747613+09:00"
+      "captured_at": "2026-11-05T22:26:21.529864+09:00"
     },
     "docs/evidence/T08/firefox/error-1440-ko-about.png": {
-      "captured_at": "2026-11-05T21:11:14.405061+09:00"
+      "captured_at": "2026-11-05T22:26:14.955458+09:00"
     },
     "docs/evidence/T08/firefox/error-390-en-about.png": {
-      "captured_at": "2026-11-05T21:11:33.034569+09:00"
+      "captured_at": "2026-11-05T22:26:33.655958+09:00"
     },
     "docs/evidence/T08/firefox/error-390-ko-about.png": {
-      "captured_at": "2026-11-05T21:11:27.090360+09:00"
+      "captured_at": "2026-11-05T22:26:27.787881+09:00"
     },
     "docs/evidence/T08/firefox/keyboard-focus.png": {
-      "captured_at": "2026-11-05T21:10:45.355070+09:00"
+      "captured_at": "2026-11-05T22:25:45.270433+09:00"
     },
     "docs/evidence/T08/firefox/ko-1440.png": {
-      "captured_at": "2026-11-05T21:10:21.056346+09:00"
+      "captured_at": "2026-11-05T22:25:20.311020+09:00"
     },
     "docs/evidence/T08/firefox/ko-200-percent.png": {
-      "captured_at": "2026-11-05T21:10:47.631389+09:00"
+      "captured_at": "2026-11-05T22:25:47.529716+09:00"
     },
     "docs/evidence/T08/firefox/ko-390.png": {
-      "captured_at": "2026-11-05T21:10:28.182903+09:00"
+      "captured_at": "2026-11-05T22:25:27.508245+09:00"
     },
     "docs/evidence/T08/firefox/ko-768.png": {
-      "captured_at": "2026-11-05T21:10:25.919408+09:00"
+      "captured_at": "2026-11-05T22:25:24.718398+09:00"
     },
     "docs/evidence/T08/firefox/ko-900.png": {
-      "captured_at": "2026-11-05T21:10:23.780706+09:00"
+      "captured_at": "2026-11-05T22:25:22.537754+09:00"
     },
     "docs/evidence/T08/firefox/ko-desktop-about.png": {
-      "captured_at": "2026-11-05T21:10:48.729026+09:00"
+      "captured_at": "2026-11-05T22:25:48.621568+09:00"
     },
     "docs/evidence/T08/firefox/ko-desktop-current.png": {
-      "captured_at": "2026-11-05T21:10:49.872974+09:00"
+      "captured_at": "2026-11-05T22:25:48.770900+09:00"
     },
     "docs/evidence/T08/firefox/ko-desktop-future.png": {
-      "captured_at": "2026-11-05T21:10:49.805236+09:00"
+      "captured_at": "2026-11-05T22:25:48.696616+09:00"
     },
     "docs/evidence/T08/firefox/ko-mobile-about.png": {
-      "captured_at": "2026-11-05T21:10:50.450708+09:00"
+      "captured_at": "2026-11-05T22:25:48.849645+09:00"
     },
     "docs/evidence/T08/firefox/ko-mobile-current.png": {
-      "captured_at": "2026-11-05T21:10:50.524866+09:00"
+      "captured_at": "2026-11-05T22:25:48.925524+09:00"
     },
     "docs/evidence/T08/firefox/ko-mobile-future.png": {
-      "captured_at": "2026-11-05T21:10:50.490786+09:00"
+      "captured_at": "2026-11-05T22:25:48.887811+09:00"
     },
     "docs/evidence/T08/firefox/panel-1440-about.png": {
-      "captured_at": "2026-11-05T21:10:53.911998+09:00"
+      "captured_at": "2026-11-05T22:25:52.314870+09:00"
     },
     "docs/evidence/T08/firefox/panel-1440-current.png": {
-      "captured_at": "2026-11-05T21:10:56.147257+09:00"
+      "captured_at": "2026-11-05T22:25:54.604359+09:00"
     },
     "docs/evidence/T08/firefox/panel-1440-future.png": {
-      "captured_at": "2026-11-05T21:10:55.031397+09:00"
+      "captured_at": "2026-11-05T22:25:53.455506+09:00"
     },
     "docs/evidence/T08/firefox/panel-390-about.png": {
-      "captured_at": "2026-11-05T21:11:02.127939+09:00"
+      "captured_at": "2026-11-05T22:26:01.117383+09:00"
     },
     "docs/evidence/T08/firefox/panel-390-current.png": {
-      "captured_at": "2026-11-05T21:11:04.324072+09:00"
+      "captured_at": "2026-11-05T22:26:03.848133+09:00"
     },
     "docs/evidence/T08/firefox/panel-390-future.png": {
-      "captured_at": "2026-11-05T21:11:03.225261+09:00"
+      "captured_at": "2026-11-05T22:26:02.244127+09:00"
     },
     "docs/evidence/T08/firefox/text-entrance.png": {
-      "captured_at": "2026-11-05T21:10:17.861779+09:00"
+      "captured_at": "2026-11-05T22:25:16.632688+09:00"
     },
     "docs/evidence/T08/firefox/water-1440.png": {
       "captured_at": "2026-11-04T11:36:00.128066+09:00"
