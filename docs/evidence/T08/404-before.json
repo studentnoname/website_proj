@@ -1,0 +1,17 @@
+{
+  "before": {
+    "title": "404 Page not found | Jung Jiwoong",
+    "url": "https://studentnoname.github.io/website_proj/not-a-real-audit-page/",
+    "about_target": 0
+  },
+  "after_menu": {
+    "title": "404 Page not found | Jung Jiwoong",
+    "url": "https://studentnoname.github.io/website_proj/not-a-real-audit-page/#about",
+    "about_target": 0
+  },
+  "home_recovery": "https://studentnoname.github.io/website_proj/",
+  "clean_build_matches": {
+    "index.html": true,
+    "en/index.html": true
+  }
+}
