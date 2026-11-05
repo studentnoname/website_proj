@@ -344,7 +344,8 @@ def main():
                     settled()
                     state = driver.execute_script('''const e=document.querySelector('#'+arguments[0]+' '+(arguments[0]==='intro'?'h1':'h2')),r=e.getBoundingClientRect();
                       return {top:r.top,bottom:r.bottom,header:document.querySelector('.site-header').getBoundingClientRect().bottom,height:innerHeight};''',section)
-                    record(f'error-{width}-{language}-{section}-recovers',state['top']>=state['header']-1 and state['bottom']<=state['height'],url=driver.current_url,evidence=state)
+                    proof={'screenshot':screen(f'error-{width}-{language}-{section}')} if section=='about' else {}
+                    record(f'error-{width}-{language}-{section}-recovers',state['top']>=state['header']-1 and state['bottom']<=state['height'],url=driver.current_url,evidence=state,**proof)
                 driver.get(error_url)
                 home_path = urlsplit(base).path + suffix
                 driver.find_element(By.CSS_SELECTOR,'a[href="'+home_path+'"]').click()

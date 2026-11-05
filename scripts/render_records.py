@@ -114,6 +114,7 @@ def submission(release_path, identity_path):
               'ACTIONS_URL': release['actions_url'], 'ACTIONS_STATUS': release['actions_status'],
               'CANDIDATES': str(release['candidate_count']), 'EXCLUDED': str(release['excluded_count']),
               'VALID_COUNT': str(release['valid_count']), 'WRITTEN_AT': release['collected_at']}
+    tokens['SOURCE_BASE'] = 'https://github.com/studentnoname/website_proj/blob/' + release['sha'] + '/'
     excluded_commits = [entry for entry in release['commits'] if not entry['included']]
     reasons = {
         'Official ZIP and generated baseline registration; not original project work.': '공식 원본 ZIP과 준비 결과의 단순 등록',
@@ -124,8 +125,13 @@ def submission(release_path, identity_path):
     tokens['EXCLUDED_DETAILS'] = '; '.join(
         entry['sha'] + ': ' + reasons.get(entry['exclusion_reason'], entry['exclusion_reason'])
         for entry in excluded_commits) if excluded_commits else '없음(0개)'
-    capture = ROOT / 'submission/screens/results.json'
-    tokens['SCREEN_TIME'] = json.loads(capture.read_text(encoding='utf-8'))['checked_at'] if capture.is_file() else '미캡처'
+    capture = json.loads((ROOT / 'docs/evidence/T08/firefox/results.json').read_text(encoding='utf-8'))
+    progressive = json.loads((ROOT / 'docs/evidence/T08/progressive/results.json').read_text(encoding='utf-8'))
+    if not capture['passed'] or not progressive['passed']:
+        raise ValueError('Passing, repository-tracked browser evidence is required for the submission report.')
+    tokens['SCREEN_TIME'] = capture['checked_at']
+    tokens['BROWSER_CHECKS'] = str(len(capture['results']))
+    tokens['PROGRESSIVE_CHECKS'] = str(len(progressive['results']))
 
     def fill(text):
         for key, value in tokens.items():
@@ -167,7 +173,10 @@ def submission(release_path, identity_path):
                 height = 155*mm
             picture.drawWidth, picture.drawHeight = width, height
             blocks.append(KeepTogether([Spacer(1, 4*mm), picture, Spacer(1, 2*mm),
-                                       Paragraph(markup(caption), sheet['small'])]))
+                                       Paragraph(markup(caption), sheet['small']),
+                                       Paragraph('저장소 상대 경로(클릭): <link href="' +
+                                                 escape(tokens['SOURCE_BASE'] + relative, quote=True) + '">' +
+                                                 escape(relative) + '</link>', sheet['small'])]))
     folder = ROOT / 'submission'
     folder.mkdir(exist_ok=True)
     output = folder / f"{identity['student_id']}_{identity['name']}_과제1.pdf"

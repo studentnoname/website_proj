@@ -203,7 +203,7 @@
       <div class="lesson" data-pf-reveal>
         <h3>{{ cond $ko "여기서 배운 것" "What it taught him" }}</h3>
         <div class="lesson-body">
-          <p data-copy>{{ if $ko }}AI의 제안은 그대로 받아들이지 않고 <strong>직접 확인합니다.</strong>{{ else }}He does not take AI suggestions as given; <strong>he checks them himself.</strong>{{ end }}</p>
+          <p data-copy>{{ if $ko }}AI의 제안이 실제 동작과 맞는지 확인하기 위해 로그와 기능을 비교합니다. 제안을 그대로 쓰지 않고 <strong>직접 검증하며 공부하는</strong> 방식입니다.{{ else }}He compares logs with actual behavior to check whether AI suggestions match what really runs. <strong>Direct verification is part of how he learns.</strong>{{ end }}</p>
           <p data-copy>{{ cond $ko "완벽주의를 조절하는 것도 앞으로의 과제입니다." "Keeping perfectionism in proportion is an ongoing goal." }}</p>
           <div class="lesson-note">
             <p class="eyebrow">{{ cond $ko "작업 방식" "How he works" }}</p>

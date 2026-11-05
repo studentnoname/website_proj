@@ -1,5 +1,9 @@
 # 실제 AI 활용 기록
 
+## 2026-11-05 채점 위험 보완
+
+사용자의 “우선순위대로 해결”에 따라 Codex가 404 경로 보정과 보고서 증거 연결을 맡았다. 프론트 P77 문구는 Claude Code 2.1.287(claude-opus-5-5)로 기존 lesson 문단만 작성하도록 요청했다. 실제 입력 발췌는 “Clarify the existing first paragraph of .lesson-body by explicitly connecting those known facts”와 “Do NOT change the vague platform purpose (P75): the user's specific problem/feature answer is still pending”이다. Claude는 직접 검증의 목적을 설명하는 두 언어 문장을 작성하고 미검사임을 밝혔다. Codex는 중복과 어색한 영어를 줄이고 확인된 사실 범위를 검토했다. 반영 파일은 site/layouts/landing/list.html이다. 새 활동·성과·기능·다음 학습 행동을 만들지 않았다. 실제 빌드·홈과 404 정적 검사 및 배포 후 브라우저 검사로 확인한다.
+
 ## 사례 G — 글 순차 등장과 화면 전체 전환
 
 - 2026-11-04 KST, Claude Code 2.1.287, 실제 modelUsage: claude-opus-5-5. 사용자 요청은 이전 시도를 되돌리고 접속 시 글이 하나씩 들어오며 스크롤 시 다음 화면이 이전 화면을 덮도록 하라는 설명이었다. 실제 발췌는 `prompts/frontend.md`.
