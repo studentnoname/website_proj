@@ -1,10 +1,16 @@
 # 실제 AI 활용 기록
 
+## 2026-11-05 공개 내용의 정보 최소화
+
+사용자 요청은 “어플을 들어가서 공격할 수 있는 경로를 적었거나 중요한 정보를 적었는 지확인하고 수정”이다. Codex는 현재 공개 파일과 도달 가능한 과거 텍스트/PDF를 패턴 검색하고 활동 문서를 읽었다. 실제 운영 인증정보·접속 주소·공격 절차는 확인하지 못했으며 과거 테마의 DB 접속 문자열은 예제 계정·암호였다. 이는 콘텐츠 검토이고 앱 자체의 보안 시험이 아니다.
+
+Claude Code에 기존 HTML의 세 작업 문단만 수정하도록 요청했다. 실제 입력 발췌: “Keep the concrete educational workflow and grading criteria” / “reduce unnecessary policy detail”. 세부 정책의 수치·접근 판정·응답 대응·저장 내부 처리는 제외하고 사용 도구와 일반적인 입력 확인·저장/조회·결과 비교 방법을 남긴다. Codex가 원문과 사실 범위·공개 수준을 대조하고 문서·화면 증거·보고서도 함께 정리한다. 원본 KONNECT 코드·서비스는 변경하지 않는다.
+
 ## 2026-11-05 실제 처리 방식과 중간 기록 설명
 
 사용자는 다음 학습 행동으로 ‘도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고 결과 정리’를 선택했다. Claude Code(claude-opus-5-5)에 “This is a FUTURE learning action, not tests he has already completed”라고 구분하고 #future의 목표·다음 행동만 추가하도록 요청했다. 기존 tool-rail 배치를 재사용하고 기존 CSS에 학습 분야와의 간격 한 줄만 추가했다. Codex는 선택하지 않은 SQL 안·미제공 날짜·완료 실적이 들어가지 않았는지 검토한다.
 
-사용자 원문: “지금 어떻게 한다고 추상적으로 나와있지 어떤 방식으로 어떤것을 어떻게 한다고 안나와있어서 이것을 조금더 자세하게 설명할 수 있도록 하고 빈칸을 채우려고해”. Codex는 비공개 도움 서비스·DTO·통합 테스트와 기존 검증 문서를 읽어 정상 등록→답변→해결, 400/401/403 조건, PostgreSQL 트랜잭션을 대조했다. 새 KONNECT 테스트는 실행하지 않았다.
+사용자 원문: “지금 어떻게 한다고 추상적으로 나와있지 어떤 방식으로 어떤것을 어떻게 한다고 안나와있어서 이것을 조금더 자세하게 설명할 수 있도록 하고 빈칸을 채우려고해”. Codex는 비공개 백엔드·통합 테스트와 기존 검증 문서를 읽어 정상 처리·입력·접근 검사와 저장 흐름을 대조했다. 세부 정책과 응답 대응은 공개 요약에서 제외한다. 새 KONNECT 테스트는 실행하지 않았다.
 
 실제 Claude Code CLI(claude-opus-5-5) 요청은 “Replace vague labels with a short bold title then br and a concise explanation in each existing p”와 “Do not edit #future yet: a real next learning action is awaiting his answer”이다. Claude는 기존 HTML에서 네 단계 설명·상태·중간 기록 링크를 작성하고 미검사임을 밝혔다. Codex는 영어의 처리 순서 오해를 줄이고 중간 기록 소개를 간결하게 정리했으며 링크를 설명과 같은 열에 묶었다. 원본 코드·민감값을 전달하거나 공개하지 않았다. 반영 파일은 기존 site/layouts/landing/list.html과 docs/tasks/T03.md다.
 

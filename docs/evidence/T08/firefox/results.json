@@ -2279,12 +2279,6 @@
         "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
         "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 1440,
-        "stages": [
-          "입력 항목 정리도움 요청의 제목·본문·분야와 답변 본문을 정리하고 요청·응답 형식을 맞춥니다.",
-          "입력·권한 검증NestJS DTO로 빈 값·길이·분야를 검사하고 로그인·학교 인증·작성 권한을 확인합니다.",
-          "DB 저장·상태 처리TypeORM으로 PostgreSQL에 요청·답변을 저장합니다. 저장과 상태 변경을 트랜잭션으로 묶어 동시 요청을 다룹니다.",
-          "로컬 API 검증가상 계정과 격리 DB로 등록→답변→해결 흐름을 검사합니다. 입력 오류 400·미인증 401·권한 없음 403도 대조합니다."
-        ],
         "width": 1440,
         "card_alignment": [
           {
@@ -2307,7 +2301,8 @@
             "row": 629.2999877929688,
             "title": 706.0499877929688
           }
-        ]
+        ],
+        "stage_count": 4
       },
       "screenshot": "docs/evidence/T08/firefox/content-ko-1440.png"
     },
@@ -2320,12 +2315,6 @@
         "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
         "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 900,
-        "stages": [
-          "입력 항목 정리도움 요청의 제목·본문·분야와 답변 본문을 정리하고 요청·응답 형식을 맞춥니다.",
-          "입력·권한 검증NestJS DTO로 빈 값·길이·분야를 검사하고 로그인·학교 인증·작성 권한을 확인합니다.",
-          "DB 저장·상태 처리TypeORM으로 PostgreSQL에 요청·답변을 저장합니다. 저장과 상태 변경을 트랜잭션으로 묶어 동시 요청을 다룹니다.",
-          "로컬 API 검증가상 계정과 격리 DB로 등록→답변→해결 흐름을 검사합니다. 입력 오류 400·미인증 401·권한 없음 403도 대조합니다."
-        ],
         "width": 900,
         "card_alignment": [
           {
@@ -2348,7 +2337,8 @@
             "row": 885.2999877929688,
             "title": 962.0499877929688
           }
-        ]
+        ],
+        "stage_count": 4
       },
       "screenshot": "docs/evidence/T08/firefox/content-ko-900.png"
     },
@@ -2361,12 +2351,6 @@
         "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
         "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 768,
-        "stages": [
-          "입력 항목 정리도움 요청의 제목·본문·분야와 답변 본문을 정리하고 요청·응답 형식을 맞춥니다.",
-          "입력·권한 검증NestJS DTO로 빈 값·길이·분야를 검사하고 로그인·학교 인증·작성 권한을 확인합니다.",
-          "DB 저장·상태 처리TypeORM으로 PostgreSQL에 요청·답변을 저장합니다. 저장과 상태 변경을 트랜잭션으로 묶어 동시 요청을 다룹니다.",
-          "로컬 API 검증가상 계정과 격리 DB로 등록→답변→해결 흐름을 검사합니다. 입력 오류 400·미인증 401·권한 없음 403도 대조합니다."
-        ],
         "width": 768,
         "card_alignment": [
           {
@@ -2389,7 +2373,8 @@
             "row": 938.9000244140624,
             "title": 1015.4000244140624
           }
-        ]
+        ],
+        "stage_count": 4
       },
       "screenshot": "docs/evidence/T08/firefox/content-ko-768.png"
     },
@@ -2402,12 +2387,6 @@
         "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
         "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 390,
-        "stages": [
-          "입력 항목 정리도움 요청의 제목·본문·분야와 답변 본문을 정리하고 요청·응답 형식을 맞춥니다.",
-          "입력·권한 검증NestJS DTO로 빈 값·길이·분야를 검사하고 로그인·학교 인증·작성 권한을 확인합니다.",
-          "DB 저장·상태 처리TypeORM으로 PostgreSQL에 요청·답변을 저장합니다. 저장과 상태 변경을 트랜잭션으로 묶어 동시 요청을 다룹니다.",
-          "로컬 API 검증가상 계정과 격리 DB로 등록→답변→해결 흐름을 검사합니다. 입력 오류 400·미인증 401·권한 없음 403도 대조합니다."
-        ],
         "width": 390,
         "card_alignment": [
           {
@@ -2430,7 +2409,8 @@
             "row": 1354.9000244140625,
             "title": 1407.4000244140625
           }
-        ]
+        ],
+        "stage_count": 4
       },
       "screenshot": "docs/evidence/T08/firefox/content-ko-390.png"
     },
@@ -2443,12 +2423,6 @@
         "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
         "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 1440,
-        "stages": [
-          "Define inputsHe sets out a help request’s title, body and category plus the answer body, and aligns the request and response formats.",
-          "Validate requestsNestJS DTOs validate empty values, length and category. Authentication, school verification and write permissions are also checked.",
-          "Store and updateTypeORM saves requests and answers to PostgreSQL. Saving and status changes share one transaction to handle concurrent requests.",
-          "Test the APITest accounts and an isolated DB check the post → answer → resolve flow. Bad input (400), unauthenticated (401) and forbidden (403) responses are compared too."
-        ],
         "width": 1440,
         "card_alignment": [
           {
@@ -2471,7 +2445,8 @@
             "row": 660.7999877929688,
             "title": 737.5499877929688
           }
-        ]
+        ],
+        "stage_count": 4
       },
       "screenshot": "docs/evidence/T08/firefox/content-en-1440.png"
     },
@@ -2484,12 +2459,6 @@
         "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
         "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 900,
-        "stages": [
-          "Define inputsHe sets out a help request’s title, body and category plus the answer body, and aligns the request and response formats.",
-          "Validate requestsNestJS DTOs validate empty values, length and category. Authentication, school verification and write permissions are also checked.",
-          "Store and updateTypeORM saves requests and answers to PostgreSQL. Saving and status changes share one transaction to handle concurrent requests.",
-          "Test the APITest accounts and an isolated DB check the post → answer → resolve flow. Bad input (400), unauthenticated (401) and forbidden (403) responses are compared too."
-        ],
         "width": 900,
         "card_alignment": [
           {
@@ -2512,7 +2481,8 @@
             "row": 1174.7166748046875,
             "title": 1251.4666748046875
           }
-        ]
+        ],
+        "stage_count": 4
       },
       "screenshot": "docs/evidence/T08/firefox/content-en-900.png"
     },
@@ -2525,12 +2495,6 @@
         "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
         "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 768,
-        "stages": [
-          "Define inputsHe sets out a help request’s title, body and category plus the answer body, and aligns the request and response formats.",
-          "Validate requestsNestJS DTOs validate empty values, length and category. Authentication, school verification and write permissions are also checked.",
-          "Store and updateTypeORM saves requests and answers to PostgreSQL. Saving and status changes share one transaction to handle concurrent requests.",
-          "Test the APITest accounts and an isolated DB check the post → answer → resolve flow. Bad input (400), unauthenticated (401) and forbidden (403) responses are compared too."
-        ],
         "width": 768,
         "card_alignment": [
           {
@@ -2553,7 +2517,8 @@
             "row": 994.9000244140624,
             "title": 1071.4000244140625
           }
-        ]
+        ],
+        "stage_count": 4
       },
       "screenshot": "docs/evidence/T08/firefox/content-en-768.png"
     },
@@ -2566,12 +2531,6 @@
         "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
         "record": "https://github.com/studentnoname/website_proj/blob/main/docs/tasks/T03.md",
         "scroll": 390,
-        "stages": [
-          "Define inputsHe sets out a help request’s title, body and category plus the answer body, and aligns the request and response formats.",
-          "Validate requestsNestJS DTOs validate empty values, length and category. Authentication, school verification and write permissions are also checked.",
-          "Store and updateTypeORM saves requests and answers to PostgreSQL. Saving and status changes share one transaction to handle concurrent requests.",
-          "Test the APITest accounts and an isolated DB check the post → answer → resolve flow. Bad input (400), unauthenticated (401) and forbidden (403) responses are compared too."
-        ],
         "width": 390,
         "card_alignment": [
           {
@@ -2594,7 +2553,8 @@
             "row": 2244.36669921875,
             "title": 2296.86669921875
           }
-        ]
+        ],
+        "stage_count": 4
       },
       "screenshot": "docs/evidence/T08/firefox/content-en-390.png"
     }
@@ -2715,5 +2675,6 @@
     "docs/evidence/T08/firefox/water-390.png": {
       "captured_at": "2026-11-04T11:36:01.673653+09:00"
     }
-  }
+  },
+  "content_snapshot_redacted": true
 }

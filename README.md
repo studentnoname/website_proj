@@ -47,7 +47,7 @@ python scripts/serve.py
 | 홈 메타 정보 | `site/content/ko/_index.md`, `site/content/en/_index.md` |
 | 운영 설정 | `site/pages.json`, `site/config/_default/hugo.yaml`, `params.yaml` |
 
-앵커는 `#intro`, `#about`, `#future`, `#current`다. 두 언어의 사실을 함께 수정한다. 사용자가 비워 두도록 한 다음 학습 행동, 미확인 도구별 기능, 없는 KONNECT 산출물을 임의로 채우지 않는다.
+앵커는 `#intro`, `#about`, `#future`, `#current`다. 두 언어의 사실을 함께 수정한다. 사용자가 선택한 다음 학습 행동과 확인된 도구 사용·중간 기록을 유지한다. 운영 접속 정보·인증정보·세부 판정 정책·공격 재현 절차는 공개 설명과 증거에 넣지 않는다.
 
 본문은 PC 18px·모바일 16px, 줄간격 1.75를 공통으로 사용한다. 제목·설명의 시작선은 공유하고, 아래 내용은 소개의 도구 목록, 학습 분야의 세 열, KONNECT의 전폭 작업 흐름으로 구성한다. 큰 타이포는 첫 화면에 사용하며, 도구 목록은 동등하게 표시한다.
 

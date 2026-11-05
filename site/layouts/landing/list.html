@@ -194,15 +194,15 @@
           </li>
           <li class="is-role">
             <span class="index">02 <span class="stage-tag">{{ cond $ko "백엔드 역할" "Backend role" }}</span></span>
-            <p data-copy>{{ if $ko }}<strong>입력·권한 검증</strong><br>NestJS DTO로 빈 값·길이·분야를 검사하고 로그인·학교 인증·작성 권한을 확인합니다.{{ else }}<strong>Validate requests</strong><br>NestJS DTOs validate empty values, length and category. Authentication, school verification and write permissions are also checked.{{ end }}</p>
+            <p data-copy>{{ if $ko }}<strong>입력·권한 검증</strong><br>NestJS DTO로 입력 형식과 필수값을 확인하고, 기능별 접근 권한을 검사합니다.{{ else }}<strong>Validate requests</strong><br>NestJS DTOs check input format and required fields, and access permissions are checked for each feature.{{ end }}</p>
           </li>
           <li>
             <span class="index">03</span>
-            <p data-copy>{{ if $ko }}<strong>DB 저장·상태 처리</strong><br>TypeORM으로 PostgreSQL에 요청·답변을 저장합니다. 저장과 상태 변경을 트랜잭션으로 묶어 동시 요청을 다룹니다.{{ else }}<strong>Store and update</strong><br>TypeORM saves requests and answers to PostgreSQL. Saving and status changes share one transaction to handle concurrent requests.{{ end }}</p>
+            <p data-copy>{{ if $ko }}<strong>DB 저장·상태 처리</strong><br>TypeORM으로 PostgreSQL에 요청·답변을 저장하고, 저장·조회 결과를 대조해 데이터 흐름을 확인합니다.{{ else }}<strong>Store and update</strong><br>TypeORM saves requests and answers to PostgreSQL, and saved and retrieved results are compared to confirm the data flow.{{ end }}</p>
           </li>
           <li>
             <span class="index">04</span>
-            <p data-copy>{{ if $ko }}<strong>로컬 API 검증</strong><br>가상 계정과 격리 DB로 등록→답변→해결 흐름을 검사합니다. 입력 오류 400·미인증 401·권한 없음 403도 대조합니다.{{ else }}<strong>Test the API</strong><br>Test accounts and an isolated DB check the post → answer → resolve flow. Bad input (400), unauthenticated (401) and forbidden (403) responses are compared too.{{ end }}</p>
+            <p data-copy>{{ if $ko }}<strong>로컬 API 검증</strong><br>가상 데이터와 분리된 개발 환경에서 정상 흐름·입력 오류·권한 오류의 응답을 예상 결과와 대조합니다.{{ else }}<strong>Test the API</strong><br>In a separate development environment with mock data, responses for the normal flow, input errors and permission errors are compared with expected results.{{ end }}</p>
           </li>
         </ol>
       </div>
