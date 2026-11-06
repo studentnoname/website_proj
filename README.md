@@ -77,7 +77,7 @@ git config --local user.name "Jung Jiwoong"
 git config --local user.email "299375132+studentnoname@users.noreply.github.com"
 ```
 
-현재 작업 폴더에는 다른 작성자·커미터 정보의 신규 커밋을 막는 로컬 pre-commit 검사도 설치했다. 다른 PC나 새 clone에는 해당 로컬 설정·검사를 별도로 적용해야 한다. 이 설정은 과거에 공개된 커밋의 작성자 정보를 소급해서 지우지 않는다.
+현재 작업 폴더에는 다른 작성자·커미터 정보의 신규 커밋을 막는 로컬 pre-commit 검사와, 교체 전 로컬 브랜치의 개인정보가 다시 공개되는 것을 막는 pre-push 검사도 설치했다. 다른 PC나 새 clone에는 해당 로컬 설정·검사를 별도로 적용해야 한다. 이 설정 자체는 과거 커밋을 지우지 않는다. 이번 과거 공개 이력 교체는 사용자가 허용한 별도 예외이며 원본 작업 내용·시각·개수는 보존했다.
 
 1. 작업 브랜치에서 실제 변경·관련 검사·기록을 커밋한다.
 2. 빌드와 검사를 마치면 이력을 유지해 main에 통합하고 `git push origin main`한다.
