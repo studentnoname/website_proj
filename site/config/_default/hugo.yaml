@@ -21,12 +21,6 @@ removePathAccents: true
 ## PAGE OPTIONS
 ############################
 
-cascade:
-  - target:
-      path: /slides/**
-      kind: page
-    outputs: [HTML, present]
-
 ############################
 ## ADVANCED
 ############################
@@ -45,7 +39,7 @@ disableAliases: true
 # Single-page portfolio: no feeds or empty taxonomy listings.
 disableKinds: [rss, taxonomy, term]
 outputs:
-  home: [HTML, headers, redirects, backlinks]
+  home: [HTML, backlinks]
   section: [HTML]
 imaging:
   resampleFilter: lanczos

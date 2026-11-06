@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://hugoblox.com/templates/?utm_source=github&utm_medium=readme&utm_content=hero">
-    <img src="./.github/media/hero.png" alt="HugoBlox — AI-generated sites you own as Markdown" width="100%">
+    <img src="https://raw.githubusercontent.com/studentnoname/website_proj/1954a8b29c7c3a5435ec30238c9f9be2090e3b97/.github/media/hero.png" alt="HugoBlox — AI-generated sites you own as Markdown" width="100%">
   </a>
 </p>
 
@@ -110,7 +110,7 @@ Every other tool makes you choose. HugoBlox doesn't.
 ## 🧱 What you can build
 
 <p align="center">
-  <img src="./.github/media/templates.webp" alt="Sites built with HugoBlox" width="900">
+  <img src="https://raw.githubusercontent.com/studentnoname/website_proj/1954a8b29c7c3a5435ec30238c9f9be2090e3b97/.github/media/templates.webp" alt="Sites built with HugoBlox" width="900">
 </p>
 
 HugoBlox includes **20+ structured content types** with proper front matter, metadata, and layouts. Tell Hugo Chat what you need and it generates the right one:
@@ -180,7 +180,7 @@ Drag-and-drop blocks, live preview, and YAML validation without leaving your edi
 </table>
 
 <p align="center">
-  <img src="./.github/media/studio/slide-1.webp" alt="Ownable CMS — visual editing inside VS Code" width="600">
+  <img src="https://raw.githubusercontent.com/studentnoname/website_proj/1954a8b29c7c3a5435ec30238c9f9be2090e3b97/.github/media/studio/slide-1.webp" alt="Ownable CMS — visual editing inside VS Code" width="600">
 </p>
 
 > [!NOTE]

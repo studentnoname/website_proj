@@ -152,8 +152,9 @@ def submission(release_path, identity_path):
         if not path.is_file():
             raise FileNotFoundError(path)
         picture = Image(str(path))
+        source_width, source_height = picture.imageWidth, picture.imageHeight
         picture.drawWidth = width_mm * mm
-        picture.drawHeight = picture.imageHeight * picture.drawWidth / picture.imageWidth
+        picture.drawHeight = source_height * picture.drawWidth / source_width
         caption_blocks = [Paragraph(markup(caption), sheet['small']),
                           Paragraph('저장소 상대 경로(클릭): <link href="' +
                                     escape(tokens['SOURCE_BASE'] + relative, quote=True) + '">' +
@@ -163,14 +164,20 @@ def submission(release_path, identity_path):
     for section in sections:
         section_start = len(blocks)
         blocks.append(Paragraph(section['title'], sheet['heading']))
+        case_start, case_intro_remaining = None, 0
         for item in section['outline']:
             text = markup(fill(item))
             if item.startswith('사례 ') and section['title'].startswith('7 '):
+                case_start, case_intro_remaining = len(blocks), 2
                 blocks.append(Paragraph(text, sheet['case']))
                 continue
             # Emphasize the field label, leaving the explanatory text at one weight.
             text = re.sub(r'^([^:<]{1,36}):', r'<b>\1:</b>', text, count=1)
             blocks.append(Paragraph(text, sheet['outline'], bulletText='•'))
+            if case_intro_remaining:
+                case_intro_remaining -= 1
+                if not case_intro_remaining:
+                    blocks[case_start:] = [KeepTogether(blocks[case_start:])]
         if section.get('table'):
             cell_style = ParagraphStyle('table-cell', parent=sheet['body'], spaceAfter=0)
             cells = [section['table']['headers'], *section['table']['rows']]
@@ -206,10 +213,15 @@ def submission(release_path, identity_path):
     folder = ROOT / 'submission'
     folder.mkdir(exist_ok=True)
     output = folder / f"{identity['student_id']}_{identity['name']}_과제1.pdf"
-    doc = SimpleDocTemplate(str(output), pagesize=A4, rightMargin=20*mm, leftMargin=20*mm,
+    temporary = output.with_suffix('.building.pdf')
+    doc = SimpleDocTemplate(str(temporary), pagesize=A4, rightMargin=20*mm, leftMargin=20*mm,
                             topMargin=20*mm, bottomMargin=20*mm,
                             title='개인 소개 웹사이트 구축 결과 보고서', author=identity['name'])
-    doc.build(blocks, onFirstPage=page_number, onLaterPages=page_number)
+    try:
+        doc.build(blocks, onFirstPage=page_number, onLaterPages=page_number)
+        temporary.replace(output)
+    finally:
+        temporary.unlink(missing_ok=True)
     print('Private submission PDF created under submission/.')
 
 

@@ -55,6 +55,8 @@ python scripts/serve.py
 
 이전 디자인은 `archive/portfolio-v1` 브랜치에 보존했다. 사용하지 않는 원본 예제·모듈 소스와 이전 화면 조각을 제거했다. Hugo 모듈 의존성과 Pages 빌드 설정은 유지한다. `docs/`의 이전 작업 기록은 당시 결과를 기록한 자료이며, 현재 화면의 편집 파일이 아니다.
 
+현재 사용하지 않는 원본 홍보 이미지·기여 안내, Dev Container·VS Code·Netlify 설정, pnpm 잠금 파일과 슬라이드 자산을 정리했다. 설치는 npm의 `site/package-lock.json`, 배포는 GitHub Actions, Hugo 모듈은 실제 페이지에 필요한 `blox`를 사용한다. `docs/`의 채점 근거·AI 기록·라이선스와 개인정보 교체의 로컬 백업은 보존한다.
+
 ## 검증
 
 ```text
@@ -95,3 +97,5 @@ Settings → Pages의 Source는 **GitHub Actions**다. 수동 실행만으로 ma
 최종 main push 성공 후 `python scripts/collect_release.py`로 SHA·Actions·커밋 포함·제외 근거를 로컬 `submission/release.json`에 내보낸다. TASK PDF는 `python scripts/render_records.py --tasks`로 생성한다. 제출 PDF는 `--release`와 로컬 `--identity` 파일을 지정해 생성한다. 제출 개인정보와 최종 파일은 공개 Git에 포함하지 않는다.
 
 보고서의 공개 검증 로그·그림은 `docs/evidence/T08/`에 보존한다. 검증표 E1~E4와 그림 1~3에는 제출 SHA에 고정된 링크와 정확한 저장소 상대 경로가 표시된다. 로컬 `submission/`의 파일을 채점자가 열 수 있다고 가정하지 않는다.
+
+보고서 원문은 `docs/report-sections.json`의 `outline` 목록으로 관리한다. 필수 8개 목차와 표·그림을 유지하면서 항목별 글머리표·필드 강조로 출력한다. PDF 생성에 실패하면 기존 최종 파일을 덮어쓰지 않는다.
