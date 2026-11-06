@@ -209,6 +209,13 @@ h3 {
 }
 .nav a:hover,
 .nav a[aria-current] { color: var(--paper); background: var(--ink-2); }
+.nav a[aria-current],
+.js .nav ul a[aria-current] {
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: .3em;
+}
 
 .nav-toggle { display: none; }
 

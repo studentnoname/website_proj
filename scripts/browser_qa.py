@@ -142,6 +142,35 @@ def main():
                        headings=typography['headingEdges'], content=typography['contentEdges'],
                        title_positions=title_positions, copy_tops=typography['copyTops'], expected_gap=expected_gap)
 
+                # P49: verify the selected destination changes and has a visible
+                # non-color cue in both the expanded and collapsible menus.
+                menu_states = []
+                for section in ('about', 'current'):
+                    load(base + suffix + '#' + section)
+                    wait.until(lambda browser: browser.execute_script(
+                        "return document.querySelector('.nav a[aria-current]')?.getAttribute('href')===arguments[0]",
+                        '#' + section))
+                    menu_toggle = driver.find_element(By.CSS_SELECTOR, '[data-pf-nav-toggle]')
+                    if menu_toggle.is_displayed():
+                        menu_toggle.click()
+                    state = driver.execute_script('''return [...document.querySelectorAll('.nav a')].map(e=>{
+                      const s=getComputedStyle(e),r=e.getBoundingClientRect();
+                      return {href:e.getAttribute('href'),current:e.getAttribute('aria-current'),
+                        weight:parseInt(s.fontWeight),decoration:s.textDecorationLine,
+                        left:r.left,right:r.right,visible:r.width>0 && r.height>0};
+                    });''')
+                    selected = [item for item in state if item['current']]
+                    others = [item for item in state if not item['current']]
+                    passed = (len(selected) == 1 and selected[0]['href'] == '#' + section and
+                              selected[0]['visible'] and 'underline' in selected[0]['decoration'] and
+                              selected[0]['weight'] > max(item['weight'] for item in others) and
+                              all(item['left'] >= -1 and item['right'] <= width + 1 for item in state))
+                    menu_states.append({'section': section, 'passed': passed, 'links': state})
+                    if section == 'about' and width in (1440, 390):
+                        screen(f'nav-current-{language}-{width}')
+                record(f'{language}-{width}-current-menu-noncolor', all(item['passed'] for item in menu_states),
+                       states=menu_states)
+
         viewport(390)
         load(base)
         toggle = driver.find_element(By.CSS_SELECTOR, '[data-pf-nav-toggle]')

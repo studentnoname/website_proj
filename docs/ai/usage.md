@@ -1,5 +1,11 @@
 # 실제 AI 활용 기록
 
+## P49 현재 메뉴의 비색상 표시 — 2026-11-06 KST
+
+사용자 요청: ‘최종 제출 상태 말고 나머지는 보완’. Claude Code 2.1.287 / claude-opus-5-5에 기존 공통 CSS만 수정하도록 요청했다. 실제 요청 발췌: “Add a shared .nav a[aria-current] rule that uses both font-weight: 700 and a visible underline” / “Retain existing colors, backgrounds, hit target sizes, focus outline, hover behavior”.
+
+Claude는 선택된 항목에 굵은 글씨와 2px 밑줄을 적용하고 미검사 상태로 반환했다. Codex가 diff를 검토하고 실제 1440·390px에서 aria-current, 굵기·밑줄, 나머지 항목과의 구별을 확인했다. 다른 콘텐츠·JS·폴더·이미지는 변경하지 않았다. 기존 브라우저 검사에 두 언어·네 폭의 about→current 선택 변경과 비색상 구분 검사를 추가해 같은 누락을 확인할 수 있도록 했다. 공개 결과와 최종 PDF의 버전은 I021·검증 기록에서 연결한다.
+
 ## P79 연결·P78 결과 구분 보완 — 2026-11-06 KST
 
 사용자 요청: ‘우선순위대로 진행’. 앞선 검토의 P79 배운 점→다음 개선 연결과 P78 중간 결과 명료화를 순서대로 반영한다. Claude Code 2.1.287 / claude-opus-5-5에 기존 HTML의 두 문단만 수정하도록 요청했다. 실제 요청 발췌: “This is a copy-only revision in the existing Hugo portfolio” / “This connects the lesson to the user-selected FUTURE action; do not imply the planned tests are completed.”

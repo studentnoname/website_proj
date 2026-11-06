@@ -70,6 +70,15 @@ python scripts/progressive_qa.py
 
 ## 수정과 재배포
 
+이 저장소의 새 커밋에는 공개 활동명과 GitHub noreply 주소를 사용한다. 전역 설정 대신 저장소 로컬 설정을 적용한다.
+
+```text
+git config --local user.name "Jung Jiwoong"
+git config --local user.email "299375132+studentnoname@users.noreply.github.com"
+```
+
+현재 작업 폴더에는 다른 작성자·커미터 정보의 신규 커밋을 막는 로컬 pre-commit 검사도 설치했다. 다른 PC나 새 clone에는 해당 로컬 설정·검사를 별도로 적용해야 한다. 이 설정은 과거에 공개된 커밋의 작성자 정보를 소급해서 지우지 않는다.
+
 1. 작업 브랜치에서 실제 변경·관련 검사·기록을 커밋한다.
 2. 빌드와 검사를 마치면 이력을 유지해 main에 통합하고 `git push origin main`한다.
 3. 해당 SHA의 Actions build·deploy 성공을 확인한다.
