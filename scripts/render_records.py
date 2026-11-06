@@ -40,7 +40,7 @@ def styles():
         'outline': ParagraphStyle('outline', fontName='Korean', fontSize=10, leading=15.5,
                                   textColor=INK, leftIndent=12, firstLineIndent=0,
                                   bulletIndent=0, bulletFontName='Korean', bulletFontSize=10,
-                                  spaceAfter=4, wordWrap='CJK', allowWidows=0),
+                                  spaceAfter=2, wordWrap='CJK', allowWidows=0),
         'case': ParagraphStyle('case', fontName='KoreanBold', fontSize=10, leading=15.5,
                                textColor=TEAL, spaceBefore=8, spaceAfter=5,
                                wordWrap='CJK', keepWithNext=True),
@@ -145,7 +145,23 @@ def submission(release_path, identity_path):
             text = text.replace('{' + key + '}', value)
         return text
 
+    def figure(relative, caption, width_mm):
+        captured_at = capture.get('screenshots', {}).get(relative, {}).get('captured_at', tokens['SCREEN_TIME'])
+        caption = fill(caption.replace('{SCREEN_TIME}', captured_at))
+        path = ROOT / relative
+        if not path.is_file():
+            raise FileNotFoundError(path)
+        picture = Image(str(path))
+        picture.drawWidth = width_mm * mm
+        picture.drawHeight = picture.imageHeight * picture.drawWidth / picture.imageWidth
+        caption_blocks = [Paragraph(markup(caption), sheet['small']),
+                          Paragraph('저장소 상대 경로(클릭): <link href="' +
+                                    escape(tokens['SOURCE_BASE'] + relative, quote=True) + '">' +
+                                    escape(relative) + '</link>', sheet['small'])]
+        return picture, caption_blocks
+
     for section in sections:
+        section_start = len(blocks)
         blocks.append(Paragraph(section['title'], sheet['heading']))
         for item in section['outline']:
             text = markup(fill(item))
@@ -172,26 +188,21 @@ def submission(release_path, identity_path):
                 ('BOTTOMPADDING', (0, 0), (-1, -1), 7),
             ]))
             blocks.extend([table, Spacer(1, 4*mm)])
-        for relative, caption in section.get('image', []):
-            captured_at = capture.get('screenshots', {}).get(relative, {}).get('captured_at', tokens['SCREEN_TIME'])
-            caption = caption.replace('{SCREEN_TIME}', captured_at)
-            for key, value in tokens.items():
-                caption = caption.replace('{' + key + '}', value)
-            path = ROOT / relative
-            if not path.is_file():
-                raise FileNotFoundError(path)
-            picture = Image(str(path))
-            width = min(170*mm, picture.imageWidth * 0.35)
-            height = picture.imageHeight * width / picture.imageWidth
-            if height > 155*mm:
-                width *= 155*mm / height
-                height = 155*mm
-            picture.drawWidth, picture.drawHeight = width, height
-            blocks.append(KeepTogether([Spacer(1, 4*mm), picture, Spacer(1, 2*mm),
-                                       Paragraph(markup(caption), sheet['small']),
-                                       Paragraph('저장소 상대 경로(클릭): <link href="' +
-                                                 escape(tokens['SOURCE_BASE'] + relative, quote=True) + '">' +
-                                                 escape(relative) + '</link>', sheet['small'])]))
+        images = section.get('image', [])
+        if images:
+            desktop, desktop_captions = figure(*images[0], 118)
+            mobile, mobile_captions = figure(*images[1], 38)
+            pair = Table([[desktop, mobile]], colWidths=[123*mm, 47*mm])
+            pair.setStyle(TableStyle([('VALIGN', (0, 0), (-1, -1), 'TOP'),
+                                     ('LEFTPADDING', (0, 0), (-1, -1), 0),
+                                     ('RIGHTPADDING', (0, 0), (-1, -1), 0)]))
+            gallery = [pair, Spacer(1, 2*mm), *desktop_captions, *mobile_captions]
+            for relative, caption in images[2:]:
+                picture, captions = figure(relative, caption, 150)
+                gallery.extend([Spacer(1, 3*mm), picture, Spacer(1, 2*mm), *captions])
+            blocks.append(KeepTogether(gallery))
+        if section['title'].startswith('8 '):
+            blocks[section_start:] = [KeepTogether(blocks[section_start:])]
     folder = ROOT / 'submission'
     folder.mkdir(exist_ok=True)
     output = folder / f"{identity['student_id']}_{identity['name']}_과제1.pdf"
