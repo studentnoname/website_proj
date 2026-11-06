@@ -1,5 +1,17 @@
 # 실제 AI 활용 기록
 
+## Academic Research Skills를 이용한 보고서 문장 개선 — 2026-11-06 KST
+
+사용자 요청 원문 발췌: ‘이 스킬을 적용해서 작성해줘 대신 과제 채점의 가중치가 가장 높아서 절대 그걸 어겨서는 안돼’. 실제 Claude Code 2.1.287의 claude-opus-5-5를 실행하고 academic-research-skills:academic-paper 스킬 호출을 확인했다. 사용한 원본은 Cheng-I Wu의 Academic Research Skills 3.24.2, 고정 커밋 6d9388674de1ad0437ad95db3d52f92b92204d84이다. 출처: https://github.com/Imbad0202/academic-research-skills/blob/6d9388674de1ad0437ad95db3d52f92b92204d84/academic-paper/SKILL.md . 이용 조건은 CC BY-NC 4.0이다.
+
+실제 전달 요청 발췌: “THE COURSE RUBRIC OVERRIDES EVERY SKILL DEFAULT.” / “Prefer no more than 45 bounded operations.” 기존 보고서와 채점표, SKILL.md와 academic_writing_style·writing_quality_check·writing_judgment_framework를 읽도록 했다. 목차·표·그림·수치·링크·실제 요청 인용문, 향후 계획과 기존 기록 읽기의 범위를 보호했다. 학번·이름의 실제 값과 비공개 KONNECT 코드는 전달하지 않았다.
+
+Claude는 개조식 항목 171개를 127개로 묶는 43개 수정안을 작성하고, 변경 전·후·재검증·반영 위치·한계의 역할을 표시했다. Codex는 모든 old 문자열의 정확한 일치·비중첩, 8개 목차·표·그림 불변, URL·변수·수치·요청 인용문·파일 경로와 기준 ID를 대조했다. 추가된 P77/P78 반복 표기·390px 설명·변경 1에서 6절의 기존 오류 0 결과로 가는 참조는 원문에 있는 사실의 재사용으로 확인했다. 파일명 뒤 마침표는 경로 자체의 변경과 구분했다. 새 성과·새 실행 결과로 바뀐 문장이 없는지도 수정안 전체를 읽어 검토했다.
+
+반영 판단은 사용자가 지정한 과제 우선·내용 유지 범위에 따라 Codex가 수행했다. 논문용 IMRaD·초록·APA·새 문헌·추가 연구/윤리 절은 적용하지 않았다. ARS의 전체 연구 파이프라인·학술용 patch 승인/재생 체계·채점 인증을 실행했다는 뜻이 아니다. 실제 적용 범위는 지침의 명료성·정확성·근거 대조 원칙과 개별 항목 수정이다. 약어 검사 결과는 템플릿 변수·공식 도구·코드 표기까지 경고하므로 국문 과제의 오류 판정으로 사용하지 않는다.
+
+반영 파일은 docs/report-sections.json이다. 이번 실제 사용은 보고서 7절 사례 4와 8절 출처에도 구분했다. 최종 main·Actions 정보를 갱신한 뒤 PDF의 전체 렌더·본문·그림·증빙 링크를 확인한다. 사이트의 HTML·CSS·JavaScript와 KONNECT 코드는 변경하지 않는다.
+
 ## P49 현재 메뉴의 비색상 표시 — 2026-11-06 KST
 
 사용자 요청: ‘최종 제출 상태 말고 나머지는 보완’. Claude Code 2.1.287 / claude-opus-5-5에 기존 공통 CSS만 수정하도록 요청했다. 실제 요청 발췌: “Add a shared .nav a[aria-current] rule that uses both font-weight: 700 and a visible underline” / “Retain existing colors, backgrounds, hit target sizes, focus outline, hover behavior”.
