@@ -1,5 +1,11 @@
 # 실제 AI 활용 기록
 
+## P79 연결·P78 결과 구분 보완 — 2026-11-06 KST
+
+사용자 요청: ‘우선순위대로 진행’. 앞선 검토의 P79 배운 점→다음 개선 연결과 P78 중간 결과 명료화를 순서대로 반영한다. Claude Code 2.1.287 / claude-opus-5-5에 기존 HTML의 두 문단만 수정하도록 요청했다. 실제 요청 발췌: “This is a copy-only revision in the existing Hugo portfolio” / “This connects the lesson to the user-selected FUTURE action; do not imply the planned tests are completed.”
+
+Claude는 한국어·영어의 개선 계획과 중간 기록 설명만 바꾸었으며 검사를 실행하지 않았다고 밝혔다. Codex는 diff와 두 언어 빌드 결과를 확인하고 docs/tasks/T03.md 및 보고서 원문을 맞췄다. 기존 도움 기능 변경 기록의 회귀·빌드·타입 검사 성공은 읽기 확인으로만 요약했다. 새 KONNECT 실행 결과·공개 코드·정책 상세를 추가하지 않았다. 화면 검증과 최종 공개/PDF 확인은 I020의 결과로 연결한다.
+
 ## 2026-11-05 공개 내용의 정보 최소화
 
 사용자 요청은 “어플을 들어가서 공격할 수 있는 경로를 적었거나 중요한 정보를 적었는 지확인하고 수정”이다. Codex는 현재 공개 파일과 도달 가능한 과거 텍스트/PDF를 패턴 검색하고 활동 문서를 읽었다. 실제 운영 인증정보·접속 주소·공격 절차는 확인하지 못했으며 과거 테마의 DB 접속 문자열은 예제 계정·암호였다. 이는 콘텐츠 검토이고 앱 자체의 보안 시험이 아니다.

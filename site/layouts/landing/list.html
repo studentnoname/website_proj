@@ -211,7 +211,7 @@
         <h3>{{ cond $ko "여기서 배운 것" "What it taught him" }}</h3>
         <div class="lesson-body">
           <p data-copy>{{ if $ko }}AI의 제안이 실제 동작과 맞는지 확인하기 위해 로그와 기능을 비교합니다. 제안을 그대로 쓰지 않고 <strong>직접 검증하며 공부하는</strong> 방식입니다.{{ else }}He compares logs with actual behavior to check whether AI suggestions match what really runs. <strong>Direct verification is part of how he learns.</strong>{{ end }}</p>
-          <p data-copy>{{ cond $ko "완벽주의를 조절하는 것도 앞으로의 과제입니다." "Keeping perfectionism in proportion is an ongoing goal." }}</p>
+          <p data-copy>{{ cond $ko "다음에는 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 비교해 검증을 반복할 수 있도록 개선하겠습니다. 완벽주의를 조절하는 것도 앞으로의 과제입니다." "Next, he plans to write tests for normal help requests, invalid input and permission failures, then compare expected and actual responses in a table so verification can be repeated. Keeping perfectionism in proportion is also an ongoing goal." }}</p>
           <div class="lesson-note">
             <p class="eyebrow">{{ cond $ko "작업 방식" "How he works" }}</p>
             <p data-copy>{{ cond $ko "Codex로 만들고, Claude로 검토합니다. 서버와 연동되는 웹앱이라, 배포하기 전에 로컬 환경에서 HTTP 응답과 데이터베이스 상태를 먼저 대조합니다." "He builds with Codex and reviews with Claude. Because the web app is connected to a server, he first compares HTTP responses with the database state in a local environment before deploying." }}</p>
@@ -219,7 +219,7 @@
           <div class="lesson-note">
             <p class="eyebrow">{{ cond $ko "중간 작업 기록" "Intermediate work record" }}</p>
             <div>
-              <p data-copy>{{ cond $ko "도움 요청→답변→해결 처리 흐름과 입력·권한 확인 방식을 정리했습니다. 실제 구현을 대조하고 기존 로컬 DB·HTTP 검증 결과를 요약한 중간 기록입니다." "The record explains the request → answer → resolution flow, input validation and permission checks. It was cross-checked against the implementation and summarizes existing local DB and HTTP verification results." }}</p>
+              <p data-copy>{{ cond $ko "도움 요청·답변 처리 구현과 테스트를 대조했습니다. 기존 로컬 기록에서 해당 변경 범위의 회귀 검사·빌드·타입 검사 성공을 확인했으며, 확인 방법과 범위를 중간 기록에 정리했습니다. 이번에 KONNECT 테스트를 새로 실행한 결과는 아닙니다." "The help request and answer implementation was compared with its tests. Existing local records report successful regression, build and type checks for the changed scope; the intermediate record explains what was checked and how. KONNECT tests were not rerun for this portfolio update." }}</p>
               <a class="btn-quiet" href="{{ $repo }}/blob/main/docs/tasks/T03.md" hreflang="ko">{{ cond $ko "중간 작업 기록 보기" "Read the intermediate work record (Korean)" }} <span aria-hidden="true">↗</span></a>
             </div>
           </div>
