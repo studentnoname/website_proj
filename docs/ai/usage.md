@@ -1,5 +1,13 @@
 # 실제 AI 활용 기록
 
+## 표·문단 배치와 완료형 어미 조정 — 2026-11-06 KST
+
+사용자 원문: ‘표와 문단 띄어쓰기를 활용하여 가독성 증대 그리고 문서의 글씨를 ~하였음으로 변경하고 AI 가 쓴 것 같은 형식을 피하기’. 실제 Claude Code 2.1.287 / claude-opus-5-5에 기존 원문과 academic-paper의 writing_quality_check.md를 읽고 어미만 수정하도록 요청하였음. 실제 전달문은 “Completed work: concise report endings such as 구성하였음, 확인하였음, 수정하였음” 및 “Never make future plans or read-only evidence into completed testing”이었음. 이번에는 전체 스킬을 다시 호출하지 않고 앞서 적용한 정확성·간결성 지침으로 문장을 다듬었음.
+
+Claude는 본문 87개와 검증표 7개 수정안을 반환하였음. Codex가 항목별 인용문·URL·변수·수치·경로·필드명과 목차·표 머리글·그림의 보존을 대조하였음. 남은 완료형 표현 4개를 추가로 정리하였고, AI 사용 공개와 실제 검증의 주체·한계는 유지하였음. 문체 개선을 AI 사용 은폐나 판별 회피로 적용하지 않았음.
+
+Codex는 기존 PDF 렌더러에서 제출 정보·기준 대조·변경 전후·집계·문제 조치를 표로 배치하고 과정·판단을 문단으로 구성하였음. 본문 10pt, 줄간격 16.5pt, 문단 뒤 7pt와 표 안 여백을 적용하였으며, 사례별 요청·응답·판단·검증이 가능한 한 같은 페이지에 오도록 조정하였음. 11쪽 PDF를 렌더해 전체 페이지·링크·필수 항목을 확인하였음. 사이트와 KONNECT 코드는 변경하지 않았음.
+
 ## Academic Research Skills를 이용한 보고서 문장 개선 — 2026-11-06 KST
 
 사용자 요청 원문 발췌: ‘이 스킬을 적용해서 작성해줘 대신 과제 채점의 가중치가 가장 높아서 절대 그걸 어겨서는 안돼’. 실제 Claude Code 2.1.287의 claude-opus-5-5를 실행하고 academic-research-skills:academic-paper 스킬 호출을 확인했다. 사용한 원본은 Cheng-I Wu의 Academic Research Skills 3.24.2, 고정 커밋 6d9388674de1ad0437ad95db3d52f92b92204d84이다. 출처: https://github.com/Imbad0202/academic-research-skills/blob/6d9388674de1ad0437ad95db3d52f92b92204d84/academic-paper/SKILL.md . 이용 조건은 CC BY-NC 4.0이다.

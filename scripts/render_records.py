@@ -16,7 +16,7 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import Flowable, Image, KeepTogether, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+from reportlab.platypus import BaseDocTemplate, Flowable, Frame, Image, KeepTogether, PageTemplate, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 INK = colors.HexColor('#172b2b')
 TEAL = colors.HexColor('#086b67')
@@ -37,10 +37,8 @@ def styles():
         'title': ParagraphStyle('title', fontName='KoreanBold', fontSize=23, leading=33, textColor=INK, spaceAfter=12),
         'heading': ParagraphStyle('heading', fontName='KoreanBold', fontSize=14, leading=21, textColor=TEAL, spaceBefore=14, spaceAfter=8, keepWithNext=True),
         'body': ParagraphStyle('body', fontName='Korean', fontSize=10, leading=15.5, textColor=INK, spaceAfter=5, wordWrap='CJK', allowWidows=0),
-        'outline': ParagraphStyle('outline', fontName='Korean', fontSize=10, leading=15.5,
-                                  textColor=INK, leftIndent=12, firstLineIndent=0,
-                                  bulletIndent=0, bulletFontName='Korean', bulletFontSize=10,
-                                  spaceAfter=2, wordWrap='CJK', allowWidows=0),
+        'report': ParagraphStyle('report', fontName='Korean', fontSize=10, leading=16.5,
+                                textColor=INK, spaceAfter=7, wordWrap='CJK', allowWidows=0),
         'case': ParagraphStyle('case', fontName='KoreanBold', fontSize=10, leading=15.5,
                                textColor=TEAL, spaceBefore=8, spaceAfter=5,
                                wordWrap='CJK', keepWithNext=True),
@@ -161,40 +159,85 @@ def submission(release_path, identity_path):
                                     escape(relative) + '</link>', sheet['small'])]
         return picture, caption_blocks
 
+    def paragraph(text):
+        text = markup(fill(text))
+        text = re.sub(r'^([^:<]{1,36}):', r'<b>\1:</b>', text, count=1)
+        return Paragraph(text, sheet['report'])
+
+    def report_table(headers, data, widths, key_column=False):
+        cell_style = ParagraphStyle('report-cell', parent=sheet['report'], spaceAfter=0)
+        head_style = ParagraphStyle('report-table-head', parent=cell_style, fontName='KoreanBold')
+        rows = [[Paragraph(markup(fill(str(c))), head_style) for c in headers]]
+        for row in data:
+            rows.append([Paragraph(markup(fill(str(c))), head_style if key_column and i==0 else cell_style)
+                         for i,c in enumerate(row)])
+        table = Table(rows, colWidths=[w*mm for w in widths], repeatRows=1, hAlign='LEFT')
+        table.setStyle(TableStyle([
+            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#edf2f0')),
+            ('LINEBELOW', (0, 0), (-1, 0), 0.7, TEAL),
+            ('LINEBELOW', (0, 1), (-1, -1), 0.3, colors.HexColor('#d9e0dc')),
+            ('LEFTPADDING', (0, 0), (-1, -1), 7),
+            ('RIGHTPADDING', (0, 0), (-1, -1), 7),
+            ('TOPPADDING', (0, 0), (-1, -1), 7),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+        ]))
+        return table
+
+    def field_rows(items):
+        return [list(item.split(':', 1)) for item in items]
+
     for section in sections:
         section_start = len(blocks)
         blocks.append(Paragraph(section['title'], sheet['heading']))
-        case_start, case_intro_remaining = None, 0
-        for item in section['outline']:
+        number = int(section['title'].split()[0])
+        items = list(section['outline'])
+        if number==1:
+            blocks.extend([report_table(['항목','제출 정보'],field_rows(items[:9]),[35,135],True),Spacer(1,5*mm)])
+            items=items[9:]
+        if number==4:
+            labels=('집계 구간:','시작 기준 포함 여부:','유효 개수:','실제 제외 목록')
+            summary=[s for s in items if s.startswith(labels)]
+            blocks.extend([report_table(['항목','집계 내용'],field_rows(summary),[37,133],True),Spacer(1,5*mm)])
+            items=[s for s in items if s not in summary]
+        case_start = None
+        index=0
+        while index<len(items):
+            item=items[index]
+            if number==2 and item.startswith('P71'):
+                last=next(i for i in range(index,len(items)) if items[i].startswith('P80'))
+                blocks.extend([report_table(['기준','사이트에 반영한 내용'],field_rows(items[index:last+1]),[34,136],True),Spacer(1,5*mm)])
+                index=last+1
+                continue
+            if number==3 and re.match(r'변경 [12] ',item) and '변경 전:' in item:
+                title,before=item.split('변경 전:',1)
+                blocks.append(Paragraph(markup(fill(title.strip())),sheet['case']))
+                blocks.extend([report_table(['구분','변경 내용'],[['변경 전',before],items[index+1].split(':',1)],[26,144],True),Spacer(1,4*mm)])
+                index+=2
+                continue
+            if number==5 and item.startswith('E1 '):
+                evidence=items[index:index+4]
+                blocks.extend([report_table(['근거','저장소 경로와 링크'],field_rows(evidence),[40,130],True),Spacer(1,4*mm)])
+                index+=4
+                continue
+            if number==6 and item.startswith('관찰:'):
+                blocks.extend([report_table(['단계','본문 출력 문제의 확인과 조치'],field_rows(items[index:index+4]),[28,142],True),Spacer(1,5*mm)])
+                index+=4
+                continue
             text = markup(fill(item))
             if item.startswith('사례 ') and section['title'].startswith('7 '):
-                case_start, case_intro_remaining = len(blocks), 2
-                blocks.append(Paragraph(text, sheet['case']))
-                continue
-            # Emphasize the field label, leaving the explanatory text at one weight.
-            text = re.sub(r'^([^:<]{1,36}):', r'<b>\1:</b>', text, count=1)
-            blocks.append(Paragraph(text, sheet['outline'], bulletText='•'))
-            if case_intro_remaining:
-                case_intro_remaining -= 1
-                if not case_intro_remaining:
+                if case_start is not None:
                     blocks[case_start:] = [KeepTogether(blocks[case_start:])]
+                case_start = len(blocks)
+                blocks.append(Paragraph(text, sheet['case']))
+                index+=1
+                continue
+            blocks.append(paragraph(item))
+            index+=1
+        if case_start is not None:
+            blocks[case_start:] = [KeepTogether(blocks[case_start:])]
         if section.get('table'):
-            cell_style = ParagraphStyle('table-cell', parent=sheet['body'], spaceAfter=0)
-            cells = [section['table']['headers'], *section['table']['rows']]
-            rows = [[Paragraph(markup(fill(str(cell))), cell_style) for cell in row] for row in cells]
-            table = Table(rows, colWidths=[20*mm, 38*mm, 48*mm, 64*mm], repeatRows=1, hAlign='LEFT')
-            table.setStyle(TableStyle([
-                ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e2efeb')),
-                ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#f7faf9')]),
-                ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-                ('LINEBELOW', (0, 0), (-1, 0), 0.7, TEAL),
-                ('LINEBELOW', (0, 1), (-1, -1), 0.25, colors.HexColor('#d5e1de')),
-                ('LEFTPADDING', (0, 0), (-1, -1), 6),
-                ('RIGHTPADDING', (0, 0), (-1, -1), 6),
-                ('TOPPADDING', (0, 0), (-1, -1), 7),
-                ('BOTTOMPADDING', (0, 0), (-1, -1), 7),
-            ]))
-            blocks.extend([table, Spacer(1, 4*mm)])
+            blocks.extend([report_table(section['table']['headers'],section['table']['rows'],[20,36,51,63]),Spacer(1,5*mm)])
         images = section.get('image', [])
         if images:
             desktop, desktop_captions = figure(*images[0], 118)
@@ -203,22 +246,24 @@ def submission(release_path, identity_path):
             pair.setStyle(TableStyle([('VALIGN', (0, 0), (-1, -1), 'TOP'),
                                      ('LEFTPADDING', (0, 0), (-1, -1), 0),
                                      ('RIGHTPADDING', (0, 0), (-1, -1), 0)]))
-            gallery = [pair, Spacer(1, 2*mm), *desktop_captions, *mobile_captions]
+            blocks.append(KeepTogether([pair, Spacer(1, 2*mm), *desktop_captions, *mobile_captions]))
             for relative, caption in images[2:]:
                 picture, captions = figure(relative, caption, 150)
-                gallery.extend([Spacer(1, 3*mm), picture, Spacer(1, 2*mm), *captions])
-            blocks.append(KeepTogether(gallery))
+                blocks.append(KeepTogether([Spacer(1, 3*mm), picture, Spacer(1, 2*mm), *captions]))
         if section['title'].startswith('8 '):
             blocks[section_start:] = [KeepTogether(blocks[section_start:])]
     folder = ROOT / 'submission'
     folder.mkdir(exist_ok=True)
     output = folder / f"{identity['student_id']}_{identity['name']}_과제1.pdf"
     temporary = output.with_suffix('.building.pdf')
-    doc = SimpleDocTemplate(str(temporary), pagesize=A4, rightMargin=20*mm, leftMargin=20*mm,
+    doc = BaseDocTemplate(str(temporary), pagesize=A4, rightMargin=20*mm, leftMargin=20*mm,
                             topMargin=20*mm, bottomMargin=20*mm,
                             title='개인 소개 웹사이트 구축 결과 보고서', author=identity['name'])
+    frame=Frame(20*mm,20*mm,A4[0]-40*mm,A4[1]-40*mm,
+                leftPadding=0,rightPadding=0,topPadding=0,bottomPadding=0)
+    doc.addPageTemplates([PageTemplate(id='report',frames=[frame],onPage=page_number)])
     try:
-        doc.build(blocks, onFirstPage=page_number, onLaterPages=page_number)
+        doc.build(blocks)
         temporary.replace(output)
     finally:
         temporary.unlink(missing_ok=True)
