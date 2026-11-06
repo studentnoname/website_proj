@@ -151,7 +151,7 @@ def main():
                         "return document.querySelector('.nav a[aria-current]')?.getAttribute('href')===arguments[0]",
                         '#' + section))
                     menu_toggle = driver.find_element(By.CSS_SELECTOR, '[data-pf-nav-toggle]')
-                    if menu_toggle.is_displayed():
+                    if menu_toggle.is_displayed() and menu_toggle.get_attribute('aria-expanded') != 'true':
                         menu_toggle.click()
                     state = driver.execute_script('''return [...document.querySelectorAll('.nav a')].map(e=>{
                       const s=getComputedStyle(e),r=e.getBoundingClientRect();
