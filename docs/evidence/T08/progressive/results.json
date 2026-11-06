@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-11-05T22:44:16.860215+09:00",
+  "checked_at": "2026-11-06T09:48:20.834276+09:00",
   "browser": "Firefox",
-  "version": "159.0",
+  "version": "159.0.1",
   "passed": true,
   "results": [
     {
@@ -141,28 +141,28 @@
     }
   ],
   "base_url": "https://studentnoname.github.io/website_proj/",
-  "tested_sha": "5b6cd483b9687b2ef41ba49afd68559e98f2cb29",
+  "tested_sha": "e427427c518f3004fdcbf944d4bd2a431c57a775",
   "screenshots": {
     "docs/evidence/T08/progressive/en-explicit-cover.png": {
-      "captured_at": "2026-11-05T22:44:02.574532+09:00"
+      "captured_at": "2026-11-06T09:48:05.227304+09:00"
     },
     "docs/evidence/T08/progressive/en-explicit-on.png": {
-      "captured_at": "2026-11-05T22:44:01.496048+09:00"
+      "captured_at": "2026-11-06T09:48:04.147779+09:00"
     },
     "docs/evidence/T08/progressive/ko-explicit-cover.png": {
-      "captured_at": "2026-11-05T22:43:58.462667+09:00"
+      "captured_at": "2026-11-06T09:48:01.017353+09:00"
     },
     "docs/evidence/T08/progressive/ko-explicit-on.png": {
-      "captured_at": "2026-11-05T22:43:57.378766+09:00"
+      "captured_at": "2026-11-06T09:47:59.939591+09:00"
     },
     "docs/evidence/T08/progressive/no-javascript.png": {
-      "captured_at": "2026-11-05T22:43:43.130921+09:00"
+      "captured_at": "2026-11-06T09:47:45.069233+09:00"
     },
     "docs/evidence/T08/progressive/reduced-motion.png": {
-      "captured_at": "2026-11-05T22:43:54.817741+09:00"
+      "captured_at": "2026-11-06T09:47:57.243578+09:00"
     },
     "docs/evidence/T08/progressive/system-default.png": {
-      "captured_at": "2026-11-05T22:44:13.413982+09:00"
+      "captured_at": "2026-11-06T09:48:17.230730+09:00"
     }
   }
 }
