@@ -37,6 +37,13 @@ def styles():
         'title': ParagraphStyle('title', fontName='KoreanBold', fontSize=23, leading=33, textColor=INK, spaceAfter=12),
         'heading': ParagraphStyle('heading', fontName='KoreanBold', fontSize=14, leading=21, textColor=TEAL, spaceBefore=14, spaceAfter=8, keepWithNext=True),
         'body': ParagraphStyle('body', fontName='Korean', fontSize=10, leading=15.5, textColor=INK, spaceAfter=5, wordWrap='CJK', allowWidows=0),
+        'outline': ParagraphStyle('outline', fontName='Korean', fontSize=10, leading=15.5,
+                                  textColor=INK, leftIndent=12, firstLineIndent=0,
+                                  bulletIndent=0, bulletFontName='Korean', bulletFontSize=10,
+                                  spaceAfter=4, wordWrap='CJK', allowWidows=0),
+        'case': ParagraphStyle('case', fontName='KoreanBold', fontSize=10, leading=15.5,
+                               textColor=TEAL, spaceBefore=8, spaceAfter=5,
+                               wordWrap='CJK', keepWithNext=True),
         'small': ParagraphStyle('small', fontName='Korean', fontSize=8, leading=13, textColor=INK, spaceAfter=5, wordWrap='CJK'),
     }
 
@@ -140,8 +147,14 @@ def submission(release_path, identity_path):
 
     for section in sections:
         blocks.append(Paragraph(section['title'], sheet['heading']))
-        for paragraph in section['paragraphs']:
-            blocks.append(Paragraph(markup(fill(paragraph)), sheet['body']))
+        for item in section['outline']:
+            text = markup(fill(item))
+            if item.startswith('사례 ') and section['title'].startswith('7 '):
+                blocks.append(Paragraph(text, sheet['case']))
+                continue
+            # Emphasize the field label, leaving the explanatory text at one weight.
+            text = re.sub(r'^([^:<]{1,36}):', r'<b>\1:</b>', text, count=1)
+            blocks.append(Paragraph(text, sheet['outline'], bulletText='•'))
         if section.get('table'):
             cell_style = ParagraphStyle('table-cell', parent=sheet['body'], spaceAfter=0)
             cells = [section['table']['headers'], *section['table']['rows']]
