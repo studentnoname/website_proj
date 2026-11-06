@@ -10,7 +10,7 @@ import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = 'studentnoname/website_proj'
-BASELINE = '42f92735f3729f9aa0d63d637fa45f6d2dd25629'
+BASELINE = '1954a8b29c7c3a5435ec30238c9f9be2090e3b97'
 
 
 def git(*args):
