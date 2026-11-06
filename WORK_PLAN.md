@@ -1,5 +1,7 @@
 # 개인 소개 웹사이트 작업 계획
 
+문서 구분: 2026-10-28 작업 시작 시점의 계획과 환경 조사 기록임. 아래 ‘현재 상태’는 당시 기준임. 이후 구현·배포·공개 중간 기록은 `README.md`, `docs/tasks/T03.md`, `docs/verification.md`에서 확인할 수 있음.
+
 수립일: 2026-10-28 KST  
 대상: `C:\Users\UserK\Desktop\basicproj\website_product`  
 범위: 파일 구조·인계 자료·과제 원본을 확인하여 개발 순서와 완료 기준을 수립한다.

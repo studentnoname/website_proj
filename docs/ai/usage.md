@@ -1,5 +1,13 @@
 # 실제 AI 활용 기록
 
+## 서체 위계와 전체 문서의 문맥 검토 — 2026-11-06 KST
+
+사용자 요청 원문 발췌: ‘글자 크기와 폰트의 변화로 제목과 소제목을 나누어주고 문단을 나누어서 가독성을 올린다’. Codex가 PDF의 서체·크기·문단·표 배치를 수정하고 공개 텍스트와 TASK PDF를 대조하였음. 실제 오류 I023의 T03·T09 원문/PDF 불일치를 먼저 기록한 뒤 최신 원문으로 생성하였음.
+
+추가 문맥 검토는 실제 Claude Code 2.1.287 / claude-opus-5-5의 읽기 검토로 수행하였음. 실제 전달문 발췌: “AI disclosure, verbatim actual requests, student-vs-agent judgment, actual failed/successful evidence, read-only vs executed KONNECT records, future plans, licenses and technical verification limits MUST remain accurate.” 과제 채점표와 현재 보고서·TASK 기록을 읽도록 하였고, 추적 파일 편집·PDF 변경·새 실행 검증은 금지하였음.
+
+Claude의 의견 11개를 Codex가 대조하였음. 변경과 근거의 인접 배치, Git 설명 통합, 내부 약어 검사 문장 삭제, 날짜별 측정값 구분, 콘텐츠 공백으로 오해되는 표현과 띄어쓰기를 반영하였음. AI 사례 제목은 이미 소제목으로 출력하고 있어 중복 제목은 넣지 않았으며, 과거 브라우저 버전은 실제 기록을 유지하고 검사 시점을 명시하였음. 초기 계획 사례는 이 문서와 WORK_PLAN.md에 보존하고 제출 보고서의 대표 사례는 구현·전환 효과·문장 개선 3건으로 정리하였음. Claude 검토를 사용자의 직접 코드 검토나 새 KONNECT 실행으로 표시하지 않았음.
+
 ## 표·문단 배치와 완료형 어미 조정 — 2026-11-06 KST
 
 사용자 원문: ‘표와 문단 띄어쓰기를 활용하여 가독성 증대 그리고 문서의 글씨를 ~하였음으로 변경하고 AI 가 쓴 것 같은 형식을 피하기’. 실제 Claude Code 2.1.287 / claude-opus-5-5에 기존 원문과 academic-paper의 writing_quality_check.md를 읽고 어미만 수정하도록 요청하였음. 실제 전달문은 “Completed work: concise report endings such as 구성하였음, 확인하였음, 수정하였음” 및 “Never make future plans or read-only evidence into completed testing”이었음. 이번에는 전체 스킬을 다시 호출하지 않고 앞서 적용한 정확성·간결성 지침으로 문장을 다듬었음.
@@ -84,7 +92,7 @@ Claude Code에 기존 HTML의 세 작업 문단만 수정하도록 요청했다.
 
 - 2026-11-04 KST, Claude Code 2.1.287, 실제 모델 claude-opus-5-5. 사용자 원문: “동일한데 변한게 없어”. Codex는 강제 모션 설정이 없는 Firefox에서 reduced=true·사이트 효과 off를 확인했다(I013). Windows 브라우저의 직접 UI 확인은 URL 정책 미지원으로 중단됐고 별도 자동화 프로필로 확인했다.
 - 실제 CLI 입력 발췌: “Respect system reduced motion by default, but allow EXPLICIT site-level opt-in” / “Factor hero entrance into reusable function”. 기존 세 프론트 파일만 수정하도록 제한했다. 응답은 첫 화면·하단 제어 동기화, 사이트 내 명시적 켜기, 850ms·120ms 등장 재생을 구현하고 미검사임을 밝혔다.
-- Codex가 diff·한국어 문구를 검토하고 Hugo 빌드·정적 검사·기존 Firefox 55개 검사·점진적 향상 11개 검사를 수행했다. 기본 모션 설정을 강제로 바꾸지 않는 검사와 두 언어의 실제 겹침을 추가했다. 기기 설정은 변경하지 않았다. 사용자의 디자인 만족이나 실제 iPhone 검증으로 기록하지 않는다.
+- Codex가 diff·한국어 문구를 검토하고 Hugo 빌드·정적 검사·기존 Firefox 55개 검사·점진적 향상 11개 검사를 수행했다. 기본 모션 설정을 강제로 바꾸지 않는 검사와 두 언어의 실제 겹침을 추가했다. 기기 설정은 변경하지 않았다. 확인 범위는 Windows Firefox의 브라우저 뷰포트이며 실제 iPhone 검사는 수행하지 않았음.
 
 ## 사례 G — #intro 진입과 명시적 재생 링크
 
@@ -113,7 +121,7 @@ Claude Code에 기존 HTML의 세 작업 문단만 수정하도록 요청했다.
 
 ## 사례 C — 사용자 피드백에 따른 재제작
 
-- 사용자 요청: 결과와 복잡한 파일 구성에 대한 불만 이후 “다시 제작해”. 이전 결과는 `archive/portfolio-v1`에 보존했다.
+- 사용자 요청: 파일 구성 단순화와 화면 재구성을 위한 “다시 제작해”. 이전 결과는 `archive/portfolio-v1`에 보존하였음.
 - 실제 도구: Claude Code CLI로 `site/layouts/landing/list.html`을 새로 작성하고 Codex가 검토·수정했다. 한국어·영어 HTML, CSS, 메뉴 동작을 이 파일 하나에 모았다. 별도 imagegen 도구로 생성한 메인 이미지의 프롬프트와 경로는 `../sources.md`에 기록했다.
 - 변경: 어두운 메인 화면, 라임 색상, 큰 타이포, 입체 이미지, 밝은 소개·학습 영역, KONNECT 활동 영역으로 다시 구성했다. 사용하지 않는 원본 예제·모듈 소스와 이전 화면 조각을 제거했다. Hugo 빌드·모듈 의존성·라이선스는 유지한다.
 - 검토 수정: 공개 이름은 Jung Jiwoong으로 유지하고 제출용 개인정보를 제외했다. 프론트 기능의 틀 구성이라는 사실을 보존하고, 계획 설명을 사용자 답변 범위로 정리했다. 화면에서 발견한 CSS 구분자 경로 치환을 수정했다.

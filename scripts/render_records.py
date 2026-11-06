@@ -16,7 +16,7 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import BaseDocTemplate, Flowable, Frame, Image, KeepTogether, PageTemplate, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+from reportlab.platypus import BaseDocTemplate, CondPageBreak, Frame, Image, KeepTogether, PageTemplate, Paragraph, Spacer, Table, TableStyle
 
 INK = colors.HexColor('#172b2b')
 TEAL = colors.HexColor('#086b67')
@@ -28,19 +28,22 @@ def fonts():
         if Path(normal).exists():
             pdfmetrics.registerFont(TTFont('Korean', normal))
             pdfmetrics.registerFont(TTFont('KoreanBold', bold if Path(bold).exists() else normal))
+            display = Path('C:/Windows/Fonts/HANBatangB.ttf')
+            pdfmetrics.registerFont(TTFont('KoreanDisplay', str(display) if display.exists() else bold))
+            pdfmetrics.registerFontFamily('Korean', normal='Korean', bold='KoreanBold')
             return
     raise RuntimeError('A Korean TrueType font is required; configure fonts() for this host.')
 
 
 def styles():
     return {
-        'title': ParagraphStyle('title', fontName='KoreanBold', fontSize=23, leading=33, textColor=INK, spaceAfter=12),
-        'heading': ParagraphStyle('heading', fontName='KoreanBold', fontSize=14, leading=21, textColor=TEAL, spaceBefore=14, spaceAfter=8, keepWithNext=True),
-        'body': ParagraphStyle('body', fontName='Korean', fontSize=10, leading=15.5, textColor=INK, spaceAfter=5, wordWrap='CJK', allowWidows=0),
-        'report': ParagraphStyle('report', fontName='Korean', fontSize=10, leading=16.5,
+        'title': ParagraphStyle('title', fontName='KoreanDisplay', fontSize=24, leading=34, textColor=INK, spaceAfter=14),
+        'heading': ParagraphStyle('heading', fontName='KoreanDisplay', fontSize=16, leading=24, textColor=TEAL, spaceBefore=16, spaceAfter=9, keepWithNext=True),
+        'body': ParagraphStyle('body', fontName='Korean', fontSize=10.5, leading=17, textColor=INK, spaceAfter=7, wordWrap='CJK', allowWidows=0),
+        'report': ParagraphStyle('report', fontName='Korean', fontSize=10.5, leading=17,
                                 textColor=INK, spaceAfter=7, wordWrap='CJK', allowWidows=0),
-        'case': ParagraphStyle('case', fontName='KoreanBold', fontSize=10, leading=15.5,
-                               textColor=TEAL, spaceBefore=8, spaceAfter=5,
+        'case': ParagraphStyle('case', fontName='KoreanBold', fontSize=12, leading=18,
+                               textColor=INK, spaceBefore=10, spaceAfter=6,
                                wordWrap='CJK', keepWithNext=True),
         'small': ParagraphStyle('small', fontName='Korean', fontSize=8, leading=13, textColor=INK, spaceAfter=5, wordWrap='CJK'),
     }
@@ -55,17 +58,79 @@ def markup(text):
     return text
 
 
+def content_table(headers, data, widths, sheet, formatter=markup, key_column=False):
+    cell = ParagraphStyle('table-cell', parent=sheet['report'], spaceAfter=0)
+    head = ParagraphStyle('table-heading', parent=cell, fontName='KoreanBold')
+    rows = [[Paragraph(formatter(str(c)), head) for c in headers]]
+    rows += [[Paragraph(formatter(str(c)), head if key_column and i == 0 else cell)
+              for i, c in enumerate(row)] for row in data]
+    table = Table(rows, colWidths=[w*mm for w in widths], repeatRows=1, hAlign='LEFT')
+    table.setStyle(TableStyle([
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#edf2f0')),
+        ('LINEBELOW', (0, 0), (-1, 0), 0.7, TEAL),
+        ('LINEBELOW', (0, 1), (-1, -1), 0.3, colors.HexColor('#d9e0dc')),
+        ('LEFTPADDING', (0, 0), (-1, -1), 7),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 7),
+        ('TOPPADDING', (0, 0), (-1, -1), 6),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+    ]))
+    return table
+
+
+def table_heading(text, style):
+    # Keep room for the title, repeated header and first row, while letting long
+    # tables start partway down a page rather than moving the entire table.
+    style = ParagraphStyle('table-title', parent=style, keepWithNext=False)
+    return [CondPageBreak(48*mm), Paragraph(markup(text), style)]
+
+
 def markdown_blocks(text, sheet):
-    blocks = []
-    for line in text.splitlines():
-        if not line.strip() or line.startswith('```'):
+    blocks, lines = [], text.splitlines()
+    index = 0
+    while index < len(lines):
+        line = lines[index].strip()
+        index += 1
+        if not line:
             continue
-        if line.startswith('# '):
-            blocks.append(Paragraph(markup(line[2:]), sheet['title']))
+        if line.startswith('```'):
+            code = []
+            while index < len(lines) and not lines[index].startswith('```'):
+                code.append(lines[index])
+                index += 1
+            index += 1
+            if line == '```mermaid':
+                # The current source contains one linear six-step data flow.
+                labels = list(dict.fromkeys(re.findall(r'\w+\[([^\]]+)\]', '\n'.join(code))))
+                blocks.append(Paragraph(markup(' → '.join(labels)), sheet['body']))
+            else:
+                for code_line in code:
+                    blocks.append(Paragraph(escape(code_line), sheet['body']))
+        elif line.startswith('|'):
+            rows = [[c.strip() for c in line.strip('|').split('|')]]
+            while index < len(lines) and lines[index].strip().startswith('|'):
+                row = [c.strip() for c in lines[index].strip().strip('|').split('|')]
+                if not all(re.fullmatch(r':?-+:?', c) for c in row):
+                    rows.append(row)
+                index += 1
+            widths = {2:[40,130], 3:[36,67,67], 4:[24,32,59,55]}.get(len(rows[0]))
+            blocks.extend([content_table(rows[0],rows[1:],widths,sheet),Spacer(1,4*mm)])
+        elif line.startswith('### '):
+            blocks.append(Paragraph(markup(line[4:]), sheet['case']))
         elif line.startswith('## '):
-            blocks.append(Paragraph(markup(line[3:]), sheet['heading']))
+            next_line=next((s.strip() for s in lines[index:] if s.strip()),'')
+            if next_line.startswith('|'):
+                blocks.extend(table_heading(line[3:],sheet['heading']))
+            else:
+                blocks.append(Paragraph(markup(line[3:]), sheet['heading']))
+        elif line.startswith('# '):
+            blocks.append(Paragraph(markup(line[2:]), sheet['title']))
         else:
-            blocks.append(Paragraph(markup(line), sheet['body']))
+            is_list = bool(re.match(r'(?:- |\d+\. )',line))
+            while index < len(lines) and lines[index].strip() and not lines[index].startswith(('#','|','```','- ')) and not re.match(r'\d+\. ',lines[index]) and not is_list:
+                line += ' ' + lines[index].strip()
+                index += 1
+            blocks.append(Paragraph(markup(line),sheet['body']))
     return blocks
 
 
@@ -74,36 +139,17 @@ def page_number(canvas, document):
     canvas.drawRightString(A4[0] - 20*mm, 12*mm, str(document.page))
 
 
-class Workflow(Flowable):
-    def __init__(self):
-        super().__init__()
-        self.width, self.height = 170*mm, 24*mm
-
-    def draw(self):
-        c = self.canv
-        for index, label in enumerate(['요구사항 확인', '구현·선택', '실행·재검증']):
-            x = index * 58*mm
-            c.setFillColor(colors.HexColor('#eef5f3'))
-            c.setStrokeColor(TEAL)
-            c.roundRect(x, 3*mm, 49*mm, 15*mm, 3*mm, fill=1)
-            c.setFont('KoreanBold', 10)
-            c.setFillColor(INK)
-            c.drawCentredString(x + 24.5*mm, 9*mm, label)
-            if index < 2:
-                c.line(x + 50*mm, 10.5*mm, x + 56*mm, 10.5*mm)
-                c.line(x + 54*mm, 12*mm, x + 56*mm, 10.5*mm)
-                c.line(x + 54*mm, 9*mm, x + 56*mm, 10.5*mm)
-
-
 def task_pdfs():
     sheet = styles()
     for source in sorted((ROOT / 'docs/tasks').glob('T[0-9][0-9].md')):
         blocks = markdown_blocks(source.read_text(encoding='utf-8'), sheet)
-        blocks.insert(1, Workflow())
-        doc = SimpleDocTemplate(str(source.with_suffix('.pdf')), pagesize=A4, rightMargin=20*mm,
-                                leftMargin=20*mm, topMargin=18*mm, bottomMargin=20*mm,
+        doc = BaseDocTemplate(str(source.with_suffix('.pdf')), pagesize=A4, rightMargin=20*mm,
+                                leftMargin=20*mm, topMargin=20*mm, bottomMargin=20*mm,
                                 title=source.stem + ' 개발 기록', author='Jung Jiwoong')
-        doc.build(blocks, onFirstPage=page_number, onLaterPages=page_number)
+        frame = Frame(20*mm,20*mm,A4[0]-40*mm,A4[1]-40*mm,
+                      leftPadding=0,rightPadding=0,topPadding=0,bottomPadding=0)
+        doc.addPageTemplates([PageTemplate(id='task',frames=[frame],onPage=page_number)])
+        doc.build(blocks)
         print(source.with_suffix('.pdf').relative_to(ROOT).as_posix())
 
 
@@ -165,24 +211,7 @@ def submission(release_path, identity_path):
         return Paragraph(text, sheet['report'])
 
     def report_table(headers, data, widths, key_column=False):
-        cell_style = ParagraphStyle('report-cell', parent=sheet['report'], spaceAfter=0)
-        head_style = ParagraphStyle('report-table-head', parent=cell_style, fontName='KoreanBold')
-        rows = [[Paragraph(markup(fill(str(c))), head_style) for c in headers]]
-        for row in data:
-            rows.append([Paragraph(markup(fill(str(c))), head_style if key_column and i==0 else cell_style)
-                         for i,c in enumerate(row)])
-        table = Table(rows, colWidths=[w*mm for w in widths], repeatRows=1, hAlign='LEFT')
-        table.setStyle(TableStyle([
-            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#edf2f0')),
-            ('LINEBELOW', (0, 0), (-1, 0), 0.7, TEAL),
-            ('LINEBELOW', (0, 1), (-1, -1), 0.3, colors.HexColor('#d9e0dc')),
-            ('LEFTPADDING', (0, 0), (-1, -1), 7),
-            ('RIGHTPADDING', (0, 0), (-1, -1), 7),
-            ('TOPPADDING', (0, 0), (-1, -1), 7),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-        ]))
-        return table
+        return content_table(headers,data,widths,sheet,lambda c:markup(fill(c)),key_column)
 
     def field_rows(items):
         return [list(item.split(':', 1)) for item in items]
@@ -192,6 +221,7 @@ def submission(release_path, identity_path):
         blocks.append(Paragraph(section['title'], sheet['heading']))
         number = int(section['title'].split()[0])
         items = list(section['outline'])
+        subheadings = {section['outline'][int(i)]: title for i,title in section.get('subheadings',{}).items()}
         if number==1:
             blocks.extend([report_table(['항목','제출 정보'],field_rows(items[:9]),[35,135],True),Spacer(1,5*mm)])
             items=items[9:]
@@ -204,6 +234,11 @@ def submission(release_path, identity_path):
         index=0
         while index<len(items):
             item=items[index]
+            if item in subheadings:
+                if item.startswith(('P71','E1 ')):
+                    blocks.extend(table_heading(subheadings[item],sheet['case']))
+                else:
+                    blocks.append(Paragraph(markup(subheadings[item]),sheet['case']))
             if number==2 and item.startswith('P71'):
                 last=next(i for i in range(index,len(items)) if items[i].startswith('P80'))
                 blocks.extend([report_table(['기준','사이트에 반영한 내용'],field_rows(items[index:last+1]),[34,136],True),Spacer(1,5*mm)])
@@ -211,8 +246,10 @@ def submission(release_path, identity_path):
                 continue
             if number==3 and re.match(r'변경 [12] ',item) and '변경 전:' in item:
                 title,before=item.split('변경 전:',1)
-                blocks.append(Paragraph(markup(fill(title.strip())),sheet['case']))
-                blocks.extend([report_table(['구분','변경 내용'],[['변경 전',before],items[index+1].split(':',1)],[26,144],True),Spacer(1,4*mm)])
+                blocks.append(KeepTogether([
+                    Paragraph(markup(fill(title.strip())),sheet['case']),
+                    report_table(['구분','변경 내용'],[['변경 전',before],items[index+1].split(':',1)],[26,144],True),
+                    Spacer(1,4*mm)]))
                 index+=2
                 continue
             if number==5 and item.startswith('E1 '):
@@ -232,11 +269,13 @@ def submission(release_path, identity_path):
                 blocks.append(Paragraph(text, sheet['case']))
                 index+=1
                 continue
-            blocks.append(paragraph(item))
+            blocks.extend(paragraph(part) for part in item.split('\n\n'))
             index+=1
         if case_start is not None:
             blocks[case_start:] = [KeepTogether(blocks[case_start:])]
+            blocks[section_start:section_start+2] = [KeepTogether(blocks[section_start:section_start+2])]
         if section.get('table'):
+            blocks.extend(table_heading('영역별 검증 결과',sheet['case']))
             blocks.extend([report_table(section['table']['headers'],section['table']['rows'],[20,36,51,63]),Spacer(1,5*mm)])
         images = section.get('image', [])
         if images:
