@@ -6,6 +6,7 @@ from html import escape
 import json
 from pathlib import Path
 import re
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -174,6 +175,7 @@ def submission(release_path, identity_path):
         'Generated PDF artifacts only; source document work is counted separately.': 'TASK PDF만 자동 생성한 커밋; 원문 작성 이력과 중복하여 세지 않음',
         'Merge commit; source commits are counted separately.': '병합 커밋; 원래 작업 커밋을 별도로 집계',
         'Empty change.': '실제 변경 없음',
+        'Evidence artifacts only; conservatively excluded from the substantive-change count.': '검증 증거만 보관한 변경은 보수적으로 제외',
     }
     tokens['EXCLUDED_DETAILS'] = '; '.join(
         entry['sha'] + ': ' + reasons.get(entry['exclusion_reason'], entry['exclusion_reason'])
@@ -185,6 +187,21 @@ def submission(release_path, identity_path):
     tokens['SCREEN_TIME'] = capture['checked_at']
     tokens['BROWSER_CHECKS'] = str(len(capture['results']))
     tokens['PROGRESSIVE_CHECKS'] = str(len(progressive['results']))
+
+    audit_sha = release.get('public_commit_audit_sha')
+    tokens['AUDIT_SHA'] = audit_sha or '공개 집계 기준 미지정'
+    tail = []
+    if audit_sha:
+        snapshot_commits = set(subprocess.check_output(
+            ['git', 'rev-list', audit_sha], cwd=ROOT, text=True).splitlines())
+        for entry in release['commits']:
+            if entry['sha'] in snapshot_commits:
+                continue
+            verdict = ('포함: ' + entry['inclusion_reason']) if entry['included'] else (
+                '제외: ' + reasons.get(entry['exclusion_reason'], entry['exclusion_reason']))
+            tail.append(entry['url'] + ' / ' + entry['subject'] + ' / 변경 파일: ' +
+                        ', '.join(entry['paths']) + ' / ' + verdict)
+    tokens['ADDITIONAL_COMMIT_DETAILS'] = '\n\n'.join(tail) if tail else '공개 검토 기준 이후 추가 커밋 없음.'
 
     def fill(text):
         for key, value in tokens.items():
@@ -271,10 +288,12 @@ def submission(release_path, identity_path):
                 blocks.append(Paragraph(text, sheet['case']))
                 index+=1
                 continue
-            blocks.extend(paragraph(part) for part in item.split('\n\n'))
+            blocks.extend(paragraph(part) for part in fill(item).split('\n\n'))
             index+=1
         if case_start is not None:
             blocks[case_start:] = [KeepTogether(blocks[case_start:])]
+            blocks[section_start:section_start+2] = [KeepTogether(blocks[section_start:section_start+2])]
+        if number == 3:
             blocks[section_start:section_start+2] = [KeepTogether(blocks[section_start:section_start+2])]
         if section.get('table'):
             blocks.extend(table_heading('영역별 검증 결과',sheet['case']))

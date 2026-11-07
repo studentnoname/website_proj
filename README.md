@@ -6,7 +6,7 @@ HugoBlox Academic CV의 빌드 환경에서 동작하는 한국어·영어 단�
 - English: https://studentnoname.github.io/website_proj/en/
 - 소스: https://github.com/studentnoname/website_proj
 - 배포: https://github.com/studentnoname/website_proj/actions/workflows/hugo-pages.yml
-- KONNECT 중간 작업 기록: [입력·권한·DB 처리 흐름과 기존 로컬 검증 요약](docs/tasks/T03.md). 원본 코드 대신 실제 구현을 대조한 공개 문서다.
+- KONNECT 중간 작업 기록: [직접 오류 확인·업데이트 판단과 구현·기존 검증 기록](docs/tasks/T03.md). 직접 수행한 작업 결과와 구현 대조 자료를 구분한 공개 문서다.
 
 ## 설치와 실행
 
@@ -31,6 +31,20 @@ python .github/pages_build.py --dependencies
 python .github/pages_build.py --build
 python scripts/serve.py
 ```
+
+Linux x86_64에서는 Python 3.12·Node 24/npm·Go 1.27.1·Git·curl·tar를 준비한 뒤 다음과 같이 실행한다. Python 실행 이름이 `python3`인 환경을 기준으로 하였음. Hugo·Sass 설치 경로와 빌드 명령은 Ubuntu Actions의 실제 작업과 같은 구성이다.
+
+```bash
+mkdir -p .local/tools/linux/hugo .local/tools/linux/sass
+curl -fL --retry 3 https://github.com/gohugoio/hugo/releases/download/v0.167.0/hugo_extended_0.167.0_linux-amd64.tar.gz | tar -xz -C .local/tools/linux/hugo
+curl -fL --retry 3 https://github.com/sass/dart-sass/releases/download/1.105.0/dart-sass-1.105.0-linux-x64.tar.gz | tar -xz -C .local/tools/linux/sass
+export PATH="$PWD/.local/tools/linux/hugo:$PWD/.local/tools/linux/sass/dart-sass:$PATH"
+python3 .github/pages_build.py --dependencies
+python3 .github/pages_build.py --build
+python3 scripts/serve.py
+```
+
+실제 Ubuntu 빌드·배포 환경과 결과는 [워크플로](.github/workflows/hugo-pages.yml)와 [Actions 실행 목록](https://github.com/studentnoname/website_proj/actions/workflows/hugo-pages.yml)에서 확인한다. 위 Linux 다운로드 파일은 x86_64용이며, macOS·ARM의 도구 설치 절차를 실행 검증한 안내는 아니다.
 
 산출물은 `public/`이다. 이전 출력을 정리하고 `/website_proj/` 경로를 보정한다. 일반 `hugo` 명령만 실행하면 운영 `pages.json`이 빠질 수 있다. 개인화 이후 준비 스크립트를 다시 실행해 사이트를 덮어쓰지 않는다.
 
@@ -95,6 +109,8 @@ Settings → Pages의 Source는 **GitHub Actions**다. 수동 실행만으로 ma
 원본: https://themes.gohugo.io/themes/blox-tailwind/ · https://github.com/HugoBlox/kit
 
 최종 main push 성공 후 `python scripts/collect_release.py`로 SHA·Actions·커밋 포함·제외 근거를 로컬 `submission/release.json`에 내보낸다. TASK PDF 전체는 `python scripts/render_records.py --tasks`, 변경한 기록만 생성할 때는 `--task T09`처럼 지정한다. 제출 PDF는 `--release`와 로컬 `--identity` 파일을 지정해 생성한다. 제출 개인정보와 최종 파일은 공개 Git에 포함하지 않는다.
+
+커밋별 공개 근거는 [이력 집계](docs/commit-log.md)의 고정 검토 SHA까지 제시한다. 이 목록을 갱신할 때는 `python scripts/collect_release.py --commit-log-ref <전체_SHA>`를 사용한다. 해당 기준 뒤 최종 SHA까지의 추가 커밋은 제출 보고서 4절에 파일·포함/제외 이유·diff 링크로 자동 출력해 최종 개수와 연결한다.
 
 보고서의 공개 검증 로그·그림은 `docs/evidence/T08/`에 보존한다. 검증표 E1~E4와 그림 1~3에는 제출 SHA에 고정된 링크와 정확한 저장소 상대 경로가 표시된다. 로컬 `submission/`의 파일을 채점자가 열 수 있다고 가정하지 않는다.
 
