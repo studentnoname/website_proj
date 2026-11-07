@@ -1,5 +1,11 @@
 # 실제 AI 활용 기록
 
+## 공개 식별자·직접 작업 사례의 화면 반영 — 2026-11-07
+
+학생 요청은 보고서 정보를 유지하면서 공개 사이트의 개인정보를 정리하고 최신 보고서 내용을 사이트에 반영하는 것이었음. 실제 Claude Code의 claude-opus-5-5에 기존 HTML 한 파일만 수정하도록 요청하였음. 실제 전달문 발췌: “Replace every visible and metadata occurrence of the English real name in this HTML with the public handle studentnoname.” / “The current #current intermediate-work block must display the latest report's ACTUAL firsthand activity on the public page”.
+
+Claude는 공개 식별자·브랜드와 기존 중간 기록 영역의 한국어·영어 세 문단을 변경하고 미검사 상태로 반환하였음. Codex는 프로필·언어 설정·설명 메타데이터를 맞추고 출력·정적 참조·PC/모바일 크기의 표시를 검사함. 라이브러리명·버전·명령·전체 테스트 성공 결과는 새로 만들지 않았음. 판단·업데이트·이후 개발 결과는 학생이 직접 제공한 사실이며 AI의 검사 결과로 대신하지 않았음.
+
 ## 현재 확인 주체와 KONNECT 직접 작업 보완 — 2026-11-07
 
 학생은 “내가 계속 직접 열어서 확인하고 있는데”라고 사이트·PDF의 지속적인 직접 확인을 다시 명시하였음. 웹사이트의 크기·띄어쓰기·배치·강조와 모션 위치·불투명도, PDF의 종결어미·서체·내용/목차 구분을 직접 읽고 조작해 수정 판단을 내렸음. 과거의 ‘사용자 검토 미수신’이나 특정 AI 도구의 미검사를 학생의 미확인으로 확대하지 않도록 정정하였음. 자동 측정·로그 생성의 AI 보조 범위는 그대로 공개함.

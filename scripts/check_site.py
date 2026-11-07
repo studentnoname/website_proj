@@ -69,8 +69,10 @@ def inspect():
         for phrase in ('Your Name', 'Download CV', 'DeepMind', 'Alice Smith', 'Lorem ipsum'):
             if phrase in text:
                 errors.append('Demo content: ' + phrase)
-        if 'Jung Jiwoong' not in text or (is_home and 'KONNECT' not in text):
+        if 'studentnoname' not in text or (is_home and 'KONNECT' not in text):
             errors.append('Missing personal introduction or KONNECT activity')
+        if 'mailto:' in text:
+            errors.append('Email link remains in public output')
         for value in ('localhost', '127.0.0.1', 'file://', 'C:\\Users\\'):
             if value in text:
                 errors.append('Development address leaked: ' + value)

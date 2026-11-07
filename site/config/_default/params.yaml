@@ -13,7 +13,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   identity:
     # Site name - shown in navbar, footer, copyright, and browser title by default
-    name: "Jung Jiwoong"
+    name: "studentnoname"
     # Legal entity for copyright notices (defaults to name if not set)
     organization: ""
     # Schema.org type for structured data
@@ -21,7 +21,7 @@ hugoblox:
     # Short tagline displayed on your site
     tagline: ""
     # Site meta description (each home page also sets its own `summary` per language)
-    description: "Jung Jiwoong 개인 포트폴리오 · Personal portfolio of Jung Jiwoong"
+    description: "studentnoname 개인 포트폴리오 · Personal portfolio of studentnoname"
     # Social accounts (used for meta tags like Twitter Cards) - none provided yet
     social:
       twitter: ""

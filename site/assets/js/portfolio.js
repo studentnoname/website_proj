@@ -1,4 +1,4 @@
-// Jung Jiwoong portfolio — mobile navigation, language hash preservation,
+// studentnoname portfolio — mobile navigation, language hash preservation,
 // staggered text entrance and layered screen-over-screen panels.
 (() => {
   const root = document.documentElement;

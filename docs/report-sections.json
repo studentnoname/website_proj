@@ -15,7 +15,8 @@
       "환경: Windows 11 Home 10.0.22631, Python 3.12.10, 준비 스크립트 3.1, Git 2.55.0.windows.5, Node 24.20.0, npm 11.19.0.",
       "빌드 도구: Hugo 0.167.0 Extended, Go 1.27.1, Dart Sass 1.105.0.",
       "직접 확인 환경: 노트북·아이폰, Chrome·Safari. 사이트와 PDF를 작업 중 계속 직접 열어 읽고, 수정이 필요한 부분을 지적한 뒤 다시 확인하였음. 자동 측정 환경은 Windows·Firefox 159.0.1임.",
-      "AI 활용: Codex는 구조·환경·빌드·배포·코드 검토·검증·기록에, Claude Code 2.1.287의 claude-opus-5-5는 프론트 작성과 보고서 문장 개선에 사용하였음.\n\n실제 요청과 결과 검증은 7절에 기록하였음."
+      "AI 활용: Codex는 구조·환경·빌드·배포·코드 검토·검증·기록에, Claude Code 2.1.287의 claude-opus-5-5는 프론트 작성과 보고서 문장 개선에 사용하였음.\n\n실제 요청과 결과 검증은 7절에 기록하였음.",
+      "적용 마감: 2026-11-07 23:59 KST."
     ],
     "subheadings": {
       "9": "원본 확인과 사용 환경"
@@ -39,7 +40,7 @@
     ],
     "outline": [
       "메뉴·앵커: 들어가며 → #intro, 그는 누구인가 → #about, 바라보고 있는 미래 → #future, 현재의 모습 → #current. 한국어는 루트, 영어는 /en/이며 두 언어가 같은 앵커를 사용함.",
-      "콘텐츠 위치: 이름과 짧은 소개는 #intro, AI 효율에 관심을 갖게 된 이유와 도구는 #about, 학습 방향은 #future, 대표 활동 KONNECT의 목적·시기·역할·과정·배운 점은 #current에 있음.",
+      "콘텐츠 위치: 공개 식별자와 짧은 소개는 #intro, AI 효율에 관심을 갖게 된 이유와 도구는 #about, 학습 방향은 #future, 대표 활동 KONNECT의 목적·시기·역할·과정·배운 점은 #current에 있음.",
       "P71(#about): AI 지연·병목을 겪은 경험과, 이를 계기로 AI 효율에 관심을 갖게 된 이유를 제시하였음.",
       "P72(#future): 학습 목표는 백엔드 입력·권한 처리를 이해하고 직접 검증하는 것이며, 다음 행동으로 ‘도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고 결과 정리’를 선택하였음. 두 항목은 예정된 학습임.",
       "P73: React·Firebase·GitHub·C++·C 사용 경험과, NestJS 기반 도움 요청·답변 API의 입력·권한을 점검하는 실제 작업을 설명하였음.",
@@ -55,7 +56,8 @@
       "P80: 원본 가상 인물·논문·경력·CV를 제거하였음.",
       "설치·빌드·재배포: https://github.com/studentnoname/website_proj#설치와-실행 .",
       "실행 명령: Windows에서는 python scripts/bootstrap_windows.py, .\\scripts\\build.ps1 -InstallDependencies, python scripts/serve.py 순서로 실행하고, CI는 python .github/pages_build.py --dependencies 및 --build를 사용함.",
-      "화면 근거: 아래 그림은 최종 공개 주소를 Firefox 159.0.1에서 캡처한 것이며, 390px 화면은 실제 모바일 기기 검사가 아니라 브라우저의 실제 390px 콘텐츠 뷰포트 검사임."
+      "화면 근거: 아래 그림은 최종 공개 주소를 Firefox 159.0.1에서 캡처한 것이며, 390px 화면은 실제 모바일 기기 검사가 아니라 브라우저의 실제 390px 콘텐츠 뷰포트 검사임.",
+      "공개 정보 처리: 사이트에는 studentnoname을 사용하고, 제출용 학번·이름과 직접 수행 정보는 보고서에 유지하였음."
     ],
     "subheadings": {
       "0": "메뉴와 콘텐츠 위치",

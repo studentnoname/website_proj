@@ -170,6 +170,18 @@ def main():
                         screen(f'nav-current-{language}-{width}')
                 record(f'{language}-{width}-current-menu-noncolor', all(item['passed'] for item in menu_states),
                        states=menu_states)
+                if width in (1440, 390):
+                    load(base + suffix + '#current')
+                    note = driver.find_element(By.CSS_SELECTOR, '#current .lesson-note:last-child')
+                    copy = note.text
+                    expected = (['라이브러리 업데이트 오류', '오류 내용을 직접 읽고', '업데이트를 진행', '개발을 막는 수준']
+                                if language == 'ko' else ['library update error', 'I read the error', 'proceed with the update', 'no issue has prevented'])
+                    has_record = all(phrase in copy for phrase in expected)
+                    record_link = note.find_element(By.CSS_SELECTOR, 'a[href$="/docs/tasks/T03.md"]')
+                    driver.execute_script('arguments[0].scrollIntoView({block:"center"})', note)
+                    record(f'{language}-{width}-firsthand-work-record', has_record and record_link.is_displayed(),
+                           url=driver.current_url, has_situation_decision_result=has_record,
+                           screenshot=screen(f'work-record-{language}-{width}'))
 
         viewport(390)
         load(base)

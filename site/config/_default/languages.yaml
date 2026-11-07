@@ -8,10 +8,10 @@ ko:
   locale: ko-KR
   weight: 1
   contentDir: content/ko
-  title: Jung Jiwoong
+  title: studentnoname
 
 en:
   locale: en-US
   weight: 2
   contentDir: content/en
-  title: Jung Jiwoong
+  title: studentnoname

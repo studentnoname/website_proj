@@ -1,4 +1,4 @@
-# Jung Jiwoong — 개인 포트폴리오
+# studentnoname — 개인 포트폴리오
 
 HugoBlox Academic CV의 빌드 환경에서 동작하는 한국어·영어 단일 페이지 포트폴리오다. 기존 `layouts`, `assets/css`, `assets/js` 폴더를 재사용하며, 화면·공통 스타일·동작을 나누어 관리한다.
 
@@ -89,7 +89,7 @@ python scripts/progressive_qa.py
 이 저장소의 새 커밋에는 공개 활동명과 GitHub noreply 주소를 사용한다. 전역 설정 대신 저장소 로컬 설정을 적용한다.
 
 ```text
-git config --local user.name "Jung Jiwoong"
+git config --local user.name "studentnoname"
 git config --local user.email "299375132+studentnoname@users.noreply.github.com"
 ```
 

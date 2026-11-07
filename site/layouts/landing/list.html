@@ -10,8 +10,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ cond $ko "Jung Jiwoong — 결국에는 해낼 것이다" "Jung Jiwoong — In the end, I'll get it done" }}</title>
-<meta name="description" content="{{ cond $ko "Jung Jiwoong의 개인 포트폴리오. AI의 효율에 대한 관심, 공부하려는 분야, 그리고 진행 중인 KONNECT 백엔드 작업." "Personal portfolio of Jung Jiwoong: an interest in AI efficiency, the fields he plans to study, and ongoing backend work on KONNECT." }}">
+<title>{{ cond $ko "studentnoname — 결국에는 해낼 것이다" "studentnoname — In the end, I'll get it done" }}</title>
+<meta name="description" content="{{ cond $ko "studentnoname의 개인 포트폴리오. AI의 효율에 대한 관심, 공부하려는 분야, 그리고 진행 중인 KONNECT 백엔드 작업." "Personal portfolio of studentnoname: an interest in AI efficiency, the fields he plans to study, and ongoing backend work on KONNECT." }}">
 <meta name="theme-color" content="#101311">
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="alternate" hreflang="{{ site.Language.Lang }}" href="{{ .Permalink }}">
@@ -27,7 +27,7 @@
 
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="#intro" aria-label="{{ cond $ko "Jung Jiwoong, 맨 위로" "Jung Jiwoong, back to top" }}"><span class="mark" aria-hidden="true">JW</span><span>Jung Jiwoong</span></a>
+    <a class="brand" href="#intro" aria-label="{{ cond $ko "studentnoname, 맨 위로" "studentnoname, back to top" }}"><span class="mark" aria-hidden="true">SN</span><span>studentnoname</span></a>
     <nav class="nav" data-pf-nav aria-label="{{ cond $ko "주요 메뉴" "Primary" }}">
       <button class="nav-toggle" type="button" data-pf-nav-toggle aria-expanded="false" aria-controls="pf-menu"><i aria-hidden="true"></i>{{ cond $ko "메뉴" "Menu" }}</button>
       <ul id="pf-menu">
@@ -45,7 +45,7 @@
 <section id="intro" data-pf-section data-pf-panel-track aria-labelledby="intro-title">
   <div class="hero panel-surface" data-pf-panel>
     <div class="wrap hero-grid">
-      <p class="eyebrow hero-eyebrow" data-pf-reveal><span class="eyebrow-strong">Jung Jiwoong</span><span aria-hidden="true">·</span><span>{{ cond $ko "개인 포트폴리오" "Personal portfolio" }}</span></p>
+      <p class="eyebrow hero-eyebrow" data-pf-reveal><span class="eyebrow-strong">studentnoname</span><span aria-hidden="true">·</span><span>{{ cond $ko "개인 포트폴리오" "Personal portfolio" }}</span></p>
       <h1 id="intro-title"><span data-pf-reveal>{{ cond $ko "결국에는" "In the end," }}</span><span class="accent" data-pf-reveal>{{ cond $ko "해낼 것이다." "I'll get it done." }}</span></h1>
       <p class="hero-identity" data-copy data-pf-reveal>{{ cond $ko "AI의 효율을 고민하고, KONNECT의 백엔드를 만듭니다." "Curious about AI efficiency. Building the backend for KONNECT." }}</p>
       <div class="cta" data-pf-reveal>
@@ -166,7 +166,7 @@
         <h2 id="current-title">KONNECT</h2>
       </header>
       <div class="section-content" data-pf-reveal>
-        <p data-copy>{{ cond $ko "유학생이 필요한 도움을 글로 요청하면, 관련 경험이 있는 다른 사용자가 답변으로 경험을 나누는 팀 플랫폼입니다. 그는 팀에서 백엔드를 맡고 있습니다." "A team platform where international students post the help they need, and other users share relevant experience through answers. On the team, he works on the backend." }}</p>
+        <p data-copy>{{ cond $ko "유학생이 필요한 도움을 글로 요청하면, 관련 경험이 있는 다른 사용자가 답변으로 경험을 나누는 팀 플랫폼입니다. 저는 팀에서 백엔드를 맡고 있습니다." "A team platform where international students post the help they need, and other users share relevant experience through answers. I work on the backend." }}</p>
       </div>
     </div>
     <div class="wrap section-body case">
@@ -217,9 +217,11 @@
             <p data-copy>{{ cond $ko "Codex로 만들고, Claude로 검토합니다. 서버와 연동되는 웹앱이라, 배포하기 전에 로컬 환경에서 HTTP 응답과 데이터베이스 상태를 먼저 대조합니다." "He builds with Codex and reviews with Claude. Because the web app is connected to a server, he first compares HTTP responses with the database state in a local environment before deploying." }}</p>
           </div>
           <div class="lesson-note">
-            <p class="eyebrow">{{ cond $ko "중간 작업 기록" "Intermediate work record" }}</p>
+            <p class="eyebrow">{{ cond $ko "직접 판단한 작업 사례" "A firsthand implementation decision" }}</p>
             <div>
-              <p data-copy>{{ cond $ko "도움 요청·답변 처리 구현과 테스트를 대조했습니다. 기존 로컬 기록에서 해당 변경 범위의 회귀 검사·빌드·타입 검사 성공을 확인했으며, 확인 방법과 범위를 중간 기록에 정리했습니다. 이번에 KONNECT 테스트를 새로 실행한 결과는 아닙니다." "The help request and answer implementation was compared with its tests. Existing local records report successful regression, build and type checks for the changed scope; the intermediate record explains what was checked and how. KONNECT tests were not rerun for this portfolio update." }}</p>
+              <p data-copy>{{ cond $ko "도움신청 기능을 개발하던 중 라이브러리 업데이트 오류가 발생했습니다. 오류 내용을 직접 읽고 현재 작업 공간에 영향을 주는 부분이 있는지 확인했습니다." "While developing the help request feature, I encountered a library update error. I read the error and checked where it could affect the current workspace." }}</p>
+              <p data-copy>{{ cond $ko "AI의 권장안을 그대로 따르지 않고, 작업 공간과의 관계를 살핀 뒤 업데이트를 진행했습니다. 업데이트 후 도움신청 기능 개발을 계속했습니다." "After reviewing its effect on my workspace, I chose to proceed with the update rather than follow the AI recommendation unchanged. I then continued developing the help request feature." }}</p>
+              <p data-copy>{{ cond $ko "현재까지 개발을 막는 수준의 문제는 없었습니다. 이 결과는 업데이트 이후의 개발 진행에 대한 확인이며, 전체 테스트 통과나 운영 안정성을 보장하는 뜻은 아닙니다." "So far, no issue has prevented further development. This is an observation about work after the update, not a claim that every test passed or that production stability is guaranteed." }}</p>
               <a class="btn-quiet" href="{{ $repo }}/blob/main/docs/tasks/T03.md" hreflang="ko">{{ cond $ko "중간 작업 기록 보기" "Read the intermediate work record (Korean)" }} <span aria-hidden="true">↗</span></a>
             </div>
           </div>

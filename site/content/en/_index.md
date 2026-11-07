@@ -1,6 +1,6 @@
 ---
-title: Jung Jiwoong
+title: studentnoname
 translationKey: home
 type: landing
-summary: "Personal portfolio of Jung Jiwoong. Whatever I take on, I will see it through in the end."
+summary: "Personal portfolio of studentnoname. Whatever I take on, I will see it through in the end."
 ---

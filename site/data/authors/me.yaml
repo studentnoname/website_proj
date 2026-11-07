@@ -2,8 +2,8 @@ schema: hugoblox/author/v1
 slug: me
 is_owner: true
 name:
-  display: Jung Jiwoong
-  given: Jiwoong
-  family: Jung
+  display: studentnoname
+  given: studentnoname
+  family: ""
 # Profile fields are intentionally minimal: the portfolio text lives in layouts/landing/list.html.
 # Only facts confirmed by the site owner belong here.
