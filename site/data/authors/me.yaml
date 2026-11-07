@@ -5,5 +5,5 @@ name:
   display: Jung Jiwoong
   given: Jiwoong
   family: Jung
-# Profile fields are intentionally minimal: the portfolio text lives in data/portfolio/.
+# Profile fields are intentionally minimal: the portfolio text lives in layouts/landing/list.html.
 # Only facts confirmed by the site owner belong here.

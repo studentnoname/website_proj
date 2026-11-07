@@ -139,9 +139,11 @@ def page_number(canvas, document):
     canvas.drawRightString(A4[0] - 20*mm, 12*mm, str(document.page))
 
 
-def task_pdfs():
+def task_pdfs(selected=None):
     sheet = styles()
     for source in sorted((ROOT / 'docs/tasks').glob('T[0-9][0-9].md')):
+        if selected and source.stem not in selected:
+            continue
         blocks = markdown_blocks(source.read_text(encoding='utf-8'), sheet)
         doc = BaseDocTemplate(str(source.with_suffix('.pdf')), pagesize=A4, rightMargin=20*mm,
                                 leftMargin=20*mm, topMargin=20*mm, bottomMargin=20*mm,
@@ -312,12 +314,14 @@ def submission(release_path, identity_path):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--tasks', action='store_true')
+    parser.add_argument('--task', action='append', choices=[f'T{i:02}' for i in range(1,10)],
+                        help='Regenerate only this TASK PDF; repeat for multiple records.')
     parser.add_argument('--release', type=Path)
     parser.add_argument('--identity', type=Path)
     args = parser.parse_args()
     fonts()
-    if args.tasks:
-        task_pdfs()
+    if args.tasks or args.task:
+        task_pdfs(args.task)
     if args.release:
         if not args.identity:
             parser.error('--identity is required with --release')

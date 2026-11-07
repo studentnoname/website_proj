@@ -94,7 +94,7 @@ Settings → Pages의 Source는 **GitHub Actions**다. 수동 실행만으로 ma
 
 원본: https://themes.gohugo.io/themes/blox-tailwind/ · https://github.com/HugoBlox/kit
 
-최종 main push 성공 후 `python scripts/collect_release.py`로 SHA·Actions·커밋 포함·제외 근거를 로컬 `submission/release.json`에 내보낸다. TASK PDF는 `python scripts/render_records.py --tasks`로 생성한다. 제출 PDF는 `--release`와 로컬 `--identity` 파일을 지정해 생성한다. 제출 개인정보와 최종 파일은 공개 Git에 포함하지 않는다.
+최종 main push 성공 후 `python scripts/collect_release.py`로 SHA·Actions·커밋 포함·제외 근거를 로컬 `submission/release.json`에 내보낸다. TASK PDF 전체는 `python scripts/render_records.py --tasks`, 변경한 기록만 생성할 때는 `--task T09`처럼 지정한다. 제출 PDF는 `--release`와 로컬 `--identity` 파일을 지정해 생성한다. 제출 개인정보와 최종 파일은 공개 Git에 포함하지 않는다.
 
 보고서의 공개 검증 로그·그림은 `docs/evidence/T08/`에 보존한다. 검증표 E1~E4와 그림 1~3에는 제출 SHA에 고정된 링크와 정확한 저장소 상대 경로가 표시된다. 로컬 `submission/`의 파일을 채점자가 열 수 있다고 가정하지 않는다.
 

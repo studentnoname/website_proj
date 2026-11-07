@@ -3,7 +3,7 @@
 ## 보고서 문장 개선 스킬
 
 - Cheng-I Wu, Academic Research Skills 3.24.2 / academic-paper. CC BY-NC 4.0. 고정 원본: https://github.com/Imbad0202/academic-research-skills/blob/6d9388674de1ad0437ad95db3d52f92b92204d84/academic-paper/SKILL.md .
-- 2026-11-06 실제 Claude Code에 적용했다. 과제 채점 기준을 우선해 문장의 명료성·정확성·근거 대조와 관련 항목 묶기에 사용했다. 논문용 기본 서식이나 전체 연구 파이프라인은 적용하지 않았다. 실제 요청·반영·검증 범위는 ai/usage.md와 보고서 7절 사례 4에 구분한다.
+- 2026-11-06 실제 Claude Code에 적용했다. 과제 채점 기준을 우선해 문장의 명료성·정확성·근거 대조와 관련 항목 묶기에 사용했다. 논문용 기본 서식이나 전체 연구 파이프라인은 적용하지 않았다. 실제 요청·반영·검증 범위는 ai/usage.md와 현재 보고서 7절 사례 3에 구분한다.
 
 ## 테마와 빌드
 
