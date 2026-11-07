@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-06T19:57:10.896009+09:00",
+  "checked_at": "2026-11-07T20:33:50.034398+09:00",
   "browser": "firefox",
   "browser_version": "159.0.1",
   "base_url": "https://studentnoname.github.io/website_proj/",
@@ -12,44 +12,44 @@
         {
           "delay": 80,
           "duration": 900,
-          "opacity": "0.88203",
-          "start": 444.54
+          "opacity": "0.0473815",
+          "start": 337.12
         },
         {
           "delay": 200,
           "duration": 900,
-          "opacity": "0.759622",
-          "start": 444.54
+          "opacity": "0",
+          "start": 337.12
         },
         {
           "delay": 320,
           "duration": 900,
-          "opacity": "0.48025",
-          "start": 444.54
+          "opacity": "0",
+          "start": 337.12
         },
         {
           "delay": 440,
           "duration": 900,
           "opacity": "0",
-          "start": 444.54
+          "start": 337.12
         },
         {
           "delay": 560,
           "duration": 900,
           "opacity": "0",
-          "start": 444.54
+          "start": 337.12
         },
         {
           "delay": 680,
           "duration": 900,
           "opacity": "0",
-          "start": 444.54
+          "start": 337.12
         },
         {
           "delay": 800,
           "duration": 900,
           "opacity": "0",
-          "start": 444.54
+          "start": 337.12
         }
       ],
       "screenshot": "docs/evidence/T08/firefox/text-entrance.png"
@@ -85,6 +85,14 @@
           657.3333129882812
         ],
         "copy": [
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
           {
             "leading": 31.5,
             "size": 18
@@ -337,6 +345,13 @@
       ]
     },
     {
+      "name": "ko-1440-firsthand-work-record",
+      "passed": true,
+      "url": "https://studentnoname.github.io/website_proj/#current",
+      "has_situation_decision_result": true,
+      "screenshot": "docs/evidence/T08/firefox/work-record-ko-1440.png"
+    },
+    {
       "name": "ko-900-layout",
       "passed": true,
       "url": "https://studentnoname.github.io/website_proj/",
@@ -363,6 +378,14 @@
           420.3333129882813
         ],
         "copy": [
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
           {
             "leading": 31.5,
             "size": 18
@@ -748,6 +771,14 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
         "copyTops": [
@@ -1026,6 +1057,14 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
         "copyTops": [
@@ -1171,6 +1210,13 @@
       ]
     },
     {
+      "name": "ko-390-firsthand-work-record",
+      "passed": true,
+      "url": "https://studentnoname.github.io/website_proj/#current",
+      "has_situation_decision_result": true,
+      "screenshot": "docs/evidence/T08/firefox/work-record-ko-390.png"
+    },
+    {
       "name": "en-1440-layout",
       "passed": true,
       "url": "https://studentnoname.github.io/website_proj/en/",
@@ -1197,6 +1243,14 @@
           657.3333129882812
         ],
         "copy": [
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
           {
             "leading": 31.5,
             "size": 18
@@ -1453,6 +1507,13 @@
       ]
     },
     {
+      "name": "en-1440-firsthand-work-record",
+      "passed": true,
+      "url": "https://studentnoname.github.io/website_proj/en/#current",
+      "has_situation_decision_result": true,
+      "screenshot": "docs/evidence/T08/firefox/work-record-en-1440.png"
+    },
+    {
       "name": "en-900-layout",
       "passed": true,
       "url": "https://studentnoname.github.io/website_proj/en/",
@@ -1479,6 +1540,14 @@
           420.3333129882813
         ],
         "copy": [
+          {
+            "leading": 31.5,
+            "size": 18
+          },
+          {
+            "leading": 31.5,
+            "size": 18
+          },
           {
             "leading": 31.5,
             "size": 18
@@ -1872,6 +1941,14 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
         "copyTops": [
@@ -2154,6 +2231,14 @@
           {
             "leading": 28,
             "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
+          },
+          {
+            "leading": 28,
+            "size": 16
           }
         ],
         "copyTops": [
@@ -2299,6 +2384,13 @@
       ]
     },
     {
+      "name": "en-390-firsthand-work-record",
+      "passed": true,
+      "url": "https://studentnoname.github.io/website_proj/en/#current",
+      "has_situation_decision_result": true,
+      "screenshot": "docs/evidence/T08/firefox/work-record-en-390.png"
+    },
+    {
       "name": "mobile-menu-opens",
       "passed": true
     },
@@ -2427,10 +2519,10 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.03971C0.23342 0.03971 0.28529 0 0.51871 0S0.78342 0.03086 1 0.03086V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.04753C0.22739 0.04753 0.27793 0 0.50532 0S0.77739 0.03575 1 0.03575V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
-        "newTop": 258.5333251953125,
+        "newTop": 282.5333251953125,
         "oldBottom": 570.2000122070312,
         "oldOwner": "about",
         "oldTop": 65,
@@ -2448,7 +2540,7 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.03971C0.23342 0.03971 0.28529 0 0.51871 0S0.78342 0.03086 1 0.03086V1H0Z|M0 0.03297C0.21204 0.03297 0.25916 0 0.47120 0S0.76204 0.02684 1 0.02684V1H0Z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.04184C0.23186 0.04184 0.28338 0 0.51524 0S0.78186 0.03213 1 0.03213V1H0Z|M0 0.03062C0.21204 0.03062 0.25916 0 0.47120 0S0.76204 0.02494 1 0.02494V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 642.316650390625,
@@ -2459,10 +2551,10 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.03971C0.23342 0.03971 0.28529 0 0.51871 0S0.78342 0.03086 1 0.03086V1H0Z|M0 0.03045C0.21932 0.03045 0.26806 0 0.48739 0S0.76932 0.02321 1 0.02321V1H0Z",
+        "curves": "M0 0.08567C0.22693 0.08567 0.27736 0 0.50429 0S0.77693 0.06437 1 0.06437V1H0Z|M0 0.04184C0.23186 0.04184 0.28338 0 0.51524 0S0.78186 0.03213 1 0.03213V1H0Z|M0 0.02564C0.22476 0.02564 0.27471 0 0.49947 0S0.77476 0.01923 1 0.01923V1H0Z",
         "height": 914,
         "newOwner": "current",
-        "newTop": 516.316650390625,
+        "newTop": 492.316650390625,
         "oldBottom": 914.0000152587892,
         "oldOwner": "future",
         "oldTop": 13.800003051757812,
@@ -2492,18 +2584,18 @@
           "top": 464.183349609375
         },
         {
-          "drift": 8.539999961853027,
+          "drift": 6.320000171661377,
           "flow": "settling",
           "ms": 80,
           "opacity": 0.965,
-          "top": 448.7166748046875
+          "top": 446.5
         },
         {
-          "drift": 1.6100000143051147,
+          "drift": 1.190000057220459,
           "flow": "settling",
           "ms": 180,
           "opacity": 0.965,
-          "top": 441.7999877929687
+          "top": 441.3666687011719
         },
         {
           "drift": 0,
@@ -2526,18 +2618,18 @@
           "top": 476.183349609375
         },
         {
-          "drift": -9.279999732971191,
+          "drift": -5.71999979019165,
           "flow": "settling",
           "ms": 80,
           "opacity": 0.946,
-          "top": 490.8999938964844
+          "top": 494.4666748046875
         },
         {
-          "drift": -1.75,
+          "drift": -1.059999942779541,
           "flow": "settling",
           "ms": 180,
           "opacity": 0.946,
-          "top": 498.433349609375
+          "top": 499.1166687011719
         },
         {
           "drift": 0,
@@ -2601,10 +2693,10 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-future\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02279C0.22142 0.02279 0.27062 0 0.49205 0S0.77142 0.01720 1 0.01720V1H0Z|M0 0H1V1H0z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.01956C0.22842 0.01956 0.27918 0 0.50760 0S0.77842 0.01476 1 0.01476V1H0Z|M0 0H1V1H0z",
         "height": 914,
         "newOwner": "future",
-        "newTop": 377.316650390625,
+        "newTop": 363.316650390625,
         "oldBottom": 724.2999877929688,
         "oldOwner": "about",
         "oldTop": 65,
@@ -2622,7 +2714,7 @@
       "passed": true,
       "first": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02154C0.22438 0.02154 0.27425 0 0.49863 0S0.77438 0.01615 1 0.01615V1H0Z|M0 0.01237C0.21204 0.01237 0.25916 0 0.47120 0S0.76204 0.01007 1 0.01007V1H0Z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.01956C0.22842 0.01956 0.27918 0 0.50760 0S0.77842 0.01476 1 0.01476V1H0Z|M0 0.01158C0.21204 0.01158 0.25916 0 0.47120 0S0.76204 0.00943 1 0.00943V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 642.316650390625,
@@ -2633,7 +2725,7 @@
       },
       "second": {
         "clip": "url(\"#pf-clip-current\")",
-        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.02154C0.22438 0.02154 0.27425 0 0.49863 0S0.77438 0.01615 1 0.01615V1H0Z|M0 0.01036C0.22476 0.01036 0.27471 0 0.49947 0S0.77476 0.00777 1 0.00777V1H0Z",
+        "curves": "M0 0.03881C0.22476 0.03881 0.27471 0 0.49947 0S0.77476 0.02911 1 0.02911V1H0Z|M0 0.01956C0.22842 0.01956 0.27918 0 0.50760 0S0.77842 0.01476 1 0.01476V1H0Z|M0 0.00970C0.22476 0.00970 0.27471 0 0.49947 0S0.77476 0.00727 1 0.00727V1H0Z",
         "height": 914,
         "newOwner": "current",
         "newTop": 492.316650390625,
@@ -2700,18 +2792,18 @@
           "top": 560.4000244140625
         },
         {
-          "drift": -9.43000030517578,
+          "drift": -9.75,
           "flow": "settling",
           "ms": 80,
           "opacity": 0.946,
-          "top": 564.9666748046875
+          "top": 564.6500244140625
         },
         {
-          "drift": -1.7799999713897705,
+          "drift": -1.840000033378601,
           "flow": "settling",
           "ms": 180,
           "opacity": 0.946,
-          "top": 572.61669921875
+          "top": 572.566650390625
         },
         {
           "drift": 0,
@@ -2762,11 +2854,11 @@
       "name": "en-deep-link-immediately-readable",
       "passed": true,
       "evidence": {
-        "bottom": 222.13333129882812,
+        "bottom": 220.8999938964844,
         "header": 65,
         "height": 914,
         "opacity": "1",
-        "top": 180.73333740234375
+        "top": 179.5
       }
     },
     {
@@ -2993,7 +3085,7 @@
     {
       "name": "detailed-content-ko-1440",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/?detail-check=4fff3dfdfffda582fd218f3e5a5df1b75b633bf4#current",
+      "url": "https://studentnoname.github.io/website_proj/?detail-check=1c13e324d6c64599e2fd03985e01dc7e53e21da2#current",
       "metrics": {
         "clipped": [],
         "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
@@ -3030,7 +3122,7 @@
     {
       "name": "detailed-content-ko-900",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/?detail-check=4fff3dfdfffda582fd218f3e5a5df1b75b633bf4#current",
+      "url": "https://studentnoname.github.io/website_proj/?detail-check=1c13e324d6c64599e2fd03985e01dc7e53e21da2#current",
       "metrics": {
         "clipped": [],
         "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
@@ -3067,7 +3159,7 @@
     {
       "name": "detailed-content-ko-768",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/?detail-check=4fff3dfdfffda582fd218f3e5a5df1b75b633bf4#current",
+      "url": "https://studentnoname.github.io/website_proj/?detail-check=1c13e324d6c64599e2fd03985e01dc7e53e21da2#current",
       "metrics": {
         "clipped": [],
         "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
@@ -3104,7 +3196,7 @@
     {
       "name": "detailed-content-ko-390",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/?detail-check=4fff3dfdfffda582fd218f3e5a5df1b75b633bf4#current",
+      "url": "https://studentnoname.github.io/website_proj/?detail-check=1c13e324d6c64599e2fd03985e01dc7e53e21da2#current",
       "metrics": {
         "clipped": [],
         "goal": "다음 학습목표: 백엔드가 입력값과 접근 권한을 어떻게 처리하는지 이해하고, 이를 직접 검증하는 방법을 익히는 것입니다.다음 행동: 도움 요청 API의 정상·입력 오류·권한 오류 테스트를 작성하고, 예상 응답과 실제 응답을 표로 정리합니다.",
@@ -3141,7 +3233,7 @@
     {
       "name": "detailed-content-en-1440",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=4fff3dfdfffda582fd218f3e5a5df1b75b633bf4#current",
+      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=1c13e324d6c64599e2fd03985e01dc7e53e21da2#current",
       "metrics": {
         "clipped": [],
         "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
@@ -3178,7 +3270,7 @@
     {
       "name": "detailed-content-en-900",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=4fff3dfdfffda582fd218f3e5a5df1b75b633bf4#current",
+      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=1c13e324d6c64599e2fd03985e01dc7e53e21da2#current",
       "metrics": {
         "clipped": [],
         "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
@@ -3187,24 +3279,24 @@
         "width": 900,
         "card_alignment": [
           {
-            "body": 832.0499877929688,
-            "row": 723.7999877929688,
-            "title": 800.5499877929688
+            "body": 800.5499877929688,
+            "row": 692.2999877929688,
+            "title": 769.0499877929688
           },
           {
-            "body": 832.0499877929688,
-            "row": 723.7999877929688,
-            "title": 800.5499877929688
+            "body": 800.5499877929688,
+            "row": 692.2999877929688,
+            "title": 769.0499877929688
           },
           {
-            "body": 1088.050048828125,
-            "row": 979.7999877929688,
-            "title": 1056.550048828125
+            "body": 1056.550048828125,
+            "row": 948.2999877929688,
+            "title": 1025.050048828125
           },
           {
-            "body": 1088.050048828125,
-            "row": 979.7999877929688,
-            "title": 1056.550048828125
+            "body": 1056.550048828125,
+            "row": 948.2999877929688,
+            "title": 1025.050048828125
           }
         ],
         "policy_details_absent": true,
@@ -3215,7 +3307,7 @@
     {
       "name": "detailed-content-en-768",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=4fff3dfdfffda582fd218f3e5a5df1b75b633bf4#current",
+      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=1c13e324d6c64599e2fd03985e01dc7e53e21da2#current",
       "metrics": {
         "clipped": [],
         "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
@@ -3252,7 +3344,7 @@
     {
       "name": "detailed-content-en-390",
       "passed": true,
-      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=4fff3dfdfffda582fd218f3e5a5df1b75b633bf4#current",
+      "url": "https://studentnoname.github.io/website_proj/en/?detail-check=1c13e324d6c64599e2fd03985e01dc7e53e21da2#current",
       "metrics": {
         "clipped": [],
         "goal": "Next learning stepGoal: understand how a backend handles input and access permissions, and learn to verify that handling directly.Next action: write tests for the help request API covering normal requests, invalid input and permission failures, then record expected versus actual responses in a table.",
@@ -3287,128 +3379,143 @@
       "screenshot": "docs/evidence/T08/firefox/content-en-390.png"
     }
   ],
-  "browser_suite_checked_at": "2026-11-06T19:56:36.112028+09:00",
-  "browser_suite_tested_sha": "866b991a1d95b7701df62414e62f475299c0f1f1",
-  "content_tested_sha": "866b991a1d95b7701df62414e62f475299c0f1f1",
-  "tested_sha": "866b991a1d95b7701df62414e62f475299c0f1f1",
-  "test_runner_sha": "866b991a1d95b7701df62414e62f475299c0f1f1",
+  "browser_suite_checked_at": "2026-11-07T20:32:50.322212+09:00",
+  "browser_suite_tested_sha": "1c13e324d6c64599e2fd03985e01dc7e53e21da2",
+  "content_tested_sha": "1c13e324d6c64599e2fd03985e01dc7e53e21da2",
+  "tested_sha": "1c13e324d6c64599e2fd03985e01dc7e53e21da2",
+  "test_runner_sha": "1c13e324d6c64599e2fd03985e01dc7e53e21da2",
   "screenshots": {
+    "docs/evidence/T08/firefox/404-before.png": {
+      "captured_at": "2026-11-05T20:39:08.892362+09:00"
+    },
     "docs/evidence/T08/firefox/content-en-1440.png": {
-      "captured_at": "2026-11-06T19:57:06.414027+09:00"
+      "captured_at": "2026-11-07T20:33:46.102057+09:00"
     },
     "docs/evidence/T08/firefox/content-en-390.png": {
-      "captured_at": "2026-11-06T19:57:08.401577+09:00"
+      "captured_at": "2026-11-07T20:33:47.337148+09:00"
     },
     "docs/evidence/T08/firefox/content-en-768.png": {
-      "captured_at": "2026-11-06T19:57:07.738282+09:00"
+      "captured_at": "2026-11-07T20:33:47.092234+09:00"
     },
     "docs/evidence/T08/firefox/content-en-900.png": {
-      "captured_at": "2026-11-06T19:57:07.090017+09:00"
+      "captured_at": "2026-11-07T20:33:46.861489+09:00"
     },
     "docs/evidence/T08/firefox/content-ko-1440.png": {
-      "captured_at": "2026-11-06T19:57:04.142110+09:00"
+      "captured_at": "2026-11-07T20:33:44.114823+09:00"
     },
     "docs/evidence/T08/firefox/content-ko-390.png": {
-      "captured_at": "2026-11-06T19:57:05.766720+09:00"
+      "captured_at": "2026-11-07T20:33:45.401150+09:00"
     },
     "docs/evidence/T08/firefox/content-ko-768.png": {
-      "captured_at": "2026-11-06T19:57:05.080565+09:00"
+      "captured_at": "2026-11-07T20:33:44.709171+09:00"
     },
     "docs/evidence/T08/firefox/content-ko-900.png": {
-      "captured_at": "2026-11-06T19:57:04.869815+09:00"
+      "captured_at": "2026-11-07T20:33:44.397492+09:00"
     },
     "docs/evidence/T08/firefox/en-1440.png": {
-      "captured_at": "2026-11-06T19:55:20.651114+09:00"
+      "captured_at": "2026-11-07T20:31:36.678576+09:00"
     },
     "docs/evidence/T08/firefox/en-390.png": {
-      "captured_at": "2026-11-06T19:55:34.787421+09:00"
+      "captured_at": "2026-11-07T20:31:50.401383+09:00"
     },
     "docs/evidence/T08/firefox/en-768.png": {
-      "captured_at": "2026-11-06T19:55:30.516349+09:00"
+      "captured_at": "2026-11-07T20:31:46.009728+09:00"
     },
     "docs/evidence/T08/firefox/en-900.png": {
-      "captured_at": "2026-11-06T19:55:25.543342+09:00"
+      "captured_at": "2026-11-07T20:31:41.570889+09:00"
     },
     "docs/evidence/T08/firefox/error-1440-en-about.png": {
-      "captured_at": "2026-11-06T19:56:20.859415+09:00"
+      "captured_at": "2026-11-07T20:32:34.481824+09:00"
     },
     "docs/evidence/T08/firefox/error-1440-ko-about.png": {
-      "captured_at": "2026-11-06T19:56:14.277968+09:00"
+      "captured_at": "2026-11-07T20:32:28.689259+09:00"
     },
     "docs/evidence/T08/firefox/error-390-en-about.png": {
-      "captured_at": "2026-11-06T19:56:33.158667+09:00"
+      "captured_at": "2026-11-07T20:32:46.977925+09:00"
     },
     "docs/evidence/T08/firefox/error-390-ko-about.png": {
-      "captured_at": "2026-11-06T19:56:27.294423+09:00"
+      "captured_at": "2026-11-07T20:32:40.796643+09:00"
     },
     "docs/evidence/T08/firefox/keyboard-focus.png": {
-      "captured_at": "2026-11-06T19:55:44.219072+09:00"
+      "captured_at": "2026-11-07T20:31:58.772808+09:00"
     },
     "docs/evidence/T08/firefox/ko-1440.png": {
-      "captured_at": "2026-11-06T19:55:00.832948+09:00"
+      "captured_at": "2026-11-07T20:31:17.463829+09:00"
     },
     "docs/evidence/T08/firefox/ko-200-percent.png": {
-      "captured_at": "2026-11-06T19:55:46.349773+09:00"
+      "captured_at": "2026-11-07T20:32:01.042010+09:00"
     },
     "docs/evidence/T08/firefox/ko-390.png": {
-      "captured_at": "2026-11-06T19:55:15.622036+09:00"
+      "captured_at": "2026-11-07T20:31:31.330796+09:00"
     },
     "docs/evidence/T08/firefox/ko-768.png": {
-      "captured_at": "2026-11-06T19:55:10.699862+09:00"
+      "captured_at": "2026-11-07T20:31:26.712962+09:00"
     },
     "docs/evidence/T08/firefox/ko-900.png": {
-      "captured_at": "2026-11-06T19:55:06.008674+09:00"
+      "captured_at": "2026-11-07T20:31:22.209253+09:00"
     },
     "docs/evidence/T08/firefox/ko-desktop-about.png": {
-      "captured_at": "2026-11-06T19:55:47.430005+09:00"
+      "captured_at": "2026-11-07T20:32:02.150695+09:00"
     },
     "docs/evidence/T08/firefox/ko-desktop-current.png": {
-      "captured_at": "2026-11-06T19:55:47.563150+09:00"
+      "captured_at": "2026-11-07T20:32:02.355058+09:00"
     },
     "docs/evidence/T08/firefox/ko-desktop-future.png": {
-      "captured_at": "2026-11-06T19:55:47.498203+09:00"
+      "captured_at": "2026-11-07T20:32:02.260918+09:00"
     },
     "docs/evidence/T08/firefox/ko-mobile-about.png": {
-      "captured_at": "2026-11-06T19:55:47.653129+09:00"
+      "captured_at": "2026-11-07T20:32:02.464134+09:00"
     },
     "docs/evidence/T08/firefox/ko-mobile-current.png": {
-      "captured_at": "2026-11-06T19:55:47.771254+09:00"
+      "captured_at": "2026-11-07T20:32:02.562269+09:00"
     },
     "docs/evidence/T08/firefox/ko-mobile-future.png": {
-      "captured_at": "2026-11-06T19:55:47.710859+09:00"
+      "captured_at": "2026-11-07T20:32:02.516267+09:00"
     },
     "docs/evidence/T08/firefox/nav-current-en-1440.png": {
-      "captured_at": "2026-11-06T19:55:21.839849+09:00"
+      "captured_at": "2026-11-07T20:31:38.213112+09:00"
     },
     "docs/evidence/T08/firefox/nav-current-en-390.png": {
-      "captured_at": "2026-11-06T19:55:35.958346+09:00"
+      "captured_at": "2026-11-07T20:31:51.650625+09:00"
     },
     "docs/evidence/T08/firefox/nav-current-ko-1440.png": {
-      "captured_at": "2026-11-06T19:55:02.241148+09:00"
+      "captured_at": "2026-11-07T20:31:18.720970+09:00"
     },
     "docs/evidence/T08/firefox/nav-current-ko-390.png": {
-      "captured_at": "2026-11-06T19:55:16.830822+09:00"
+      "captured_at": "2026-11-07T20:31:32.620970+09:00"
     },
     "docs/evidence/T08/firefox/panel-1440-about.png": {
-      "captured_at": "2026-11-06T19:55:51.185209+09:00"
+      "captured_at": "2026-11-07T20:32:05.585195+09:00"
     },
     "docs/evidence/T08/firefox/panel-1440-current.png": {
-      "captured_at": "2026-11-06T19:55:54.828637+09:00"
+      "captured_at": "2026-11-07T20:32:08.442712+09:00"
     },
     "docs/evidence/T08/firefox/panel-1440-future.png": {
-      "captured_at": "2026-11-06T19:55:53.710765+09:00"
+      "captured_at": "2026-11-07T20:32:06.784576+09:00"
     },
     "docs/evidence/T08/firefox/panel-390-about.png": {
-      "captured_at": "2026-11-06T19:56:00.835516+09:00"
+      "captured_at": "2026-11-07T20:32:14.866529+09:00"
     },
     "docs/evidence/T08/firefox/panel-390-current.png": {
-      "captured_at": "2026-11-06T19:56:03.553553+09:00"
+      "captured_at": "2026-11-07T20:32:18.125941+09:00"
     },
     "docs/evidence/T08/firefox/panel-390-future.png": {
-      "captured_at": "2026-11-06T19:56:01.948321+09:00"
+      "captured_at": "2026-11-07T20:32:16.491815+09:00"
     },
     "docs/evidence/T08/firefox/text-entrance.png": {
-      "captured_at": "2026-11-06T19:54:57.328579+09:00"
+      "captured_at": "2026-11-07T20:31:13.734469+09:00"
+    },
+    "docs/evidence/T08/firefox/work-record-en-1440.png": {
+      "captured_at": "2026-11-07T20:31:39.359511+09:00"
+    },
+    "docs/evidence/T08/firefox/work-record-en-390.png": {
+      "captured_at": "2026-11-07T20:31:52.797113+09:00"
+    },
+    "docs/evidence/T08/firefox/work-record-ko-1440.png": {
+      "captured_at": "2026-11-07T20:31:19.936052+09:00"
+    },
+    "docs/evidence/T08/firefox/work-record-ko-390.png": {
+      "captured_at": "2026-11-07T20:31:33.782971+09:00"
     }
   }
 }

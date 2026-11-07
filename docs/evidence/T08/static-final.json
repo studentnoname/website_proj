@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-06T19:55:09.878949+09:00",
+  "checked_at": "2026-11-07T20:34:15.850222+09:00",
   "base_url": "https://studentnoname.github.io/website_proj/",
   "passed": true,
   "checks": [
@@ -42,5 +42,8 @@
       "errors": []
     }
   ],
-  "failures": []
+  "failures": [],
+  "tested_sha": "1c13e324d6c64599e2fd03985e01dc7e53e21da2",
+  "test_runner_sha": "1c13e324d6c64599e2fd03985e01dc7e53e21da2",
+  "scope": "local build output; public browser checks recorded separately"
 }
